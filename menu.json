@@ -11,13 +11,14 @@
   "pages": [
     {
       "name": "Home",
-      "path": "/home",
-      "icon": "fa-home",
-      "pageSrc": "index.html"
+      "icon": "fa-home"
+    },
+    {
+      "name": "Settings",
+      "icon": "fa-gears"
     },
     {
       "name": "About",
-      "path": "/About",
       "icon": "fa-cog"
     }
   ]

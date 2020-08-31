@@ -1,8 +1,8 @@
 {
     "basePagesUrl": "/pages/",
     "profile": {
-        "username": "Cardinal",
-        "email": "cardinal@axiologic.net",
+        "username": "OpenDSU RFC",
+        "email": "privatesky@axiologic.net",
         "avatar": "/assets/images/cardinal.png"
     },
     "theme": "cardinal-w3c-theme"

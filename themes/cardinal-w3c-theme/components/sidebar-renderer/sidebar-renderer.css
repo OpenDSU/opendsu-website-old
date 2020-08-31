@@ -1,61 +1,29 @@
 
 :host {
-    width: 100%;
-    padding: 10px 0 10px 0;
-    display: block;
-    font-size: 16px;
-}
+    display: flex;
+    align-items: center;
+    color: #005A9C;
 
-span.icon {
-    color: rgba(255, 255, 255, .6);
-    margin-right: 10px;
-}
-
-.expand-menu {
-    position: absolute;
-    right: 5px;
-    top: 22px
+    /* TODO: */
+    /*background-color: rgba(0, 0, 100, .25);*/
 }
 
 .wrapper_container {
-    display: inline-block;
-    padding: 0 10px;
-    width: 100%;
+    padding: 0 0.75rem;
     box-sizing: border-box;
-}
-
-.item_container {
-    width: 100%;
-    position: relative;
-    padding: 20px 0 0 0;
-    border-top: 1px solid rgba(255, 255, 255, .15);
 }
 
 a,
 a span.icon,
 .item_container .item_name {
-    color: rgba(255, 255, 255, .7);
+    color: #005A9C;
     text-decoration: none;
-    font-size: 0.9rem;
     cursor: pointer;
 }
 
 a.active,
 .dropdown.isOpened>.item_container>.item_name {
     font-weight: 700;
-}
-
-a:hover,
-.item_container:hover>.item_name,
-.item_container:hover>span.icon,
-.dropdown.active>.wrapper_container>.item_container>span.icon,
-.dropdown.isOpened>.wrapper_container>.item_container>span.icon,
-.dropdown.active>.wrapper_container>.item_container>span.item_name,
-.dropdown.isOpened>.wrapper_container>.item_container>span.item_name,
-a:hover span.icon,
-a.active .item_name,
-a.active span.icon {
-    color: rgba(255, 255, 255, 1);
 }
 
 .children {
@@ -102,3 +70,9 @@ a.active span.icon {
 :host([hamburger]) .dropdown {
     width: 100%;
 }
+
+/*.expand-menu {*/
+/*    position: absolute;*/
+/*    right: 5px;*/
+/*    top: 22px*/
+/*}*/
