@@ -1,0 +1,68 @@
+@import url("./fonts/fontawesome/font-awesome.min.css");
+@import url("./bootstrap/css/bootstrap.min.css");
+
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:sans-serif;
+  font-size: 1rem;
+}
+
+html, body{
+  height: 100%;
+}
+
+pre {
+  overflow: hidden;
+  padding: 10px;
+  background: #E9E9E9;
+  white-space: pre-wrap;
+  color: #005cbf;
+}
+
+header {
+  background: #cfe3f8;
+  width:100%;
+  position: fixed;
+  top:0;
+  height:3.5rem;
+  z-index: 100;
+  display: flex;
+}
+
+section{
+  margin-top: 3.5rem;
+}
+
+psk-page{
+  display: flex;
+}
+
+div.website-identity{
+  line-height: 3.5rem;
+  display: block;
+  flex: 0 0 27rem;
+  color:#005A9C;
+  font-size: 1.25rem;
+}
+
+
+@media only screen and (max-width: 1160px) {
+  .website-logo {
+    width: 80px;
+    height: 20px;
+  }
+
+  div.website-identity {
+    line-height: 3.5rem;
+    display: inline-block;
+    flex: 0 0 15rem;
+    color: #005A9C;
+    font-size: 1rem;
+  }
+}

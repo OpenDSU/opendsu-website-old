@@ -1,0 +1,27 @@
+{
+  "name": "opendsu",
+  "version": "1.0.0",
+  "description": "OpenDSU emerging standard public documentation",
+  "scripts": {
+    "postinstall": "node ./node_modules/octopus/scripts/run",
+    "update": "npm install",
+    "web": "ws --spa ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenDSU/opendsu.git"
+  },
+  "dependencies": {
+    "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0.1",
+    "local-web-server": "^3.0.7"
+  },
+  "keywords": [
+    "cardinal"
+  ],
+  "author": "",
+  "license": "Creative Commons Zero v1.0 Universal",
+  "bugs": {
+    "url": "https://github.com/OpenDSU/opendsu/issues"
+  },
+  "homepage": "https://github.com/OpenDSU/opendsu#readme"
+}
