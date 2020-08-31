@@ -4,7 +4,9 @@
     "type": "route",
     "component": "psk-page-loader",
     "exact": true,
-    "404": "/pages/404.html"
+    "404": "/pages/404.html",
+    "pagePrefix": "?",
+    "historyType": "query"
   },
   "pages": [
     {
@@ -16,20 +18,7 @@
     {
       "name": "About",
       "path": "/About",
-      "icon": "fa-cog",
-      "children": [
-        {
-            "name": "About",
-            "keyword":"about"
-        },
-        {
-            "name": "How to create a new site with Cardinal",
-            "keyword": "create-site-cardinal"
-        },
-        {
-            "name": "How to write documentation pages"
-        }
-      ]
+      "icon": "fa-cog"
     }
   ]
 }
