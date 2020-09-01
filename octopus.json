@@ -82,6 +82,10 @@
       "src": "",
       "actions": [
         {
+          "type": "remove",
+          "target": "./themes/cardinal-w3c-theme"
+        },
+        {
           "type": "copy",
           "src": "./dev/themes/cardinal-w3c-theme/src",
           "target": "./themes/cardinal-w3c-theme"
