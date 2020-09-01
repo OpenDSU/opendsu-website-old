@@ -4,7 +4,9 @@
   "description": "OpenDSU emerging standard public documentation",
   "scripts": {
     "postinstall": "node ./node_modules/octopus/scripts/run",
-    "update": "npm install",
+    "build-cardinal": "node ./node_modules/octopus/scripts/run build build-cardinal",
+    "build-theme": "node ./node_modules/octopus/scripts/run build copy-w3c-theme",
+    "build": "npm run build-cardinal && npm run build-theme",
     "web": "ws --spa ./index.html"
   },
   "repository": {
@@ -12,7 +14,7 @@
     "url": "git+https://github.com/OpenDSU/opendsu.git"
   },
   "dependencies": {
-    "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0.1",
+    "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0.4",
     "local-web-server": "^3.0.7"
   },
   "keywords": [
