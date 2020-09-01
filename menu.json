@@ -15,11 +15,50 @@
     },
     {
       "name": "Settings",
-      "icon": "fa-gears"
+      "icon": "fa-gears",
+      "children": [
+        {
+          "name": "Page 1"
+        },
+        {
+          "name": "Page 2"
+        },
+        {
+          "name": "Page 3"
+        }
+      ]
     },
     {
-      "name": "About",
-      "icon": "fa-cog"
+      "name": "Contact",
+      "children": [
+        {
+          "name": "Page 5"
+        },
+        {
+          "name": "Page 6"
+        },
+        {
+          "name": "Page 7"
+        },
+        {
+          "name": "Page 8"
+        },
+        {
+          "name": "Page 9"
+        },
+        {
+          "name": "Page 10"
+        },
+        {
+          "name": "Page 11"
+        },
+        {
+          "name": "Page 12"
+        }
+      ]
+    },
+    {
+      "name": "About"
     }
   ]
 }
