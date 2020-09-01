@@ -13,22 +13,11 @@
 </head>
 
 <body>
-<psk-app-root>
-    <header>
-        <div class="website-identity">
-            <img class="website-logo" height="32px" src="/assets/images/cardinal.png"/>
-            <span>OpenDSU RFC</span>
-        </div>
-        <app-menu hamburger-max-width="1000"></app-menu>
-    </header>
-    <section>
-        <psk-app-router failRedirectTo="/home"></psk-app-router>
-    </section>
-</psk-app-root>
+    <psk-app-root></psk-app-root>
 
-<script src="/scripts/bundles/webshims.js"></script>
-<script type="module" src="/cardinal/cardinal.esm.js"></script>
-<script nomodule src="/cardinal.js"></script>
+    <script src="/scripts/bundles/webshims.js"></script>
+    <script type="module" src="/cardinal/cardinal.esm.js"></script>
+    <script nomodule src="/cardinal.js"></script>
 </body>
 
 </html>

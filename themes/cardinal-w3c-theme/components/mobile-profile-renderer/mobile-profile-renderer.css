@@ -1,11 +1,17 @@
+.card-body {
+    margin-left: 1rem;
+
+    display: flex;
+    align-items: center;
+}
+
 .card-body img {
-    float: left;
-    margin-right: 10px;
+    margin-right: 0.5rem;
 }
 
 .card-body span {
-    float: left;
-    line-height: 50px;
+    color: #003366;
+    font-size: 1.15rem;
 }
 
 .profile {

@@ -1,9 +1,34 @@
+aside {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    align-items: center;
+    width: 280px; height: 100vh;
+    overflow: auto;
+    color: #FFFFFF;
+    background-color: #EEEEEE;
+}
+
+aside app-menu {
+    align-self: start;
+}
+
+.nav-footer {
+    padding: 0.5rem 0;
+    font-size: 85%;
+    text-align: center;
+    color: #003366;
+    background-color: #F6F6F6;
+}
+
+/* --- */
+
 div.global_container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     height: 100%;
-    background-color: #f8f9fc;
+    background-color: #FFFFFF;
 }
 
 div.global_container.is-mobile {
@@ -16,44 +41,15 @@ div.global_container.is-mobile {
     height: auto;
     display: block;
     overflow: inherit;
-    padding-top: 5px;
 }
 
 .is-mobile aside psk-user-profile {
     position: absolute;
 }
 
-aside {
-    height: 100%;
-    background-color: #4e73df;
-    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
-    color: white;
-    align-items: center;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    order: 1;
-    flex: 1;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    scrollbar-color: #4e73df #E5E5E5;
-    scrollbar-width: thin;
-    position: relative;
-}
-
-.nav-footer {
-    color: #FFF;
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    background: #142b86;
-    font-size: 85%;
-}
-
 .nav-footer.bottom-stick {
-    color: #FFF;
-    background: #224abe;
+    color: #FFFFFF;
+    background: #003366;
 }
 
 section {
@@ -61,8 +57,6 @@ section {
     flex-direction: column;
     height: 100%;
     overflow: hidden auto;
-    scrollbar-color: #4e73df #E5E5E5;
-    scrollbar-width: thin;
 }
 
 app-menu,
@@ -86,33 +80,32 @@ section {
     flex: 8;
 }
 
-aside::-webkit-scrollbar,
-section::-webkit-scrollbar {
-    background-color: #fff;
-    width: 8px;
+::-webkit-scrollbar {
+    width: 8px; height: 8px;
 }
-
-
-/* background of the scrollbar except button or resizer */
-
-aside::-webkit-scrollbar-track,
-section::-webkit-scrollbar-track {
-    background-color: #E5E5E5;
+::-webkit-scrollbar-button {
+    width: 0; height: 0;
 }
-
-
-/* scrollbar itself */
-
-aside::-webkit-scrollbar-thumb,
-section::-webkit-scrollbar-thumb {
-    background-color: #4e73df;
-    border-radius: 8px;
-    border: 2px solid #FFF;
+::-webkit-scrollbar-thumb {
+    background: #d7d7d7;
+    border: none;
 }
-
-
-/* set button(top and bottom of the scrollbar) */
-
-aside::-webkit-scrollbar-button {
-    display: none
+::-webkit-scrollbar-thumb:hover {
+    background: #00336650;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #00336650;
+}
+::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border: none;
+}
+::-webkit-scrollbar-track:hover {
+    background: #eeeeee;
+}
+::-webkit-scrollbar-track:active {
+    background: #eeeeee;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
 }
