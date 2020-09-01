@@ -1,1 +1,0 @@
-import{A as o}from"./p-ed46a092.js";function i(i){o.injectProps(i,["history","location"])}export{i}
