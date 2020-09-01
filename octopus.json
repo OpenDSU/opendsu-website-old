@@ -9,26 +9,6 @@
           "type": "smartClone",
           "target": "./dev/",
           "collectLog": false
-        },
-        {
-          "type": "execute",
-          "cmd": "cd ./dev/cardinal && npm install && npm run build"
-        },
-        {
-          "type": "copy",
-          "src": "./dev/cardinal/dist/cardinal",
-          "target": "./cardinal",
-          "options": {
-            "overwrite": true
-          }
-        },
-        {
-          "type": "copy",
-          "src": "./dev/cardinal/dist/cardinal.js",
-          "target": "./cardinal.js",
-          "options": {
-            "overwrite": true
-          }
         }
       ]
     },
@@ -40,18 +20,6 @@
           "type": "smartClone",
           "target": "./dev/themes",
           "collectLog": false
-        },
-        {
-          "type": "remove",
-          "target": "./themes/cardinal-w3c-theme"
-        },
-        {
-          "type": "copy",
-          "src": "./dev/themes/cardinal-w3c-theme/src",
-          "target": "./themes/cardinal-w3c-theme",
-          "options": {
-            "overwrite": true
-          }
         }
       ]
     }
@@ -62,8 +30,12 @@
       "src": "",
       "actions": [
         {
+          "type": "remove",
+          "target": "./cardinal"
+        },
+        {
           "type": "execute",
-          "cmd": "cd dev/cardinal && npm run dist ../"
+          "cmd": "cd dev/cardinal && npm run dist .."
         },
         {
           "type": "copy",

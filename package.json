@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "OpenDSU emerging standard public documentation",
   "scripts": {
-    "postinstall": "node ./node_modules/octopus/scripts/run",
+    "postinstall": "node ./node_modules/octopus/scripts/run && npm run build",
     "build-cardinal": "node ./node_modules/octopus/scripts/run build-cardinal",
     "build-theme": "node ./node_modules/octopus/scripts/run copy-w3c-theme",
     "build": "npm run build-cardinal && npm run build-theme",
