@@ -13,7 +13,7 @@
 		 {
           "type": "execute",
           "cmd": "cd ./dev/cardinal && npm install"
-        },
+        }
       ]
     },
     {
