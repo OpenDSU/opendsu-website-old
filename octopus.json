@@ -39,7 +39,7 @@
         },
         {
           "type": "execute",
-          "cmd": "cd dev/cardinal && npm run dist .."
+          "cmd": "cd dev/cardinal && npm run dist ../../"
         }
       ]
     }
