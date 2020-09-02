@@ -1,4 +1,26 @@
-
 img {
-    max-width: 96px;
+    max-height: 80px;
+}
+
+.profile {
+    position: relative;
+    margin-bottom: 33px;
+
+    background: rgb(136, 194, 236);
+    background: linear-gradient(320deg, rgba(0, 90, 160, 1) 0%, rgba(136, 194, 236, 1) 100%);
+
+}
+
+.profile::after {
+    position: absolute;
+    content: '';
+    height: 33px; left: 0; right: 0;
+
+    background-image: url("/assets/images/logo-shadow.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
+:host([rofile-renderer]) .profile {
+    background: red;
 }
