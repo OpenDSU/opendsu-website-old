@@ -1,0 +1,256 @@
+<psk-page title="What is swarm communication?">
+
+  <psk-toc title="Table of contents"></psk-toc>
+
+<psk-chapter title="Abstract ">
+   <p align="justify">Swarm communication is proposed as a generalisation of object oriented programing. Instead of building software with objects, programming with swarms encourages the programmer to think in terms of processes (called swarms). An object is a concept obtained from the description of data and methods of data change. A swarm is seen as a concept obtained by  describing data, methods but also the locations where the groups of related objects are instantiated. A location is typically a security context, that is, an  environment for instantiating objects belonging to a swarm of objects that is subject to certain security constraints. The concept of swarm also proposes a new way of looking at  the concept of "identity" through the possibility of constructing a single concept from complex behaviors of a multitude of objects. </p>
+   <p align="justify">Understanding the concept of swarm communication requires the introduction of the concept of multiple identity and in general a more sophisticated thinking of the concept of identity.</p>
+</psk-chapter>
+
+  <psk-chapter title="Swarm communication as an improvement of Object Oriented Programming">
+    <psk-img title="Swarm communication comparison to OOP" src="/assets/images/overview/swarms_explained.png"></psk-img>
+    <p align="justify">  Swarm communication model aims to extend Object Oriented Programming.
+      Swarm communication offers a mechanism capable of helping programmers to model complex communication and interaction flows.
+      It  brings the capacity of creating a single mental concept for a cascade of objects (bees) living in network and interacting with their environment to achieve a common goal. </p>
+    The instantiation of an object from an OOP class can be seen as a degenerate case of swarm description instantiation.
+    An OOP class is instantiated in multiple objects with unique identities.
+    A swarm description from the swarm communications perspective is instantiated in multiple swarms. Each swarm has a unique identity.
+    Each swarm contains one or multiple objects(bees).
+    Even for OOP objects there are cases when the property of having a single instance per identity is not true.
+    For example, a serializable and sharable object executed in parallel by multiple users has multiple instances.
+    We can notice that most objects are actually swarms. The objects belonging to a swarm have a location.
+    The location is a combination of space or a time data.
+    The space part of a location is a combination between a memory address and a network address.
+    A time part if an location it is just the period of the existence in space of an object.
+    As programmers we are explicit handle the space part of the location.
+    The time part is handled only relative to other locations to establish a sequence of objects instantiation and destruction.
+    While all this may sound complicated, the actual code for programming your swarms has few surprises.
+    A swarm description is like a class description in witch you can just use some new primitives over the normal OOP constructions (native functions available in objects).
+  </psk-chapter>
+
+    <psk-chapter title="Processes and phenomena in programming">
+  <p align="justify"> In everyday use, a process is defined as a series of related events and steps (sharing a common element) with known input and output. The order of these events or steps is usually well determined.</p>
+  <p align="justify"> Also in everyday use, a phenomenon is a name assigned to situations when the causality relationship between the observed events is not fully understood or even unobservable. Basically, a phenomenon is something that is not understood in detail or it is the result of a process with unobservable internal states (difficult to observe or not relevant enough to be observed). As such, any phenomenon tends to be a concept quite vague. An investigation conducted on the Internet or perusing the literature may return contradictory definitions or impressions, however, the most widely used sense in science is that a phenomenon is actually a process, or at least it is aimed at defining the phenomenon as  precisely as possible as a process.</p>
+  <p align="justify">  We may accurately enough state that programming is the activity of translating into a code readable by a computer certain processes or phenomena considered processes. This process modeling requires the development of programming artefacts that are syntactically described in code, holding at the same time semantics and pragmatics specific to the programmer mind and to the computer. As examples of programming artefacts (fundamental concepts) one may mention: the definitions of functions, class description, services,  calling functions, instantiating objects, calling and composing services.</p>
+
+   <psk-img title="Programming paradigms" src="/assets/images/newlook/ProgrammingParadigms.png"></psk-img>
+
+<p align="justify"> Our team has been focused on studying the programming mechanisms under the magnifying glass, underlying
+their character as processes and refining them in order to achieve conceptual unity, good composability of artificial concepts difficult to compose, or to achieve other pragmatic benefits.</p>
+<p align="justify"> In this sense, the most important achieved result is the concept of <b>“swarm communication”</b>. It is well known that the bases of object oriented programming lay on communicating messages from the actors model. The swarm communication may be conceived as an effort to shift the central paradigm of programming towards explicit processes. From our perspective, the objects communicating one to ne in OOP, the functions in logical programming, the predicates in logical programming are examples of processes, and in a multitude of situations it’s worth approaching and conceiving them as such. The programming is a process of modeling certain “concepts” aiming at describing as accurately as  possible relationships, processes and phenomena occurring outside the computer. In the following table we identify as important filing the programming processes under categories depending on the processes’ life cycle.</p>
+
+<psk-table title = "Processes categories" dimensions="25|25|50" header="true">
+  Phenomenon | Process category | Why is it a process
+  Class instance (Object) | Short living process | An object is not static, as all the modifications over time are compelling us to consider the objects as processes
+  Function or API calling | Short living process | Even the functions without side effects (pure functions) are altering the memory state of a computer over time when running. As such, they may only be considered as short living processes.
+  Asynchronous operations control | Short living process | In the programming with asynchronous functions employed in many languages and platforms, an elegant programming technique is grouping a set of related asynchronous operations into a single artefact (object, chain of promises, etc). Usually, these asynchronous operations are altering the state of an object (or several objects). By grouping these objects into a single concept, we may observe the way a task requiring the execution of one or several asynchronous operations may be conceived as a process.
+  Composing services through choreographies | Integration short living processes | The centralized or decentralized composition of services may be perceived as a process including all the events occurring in the various locations where the services are running
+  Business process | Long living processes | A business process is obviously a process developing over time and is reflected in state modifications of databases. By unifying the  locations in databases that are subjected to changes over time, we may observe the essence of this process
+  Smart contracts | Long living processes | A smart contract is obviously a long living process using the blockchain as database.
+</psk-table>
+</psk-chapter>
+
+<psk-chapter title="Swarm communication">
+<p align="justify">More concisely, the swarm communication concept may be perceived as a generalization of object oriented programming. Instead of class description we have the concept of swarm description. A swarm description is instantiated upon running into a swarm. A swarm is made out of a multitude of objects also called “bees”. A “bee” is an implemented object (data fields and methods). The identity of a swarm instance is determined by the collection of bees.</p>
+
+<psk-img title="Swarm Description and set of bees with shared identity as instances" src="/assets/images/newlook/SwarmDescription.png"></psk-img>
+
+<p align="justify">An important aspect of the swarm communication programming model is that every “bee” instance is associated to a phase in swarm description. A phase is implemented as a function. A bee is thus running a functions and only one, on a machine available to the swarm (a location).</p>
+<p align="justify">After the introduction of the swarm communication concept, our team began gradually to understand that the swarm concept may replace many categories of programming artefacts that are apparently not related. As such, the swarm concept is a practical and direct approach to address: object oriented programming, asynchronicity control techniques in asynchronous programming, integration techniques (orchestration, choreography), business processes modelling, smart contract modelling.</p>
+</psk-chapter>
+
+<psk-chapter title="Why is swarm communication useful?">
+  <p align="justify">  This chapter covers the main arguments in favour of including “swarm communication” in the list of fundamental programming concepts. We are aware that we could not always properly underline the major benefits inherent to the swarm communication perspective.</p>
+
+  <psk-img title="Major benefits" src="/assets/images/newlook/MajorBenefits.png"></psk-img>
+
+  <p align="justify">The above picture summarizes the 4 major benefits of swarm communication:</p>
+  <ul>
+    <li align="justify"> <b>Simplification of code through accurate abstractization.</b> </li>
+     <p align="justify"> Swarm communication enables the generation of a single concept out of the individual communication lines towards the actors (objects) involved in a process. Swarm communications translates the processes’ behaviours into explicit descriptions observable at a single location. The picture down below visually exemplifies how from a complex communication between 3 actors we may extract a swarm description hiding the non-essential details for the whole image of the system. </p>
+
+    <psk-img title="Swarm Description and set of bees with shared identity as instances" src="/assets/images/newlook/SwarmDescription2.png"></psk-img>
+
+      <p align="justify">In swarm communication, the actors of the OOP model (or of the actor model theory) are replaced by phases of swarm communication. Actually, this happens in order for the actors to not exist outside space and time. Swarm communications is better at abstractization than the metaphor of direct messages communication between actors because the actors have a location in time and space. The intuition of phase is better of evidentiating the location (a concept that unifies the space where the computing takes place and the stage/ moment a.k.a. the time). The actors with a location in time and space are becoming just phases of the communication process between actors, the actors themselves being just functionality providers to the swarm, and not decisionmakers.  As per the bee metaphor: the actors are the flowers providing the nectar, while the bees swarm decides what flowers to be visited and in what order. The decisions concerning the communication flux (the order and content of the messages) are described in swarm and not in the actors’ code. These enables the actors to provide generic functionalities, reusable, while the swarm code may accurately describe the unified behaviour as the result of the actors’ interactions.</p>
+      <p align="justify">It is worth mentioning, as well, that the message-passing model the swarm communication aims at improving does not easily allow modelling the situation when a query may receive multiple answers (e.g. a random number of answers). The similarity with a function calling thus dissipates, rather shifting to an observer pattern model, with the inherent complications. Swarm communication provides easily comprehensible abstractization by eliminating the operation with explicit messages. In the above picture, the actors may communicate in arbitrarily complex ways, however, for the programmer the whole communication process is reduced to modelling the logic of such a complex messages flux by a single “swarm description”.</p>
+      <li> <b> Swarm communication helps us to build better tools and abstractions.</b></li>
+      <p align="justify"> The experience gathered in SwarmESB and PrivateSky has led us to the conclusion that swarm communication unifies at conceptual level the communication between the components of a complex system, enabling the introduction of new elements of security (cryptography and especially encrypted choreographies) and traceability (debug, execution monitoring and observation). The encryption and monitoring may be conceived at the swarm instances level, while the presence of a single concept (the swarm) instead of the communication between the nodes helps at addressing these complex issues.</p>
+      <li> <b> The distinction between the glue code and the reusable code </b> leads to enhanced code quality. </li>
+      <p align="justify"> A solid strategy in generating the classes in OOP is based on reusability in other projects or on being a unique code for a unique business (or integration) process. Good practices dictate that the code most likely to be changed during the development of the business problem to be separated for the code providing general functionalities. Our experience showed that the metaphors introduced by swarm communication are relevant and helpful in this sense. The separation between the reusable functionality provided by the actors (flowers in the bees swarm metaphor) and the functionality of the composition, integration and communication level lend benefits similar to those of the “inversion of control” technique in OOP where the humorously expression “don’t call me, I will call you” labels a system holding quality code because it is isolated, loosely coupled and easy to understand and employ.</p>
+      <li> <b>Enhanced and simplified verifiability.</b></li>
+      <p align="justify">Our research proved that by separating the composition code from the reusable code is easier to identify the code with security liabilities and the code affecting the data privacy. The simple fact that the reusable code is seldom modified and may be completely automated tested leads to the necessity of an assessment able to cover unpredictabilities only in the composition code (the choreographies).</p>
+  </ul>
+<p align="justify">Swarm communication is a generalization and unification of object oriented programming (OOP), as well as asynchronous programming through message passing. All the code decomposition techniques in OOP are welcomed and required as well in swarm communication programming.</p>
+</psk-chapter>
+
+<psk-chapter title="Swarm categories">
+  <p align="justify"> In our perspective on swarm programming, a class definition is a particular case of swarm description, as the classes instances (objects) are a particular case of degenerate swarm ( a swarm with a single object). We may observe that the concept of an instance of an object is not applicable to the persistent objects (objects serialized into a database and subsequently deserialized). That is because in order to be accurate, such a serializable object has actually more instances (usually these instances are not present at the same time but at different moments). Although this debate may seem overly academic and lacking practicality at first, our research has shown that this perspective enables unification of a larger set of concepts, brought together under the concept of swarm categories. These swarm categories are built to model different processes categories.</p>
+
+<psk-img title="Swarm categories"  src="/assets/images/newlook/SwarmCategories.png"></psk-img>
+
+<p align="justify">It is worth mentioning that our preceding articles are also identifying 3 executable choreographies categories:</p>
+<ul>
+  <li align="justify"><b>Verifiable Choreographies</b> highlighting that using choreographies simplifies code verification by separating the API level and the integration level (the choreography level). All the swarm choreographies are verifiable choreographies.</li>
+  <li align="justify"><b>Encrypted Choreographies:</b> these are choreographies providing additional cryptographic functionalities for execution. In PrivateSky the encrypted choreographies are based on the concept of SecurityContext, a global service in the execution environments of the swarms that facilitates the management and use of cryptographic keys.</li>
+  <li align="justify"><b>Serverless  Choreographies: </b> these are choreographies executed on a Function As Service similar model; however, instead of using functions, we have complex and potentially interactive choreographies (meaning they are not query return but may run a more complex bilateral communication).</li>
+</ul>
+
+<psk-table title = "Swarm categories" dimensions="25|25|50" header="true">
+Category | Role | Details
+Flow (callflow) | OOP programming, Asynchronicity control (short living processes) | The degenerated form of swarm communications that does not allow network communication but highlights the process aspect of the swarm communication. The flow concept (also named callflow) is very similar to the class concept. The flow are instantiated in objects, just as classes. A flow instance has a JavaScript object instance (there may be imagined, of course, other implementation platforms of these concepts; however, in the case of PrivateSky, by each flow instance we mean precisely a single instantiated JavaScript object). The flows are not serializable.
+Swarm (executable choreography) | Executable choreoghraphies implementation(short living integration processes) | Swarm communication was designed to implement executable choreographies. Subsequently, our team observed that the same concept may also be used in other purposes (OOP, Asynchronicity control, smart contracts programming). A swarm is a flow with a special set of primitives.   Unlike the flows, where a single instantiated object is associated to a swarm instance, the concept of swarm instance enables multiple instances (the same swarm instance has multiple instantiated  objects on different network locations).
+Workflow | Long living processes | The workflows are serializable flows saved and recalled in order to implement long life processes. A workflow enables the modelling of workflows and business processes in the BPM (Business Process Management) environment. 
+Asset | The data storage unit in blockchain | A swarm is a flow with a set of special primitives. An asset is always a serializable object (it cannot have unserializable members).
+Transaction | Enables operations on the assets stored in blockchain | A transaction is a flow with a set of special primitives required to modify the assets stored in the blockchain. The operations are subjected to consensus and only after the consensus is achieved the changes are effectively operated. The swarm instances of the transaction category are serializable.
+Embedded objects | Embedded objects in other swarms | These flows are processes with their identity strictly dependent on the identity of another swarm.
+Interactions | Complementarity | Definitions of processes created to be complementary with swarm excuted in another security contexts.
+Smart contract | Blockchain based  long living processes | In PrivateSky, a smart contract is a collection of assets and transactions developed in order to implement a workflow (considered as a long living process) manageable under the consensus and regulations of a blockchain. 
+</psk-table>
+
+<p align="justify">In the list above, a very special swarm category is “embedded object”. An embedded swarm is always linked to a “global” swarm. A global swarm may be a workflow or an asset.</p>
+<p align="justify">Modern programming languages have a reference concept. Values may be assigned to a reference, these values being objects (class instances). In these languages with references, the uncontrolled copying of references is an issue. If an object holds more references (references that are data fields in other objects), then there is ambiguity regarding the ownership of the referenced object. The referenced object may not belong to any of the objects that are referencing it or, on the contrary, it may belong to only one of the objects from the logical perspective. The concept of embedded object introduces the explicit existence of this difference. The main semantic shift is that at the moment an embedded object is referenced, the value should be copied (cloning of the object), not the reference be modified. This property is able to potentially eliminate entire software error classes, being difficult to detect otherwise. For example, the experience gained by previously designing component frameworks for developing graphic interfaces led us to believe this innovation may be especially important to downsize a lot of “boilerplate” code and to create elegant MVVM  (Model View ViewModel) frameworks. We also believe that for server-side programming, the semantic for the embedded objects references may avoid data corrupting errors. The embedded objects are to be introduced in PrivateSky somewhere in the future.</p>
+</psk-chapter>
+
+<psk-chapter title="Different kinds of identities">
+  <psk-img title="Categories of relevant identities for  swarm communication" src="assets/images/newlook/IDCategories.png"></psk-img>
+
+  <p align="justify">The concept of identity is used in 4 different ways, possibly generating confusion. We may be, as such, in one of the following situations:</p>
+  <ul>
+    <li><b>The identity of the processing node (Nodeld).</b></li>
+    <p align="justify">This identity is an address (or URL) uniquely and accurately identifying the address where the swarm messages are sent to be executed.</p>
+    <li><b>The identity of the agent on the behalf of the processing is made (AgentId).</b></li>
+    <p align="justify">A processing node may execute code on behalf of more users. The users on the processing nodes are represented by the name of agent or even agent identity. These agent identities are decentralized identities or self sovereign identities.</p>
+    <li><b>The collective identity of the swarm instance (SwarmId).</b></li>
+    <p align="justify">Any swarm instance has a collective identity, meaning an identity common to all the swarm’s members. The instance identity is a cryptographically generated  UID (Unique Identifier). In the cases of assets or workflows, the SwarmId is a good candidate for a primary artificial key, should a certain category of asset collection would be considered as a table.</p>
+    <li><b>The identity of a phase execution (PhaseId).</b></li>
+    <p align="justify">The execution of a swarm phase generates an object that is automatically integrated in the swarm collective identity. However, it is useful to also keep the identity of these objects, under the concept of the identity of a phase execution. This identity is also a cryptographically generated UID.</p>
+  </ul>
+
+  <p align="justify"> In PrivateSky, the swarm primitive uses AgentId as the location of a swarm phase execution by using a name service able to trace AgentId to NoteId.</p>
+  <p align="justify"> An AgentId may have one or several NoteId allowing code execution based on the <b>serverless choreographies</b> model.</p>
+</psk-chapter>
+
+<psk-chapter title="Swarms: Identity and Location">
+    <p align="justify">We may consider the identity and location of swarms as the identity of a swarm instance</p>
+
+    <psk-table title = "Identity and location for swarms categories" dimensions="25|25|50" header="true">
+      Category | Identity | Location 
+      flow | The identity of a flow is slightly relevant | The location of a flow is of little relevance in programming. We may only say that a flow exist (is located) in a single memory space.
+      swarm| A swarm instance has a collective identity. A swarm (or a choreography) is built out of swarm objects instances | The objects included in the collective identity will be located on different network nodes. As such, the location is a critical concept for a swarm. The location is similar to the security context of an agent.
+      workflow| The identity of a workflow is important (cryptographically generated UID) | A workflow swarm may be instantiated in different locations in time and space.
+      asset| cryptographically generated UID | An asset instance is located in the blockchain where the asset is included.
+      transaction| Theidentity of a transaction swarm instance  is a cryptographically generated UID | During validation, the transaction is usually instantiated in all the nodes participating in consensus. Furthermore,the transaction is assigned a location in the blockchain history.
+      Embedded object| The identity of an instance is strictly linked to the identity of another “global” swarm | The location of an embedded swarm is strictly linked to the location of the “global” swarm.
+    </psk-table>
+
+    <p align="justify">When speaking about individual identity, we mean a concept has a single instance in all the history of the universe (is represented by a unique object). When speaking about collective identity, we mean that concept comprises more individually identifiable objects. As an example, a cloud is a concept encompassing a multitude of water molecules that apparently are forming a unity. A swarm of bees or a flock of migrating birds is formed by well identifiable objects, yet at the same time they borrow part of their identity from the collective identity. From the most accurately perspective, only very few concepts are holding a veritable individual identity because all objects are subjected to changes over time. Rigorously speaking, any composite concept reflecting state modifications has a collective identity (the identity of all the states over time of the object).</p>
+    <p align="justify">However, in order to simplify thought processes, our mind assigns individual identity to concepts that are actually having a preponderent collective identity.</p>
+    <p align="justify">By location of a swarm or an object instance we mean a method of identifying the processing node where the instance is running. A processing node has in our perspective a security context. A security context is a collection of secret data (encryption keys) and cryptographic functionalities provided to the swarm instances.</p>
+</psk-chapter>
+
+ <psk-chapter title="Summary: Technology neutral presentation of Swarm Communication">
+   <p align="justify">
+     Swarm communication is an concept introduced in 2013 in an article with title "Swarm Communication - a Messaging Pattern proposal for Dynamic Scalability in Cloud."[1]
+     and extend and discussed in other articles regarding privacy and executable choreographies[2][3].
+     The first implementations of the concept exists in two open source projects SwarmESB[4] and PrivateSky[5]
+   </p>
+   <p align="justify">
+     The swarm communication concept was introduced in the context of software integration, in particular a choreographic enabled architecture applicable to the development
+     of federated ESBs (Enterprise Service Bus)[6] in OPERANDO H2020 research project. In the swarm model, the vision of orchestration and choreography matches those presented
+     in scientific literature[7] :  "Orchestration is always the control from the perspective of a party. This differs from choreography, which is more collaborative and allows
+     each party involved to describe its role in the interaction. With executable choreographies implemented with swarm communication, it is possible to achieve both maintaining
+     decentralization and the ability to conduct orchestration.
+   </p>
+   <p align="justify">
+    At an abstract level, understanding the execution model of swarms (both PrivateSky and SwarmESB) revolves around the following elements:
+   </p>
+   <ul>
+   <li>
+     <b>Swarm descriptions</b>: Similar to the description of an object-oriented class, the description of a swarm comprises the descriptions of all <b>phases</b>, actions and variables of swarm.
+     Swarm <b>variables</b> are the way to represent the state of the swarm from the point of view of execution. The phases of the execution have a double role: they contain the code of actions
+     that have the role of status, but also hold in the mental model of the programmer the name of the important state through which the process passes.
+     The phases are represented in the code by functions and are physically found in the description of a swarm;
+   </li>
+   <li>
+     <b>Swarm instances</b>: From the perspective of the object-oriented programming, the instances of a swarm are just objects. But, an instance of a swarm is made up of a lot of cloned
+     objects in the first instance that give identity to the entire collective instance. Basically, in a way, a swarm has two types of instances: as a local object immediately accessible
+     and as a lot of objects (clones of the original object). Both perspectives are correct, but understanding and proper use require a slightly more difficult conceptualization.
+     Most of the time the programmer thinks locally (which code should write for a certain phase) and then an instance is a single object.
+     When designing the swarm, it must design the phases and locations globally. In fact, the concept of executable choreography is just a global perspective on the process of composing
+     services or functionality. Global (at choreography level), the programmer must think about the instance of a swarm as a lot of objects and not as a single object that exists in the
+     same memory space. In global mode, according to the swarm metaphor in nature, instances be little intelligent beings who only together, in greater numbers, manage to perform useful
+     and complex behaviours. We are talking globally of a "collective" instancing of Swarm, as opposed to local instantiating that is individual. The instances can be seen, in the light of
+     the metaphor of swarms in nature, like swarms of bees (a collective existence) consisting of individuals who visit physical locations to perform the necessary tasks at the swarm level;
+   </li>
+   <li>The <b>swarm</b> primitive: signals that a swarm instance will clone itself and send the new clone to another place (another location) to perform certain calculations and remote actions;
+   </li>
+   <li> <b>Locations</b> - The locations are primitive elements of the model of execution and give the destination for the swarm instances (bees belonging to a swarm in the metaphorical perspective).
+     For obvious reasons, these will also be referred to using the term of security contexts.
+   </li>
+   </ul>
+
+   <p align="justify">The PrivateSky implementation of the Swarm communication model provides a useful abstraction for programming several types of processes, with the ability to express both short-term
+     and long-term processes in a form of description of a Swarm type. The basic intuition of swarms comes from the idea that these processes of creating short-term objects, cloning them
+     on the network, saving them for subsequent revival, can be perceived as a single unitary entity (a process or phenomenon) that is quite similar to a swarm made by simple beings (creatures
+     without great intelligence) that manifest a convergent behavior and, at certain stages, complex, when they work together (although their calculations are surprisingly simple
+     evaluated at individual level).
+   </p>
+   <p align="justify">The descriptions of swarms are also designed to discipline programmers, encouraging them to write their code as state automatons as soon as possible in the development process.
+     In the typical object-oriented languages, a programmer never creates a fully formed object with all the behaviour it will ever need, but rather it will build it over time by adding things.
+     A programmer will not be aware of the "states" that a candidate class might have to be described as a state machine (automaton). So, from the outset, a programmer can consider that he has
+     a sufficiently complex problem to require modelling a state automaton. Later - when the object becomes sufficiently complex - it will not do it anyway because it is too late and there is
+     a need to invest serious efforts to replace the implementation with a state-of-the-day machine with equivalent functionality.
+     This can be considered one of the reasons why very little industry code uses an abstraction that is easy to use, useful and, in fact, known to all since schools, such as deterministic
+     finite automatons and other automata with explicit states.
+   </p>
+   <p align="justify">The experience with swarm programming has shown that most state machines required in daily development will be simple (have few states), and the code is even easier to write than by
+     running a custom solution that hides the explicit states.
+   </p>
+   <p align="justify">The JavaScript was used to implement the "swarm communication" concept in SwarmESB and PrivateSky and an important source of complexity is coming from asynchronous code. As an experiment about controingl the asynchronous code a special type of swarm called "callfIow" is used. Callflows are instances of "swarm communication" that do not use the"swarm primitive". PrivateSky unified under
+     the same syntax and the concept of swarm communication three types of programming artefacts: callflows, executable choreographies and smart contracts (called choreographic smart contracts).
+   </p>
+   <p align="justify">While callflows instances are quite similar to objects (class instances), the executable choreographies and smart contracts attract attention that a set of objects (instances) that have a
+     common origin and identity but that are created in different execution spaces (security contexts or a distributed environment in general) are part of the same "thing" that swarm communication
+     calls "swarms". An interesting observation when comparing objects and swarms is the fact that swarms are emphasising the process, phenomena and not "fixed things" as in objects.
+     The concept of "swarm communication" is not mainstream but it has the potential to bring a new breath for object-oriented programming in the competition with functional programming.
+     At a philosophical level, it is to be noted that reality is rather composed of dynamic processes that take into account the location (or locality of things) and not of things (objects in
+     object-oriented programming) or mathematical relations (side effects free functions in functional programming).
+   </p>
+
+ </psk-chapter>
+
+ <psk-chapter title="Bibliography">
+
+   <ol>
+     <li>
+       Alboaie, Lenuta; Alboaie, Sinica; Panu, Andrei (2013-11). "Swarm Communication - A Messaging Pattern Proposal for Dynamic Scalability in Cloud". 2013 IEEE 10th International Conference on High Performance Computing and Communications & 2013 IEEE International Conference on Embedded and Ubiquitous Computing. IEEE. doi:10.1109/hpcc.and.euc.2013.277. ISBN 9780769550886.
+     </li>
+
+     <li>
+       Lenuta Alboaie, Sînică Alboaie, and Tudor Barbu. Extending swarm communication to unify choreography and long-lived processes. At 23rd International Conference on Information Systems Development (ISD2014 Croatia), 2014.
+     </li>
+
+     <li>
+       Sînică Alboaie, Lenuta Alboaie, and Andrei Panu. Levels of Privacy for e-Health systems in the cloud era. At 24th International Conference on Information Systems Development. Harbin, China, August 25-27, 2015.
+     </li>
+
+     <li>
+       Sînică, Alboaie (2019-10-11), A light, open source, ESB or message hub for node.js. Using the "swarm communication pattern": salboaie/SwarmESB, retrieved 2019-10-18
+     </li>
+
+     <li>
+       "PrivateSky: Blockchains, Secret Smart Contracts and advanced privacy preserving integration (ESBs) using executable choreographies". GitHub. Retrieved 2019-10-18.
+     </li>
+
+     <li>
+       "Executable choreographies applied in OPERANDO / CSJM v.24, n.3 (72), 2016 / Ediţii / CSJM / Publicaţii / IMI". www.math.md. Retrieved 2019-10-18.
+     </li>
+
+     <li>
+       Peltz, Chris (2003-10). "Web Services Orchestration and Choreography". Computer. 36 (10): 46–52. doi:10.1109/MC.2003.1236471. ISSN 0018-9162.
+     </li>
+   </ol>
+
+ </psk-chapter>
+
+</psk-page>

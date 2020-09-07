@@ -1,0 +1,169 @@
+<psk-page title="psk-list-feedbacks">
+    <psk-container controller-name="FeedbackListController">
+
+        <psk-toc title="Table of contents"></psk-toc>
+
+        <psk-description>
+            <p>This componentent is intended to be used as a notification pool in order to keep the user experince more to
+                his liking.</p>
+            <p>In order for everything to work smoothly this component uses a pool of
+                <code><span class="nt">&lt;psk-ui-toast/&gt;</span></code> and
+                <code><span class="nt">&lt;psk-ui-alert/&gt;</span></code>.</p>
+            <p>For beggining you could send a <code>message</code> or an array of <code>message</code> which are separated
+                in distinctive notifications(the <code>message</code> is not mandatory) and a <code>name</code> for each
+                message(again,this is not mandatory)
+                and the type of feedback you want to show.</p>
+            <p>To display messages using this component a controller must listen for the <code>openFeedback</code> event triggered by the <code>psk-list-feedbacks</code>
+            in order to receive the callback used to send the messages:</p>
+            <psk-chapter title="Controller Source Code">
+                <psk-code language="Javascript">
+                    import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController.js";
+
+                    const model = {
+                        form: {
+                            email: {
+                                label: 'Email',
+                                name: 'email',
+                                isValid: true
+                            }
+                        }
+                    };
+                    
+                    export default class ExampleController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                            this.feedbackEmitter = null;
+                            
+                            // Listen for the 'openFeedback' event to receive a handle to the
+                            // Feedback List emitter
+                            this.on('openFeedback', (e) => {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                this.feedbackEmitter = e.detail;
+                            });
+                    
+                            this.on("show-feedback",(e) =>{
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                    
+                                const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                                const emailValue = this.model.form.email.value;
+                                this.model.form.email.isValid = emailRegex.test(emailValue);
+                    
+                                if(typeof this.feedbackEmitter === 'function'){
+                                    if(this.model.form.email.isValid){
+                                        this.feedbackEmitter("Email is valid!","Mail Validation","alert-success")
+                                    } else {
+                                        this.feedbackEmitter("Email is invalid!","Mail Validation","alert-danger")
+                                    }
+                                }
+                            })
+                            // Show an error when something happens
+                            element.addEventListener('validation-error', (e) => {
+                                const errorMessage = e.detail;
+                                // Send the actual message
+                                this.feedbackEmitter(errorMessage, 'Validation Error', 'alert-danger');
+                            });
+                        }
+                    }   
+                </psk-code>
+            </psk-chapter>
+            <psk-chapter title= "View Source Code">
+                <psk-code language="markup">
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+                    <psk-text-input view-model="form.email"></psk-text-input>
+                    <psk-button label="Validate Email" event-name="show-feedback" button-class="btn btn-info btn-sm"></psk-button>
+                </psk-code>
+            </psk-chapter>
+            <p>After the callback is received it can be used however we want. In this case we trigger it after we validate the email using another event triggered by the psk-button.</p>
+            <psk-chapter title="Live Example">
+                <psk-example class="app-example">
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+
+                    <psk-text-input view-model="form.email"></psk-text-input>
+                    <psk-button label="Validate Email" event-name="show-feedback" button-class="btn btn-info btn-sm"></psk-button>
+                </psk-example>
+            </psk-chapter>
+            <p>The third argument for the <code>feedbackEmitter</code> callback specifies the message type and can take one of the following options:</p>
+            <psk-list>
+                toast <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="toast">Show Example!</psk-button> (Here you can also test the stackble property!)
+                alert-primary  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-primary">Show Example!</psk-button>
+                alert-success  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-success">Show Example!</psk-button>
+                alert-secondary  
+                alert-danger  
+                alert-warning  
+                alert-info  
+                alert-light  
+                alert-dark  
+            </psk-list>
+            <p>In order to change the style of the alerts or the toast you can modify their css in <code><span class="nt">&lt;psk-ui-toast/&gt;</span></code> theme file and
+                <code><span class="nt">&lt;psk-ui-alert/&gt;</span></code>. For the later one you need to modify the <code><span class="nt">alert-feedback</span></code> class 
+                while for the toast you can just update the css for the bootstrap <code><span class="nt">toast</span></code>.</p>
+            <p>The alerts are stackable and they will only show a specific number of them(only on toast type notifications).</p>
+            <p>When the <strong>X</strong> button is pressed(when a <code>Toast</code> pool is used) an event(
+                <code>closeFeedback</code>) is triggered and the Application Controller should listen to this, so the toast
+                can be closed within the controller.</p>
+            <p>As for the alert it has auto-close feature but it can also be closed by clicking on it!</p>
+            <p>The toast alert has a timer component that tells the user when that alert was created (Right now, 1 minute ago, 10 minutes ago,etc.) 
+                and since the alerts can be created but not seen(if the toast pool is full(<code><span class="nt">messages-to-display</span></code> property).).</p>
+        </psk-description>
+        <psk-property-descriptor title="Supported properties">
+            <psk-list-feedbacks data-define-props="true">
+            </psk-list-feedbacks>
+        </psk-property-descriptor>
+
+        <psk-controller-descriptor title="Events that supports Controller">
+            <psk-list-feedbacks data-define-controller="true">
+            </psk-list-feedbacks>
+        </psk-controller-descriptor>
+
+        <psk-chapter title="HTML Children">
+            <p>This component has no HTML children.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Code Examples">
+            <psk-code language="markup">
+                <psk-list-feedbacks messages-to-display="5">
+                </psk-list-feedbacks>
+            </psk-code>
+            <psk-code language="markup">
+                <psk-list-feedbacks
+                        messages-to-display="5"
+                        styleCustomisation='{
+                            "toast": {
+                                "header":{
+                                    "style":{
+                                        "color":"red",
+                                        "backgroundColor":"purple"
+                                    }
+                                }
+                            }
+                        }'>
+                </psk-list-feedbacks>
+            </psk-code>
+        </psk-chapter>
+        <psk-chapter  title="Double Alert Example">
+            <psk-example class="app-example">
+                <psk-button event-name="alerts-pool-test", event-data="toast,alert-danger">Show a pool of alerts</psk-button>
+                <p>To create this kind of pools is quite easy, all you have to do is call the callback function multiple times in the same event listener.</p>
+                <psk-code language="Javascript">
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    let alerts= e.data.split(',')
+                    if(typeof this.feedbackEmitter === 'function'){
+                        this.feedbackEmitter(`There was a problem with the confirmation`,`${alerts[1]} example`,alerts[1]);
+                        setTimeout(() => {
+                            this.feedbackEmitter(`The register failed because the credentials you entered are faulty.`,`Problem Description`,alerts[0]);
+                        }, 2000);
+                    } 
+                    });
+                </psk-code>
+                <p>It's practical because you can send an <code><span class="nt">alert-danger</span></code> to tell the user that there is a problem and a 
+                    <code><span class="nt">toast</span></code> to explain exactly what the problem is.</p>
+            </psk-example>
+        </psk-chapter>
+    </psk-container>
+</psk-page>

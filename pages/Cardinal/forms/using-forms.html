@@ -1,0 +1,543 @@
+<psk-page title="Using Forms with Models and Templates">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description title="Summary">
+        <p>On this page, you can find informations about how to create a form using PSK Web Components designed in this scope.</p>
+        <p>There will be some major aspects described here, which are vital in order to be able to use these components properly: </p>
+        <psk-list>
+            <span>What is a model and how to use it and how to create a controller for your form.</span>
+            <span>What is a template and how to combine it with a model and the psk-for-each component.</span>
+            <span>How to handle the form submission.</span>
+            <span>How to bind the model to the form. Two-way binding</span>
+        </psk-list>
+    </psk-description>
+
+	<psk-chapter title="What is a model and how to use it and how to create a controller for your form.">
+		<p>A model is data used by a program. This may be a database, file, or a simple object.</p>
+		<p>In our case, the model is a JavaScript object capable of handling changes to the form, but also of checking some validations (e.g. the input component is "required" to be filled in before submission).</p>
+        <p>For now, each model can be defined inside a controller as in the examples below the page (Using Forms chapter).</p>
+        <p>For this method, we have two possible ways of writing a Form controller:
+            <psk-list list-type="ordered">
+                <span>If you want to use the basic functionalities of the form, you can create your own controller by extending the <strong>DefaultFormController</strong> as in below examples <i>(Form Examples)</i></span>
+				<span>The other way to do so is by extending the ContainerController and by following the exact source code below:</span>
+            </psk-list>
+            <psk-code language="Javascript">
+                import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
+
+                export default class MyCustomFormController extends ContainerController {
+                    constructor(element) {
+                        super(element);
+                        this.model = this.setModel({
+                            // Your JavaScript object model here.
+                        });
+                    }
+                }
+            </psk-code>
+            <p>Information about the Controllers can be found here: <psk-link tag="mvc-controller">Cardinal -> Controllers</psk-link></p>
+            <p>If you do not need any special behaviour in your controller, but only submitting the form-data to a server, we strongly recommend you to use the first method, which is less likely to cause errors.</p>
+        </p>
+	</psk-chapter>
+
+	<psk-chapter title="What is a template and how to combine it with a model and the psk-for-each component.">
+		<p>So far, so good, we know what is a model, we know how to create a controller and at the bottom of the page can be found some examples in order to provide a starting point to understand and use the form and form components.</p>
+        <p>A template is a sequence of components or HTML elements with the purpose to serve as view for a model. It means that a component will render the same HTML but with different content.</p>
+        <p>An example of a template can be found below, on <strong>Form example using psk-for-each component</strong> chapter.</p>
+        <p>For now, because of an error from Stencil.Js, we are somehow cornered to use the HTML tag <code>template</code>. So, there is a very important aspect regarding this issue is that if we want to use the psk-for-each component, we need to write the components between the <strong>template</strong> tags like in the example from the chapter <strong>HTML - View - TestFormForEachController</strong>. Only the components written inside <strong>template</strong> tags are mapped to the array model.</p>
+        <p>In order to combine a model with psk-for-each component, we need to have a <strong>model</strong>, a <strong>controller</strong> that will be attached to the psk-form component and an HTML source file which will contain the psk-for-each component and the <strong>template</strong>.</p>
+        <p>The model is attached to the psk-for-each component by using the special attribute <strong>data-view-model</strong>. Without this attribute, the component will do nothing. If the value assigned to the attribute is not present in our model, again, the component will do nothing.</p>
+	</psk-chapter>
+
+    <psk-chapter title="How to bind the model to the form. Two-way binding">
+        <p>Binding, at it's very basic, is the process where one thing is assinged to another thing. Here, we want to assign some attributes from a model to a component.</p>
+        <p>To bind the model to a component, we need set the attribute <code>view-model</code> or <code>data-view-model</code> to the component we want to bind the data. Pay attention that the attribute <code>data-view-model</code> is available only for the component <psk-link tag="psk-for-each">psk-for-each</psk-link>, as described in the above chapter.</p>
+        <p>Let's take a look at the following source code of a controller wich loads a model, and the HTML view:</p>
+        <psk-code language="Javascript">
+            import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
+
+            const model = {
+                sectionTitle: {
+                    label: "Your personal information"
+                },
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                subSection: {
+                    title: {
+                        label: "Personal information from sub-tree of a model"
+                    },
+                    otherInformation: {
+                        email: {
+                            label: "Email address",
+                            name: "email",
+                            required: true,
+                            placeholder: "Email address here...",
+                            value: ''
+                        },
+                        otherLabels: [{
+                            label: "Zero Label",
+                            subLabel: {
+                                label: "Zero sub-label"
+                            }
+                        }, {
+                            label: "One Label"
+                        }, {
+                            label: "Two Label"
+                        }]
+                    }
+                }
+            };
+
+            export default class TestFormChildrenController extends ContainerController{
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(model);
+                }
+            }
+        </psk-code>
+        <psk-code language="markup">
+            <psk-form controller-name="TestFormChildrenController">
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="sectionTitle"></psk-label>
+                    <psk-text-input view-model="name"></psk-text-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="subSection.title"></psk-label>
+                    <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
+                </psk-form-row>
+            </psk-form>
+        </psk-code>
+
+        <psk-example class="app-example">
+            <psk-form controller-name="TestFormChildrenController" form-actions="First Example">
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="sectionTitle"></psk-label>
+                    <psk-text-input view-model="name"></psk-text-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="subSection.title"></psk-label>
+                    <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
+                </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+        </psk-example>
+
+        <p>The bind is made only if the value of the attribute <code>view-model</code> is an existing <code>chain</code> inside the model. The <code>chain</code> is the sequence to the JavaScript object that will be bound to the component. If the <code>chain</code> is not a valid one, then the component will be rendered blank, without any properties.</p>
+
+        <psk-chapter title="Two-way binding">
+            <p>Two-way binding in programming, as minimal definition, is the process where any change made in the view is reflected into the model and any change in the model is reflected into the view.</p>
+            <p>All the form components of type inputs, radio, checkbox and select have two-way binding implemented, which means that whenever the user is changing the content of an input, the model and view are automatically updated. Also it is applied when the user checks a checkbox or a radio and when he selects something from a select component.</p>
+            <p>There is not much to do here, you just need to make sure that the components are bound and the two-way is handled by the components.</p>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="How to handle the form submission.">
+        <p>This part is not very complicated, if you ned only to have a submition, just extend the DefaultFormController like in the above examples and let the default behaviour handle it. The form will automatically collect the form-data from and will send them to your Server or ESB or whatever you use to receive the form-data by using the attributes exposed by the <psk-link tag='psk-form'>psk-form</psk-link> component.</p>
+        <p>If you still want to customize the submition, no problem, this is also simple enough. At the end of the form, or wherever you need, add the component <psk-link tag="psk-button">psk-button</psk-link>. Bear in mind to add the <code>type="submit"</code> attribute in order to proper validate you form fields, if required.</p>
+        <p>Here is an example:</p>
+        <psk-code language="markup">
+            <psk-form controller-name="TestFormChildrenController">
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="sectionTitle"></psk-label>
+                    <psk-text-input view-model="name"></psk-text-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="subSection.title"></psk-label>
+                    <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
+                </psk-form-row>
+
+                <!-- Strong recommendation here to avoid unexpected "surprises"...
+                Write the event name using only lower cases letters and if you want to sepparate words, use only dash(-) like in the example. -->
+                <psk-button label="My Submit" type="submit" event-name="my-submit"></psk-button>
+            </psk-form>
+        </psk-code>
+        <p>Strong recommendation here to avoid unexpected "surprises" from the browser. Write the event name using only lower cases letters and if you want to sepparate words, use only dash(-) like in the example.</p>
+        <p>You will see that one of the attributes of this component is <code>event-name</code>. This event-name is the name of your handler. So, after you added the buttons, now go back to your custom form controller and register thess events. One notice; you can add as many buttons you need in here, nothing stops you.</p>
+        <p>Here is an example of a controller that does this:</p>
+        <psk-code language="Javascript">
+            import DefaultFormController from "../DefaultFormController.js";
+
+            export default class TestFormChildrenController extends DefaultFormController {
+                constructor(element) {
+                    super(element, {
+                        /**
+                        * JavaScript object model here...
+                        */
+                    });
+
+                    this._element.addEventListener('my-submit', (event) => {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        /**
+                        * Custom implementation here...
+                        */
+                    }, true);
+                }
+            }
+        </psk-code>
+    </psk-chapter>
+
+    <psk-description title="Round Up">
+        <p>This page holds enough information to understand how <code>psk-form</code> components work, how to create a form, how to handle the submition, how to use binding with models and templates.</p>
+        <p>Below, there are two full examples of forms resuming the described chapters above, one with binding data to a regular form and the other using <code>template</code> with <code>psk-for-each</code> component.</p>
+        <p><i>Don't hesitate to contact us in case there are further clarifications!</i></p>
+    </psk-description>
+
+    <psk-chapter title="Form Examples">
+        <psk-chapter title="Simple form example">
+            <psk-chapter title="Model and Controller - TestFormController">
+                <psk-code language="Javascript">
+                    import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
+
+                    const model = {
+                        sectionTitle: {
+                            label: "Your personal information"
+                        },
+                        name: {
+                            label: "Name",
+                            name: "name",
+                            required: true,
+                            placeholder: "Name here...",
+                            value: ''
+                        },
+                        email: {
+                            label: "Email address",
+                            name: "email",
+                            required: true,
+                            placeholder: "Email address here...",
+                            value: ''
+                        },
+                        age: {
+                            label: "Your age",
+                            name: "age",
+                            required: false,
+                            placeholder: "Your age here...",
+                            value: ''
+                        },
+                        dateOfBirth: {
+                            label: "Select from the calendar your birth date",
+                            name: "date-of-birth",
+                            required: false,
+                            value: ''
+                        },
+                        password: {
+                            label: "Write down your password.",
+                            hint: "The submition will create an account using your name and password.",
+                            name: "password",
+                            required: false,
+                            placeholder: "Password here...",
+                            value: ''
+                        },
+                        gender: {
+                            label: "Select your gender",
+                            required: true,
+                            options: [{
+                                label: "Male"
+                            },
+                                {
+                                    label: "Female",
+                                    value: "F"
+                                }
+                            ]
+                        },
+                        nationality: {
+                            label: "Select your nationality",
+                            placeholder: "Please select one option...",
+                            required: true,
+                            options: [{
+                                label: "Romanian",
+                                value: "RO"
+                            }]
+                        },
+                        gdpr: {
+                            label: "Check if you agree with GDPR regulations",
+                            name: "gdpr",
+                            required: true,
+                            checkboxLabel: "GDPR Consent",
+                            checkedValue: "yes",
+                            uncheckedValue: "no"
+                        },
+                        terms: {
+                            label: "Do you accept our terms and conditions?",
+                            name: "terms",
+                            required: true,
+                            checkboxLabel: "Terms & Conditions",
+                            checkedValue: "yes",
+                            uncheckedValue: "no"
+                        }
+                    };
+
+                    export default class TestFormController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(model);
+                        }
+                    }
+
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="HTML - View - TestFormController">
+                <psk-code language="markup">
+                    <psk-form controller-name="TestFormController" form-actions="Second Example">
+                        <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                            <psk-label view-model="sectionTitle"></psk-label>
+                        </psk-form-row>
+
+                        <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                            <psk-text-input view-model="name"></psk-text-input>
+                            <psk-email-input view-model="email"></psk-email-input>
+                            <psk-password-input view-model="password"></psk-password-input>
+                        </psk-form-row>
+
+                        <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                            <psk-label>Agreements</psk-label>
+                        </psk-form-row>
+                        <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                            <psk-checkbox view-model="terms"></psk-checkbox>
+                            <psk-checkbox view-model="gdpr"></psk-checkbox>
+                        </psk-form-row>
+                    </psk-form>
+                </psk-code>
+            </psk-chapter>
+
+            <psk-example class="app-example" title="Visual example- TestFormController" >
+                <psk-form controller-name="TestFormController" form-actions="Second Example">
+                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label view-model="sectionTitle"></psk-label>
+                    </psk-form-row>
+
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                        <psk-text-input view-model="name"></psk-text-input>
+                        <psk-email-input view-model="email"></psk-email-input>
+                        <psk-password-input view-model="password"></psk-password-input>
+                    </psk-form-row>
+
+                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label>Agreements</psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                        <psk-checkbox view-model="terms"></psk-checkbox>
+                        <psk-checkbox view-model="gdpr"></psk-checkbox>
+                    </psk-form-row>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+                </psk-form>
+            </psk-example>
+        </psk-chapter>
+
+        <psk-chapter title="Form example using psk-for-each component">
+            <psk-chapter title="Model and Controller - TestFormForEachController">
+                <psk-code language="Javascript">
+                    import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
+
+                    const model = {
+                        entities: [{
+                            sectionTitle: {
+                                label: "Your personal information"
+                            },
+                            name: {
+                                label: "Name",
+                                name: "name",
+                                required: true,
+                                placeholder: "Name here...",
+                                value: ''
+                            },
+                            email: {
+                                label: "Email address",
+                                name: "email",
+                                required: true,
+                                placeholder: "Email address here...",
+                                value: ''
+                            },
+                            gender: {
+                                label: "Select your gender",
+                                required: true,
+                                options: [{
+                                    label: "Male"
+                                },
+                                    {
+                                        label: "Female",
+                                        value: "F"
+                                    }
+                                ]
+                            },
+                            nationality: {
+                                label: "Select your nationality",
+                                placeholder: "Please select one option...",
+                                required: true,
+                                options: [{
+                                    label: "Romanian",
+                                    value: "RO"
+                                }, {
+                                    label: "Italian",
+                                    value: "IT"
+                                }, {
+                                    label: "English",
+                                    value: "EN"
+                                }]
+                            }
+                        }, {
+                            sectionTitle: {
+                                label: "Your associate personal information"
+                            },
+                            name: {
+                                label: "Associate Name",
+                                name: "name",
+                                required: true,
+                                placeholder: "Name here...",
+                                value: ''
+                            },
+                            email: {
+                                label: "Associate email address",
+                                name: "email",
+                                required: true,
+                                placeholder: "Email address here...",
+                                value: ''
+                            },
+                            gender: {
+                                label: "Associate gender",
+                                required: true,
+                                options: [{
+                                    label: "Male"
+                                },
+                                    {
+                                        label: "Female",
+                                        value: "F"
+                                    }
+                                ]
+                            },
+                            nationality: {
+                                label: "Associate nationality",
+                                placeholder: "Please select one option...",
+                                required: true,
+                                options: [{
+                                    label: "Romanian",
+                                    value: "RO"
+                                }, {
+                                    label: "German",
+                                    value: "DE"
+                                }, {
+                                    label: "Italian"
+                                }]
+                            }
+                        }],
+                        gdpr: {
+                            label: "Check if you agree with GDPR regulations",
+                            name: "gdpr",
+                            required: true,
+                            checkboxLabel: "GDPR Consent",
+                            checkedValue: "yes",
+                            uncheckedValue: "no"
+                        },
+                        terms: {
+                            label: "Do you accept our terms and conditions?",
+                            name: "terms",
+                            required: true,
+                            checkboxLabel: "Terms & Conditions",
+                            checkedValue: "yes",
+                            uncheckedValue: "no"
+                        }
+                    }
+
+                    export default class TestFormForEachController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(model);
+                        }
+                    }
+
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="HTML - View - TestFormForEachController">
+                <psk-code language="markup">
+                    <psk-form controller-name="TestFormForEachController">
+                        <psk-for-each data-view-model="entities">
+                            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                                <psk-label view-model="sectionTitle"></psk-label>
+                            </psk-form-row>
+
+                            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                                <psk-text-input view-model="name"></psk-text-input>
+                                <psk-email-input view-model="email"></psk-email-input>
+                            </psk-form-row>
+
+                            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                                <psk-select view-model="nationality"></psk-select>
+                                <psk-radio-group view-model="gender"> </psk-radio-group>
+                            </psk-form-row>
+                        </psk-for-each>
+
+                        <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                            <psk-label>Submission Agreements</psk-label>
+                        </psk-form-row>
+                        <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                            <psk-checkbox view-model="terms"></psk-checkbox>
+                            <psk-checkbox view-model="gdpr"></psk-checkbox>
+                        </psk-form-row>
+                    </psk-form>
+                </psk-code>
+            </psk-chapter>
+            <psk-chapter  title="Visual example - TestFormForEachController">
+                <psk-example class="app-example">
+                    <psk-form controller-name="TestFormForEachController" form-actions="Third Example">
+                        <psk-for-each data-view-model="entities">
+                            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                                <psk-label view-model="sectionTitle"></psk-label>
+                            </psk-form-row>
+
+                            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                                <psk-text-input view-model="name"></psk-text-input>
+                                <psk-email-input view-model="email"></psk-email-input>
+                            </psk-form-row>
+
+                            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                                <psk-select view-model="nationality"></psk-select>
+                                <psk-radio-group view-model="gender"> </psk-radio-group>
+                            </psk-form-row>
+                        </psk-for-each>
+
+                        <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                            <psk-label>Submission Agreements</psk-label>
+                        </psk-form-row>
+                        <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                            <psk-checkbox view-model="terms"></psk-checkbox>
+                            <psk-checkbox view-model="gdpr"></psk-checkbox>
+                        </psk-form-row>
+                        <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                        </psk-list-feedbacks>
+                    </psk-form>
+                </psk-example>
+            </psk-chapter>
+        </psk-example>
+    </psk-chapter>
+
+</psk-page>

@@ -1,0 +1,13 @@
+<psk-page title="Coding style">
+  <psk-toc title="Table of contents"></psk-toc>
+
+  <psk-chapter title="Guidelines">
+    <div>
+      <p>Every module that uses constants should have a file named constants.js in its root. There are two primary ways of exposing constants:</p>
+      <ol>
+        <li>If the module exposes a single class, it is preferred that the constants will be found on the prototype of this class</li>
+        <li>Otherwise, the module should expose a property "constants" containing the object exported by the file constants.js</li>
+      </ol>
+    </div>
+  </psk-chapter>
+</psk-page>

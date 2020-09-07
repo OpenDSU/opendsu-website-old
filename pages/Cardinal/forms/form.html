@@ -1,0 +1,140 @@
+<psk-page title="Psk-Form Component">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <p>Psk-form component is similar with
+            <psk-link tag="psk-container">psk-container</psk-link>, in the way that both components have support for <b>controller</b> declaration.</p>
+        <p>The purpose of this component is to create easy forms that have attached to them controllers that can handle the submission of the form.</p>
+        <p>Controller declaration is not necessary in the component, it may be declared on a parent element (e.g, on a psk-container) if one controller would be used for handling multiple forms.
+         The model for the form(s) will be defined in the same controller.</p>
+        <p>At the bottom of the page stands a minimal example of using the component with its attributes. More examples can be found within
+            <psk-link tag="using-psk-form">Using forms</psk-link> page.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-form data-define-props="true">
+        </psk-form>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>As HTML children, any component can be rendered inside.</p>
+    </psk-chapter>
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: 'John'
+                },
+                email: {
+                    label: "Email address",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: 'john@privatesky.xyz'
+                },
+                age: {
+                    label: "Your age",
+                    name: "age",
+                    required: false,
+                    placeholder: "Your age here...",
+                    value: '20'
+                }
+            }
+
+
+            export default class TestFormController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    let customSubmit = () =>{
+                        let name = this.model.getChainValue("name.value");
+                        let email = this.model.getChainValue("email.value");
+                        let age = this.model.getChainValue("age.value");
+                        alert(`Submitted:[${name},${email},${age}]`)
+                    };
+
+                    this.on("submit",customSubmit);
+                    this.on("custom-submit",customSubmit);
+                }
+            }
+        </psk-code>
+    </psk-example>
+
+    <psk-chapter title="View examples">
+        <psk-chapter title="With defined actions -Source Code">
+            <psk-example>
+                <psk-code language="markup">
+                    <psk-form controller-name="TestFormController" form-actions="submit, reset-form">
+                        <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                            <psk-label label="Personal information"></psk-label>
+                        </psk-form-row>
+                        <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                            <psk-text-input view-model="name"> </psk-text-input>
+                            <psk-email-input view-model="email"></psk-email-input>
+                            <psk-number-input view-model="age"></psk-number-input>
+                        </psk-form-row>
+                    </psk-form>
+                </psk-code>
+            </psk-example>
+        </psk-chapter>
+        <psk-chapter title="With defined actions - Live Example">
+            <psk-example class="app-example">
+                <psk-form controller-name="TestFormController" form-actions="submit, reset-form">
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                        <psk-label label="Personal information"></psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                        <psk-text-input view-model="name"> </psk-text-input>
+                        <psk-email-input view-model="email"></psk-email-input>
+                        <psk-number-input view-model="age"></psk-number-input>
+                    </psk-form-row>
+                </psk-form>
+            </psk-example>
+        </psk-chapter>
+        <psk-chapter title="With psk-button component - Source Code">
+            <psk-example>
+                <psk-code language="markup">
+                    <psk-form controller-name="TestFormController">
+                        <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                            <psk-label label="Personal information"></psk-label>
+                        </psk-form-row>
+                        <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                            <psk-text-input view-model="name"> </psk-text-input>
+                            <psk-email-input view-model="email"></psk-email-input>
+                            <psk-number-input view-model="age"></psk-number-input>
+                        </psk-form-row>
+                        <psk-form-row layout="xs=[6] m=[6] l=[6] xl=[6]">
+                            <psk-button label="Custom Submit" type="submit" event-name="custom-submit"></psk-button>
+                        </psk-form-row>
+                    </psk-form>
+                </psk-code>
+            </psk-example>
+        </psk-chapter>
+        <psk-chapter title="With psk-button component - Live Example">
+            <psk-example class="app-example">
+                <psk-form controller-name="TestFormController">
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                        <psk-label label="Personal information"></psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                        <psk-text-input view-model="name"> </psk-text-input>
+                        <psk-email-input view-model="email"></psk-email-input>
+                        <psk-number-input view-model="age"></psk-number-input>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[6] m=[6] l=[6] xl=[6]">
+                        <psk-button label="Custom Submit" type="submit" event-name="custom-submit"></psk-button>
+                    </psk-form-row>
+                </psk-form>
+            </psk-example>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

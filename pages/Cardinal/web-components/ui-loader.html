@@ -1,0 +1,35 @@
+<psk-page title="psk-ui-loader">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+
+    <psk-description>
+        <p>This component is intended to be used when an action is running in background (e.g. an API call) and we need
+            to render the result of the action inside the page.</p>
+        <p>This component should be instantiated only once per application, so it can be easily controlled by an
+            Application Controller.
+        </p>
+        <p>By default, the loader will be hidden.</p>
+    </psk-description>
+    <psk-property-descriptor title="Supported properties">
+        <psk-ui-loader data-define-props="true">
+        </psk-ui-loader>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML children.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Example">
+        <psk-code language="markup">
+            <psk-ui-loader should-be-rendered="true">
+            </psk-ui-loader>
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live Example">
+        <psk-example >
+            <psk-ui-loader should-be-rendered="true">
+            </psk-ui-loader>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

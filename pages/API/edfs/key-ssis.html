@@ -1,0 +1,79 @@
+<psk-page title="Key SSIs">
+    <psk-toc title="In this section"></psk-toc>
+    <psk-chapter title="Introduction">
+        The two purposes of the KeySSI concept are, firstly,  to provide blockchain-anchored identities for things, processes but
+        potentially for companies and individuals. The concept of KeySSI is more general than the concept proposed by
+        the <a href="https://www.w3.org/TR/did-core/">W3C DID web standard</a>. Secondly, KeySSIs
+        are used as secret (symmetrical) encryption/decryption keys for DSUs (or for parts of the DSUs).
+        A KeySSI never comes alone, but is accompanied by KeySSIs derived from it or KeySSIs from which it was derived.
+        Derivation can be understood as a form of delegation, someone who holds a KeySSI with a higher access level
+        delegates access to lower levels. Based on this derivation, KeySSIs are used to implement an access control mechanism
+        on DSUs.
+    </psk-chapter>
+    <psk-chapter title="Key SSI syntax">
+        The syntax of KeySSIs is inspired by the <a href="https://www.w3.org/TR/did-core/">W3C DID</a>, but the KeySSI starts with the “ssi” string and the DID
+        methods are interpreted as subtypes and not as incompatible methods.
+        <psk-img src="/assets/images/edfs/KeySSI_syntax.png" title="KeySSI syntax"></psk-img>
+        In the image above:
+        <psk-list type="unordered">
+            <code>subtype</code> is a string representing the KeySSI's type.
+            <code>Ledger.domain/path</code> represents a path in a blockchain hierarchy.
+            <code>Subtype specific</code> is usually a Zero Access SSI (zaSSI).
+            <code>Control</code> is used by the anchoring services to validate the requests for a new version of the anchored DSU. The algorithm used for verification is subtype specific.
+            <code>vn</code> is a string reflecting the version number of the subtype. The <code>vn</code> field is optional and, if missing, is set to <code>v0</code>.  Each version establishes the hash function and algorithm used by the control mechanisms.
+            <code>Hint</code>  is optional and subtype specific. Typically provides some additional information to the KeySSI resolver.
+        </psk-list>
+        <psk-highlight type-of-highlight="example" title="KeySSI examples">
+            ssi:seed:ePI.pharma:RANDOM_SEED_KEY:HASH_RANDOM_KEY
+            ssi:za:ePI.pharma:HASH_SERIALISATION:HASH_PUBLIC_KEY
+        </psk-highlight>
+    </psk-chapter>
+
+    <psk-chapter title="Key SSI identifier subtypes">
+        <psk-chapter title="SecretSSIs subtypes family (Self certifying SSIs)">
+            The most important subtypes of KeySSI are self certifying SSIs. The self certification properties are coming
+            from the usage of the hash of a public key as part of the identifier. The image below shows shows the main
+            types
+            of self certifying KeySSIs and the access level each type provides.
+            <psk-img src="/assets/images/edfs/self_certifying_keyssis.png" title="Self certifying KeySSIs"></psk-img>
+            <psk-highlight type-of-highlight="note" title="Note">
+                The downward arrow in the image above represents the <code>derivation</code> operation; the
+                lower level KeySSIs are derived from higher level KeySSIs. A lower level KeySSI is, usually, obtained
+                by applying a cryptographic hash function to a higher level KeySSI. The above KeySSI hierarchy is called
+                the <code>SecretSSI family</code>.
+            </psk-highlight>
+            <psk-highlight type-of-highlight="example" title="Self certifying KeySSIs' generation">
+                SecretSSI := random():hpk <br>
+                AnchorSSI := hash(SeedSSI):hpk <br>
+                ReadSSI := hash(AnchorSSI):hpk<br>
+                PublicSSI := hash(ReadSSI):hpk<br>
+                zaSSI := hash(PublicSSI):hpk
+            </psk-highlight>
+            In the example above:
+            <psk-list type="unordered">
+                <code>random</code> is a cryptographically safe random generating function
+                <code>hash</code> is a cryptographic hashing function
+                <code>hpk</code> is the hash of the public key
+            </psk-list>
+            As seen in the above example, the SecretSSI family is created starting from a random secret number (256bits) in
+            the subtype specific part of the
+            identifier and the hash of a public key in the control part. All the other subtypes are derived using a hash
+            function from the subtype specific part of the previous subtype
+            (<psk-link chapter="SecretSSIs subtypes family (Self certifying SSIs)">see the above image</psk-link>).
+            The blockchain's state and the public key's hash are preserved during subtype derivation.
+        </psk-chapter>
+
+        <psk-chapter title="Seed based subtypes family">
+            Seed based KeySSI's are not self-certifying (do not contain a reference to the public key in their identifiers).
+            The image and table below show the Seed based KeySSI family and the purposes of each KeySSI:
+            <psk-img src="/assets/images/edfs/seed_based_keyssis.png"></psk-img>
+            <psk-table header="true">
+                KeySSI type | Purpose
+                SeedSSI | its identifier has the format <code>ssi:seed:ePI.pharma:RANDOM_SEED_KEY:HASH_RANDOM_KEY</code> <br> allows the sharing of DSUs <br>its associated DSU is encrypted with <code>RANDOM_SEED_KEY</code> and is anchored through its derived <code>zaSSI</code>
+                PasswordSSI | offers access to a DSU through a key easy to remember by a human user <br> usually is not shared with others<br> its DSU is anchored through its derived <code>zaSSI</code>
+                ConstSSI | its associated DSU is anchored through its derived <code>zaSSI</code> and cannot be updated
+                zaSSI | used for DSU anchoring <br> does not allow the reading/updating of DSUs
+            </psk-table>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

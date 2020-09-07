@@ -1,0 +1,211 @@
+<psk-page title="Blockchain APIs">
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-highlight type-of-highlight="note">
+        The <code>Blockchain</code> class provides an API for manipulating a blockchain. A PrivateSky blockchain stores only
+        a type of data, called <code>asset</code>. An <code>asset</code> is a swarm-like serializable object that stores
+        data and methods that manipulates it. Assets are manipulated through <code>transactions</code>. A transaction is
+        also a swarm-like serializable object that provides methods for interacting with the blockchain.
+    </psk-highlight>
+    <psk-card title="Defining an asset">
+        Below, an asset of type <code>Agent</code> is defined.
+        <psk-code language="JavaScript">
+            $$.asset.describe("Agent", {
+                public:{
+                    alias: "string"
+                    publicKey: "string"
+                },
+                init: function(alias, value){
+                    this.alias      = alias;
+                    this.publicKey  = value;
+                }
+            });
+        </psk-code>
+    </psk-card>
+
+    <psk-card title="Defining a transaction">
+        Below, a transaction swarm of type <code>Constitution</code> that manipulates assets of type <code>Agent</code> is defined.
+        <psk-code language="JavaScript">
+            $$.transaction.describe("Constitution", {
+                addAgent: function (alias, publicKey) {
+                    let agent = this.transaction.createAsset("Agent", "init", alias, publicKey);
+                    this.commit();
+                }
+            });
+        </psk-code>
+    </psk-card>
+
+    <psk-chapter title="start">
+        The <code>start()</code> initialises the blockchain's internal state.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                start(reportBootingFinishedCallback);
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>reportBootingFinishedCallback</b></code>
+                        The function called when the blockchain initialization is complete.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="lookup">
+        The <code>lookup()</code> searches the blockchain for a specific asset and returns it.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                lookup(assetType, aid);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>assetType</b></code>
+                            A <code>string</code> representing the type of asset searched for in blockchain.<br><br>
+                        <code><b>aid</b></code>
+                            An <code>alias</code> or <code>identifier</code> that uniquely identifies the asset of the specified
+                            type.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    The <code>asset</code> of the specified type that has the specific <code>alias</code> or <code>id</code>.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="loadAssets">
+        The <code>loadAssets()</code> returns a list of all assets of a specified type.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                loadAssets(assetType);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>assetType</b></code>
+                            A <code>string</code> representing the type of asset searched for in blockchain.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    The list of all assets of type <code>assetType</code>.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="startTransactionAs">
+        The <code>startTransactionAs()</code> calls a phase of a specified transaction swarm.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                startTransactionAs(agentId, transactionSwarmType, ...args);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>agentId</b></code>
+                            The <code>identifier</code> of the entity in the name of which the transaction's phase is called.<br><br>
+                        <code><b>transactionSwarmType</b></code>
+                            The identifier of the <code>transaction swarm</code> started. The transaction swarm should be defined
+                            in blockchain's constitution. <br><br>
+                        <code><b>...args</b></code>
+                            The list of arguments that the transaction swarm's <code>phase</code> called. The first argument of <code>...args</code>
+                            is the name of the <code>phase</code> called and the rest are the arguments taken by the <code>phase</code>.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    The <code>transaction swarm</code> whose phase has been called.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+
+        <psk-card title="Examples">
+            Below, an asset of type <code>Agent</code> is defined.
+            <psk-code language="JavaScript">
+                $$.asset.describe("Agent", {
+                    public:{
+                        alias: "string"
+                        publicKey: "string"
+                    },
+                    init:function(alias, value){
+                        this.alias      = alias;
+                        this.publicKey  = value;
+                    }
+                });
+            </psk-code>
+
+            Below, a transaction swarm of type <code>Constitution</code> that manipulates assets of type <code>Agent</code> is defined.
+            <psk-code language="JavaScript">
+                $$.transaction.describe("Constitution", {
+                    addAgent: function (alias, publicKey) {
+                        console.log("Adding Agent:", alias,  publicKey);
+                        let agent = this.transaction.createAsset("Agent", "init", alias, publicKey);
+                        this.commit();
+                });
+            </psk-code>
+                In the example below, the phase <code>addAgent()</code> of the transaction swarm <code>Constitution</code>
+                is called after a <code>Blockchain</code> instance is created through the function <code>createBlockchain</code>.
+            <psk-code language="JavaScript">
+                    const bm = require("blockchain");
+
+                    function createBlockchain(onResult) {
+                        let worldStateCache = bm.createWorldStateCache("memory");
+                        let historyStorage = bm.createHistoryStorage("memory");
+                        let consensusAlgorithm = bm.createConsensusAlgorithm("direct");
+                        let signatureProvider = bm.createSignatureProvider("permissive");
+                        let blockchain = bm.createABlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider);
+                        blockchain.start(onResult)
+                    }
+
+                    createBlockchain(function (err, blockchain) {
+                        if (err) {
+                            throw err;
+                        }
+                        blockchain.startTransactionAs("agent", "Constitution", "addAgent", "agentAlias", "PublicKey");
+                    }
+
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
+    <psk-chapter title="signAs">
+        The <code>signAs()</code> signs a message and returns the signature.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                signAs(agentId, msg);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>agentId</b></code>
+                            A <code>string</code> representing the signer's identity.<br><br>
+                        <code><b>msg</b></code>
+                            The signed message.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    A cryptographic signature of the received message.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="verifySignature">
+        The <code>verifySignature()</code> verifies if a message signature is valid.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                verifySignature(msg, signatures);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>msg</b></code>
+                            The verified message.<br><br>
+                        <code><b>signatures</b></code>
+                            A list of the provided message's cryptographic signatures.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    Returns <code>true</code> if the signature is valid and <code>false</code> otherwise.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+    </psk-chapter>
+</psk-page>

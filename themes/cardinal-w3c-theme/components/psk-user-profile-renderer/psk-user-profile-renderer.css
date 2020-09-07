@@ -1,26 +1,49 @@
 img {
-    max-height: 80px;
+    max-height: 50px;
 }
 
 .profile {
+    display: flex;
+    place-items: center;
     position: relative;
     margin-bottom: 33px;
+    height: 5rem;
 
     background: rgb(136, 194, 236);
     background: linear-gradient(320deg, rgba(0, 90, 160, 1) 0%, rgba(136, 194, 236, 1) 100%);
-
 }
 
 .profile::after {
     position: absolute;
     content: '';
-    height: 33px; left: 0; right: 0;
-
+    height: 33px; top: 100%; left: 0; right: 0;
     background-image: url("/assets/images/logo-shadow.png");
     background-repeat: no-repeat;
     background-position: bottom left;
 }
 
-:host([rofile-renderer]) .profile {
-    background: red;
+.profile .card-body {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 5px;
+    align-items: center;
+}
+
+.profile .card-body > p:first-child {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.profile .card-body .card-title,
+.profile .card-body .card-text {
+    grid-column-start: 2;
+    text-align: left;
+}
+
+.profile .card-body,
+.profile .card-body > p:first-child,
+.profile .card-body .card-title,
+.profile .card-body .card-text {
+    padding: 0; margin: 0;
 }

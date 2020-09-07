@@ -1,0 +1,94 @@
+<psk-page title="psk-barcode-scanner">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+        <p>This component is useful in order to scan various types of barcodes (1D or 2D).</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-barcode-scanner data-define-props="true">
+        </psk-barcode-scanner>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML children.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Examples">
+        <psk-code language="javascript">
+            // Controller
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            export default class BarcodeController extends ContainerController{
+                constructor(element) {
+                    super(element);
+                    this.setModel({
+                        scannerIsOn:false,
+                        data:"",
+                    })
+
+                    this.on("toggle-scanner", () => {
+                        this.model.scannerIsOn = !this.model.scannerIsOn;
+                    })
+                }
+            }
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live example with file browsing disabled">
+            <psk-code language="markup">
+                <psk-container controller-name="BarcodeController">
+                    <label>Scanned Data:</label><b><psk-label label="@data"></psk-label></b>
+                    <psk-condition condition="@scannerIsOn">
+                        <psk-button slot="condition-false" label="Start Scanner" event-name="toggle-scanner">
+                        </psk-button>
+                        <psk-button slot="condition-true" label="Stop Scanner" event-name="toggle-scanner">
+                        </psk-button>
+                        <psk-barcode-scanner slot="condition-true" title="Barcode Scanner" data="@data">
+                        </psk-barcode-scanner>
+                    </psk-condition>
+                </psk-container>
+            </psk-code>
+            <psk-example class="app-example">
+                <psk-container controller-name="BarcodeController">
+                    <label>Scanned Data:</label><b><psk-label label="@scannedData"></psk-label></b>
+                    <psk-condition condition="@scannerIsOn">
+                        <psk-button slot="condition-false" label="Start Scanner" event-name="toggle-scanner">
+                        </psk-button>
+                        <psk-button slot="condition-true" label="Stop Scanner" event-name="toggle-scanner">
+                        </psk-button>
+                        <psk-barcode-scanner slot="condition-true" title="Barcode Scanner" data="@scannedData">
+                        </psk-barcode-scanner>
+                    </psk-condition>
+                </psk-container>
+            </psk-example>
+    </psk-chapter>
+
+    <psk-chapter title="Live example with file browsing enabled">
+        <psk-code language="markup">
+            <psk-container controller-name="BarcodeController">
+                <label>Scanned Data:</label><b><psk-label label="@data"></psk-label></b>
+                <psk-condition condition="@scannerIsOn">
+                    <psk-button slot="condition-false" label="Start Scanner" event-name="toggle-scanner">
+                    </psk-button>
+                    <psk-button slot="condition-true" label="Stop Scanner" event-name="toggle-scanner">
+                    </psk-button>
+                    <psk-barcode-scanner slot="condition-true" allow-file-browsing="true" title="Barcode Scanner" data="@data">
+                    </psk-barcode-scanner>
+                </psk-condition>
+            </psk-container>
+        </psk-code>
+        <psk-example class="app-example">
+            <psk-container controller-name="BarcodeController">
+                <label>Scanned Data:</label><b><psk-label label="@scannedData"></psk-label></b>
+                <psk-condition condition="@scannerIsOn">
+                    <psk-button slot="condition-false" label="Start Scanner" event-name="toggle-scanner">
+                    </psk-button>
+                    <psk-button slot="condition-true" label="Stop Scanner" event-name="toggle-scanner">
+                    </psk-button>
+                    <psk-barcode-scanner slot="condition-true" allow-file-browsing="true" title="Barcode Scanner" data="@scannedData">
+                    </psk-barcode-scanner>
+                </psk-condition>
+            </psk-container>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

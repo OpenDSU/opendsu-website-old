@@ -1,0 +1,48 @@
+<psk-page title="PrivateSky Dependencies">
+    <psk-description>
+        Due to security and confidentiality requirements of the PrivateSky  platform we decided to avoid using external NPM packages.
+        One of the main strong points of PrivateSky is the capacity to build a new type of Digital Wallets capable to embed Self Sovereign Application or blockchain based backends.
+        The security and privacy levels on such systems should be very high and having hundreds or thousands dependencies does not help.
+        For the UI we have created a small MVC framework called Cardinal.
+        We also have build our simple installation system called Octopus and a testing framework called double-check. Just check package.json in the PrivateSky project.
+        The only external dependency that remained  is Browserify.
+        While this could look like a case of "not invented here syndrome" this approach seems to work fine as all tools are perfectly customised for the PrivateSky ecosystem.
+    </psk-description>
+    <psk-toc title="Table of contents">
+    </psk-toc>
+    <psk-chapter title="Dependencies Management">
+        <b>This part is obsolete, will be replaced by the Octopus documentation! </b>
+
+        PrivateSky project has a dedicated script that handles dependencies management (install, update etc.)<br>
+        The script that handles PrivateSky deps can be found in <b>"bin/scripts/build-devel.js"</b>.
+        <psk-code language="bash">
+            cd privatesky/bin/scripts
+            cat build-devel.js
+        </psk-code>
+        The role of <b>build-devel.js</b> file is to run a specific configuration when somebody needs to install or update a PrivateSky installation dependencies.
+        <psk-chapter title="Adding a dep">
+            To add a new dependency in a PrivateSky installation just modify the config JSON object present in <b>build-devel.js</b> accordingly.
+            If you need to add a <b>dependency from npm</b> just add something like this in the JSON:
+            <psk-code language="json">
+                {
+                "name": "name_of_npm_dependency",
+                "src": "npm",
+                "actions": ["install"]
+                }
+            </psk-code>
+            If you need to add a <b>dependency from Github</b>, just add something like this in the JSON:
+            <psk-code language="json">
+                {
+                "name": "name_of_target_folder_dependency",
+                "src": "https://github.com/name_of_organization_or_github_user/name_of_github_dependecy.git"
+                }
+            </psk-code>
+        </psk-chapter>
+        <psk-chapter title="Removing a dep">
+            If you need to remove a dependency first ensure that there is no usage into the project and only then remove the dep object from JSON config found in <b>build-devel.js</b>.
+        </psk-chapter>
+    </psk-chapter>
+    <psk-chapter title="Install dependencies">
+        Once a dependency is added, run <b>npm install</b> or <b>npm run update</b> command according to the project's status.
+    </psk-chapter>
+</psk-page>

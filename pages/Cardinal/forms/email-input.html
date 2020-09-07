@@ -1,0 +1,91 @@
+<psk-page title="Psk-Email-Input Component">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description title="Definition">
+        <p>This component is extended from the
+            <psk-link tag="psk-input">psk-input</psk-link> component, it is used inside a
+            <psk-link tag="psk-form">psk-form</psk-link> component and is intending to be used as input for emails as it internally validates the email format.</p>
+        <p>The other components derived from
+            <psk-link tag="psk-input">psk-input</psk-link> are:</p>
+        <psk-list>
+            <psk-link tag="psk-password-input">psk-password-input</psk-link>
+            <psk-link tag="psk-text-input">psk-text-input</psk-link>
+            <psk-link tag="psk-date-input">psk-date-input</psk-link>
+            <psk-link tag="psk-number-input">psk-number-input</psk-link>
+        </psk-list>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-email-input data-define-props="true">
+        </psk-email-input>
+    </psk-property-descriptor>
+
+    <psk-chapter title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                    
+                    this.feedbackEmitter = null;
+                    
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                        console.log(this.feedbackEmitter)
+                    });
+
+                    let emailSubmit = () => {
+                        let email = this.model.email.value
+                        if (email != ""){
+                            this.feedbackEmitter(`The email you entered is : ${email}, Thank you!`,"date-input Example","alert-success")
+            
+                        } else{
+                            this.feedbackEmitter("You have not entered an email, please enter one!","date-input Example","alert-danger")
+            
+                        }
+                    }
+                    this.on("Email submit",emailSubmit,true)
+                }
+            }
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="View Example">
+        <psk-code>
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Email submit">
+                <psk-grid columns="1" layout="l=[5]">
+                    <psk-email-input view-model="email"></psk-email-input>
+                </psk-grid>
+            </psk-form>
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live Examples">
+        <psk-example  class="app-example">
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Email submit">
+                <psk-grid columns="1" layout="l=[5]">
+                    <psk-email-input view-model="email"></psk-email-input>
+                </psk-grid>
+                <p>A very good example of using this component and the other form components can be found here:
+                    <psk-link tag="using-forms">Using forms</psk-link>.
+                </p>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

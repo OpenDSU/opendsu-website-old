@@ -1,0 +1,97 @@
+<psk-page title="SSApps Explained">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-chapter title="Privacy focused DApps">
+
+        <p align="justify"> In in PrivateSky a SSApp is the equivalent of the Decentralised Applications (DApps) found in other blockchain.
+            In a sense a SSApp is built just like a normal web app but instead of running in  a server it is stored in a Dossier.
+            The Dossier will therefore store secret data, code, asset definitions and transactions necessary for SSApp operation. Even the associated user interface is contained in BAR files.</p>
+        <p align="justify">With this  PrivateSky technology, it is possible to create any new types of SSApps and to deploy totally private instances.</p>
+
+        <p align="justify">Because SSApps are not running inside of the blockchains ( they are only anchored  in blockchains) they create of a very good opportunity for decentralization while enabling users control on private and confidential.</p>
+
+        <p align="justify">A SSApp (self-sovereign app) aims at giving control to data back to the user. An instance of a SSApp is solely under the cryptographic control of the user.
+            The existence of a SSApp instance, as well as the possibility to see and modify its content is strictly limited by the access to the SEED of a Dossier.
+            The networking, the blockchain where the Dossiers get anchored or the cloud storage  where Bricks get stored do not get access to information about the types of  SSApps  or to their content.</p>
+    </psk-chapter>
+
+    <psk-chapter title="SSApps radiography">
+        <psk-img src="/assets/images/architecture/SSAppsRadiography.png"></psk-img>
+        A SSApp application is created with web technologies (HTML, JavaScript,CSS) and basicaly the PrivateSky implementation is agnostic to the JavaScript frameworks.
+        However, for security and performance reasons we have created Cardinal mini framework based on web-components (Cardinal documentation can be found on this site).
+        SSApps applications can be used on desktops browsers or in embedded in mobile applications acting as Digital Wallets.
+        A Digital Wallet it is created with the same technology as any SSApp but should be created to contain a communication bus between multiple SSApps embedded in the wallet.
+        For each specific cases, a different wallet
+        The code of the Digital Wallet is loaded in what we call a "Loader". The current official loader  is  <a href="https://github.com/PrivateSky/web-dossier-loader"> web-dossier-loader</a>.
+        The loader is a web page or could be an  mobile application that embed an webview.
+        The default wallets offered by privacy can be found looking at the <a href="https://github.com/PrivateSky/ssapp-demo-workspace"> ssapp-demo-workspace project </a>
+        In the  <a href="https://github.com/PrivateSky/ssapp-demo-workspace"> ssapp-demo-workspace project </a> you could find the code for other demo SSApps.
+
+        It is important to mention that the  wallet and the SSAppps loaded by the wallet are loaded in separate iframes and each iframe has an associated service worker (SW) as we can see in the above image.
+
+    </psk-chapter>
+
+    <psk-chapter title="Technology">
+        <p align="justify">From the technology point of view each SSApp is simply a single page application created with web components and delivered through browsers by service workers. In the following we briefly present the main technologies used to build SSApps (Service Workers, HTTP Middleware, Web Components).</p>
+        <p align="justify">Instead of using a server, any SSApp is using the Service Worker to get and store data in a Dossier.</p>
+        <p align="justify">Each SSApp is stored inside of a Dossier (as files and folders stored in the Dossier’s BAR).</p>
+    </psk-chapter>
+
+    <psk-chapter title="Service workers">
+        <p align="justify">A service worker is a script that runs in the browser's background, separately from the page that controls it.  The main purpose of a service worker is to enable offline content when the network is not available or it’s weak. It is the key of building progressive web apps. A service worker cannot access the DOM directly, but it can communicate with the page that enables it via Channel Messaging API.</p>
+        <p align="justify">Service workers can intercept network requests and modify the response with another one that can be created on the spot or a previous response that was cached earlier. The cache is persistent and is independent from the network status. This approach of building applications using previous cached resources is known as “offline-first”.</p>
+        <p align="justify">The lifecycle of a service worker is simple. A service worker can be in one of the following states: <i>Installing, Activated, Idle, Terminated and <b>Active</b></i>. When it is active, an event listener is processing a fetch or a message request. It is worth noting that in the Installing state, a scope should be declared. If not, it is assigned implicitly to the most permissive, yet secure web address location. Only the requests to paths that are children of the declared scope will be intercepted by the service worker.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Middleware">
+        <p align="justify">A service worker capable of request interception requires a dispatcher that is efficient in serving the right handler for the desired functionality. Here comes the need of a middleware service whose job is to simplify the development of the service workers fetching event listeners. We used an Express.js framework approach so that the developers can easily adapt their existing code to build serverless apps and, more specifically, SSApps. The middleware exposes the same APIs as Express.js as exemplified in Appendix 7.</p>
+        <p align="justify">To expose an “express” like API, we defined two wrapper objects: EventRequest and EventResponse that are based on the FetchEvent object and implement all the methods needed for providing the same behaviour. In the following diagram the Middleware integration with service workers architecture is explained.</p>
+
+        <psk-img src="/assets/images/newlook/figure1.png"></psk-img>
+
+    </psk-chapter>
+
+    <psk-chapter title="Web Components">
+        <p align="justify">Web Components are a collection of standardized browser APIs whose concept is to provide UI components similar to those developed using third-party frameworks or libraries such as React, Angular or Vue. There are some strong reasons for developing a standard when the need arises for a UI component:</p>
+        <ul>
+            <li>shareable code across multiple JavaScript frameworks without taking care of code collision. </li>
+            <li>for small and <i>single responsibility</i> applications, the overload carried by the framework core could slow down app performance.</li>
+            <li>security and privacy could be affected by third-party maintainers of imported modules.</li>
+        </ul>
+
+        <p align="justify">Web Components are based on four technologies that are almost fully supported on all major browsers:</p>
+        <ul>
+            <li>HTML Templates elements (< template>) let authors to define portions of HTML without actually loading them into DOM until a script will load them.</li>
+            <li>Custom Elements are a set of JavaScript APIs that let developers to define new HTML tags, override existing HTML tags or extending other components tags.</li>
+            <li>Shadow DOM is a subtree inside the custom element, completely isolated from the regular DOM. This means that ShadowDOM will scope component style and host style will not match selectors from the shadow tree.</li>
+            <li>ES Modules are the ECMAScript standards for working with modules that are now supported by all modern browsers.</li>
+        </ul>
+
+        <p align="justify">SSApps are developed using StencilJS. It is a compiler tool that helps developers building web components using popular concepts that are well-known as: async rendering, reactive data-binding, JSX and TypeScript. It helps developers to generate standard-based Web Components with the feeling of working with frameworks. The learning curve of working with StencilJS is steep and integration with different web projects is straight forward.</p>
+
+    </psk-chapter>
+
+    <psk-chapter title="Building Web Controllers">
+        <p align="justify">Usually SSApps are small applications with well-defined specifications. Their behaviour is similar to each other, but due to privacy and security issues that can emerge from using services, it is preferable to keep each app in a sandboxed iframe. In this case, it is important to have a simple architecture that aims at separating the user interface from the business logic: Model-View-View-Model (MVVM). A data flow diagram could be presented as follows.</p>
+
+        <psk-img src="/assets/images/newlook/figure2.png"></psk-img>
+
+        <p align="justify">In the code snippet in Appendix 5 a controller is registered and passed to a View Model which will present the given model. Each component should receive some custom attributes: a controller reference, an action for the provided controller and some controller parameters that could be related to View Model. The controller will have a public reference for the view that it is controlled and sometimes can be inherited from parent controllers from the dependency tree.</p>
+    </psk-chapter>
+
+    <psk-chapter title="SSApps Business Logic">
+        <p align="justify">All SSApps will be hosted on a MainWebApp component which will be able to route all the requests to a specific app. The host component is in charge for installing the SSApp by using sandboxed iframes.</p>
+        <p align="justify">The MainWebApp has a root service worker, that will catch all the requests that are not fulfilled by any of the SSApp middleware. Usually this service worker doesn’t have any business logic attached to it, it’s purpose being to provide security and catch unwanted requests that may contain sensitive data if any of the SSApp is misconfigured and leaks data.</p>
+        <p align="justify">As a practice, but technically not limited to this, the middleware and SSApps service workers can register three types of handlers:</p>
+        <ul>
+            <li>handlers for files, when the app is requiring resources for its running. (e.g. html templates, CSS, JavaScript libraries)</li>
+            <li>handlers for PrivateSky logic available to be used on the app (e.g. fetching blockchain for key changes)</li>
+            <li>handlers for parent updates through an observer pattern using <i>postMessage</i> WebApi.</li>
+
+            <psk-img src="/assets/images/newlook/seq.png"></psk-img>
+
+            <p align="justify">A PrivateSky based mobile application can be created as a progressive web application running the same code as Self Sovereign Applications running inside of a  desktop browser.</p>
+        </ul>
+    </psk-chapter>
+
+</psk-page>

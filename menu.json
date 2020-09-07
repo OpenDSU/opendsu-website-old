@@ -1,64 +1,588 @@
 {
   "defaultMenuConfig": {
+    "404": "/pages/404.html",
     "icon": "fa-bars",
     "type": "route",
     "component": "psk-page-loader",
     "exact": true,
-    "404": "/pages/404.html",
     "pagePrefix": "?",
     "historyType": "query"
   },
   "pages": [
     {
       "name": "Home",
-      "icon": "fa-home"
+      "path": "/home",
+      "icon": "fa-home",
+      "pageSrc": "index.html"
     },
     {
-      "name": "Settings",
-      "icon": "fa-gears",
+      "name": "Overview",
+      "path": "/Overview",
+      "icon": "fa-cog",
       "children": [
         {
-          "name": "Page 1"
+          "name": "Why",
+          "tags": "why"
         },
         {
-          "name": "Page 2"
+          "name": "Main Innovations",
+          "tags": "main-innovations"
         },
         {
-          "name": "Page 3"
+          "name": "Architecture",
+          "tags": "arhitecture"
+        },
+        {
+          "name": "Blockchain",
+          "path": "Blockchain",
+          "icon": "fa-cog",
+          "children": [
+            {
+              "name": "Secret Smart Contracts",
+              "tags": "secret-smart-contracts"
+            }
+          ]
+        },
+        {
+          "name": "Development Vision",
+          "tags": "development-vision",
+          "indexed": "false"
+        },
+        {
+          "name": "Swarms Explained",
+          "tags": "swarms-explained"
+        },
+        {
+          "name": "Dependencies",
+          "tags": "dependencies"
         }
       ]
     },
     {
-      "name": "Contact",
+      "name": "APIs",
+      "path": "/API",
+      "icon": "fa-cog",
       "children": [
         {
-          "name": "Page 5"
+          "name": "PrivateSky APIs",
+          "tags": "privatesky-apis"
         },
         {
-          "name": "Page 6"
+          "name": "Swarms",
+          "tags": "swarms"
         },
         {
-          "name": "Page 7"
+          "name": "Blockchain",
+          "children": [
+            {
+              "name": "Overview",
+              "tags": "overview"
+            },
+            {
+              "name": "Blockchain",
+              "tags": "blockchain"
+            }
+          ]
         },
         {
-          "name": "Page 8"
+          "name": "EDFS",
+          "children": [
+            {
+              "name": "Overview"
+            },
+            {
+              "name": "EDFS"
+            },
+            {
+              "name": "BARs"
+            },
+            {
+              "name": "Dossiers"
+            },
+            {
+              "name": "Key SSIs"
+            }
+          ]
         },
         {
-          "name": "Page 9"
+          "name": "Web - Services",
+          "children": [
+            {
+              "name": "Overview"
+            },
+            {
+              "name": "Brick Storage"
+            },
+            {
+              "name": "Anchoring"
+            },
+            {
+              "name": "VirtualMQ"
+            },
+            {
+              "name": "Dossier wizard"
+            }
+          ]
         },
         {
-          "name": "Page 10"
+          "name": "SSApps",
+          "children": [
+            {
+              "name": "Overview",
+              "tags": "ss-app-overview"
+            }
+          ]
         },
         {
-          "name": "Page 11"
+          "name": "Interactions"
         },
         {
-          "name": "Page 12"
+          "name": "Classes",
+          "children": [
+            {
+              "name": "Seed"
+            },
+            {
+              "name": "Anchor"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "About"
+      "name": "FAQ",
+      "path": "/FAQ",
+      "icon": "fa-cog"
+    },
+    {
+      "name": "Cardinal",
+      "path": "/Cardinal",
+      "icon": "fa-cog",
+      "children": [
+        {
+          "name": "Web Components MVC",
+          "tags": "cardinal-mvc",
+          "path": "cardinal-web-components"
+        },
+        {
+          "name": "Models"
+        },
+        {
+          "name": "Views"
+        },
+        {
+          "name": "Controllers",
+          "tags": "mvc-controller"
+        },
+        {
+          "name": "Events"
+        },
+        {
+          "name": "Themes",
+          "tags": "Themes"
+        },
+        {
+          "name": "Wiki Components",
+          "path": "/wiki-components",
+          "icon": "fa-bolt",
+          "children": [
+            {
+              "name": "Card",
+              "tags": "psk-card"
+            },
+            {
+              "name": "Chapter",
+              "tags": "psk-chapter"
+            },
+            {
+              "name": "Code",
+              "tags": "psk-code"
+            },
+            {
+              "name": "Copy clipboard",
+              "tags": "psk-copy-clipboard"
+            },
+            {
+              "name": "Description",
+              "tags": "psk-description"
+            },
+            {
+              "name": "Example",
+              "tags": "psk-example"
+            },
+            {
+              "name": "Highlight",
+              "tags": "psk-highlight"
+            },
+            {
+              "name": "Img",
+              "tags": "psk-img"
+            },
+            {
+              "name": "Link",
+              "tags": "psk-link"
+            },
+            {
+              "name": "List",
+              "tags": "psk-list"
+            },
+            {
+              "name": "Page",
+              "tags": "psk-page"
+            },
+            {
+              "name": "Property descriptor",
+              "tags": "psk-property-descriptor"
+            },
+            {
+              "name": "Table",
+              "tags": "psk-table"
+            },
+            {
+              "name": "Toc",
+              "tags": "psk-toc"
+            }
+          ]
+        },
+        {
+          "name": "Web Components",
+          "path": "/web-components",
+          "icon": "fa-cog",
+          "children": [
+            {
+              "name": "App Menu",
+              "tags": "psk-app-menu"
+            },
+            {
+              "name": "Attachments List",
+              "tags": "psk-attachments-list"
+            },
+            {
+              "name": "App Root",
+              "tags": "psk-app-root"
+            },
+            {
+              "name": "App Router",
+              "tags": "psk-app-router"
+            },
+            {
+              "name": "Barcode Generator",
+              "tags": "barcode-generator"
+            },
+            {
+              "name": "Barcode Scanner",
+              "tags": "barcode-scanner"
+            },
+            {
+              "name": "Button",
+              "tags": "psk-button"
+            },
+            {
+              "name": "Button Group",
+              "tags": "psk-button-group"
+            },
+            {
+              "name": "Condition",
+              "tags": "psk-condition"
+            },
+            {
+              "name": "Container",
+              "tags": "psk-container"
+            },
+            {
+              "name": "Feedback List",
+              "tags": "psk-feedback-list"
+            },
+            {
+              "name": "Files Chooser",
+              "tags": "psk-files-chooser"
+            },
+            {
+              "name": "Floating Menu",
+              "tags": "psk-floating-menu"
+            },
+            {
+              "name": "For each",
+              "tag": "psk-for-each"
+            },
+            {
+              "name": "Grid",
+              "tags": "psk-grid"
+            },
+            {
+              "name": "Icon",
+              "tags": "psk-icon"
+            },
+            {
+              "name": "Icon Chooser",
+              "tags": "psk-icon-chooser"
+            },
+            {
+              "name": "Live Code",
+              "tags": "live-code"
+            },
+            {
+              "name": "Modal",
+              "tags": "psk-modal"
+            },
+            {
+              "name": "Page Not Found",
+              "tags": "psk-page-not-found"
+            },
+            {
+              "name": "PIN Popup",
+              "tags": "psk-pin-popup"
+            },
+            {
+              "name": "Slideshow",
+              "tags": "psk-slideshow"
+            },
+            {
+              "name": "Switch Button",
+              "tags": "psk-switch-button"
+            },
+            {
+              "name": "SSApp",
+              "tags": "psk-ssapp",
+              "indexed": false
+            },
+            {
+              "name": "Toolbar",
+              "tags": "psk-toolbar"
+            },
+            {
+              "name": "UI Loader",
+              "tags": "psk-ui-loader"
+            },
+            {
+              "name": "User Profile",
+              "tags": "psk-user-profile"
+            },
+            {
+              "name": "Wizard",
+              "tags": "psk-wizard"
+            }
+          ]
+        },
+        {
+          "name": "Forms",
+          "children": [
+            {
+              "name": "Using Forms",
+              "tags": "using-forms"
+            },
+            {
+              "name": "Checkbox",
+              "tags": "psk-checkbox"
+            },
+            {
+              "name": "Date input",
+              "tags": "psk-date-input"
+            },
+            {
+              "name": "Email input",
+              "tags": "psk-email-input"
+            },
+            {
+              "name": "Form",
+              "tags": "psk-form"
+            },
+            {
+              "name": "Form row",
+              "tags": "psk-form-row"
+            },
+            {
+              "name": "Input",
+              "tags": "psk-input"
+            },
+            {
+              "name": "Label",
+              "tags": "psk-label"
+            },
+            {
+              "name": "Number input",
+              "tags": "psk-number-input"
+            },
+            {
+              "name": "Password input",
+              "tags": "psk-password-input"
+            },
+            {
+              "name": "Radio",
+              "tags": "psk-radio"
+            },
+            {
+              "name": "Radio group",
+              "tags": "psk-radio-group"
+            },
+            {
+              "name": "Select",
+              "tags": "psk-select"
+            },
+            {
+              "name": "Textarea",
+              "tags": "psk-textarea"
+            },
+            {
+              "name": "Text input",
+              "tags": "psk-text-input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "How To Create",
+      "path": "/Howto",
+      "icon": "fa-cog",
+      "children": [
+        {
+          "name": "A site with Cardinal"
+        },
+        {
+          "name": "A SSApp",
+          "tags": "a-ssapp"
+        },
+        {
+          "name": "A documentation site",
+          "tags": "documentation-site, ssapp"
+        },
+        {
+          "name": "A web site with swarms"
+        }
+      ]
+    },
+    {
+      "name": "Quick Start",
+      "path": "/Start",
+      "icon": "fa-cog",
+      "children": [
+        {
+          "name": "Installation"
+        },
+        {
+          "name": "Build"
+        }
+      ]
+    },
+    {
+      "name": "Glossary",
+      "path": "/glossary",
+      "pageSrc": "About/glossary.html"
+    },
+    {
+      "name": "About",
+      "path": "/About",
+      "icon": "fa-cog",
+      "pageSrc": "About/about.html",
+      "tags": "about, open-source"
+    },
+    {
+      "name": "Tools",
+      "path": "/Tools",
+      "icon": "fa-cog",
+      "children": [
+        {
+          "name": "Octopus"
+        },
+        {
+          "name": "bar"
+        },
+        {
+          "name": "CSBWizard",
+          "indexed": "false"
+        },
+        {
+          "name": "Governance",
+          "indexed": "false"
+        },
+        {
+          "name": "PSKMonitor",
+          "indexed": "false"
+        },
+        {
+          "name": "pskwallet",
+          "indexed": "false"
+        },
+        {
+          "name": "Tool List",
+          "indexed": "false"
+        }
+      ]
+    },
+    {
+      "name": "Development",
+      "path": "/Development",
+      "icon": "fa-cog",
+      "children": [
+        {
+          "name": "For PrivateSky Contributors"
+        },
+        {
+          "name": "Coding style"
+        },
+        {
+          "name": "Unit testing map",
+          "indexed": "false"
+        },
+        {
+          "name": "Node Modules"
+        },
+        {
+          "name": "Workers and Isolates"
+        },
+        {
+          "name": "Encrypted Choreographies"
+        },
+        {
+          "name": "Development guide",
+          "indexed": "false"
+        },
+        {
+          "name": "Communication",
+          "indexed": "false"
+        },
+        {
+          "name": "Advanced",
+          "indexed": "false"
+        },
+        {
+          "name": "Swarm Engine"
+        },
+        {
+          "name": "Syndicate"
+        },
+        {
+          "name": "Annotation Engine"
+        },
+        {
+          "name": "EDFS",
+          "path": "/EDFS",
+          "icon": "fa-cog",
+          "children": [
+            {
+              "name": "Brick Archives"
+            },
+            {
+              "name": "Raw Dossiers"
+            }
+          ]
+        },
+        {
+          "name": "Smoke Tests Results",
+          "pageSrc": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
+          "options": {
+            "type": "iframe"
+          }
+        }
+      ]
+    },
+    {
+      "name": "404"
+    },
+    {
+      "name": "404",
+      "indexed": false
     }
   ]
 }

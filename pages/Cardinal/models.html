@@ -1,0 +1,282 @@
+<psk-page title="Observable Models">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary & Definition">
+        <p>Table of contents, we will explain what is a model, how to and where to write a model for a page, or for a controlled section inside a page.</p>
+        <p>A controlled section inside a page can be a
+            <psk-link page='forms/psk-form'>psk-form</psk-link> or a set of components wrapped inside a
+            <psk-link page='web-components/container'>psk-container</psk-link>.</p>
+        <psk-chapter title="What is a model?">
+			<p>Binding, at it's very basic, is the process where one thing is assinged to another thing. Here, we want to assign some attributes from a model to a component.</p>
+            <p>A model is data used by a program. This may be a database, file, or a simple object.</p>
+            <p>For now, each model can be defined inside a controller as in the examples found at the page
+                <psk-link page='forms/using-forms'>Using Forms</psk-link>.</p>
+            <p>In our case, the model is JavaScript object ment to handle the form changes (in case of forms), to apply some attributes for some components.</p>
+            <p>One of the most important feature that a model can provide is the support for internationalization and localization, a feature we target with the models.</p>
+        </psk-chapter>
+    </psk-description>
+
+    <psk-chapter title="Terminology">
+        <psk-list>
+            <span><strong>chain</strong> - sequence of keys to reach a value</span>
+            <span><strong>one-way binding</strong> - assigning some values to some attributes</span>
+            <span><strong>two-way binding</strong> - the process where the updates made in view, are reflected to the model</span>
+        </psk-list>
+    </psk-chapter>
+
+    <psk-chapter title="One-way binding">
+        <p>This is the easiest way to use a model. You just need to have a
+            <psk-link page='web-components/container'>psk-container</psk-link> with a controller, to define a model and to apply the chain to the components to set the attributes.</p>
+        <p>The attributes can be set using the following methods:</p>
+        <p>Using "@" inside a value of an attribute.
+            <psk-link page='forms/psk-label'>psk-label</psk-link>
+        </p>
+        <psk-code>
+            <psk-label label="@customLabel">
+                <!-- customLabel must be defined, so it can take the value -->
+            </psk-label>
+
+            <psk-label label="@languages.en.customLabel">
+                <!-- Also, can use a chain to get the value -->
+            </psk-label>
+        </psk-code>
+		<psk-code language="javascript">
+		    // The languages object will look something like this:
+			{
+				languages: {
+					en: {
+						customLabel: "Some Label to be displayed",
+						// Other attributes
+					},
+					// Other attributes
+				},
+				// Other attributes
+			}
+		</psk-code>
+        <p>Using "view-model" attribute to assign more attributes.
+            <psk-link page='forms/psk-input'>psk-input</psk-link>
+        </p>
+        <psk-code>
+            <psk-input view-model="customInput">
+                <!-- customInput must be defined, so it can take the value -->
+                <!-- All the attributes found inside customInput will be applyed to psk-input component -->
+            </psk-input>
+        </psk-code>
+		<psk-code language="javascript">
+		    // The object will look something like this:
+			{
+				customInput: {
+					label: "Some label to display",
+					placeholder: "Placeholder text",
+					required: true,
+					// And other attributes if needed
+				},
+				// Other attributes
+			}
+		</psk-code>
+
+        <p>Using view-model-ATTRIBUTE_NAME to assign a value to ATTRIBUTE_NAME, where ATTRIBUTE_NAME can be any attribute of a component. Similar to first method.
+            <psk-link page='forms/psk-label'>psk-label</psk-link>
+        </p>
+        <psk-code>
+            <psk-label view-model-label="languages.en.customLabel">
+                <!-- Example using the same object structure as above -->
+                <!-- So, label will take the value from the chain languages.en.customLabel -->
+            </psk-label>
+        </psk-code>
+        <p>Using "data-view-model" to assign more attributes to more components. This one is used only for
+            <psk-link page='forms/psk-for-each'>psk-for-each</psk-link> component.</p>
+        <p>Intuitive examples cand be found on the following pages:
+            <psk-link page='forms/using-forms'>Using Forms</psk-link> and
+            <psk-link page='forms/psk-for-each'>psk-for-each</psk-link>
+        </p>
+        </psk-list>
+    </psk-chapter>
+
+    <psk-chapter title="Two-way binding">
+        <p>Two-way binding in programming, as minimal definition, is the process where any change made in the view is reflected into the model and any change in the model is reflected into the view.</p>
+        <p>In time, all the components will be able to have bindings, right now, all the form components have implmented two-way binding (explained in <psk-link page='forms/using-forms'>Using Forms</psk-link> page).</p>
+        <p>There is not much to do here, you just need to make sure that the components are bound and the two-way is handled by the components.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Expressions">
+        <p><strong>Expressions</strong> are a way of adding business logic to models. These are plain callbacks which are executed in the context of a model and are bound to Cardinal components using the <code>@</code> syntax.</p>
+        <p>
+        This feature was designed to work with the <code>psk-condition</code> component in order to allow conditional rendering of other components or native HTML elements, nevertheless expressions work just as well as a standalone feature used outside of web components. For more information on how to use expressions with <code>psk-condition</code> read the <psk-link page="Web components/condition">dedicated page</psk-link> in the documentation.
+        </p>
+
+        <psk-chapter title="Creating expressions">
+            <p>To create an expression use the <code>model.addExpression()</code> method:</p>
+
+            <psk-code language="javascript">
+                model.addExpression('expressionName', callback, 'chain1', 'chain2', ...);
+            </psk-code>
+
+            <p><strong>Example</strong></p>
+            <psk-code language="javascript">
+                class MyController extends ContainerController {
+                    constructor(element) {
+                        super(element);
+                        this.model = this.setModel({
+                            name: 'John Doe',
+                            email: 'john.doe@unknown-email.com',
+                            address: {
+                                city: 'London',
+                                country: 'United Kingdom'
+                            },
+                            orders: [
+                                {
+                                    id: 1,
+                                    amount: 4.99
+                                },
+                                {
+                                    id: 2,
+                                    amount: 167.99
+                                }
+                            ]
+                        });
+
+                        // Create expression
+                        this.model.addExpression('totalOrdersAmount', function () {
+                            let total = 0;
+                            for (let order of this.orders) {
+                               total += order.amount ;
+                            }
+                            return total;
+                        }, 'orders');
+                    }
+                }
+            </psk-code>
+            <p>In the above example the <code>totalOrdersAmount</code> expression will compute the total amount for all orders for a user. If this expression is used in tandem with a web component we will need a way to recompute the total amount if the orders change; in order to accomodate that we can tell the model to watch for changes on specific properties which will in turn trigger the re-evaluation of the expression. This is the purpose of the third argument given to the <code>addExpression</code> method. It basically tells the model to watch for changes on the <code>orders</code> property and then re-execute the callback if those changes happen. <strong>Multiple chains can be provided either by passing an array of strings as the third argument or by passing the chains as a variable number of string arguments to the <code>addExpression</code> method.</strong>
+            </p>
+
+            <p><strong>Example of expression re-evaluation</strong>:</p>
+            <psk-code language="javascript">
+                // Controller
+                import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+
+                const model = {
+                    gdpr: 0,
+                    amount: 20,
+                    currency: '$',
+                    form: {
+                        email: {
+                            label: 'Email',
+                            name: 'email',
+                            isValid: true
+                        }
+                    }
+                };
+
+                export default class TestConditionController extends ContainerController {
+                    constructor(element) {
+                        super(element);
+                        this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                        // Make the amount more user friendly
+                        this.model.addExpression('userFriendlyAmount', function () {
+                            if (this.currency === '$') {
+                                return `${this.currency}${this.amount}`;
+                            }
+
+                            return `${this.amount}${this.currency}`;
+                        }, 'amount', 'currency');
+
+                        // "Change Currency" button click handler
+                        this.on('change-currency', (e) => {
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+
+                            if (this.model.currency === '$') {
+                                this.model.currency = '€';
+                            } else {
+                                this.model.currency = '$';
+                            }
+                        })
+                    }
+                }
+            </psk-code>
+
+            <psk-code language="markup">
+                <!-- View -->
+                <psk-container controller-name="TestConditionController">
+                    <psk-form-row>
+                        <psk-label label="Amount"></psk-label>
+                        <psk-input type="text" value="@userFriendlyAmount"></psk-input>
+                    </psk-form-row>
+                    <psk-form-row>
+                        <psk-button label="Change Currency" event-name="change-currency" button-class="btn btn-info btn-sm"></psk-button>
+                    </psk-form-row>
+                </psk-container>
+            </psk-code>
+
+            <psk-container controller-name="TestConditionController">
+                <p><strong>Live example</strong></p>
+                <psk-form-row>
+                    <psk-label label="Amount"></psk-label>
+                    <psk-input type="text" value="@userFriendlyAmount"></psk-input>
+                </psk-form-row>
+                <psk-form-row>
+                    <psk-button label="Change Currency" event-name="change-currency" button-class="btn btn-info btn-sm"></psk-button>
+                </psk-form-row>
+            </psk-container>
+            <p>Passing the <code>amount</code> and <code>currency</code> chains as parameters to the <code>addExpression</code> will allow the expression to be re-evaluated and the input component to be re-rendered when those value change.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Using an expression">
+            <p>To see how to use an expression in a web component read the <psk-link page="Web components/condition">psk-condition documentation</psk-link>.</p>
+
+            <p>Using an expression in a controller requires calling the <code>model.evaluateExpression()</code> method. One advantage of expressions over simple properties is their capability of encapsulating complex logic, including asynchronous operations.</p>
+
+            <p><strong>Example</strong></p>
+            <psk-code language="javascript">
+                class MyController extends ContainerController {
+                    constructor(element) {
+                        super(element);
+                        this.model = this.setModel({
+                            name: 'John Doe',
+                            email: 'john.doe@unknown-email.com',
+                            address: {
+                                city: 'London',
+                                country: 'United Kingdom'
+                            },
+                            orders: [
+                                {
+                                    id: 1,
+                                    amount: 4.99
+                                },
+                                {
+                                    id: 2,
+                                    amount: 167.99
+                                }
+                            ]
+                        });
+
+                        // Create expression
+                        this.model.addExpression('saveOrders', function () {
+                            return ajaxSave(this.orders)
+                            .then((result) => {
+                                return Promise.resolve(result);
+                            });
+                        });
+
+                        // Triggered by pressing the "Create order" button
+                        this.on('create-order', (e) => {
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+
+                            const newOrder = e.data;
+
+                            this.model.orders.push(newOrder);
+
+                            this.model.evaluateExpression('saveOrders').then((result) => {
+                                // Do something with the result
+                            })
+                        })
+                    }
+                }
+            </psk-code>
+        </psk-chapter>
+
+    </psk-chapter>
+</psk-page>

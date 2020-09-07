@@ -1,0 +1,44 @@
+<psk-page title="psk-code">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <p>The component has the xml(HTML, XML, Markup, SVG.) language the default one in case no other is given.</p>
+        <p>It uses one of the most popular libraries out there: <code>PrismJs</code></p>
+        <p>For a more detailed list of languages supported you can access:</p>
+        <a href="https://prismjs.com/#supported-languages">Language list</a>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-code data-define-props="true">
+        </psk-code>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>The data written betweeen tags is rendered in a <code>code</code> component with the language sent as
+            property.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Example">
+        <psk-code>
+            <psk-code title="PSK-code title " language="Javascript">
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+                });
+            </psk-code>
+        </psk-code>
+
+    </psk-chapter>
+    <psk-chapter  title="Live Example">
+        <psk-example class="app-example">
+            <psk-code title="PSK-code title " language="Javascript">
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+                });
+            </psk-code>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

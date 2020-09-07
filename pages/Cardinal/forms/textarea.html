@@ -1,0 +1,103 @@
+<psk-page title="Psk-Textarea Component">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description title="Definition and extensions">
+      <p>This component is an inline element used to designate a plain-text editing control containing multiple lines.</p>
+      <p>It is useful for creating a form field for users to leave comments, messages or a description.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-textarea data-define-props="true">
+        </psk-textarea>
+    </psk-property-descriptor>
+    <psk-chapter title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                description: {
+                    label: "DESCRIPTION",
+                    name: "description",
+                    required: true,
+                    placeholder: "Describe your Tender Offer",
+                    value: ''
+                },
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+            
+                    this.feedbackEmitter = null;
+            
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                    });
+            
+                    let textareaSubmit = () => {
+                        let description = this.model.description.value;
+                        console.log(this.model.description.value)
+                        if(description === ''){
+                            this.feedbackEmitter(`Please tell us how you feel about this component before submitting!`,"radio Example","alert-danger")
+                        } else {
+                            this.feedbackEmitter(`Thank you for this feedback : ${description}`,"radio Example","alert-success")
+                        }
+                    }
+            
+                    this.on("Textarea submit",textareaSubmit);
+                }
+            }
+            
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="View Example">
+        <psk-code>
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Textarea submit">
+                <psk-grid columns = "2" layout="l=[4,4]">
+                    <psk-input view-model="name"></psk-input>
+                    <psk-input view-model="email"></psk-input>
+                </psk-grid>
+                <psk-textarea view-model="description"></psk-textarea>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Textarea submit">
+                <psk-grid columns = "2" layout="l=[4,4]">
+                    <psk-input view-model="name"></psk-input>
+                    <psk-input view-model="email"></psk-input>
+                </psk-grid>
+                <psk-textarea view-model="description"></psk-textarea>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+            <p>A very good example of using this component and the other form components can be found here:
+                <psk-link tag="using-forms">Using forms</psk-link>.
+            </p>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

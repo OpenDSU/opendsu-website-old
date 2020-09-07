@@ -1,0 +1,66 @@
+<psk-page title="Advanced topics">
+    <psk-toc title="Table of contents"></psk-toc>
+  <psk-chapter title="Strategies in the execution engine of swarms. Blockchain domains in PrivateSky.">
+    <p align="justify">All applications developed using PrivateSky technologies will be run in what we call <i>"blockchain domain"</i>. A blockchain domain, it is an environment for running internal DSL JavaScript code for swarms.</p>
+    <p>Our research has identified 4 PrivateSky domains, as can be seen in the following figure:</p>
+    <psk-img src="/assets/images/newlook/TypesOfDomains.png" title="Types of domains"></psk-img>
+    <p align="justify">These types of domains, if implemented with PrivateSky, require swarm communication in different ways of execution environments.</p>
+    <p align="justify">We have several ways to run (execute) the PrivateSky domain code as shown in the following image:</p>
+    <psk-img src="/assets/images/newlook/TypesOfExecutions.png" title="Types of executions in PrivateSky"></psk-img>
+    <p align="justify">In the ThreadExecution execution mode, PrivateSky provides node.js workers.</p>
+    <p align="justify">In IsolateExecution execution mode, PrivateSky provides a swarm communication execution environment based on Isolates technology.</p>
+    <p align="justify">For the execution of self sovereign applications, the ServiceWorkerExecution execution mode is used. As the name suggests, the PrivateSky domains represented in the form of CSB (Cloud Safe Box) are executed in service workers.</p>
+    <p align="justify">CLIExecution calls ThreadExecution or IsolateExecution but is different from these because it offers a different communication strategy between domains.</p>
+    <p align="justify">In PrivateSky there are possible interactions:</p>
+    <ul>
+    	<li>With Swarms in the same process</li>
+    	<li>With Swarms between processes on the same machine</li>
+    	<li>With Swarms intermediate by virtualMQ</li>
+    	<li>With Swarms between service workers in browsers</li>
+    </ul>
+    <p align="justify">From the point of view of identities (a term that symbolizes the agent in whose name a phase of the swarm is executed but also the location where it is executed) we distinguish several cases that are presented in the following table:</p>
+    <psk-table title = "Use-cases for swarms" dimensions="50|50" header="true">
+      Case| How to identify the agents
+    	Swarms in the same process | Strings as identities
+    	Swarms between processes on the same machine | Identities that through a name service translate into local process ids
+    	Swarms intermediate by virtualMQ that come from clients | Ids of agents that translate into VirtualMQ topics
+    	Swarms that broadcast or communicate with other blockchain identities | Ids of agents that translate into VirtualMQ topics
+    	Swarms between service workers in browsers | Strings that through a name service are reflected in localhost url to service workers
+    </psk-table><br>
+
+    <p align="justify">SwarmEngine operation is regulated by the following strategies:</p>
+    <ul>
+    	<li>SerialisationStrategy: Serialization / deserialization of swarms;</li>
+    	<li>SwarmNameService: Name service that translates identities into URLs or communication channels</li>
+    	<li>SwarmComm: Mechanisms of effective communication between nodes</li>
+    	<li>SecurityContext: Provides signature mechanisms and stores secrets that can be used by encrypted choreographies</li>
+    </ul>
+
+    <p align="justify">These strategies are injected into SwarmEngine. SwarmEngine is used by swarm_template to implement primitives specific to swarm-type executable choreographies.</p>
+    <psk-img src="/assets/images/newlook/SwarmEngine.png" title="Swarm Engine Architecture"></psk-img>
+
+    <psk-table title = "Swarm Engine Architecture" dimensions="25|50|25" header="true">
+    	Component | Features | Caller
+    	SwarmEngine | init(identity) |
+    	| stop()  | initialisation
+    	| loadBar(seed, callback) |
+    	SerialisationStrategy | serialise(swarmInstance):JSON | swarm_template
+    	| deserialise(JSON):swarmInstance |
+        SwarmNameService | getLocation(identity):url | SwarmComm
+        | registerLocation(identity, locationObject) | -
+        SwarmCommunication | sendSwarmMessage(serialisation, toIdentity) | swarm_template
+        | broadcastMessage(serialisation, toGroup) | 
+        | enableSwarmExecution(callback) | SwarmEngine
+        | loadBar(seed, callback) |
+        SecurityContext | generateIdentity(callback) | 
+        | getCurrentAgentIdentity() |
+        | getSecret(readList, callback) |
+        | shareSecret(secret, list, callback) |
+        | sign(digest, writeList, all, callback) |
+        | verify(pskSignature) |
+        | generateRandom(len = 32) |
+    </psk-table>
+  </psk-chapter>
+
+
+</psk-page>

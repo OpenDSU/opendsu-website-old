@@ -1,0 +1,128 @@
+<psk-page title="app-menu">
+
+
+
+  <psk-toc title="Table of contents"></psk-toc>
+
+  <psk-description>
+    <p>This component is providing the application navigation.</p>
+    <p> It can change itself to a hamburger menu when the width of the
+      page is smaller than a given property.</p>
+  </psk-description>
+
+  <psk-property-descriptor title="Supported properties">
+    <app-menu data-define-props="true">
+    </app-menu>
+  </psk-property-descriptor>
+
+  <psk-controller-descriptor title="Events that supports Controllers">
+    <app-menu data-define-controller="true">
+    </app-menu>
+  </psk-controller-descriptor>
+
+  <psk-chapter title="HTML Children">
+    <p>The menu component accepts 2 types of slots :</p>
+    <psk-list>
+      <psk-label><b>slot="before"</b> - this slot is rendered before the menu items</psk-label>
+      <psk-label><b>slot="after"</b> - this slot is rendered after the menu items</psk-label>
+    </psk-list>
+  </psk-chapter>
+
+  <psk-chapter title="Code Example">
+    <psk-code language="markup">
+      <psk-container>
+        <script>
+          let menuItems = [{
+            "name": "Main Innovations",
+            "path": "?Overview/main-innovations",
+            "icon": "fa-bars",
+            "type": "route",
+            "component": "psk-page-loader",
+            "exact": true,
+            "indexed": true,
+            "pagePrefix": "?",
+            "historyType": "query",
+            "componentProps": {
+              "pageUrl": "http://privatesky.xyz/pages/Overview/main-innovations.html"
+            }
+          },
+            {
+              "name": "Architecture",
+              "path": "?Overview/architecture",
+              "icon": "fa-bars",
+              "type": "route",
+              "component": "psk-page-loader",
+              "exact": true,
+              "indexed": true,
+              "pagePrefix": "?",
+              "historyType": "query",
+              "componentProps": {
+                "pageUrl": "http://privatesky.xyz/pages/Overview/architecture.html"
+              }
+            }
+          ]
+            controller.on("needMenuItems", function (evt) {
+              evt.stopImmediatePropagation();
+              callback = evt.detail;
+              callback(null, menuItems)
+            })
+          </script>
+        <header style="background: #005cbf;">
+            <app-menu>
+              <psk-label slot="before" style="color:white">This is shown before the menu items are rendered</psk-label>
+              <psk-label slot="after" style="color:white">This is shown after the menu items are rendered</psk-label>
+            </app-menu>
+        </header>
+        </psk-container>
+    </psk-code>
+  </psk-chapter>
+  <psk-chapter title="Live Example">
+    <psk-example class="app-example">
+      <psk-container>
+        <script>
+          let menuItems = [{
+              "name": "Main Innovations",
+              "path": "?Overview/main-innovations",
+              "icon": "fa-bars",
+              "type": "route",
+              "component": "psk-page-loader",
+              "exact": true,
+              "indexed": true,
+              "pagePrefix": "?",
+              "historyType": "query",
+              "componentProps": {
+                  "pageUrl": "http://privatesky.xyz/pages/Overview/main-innovations.html"
+              }
+          },
+         {
+                  "name": "Architecture",
+                  "path": "?Overview/architecture",
+                  "icon": "fa-bars",
+                  "type": "route",
+                  "component": "psk-page-loader",
+                  "exact": true,
+                  "indexed": true,
+                  "pagePrefix": "?",
+                  "historyType": "query",
+                  "componentProps": {
+                    "pageUrl": "http://privatesky.xyz/pages/Overview/architecture.html"
+                  }
+          }
+          ]
+          controller.on("needMenuItems", function (evt) {
+              evt.stopImmediatePropagation();
+              callback = evt.detail;
+              callback(null, menuItems)
+          })
+        </script>
+          <header style="background: #005cbf;">
+            <app-menu hamburger-max-width="0">
+              <psk-label slot="before" style="color:white">This is shown before the menu items are rendered</psk-label>
+              <psk-label slot="after" style="color:white">This is shown after the menu items are rendered</psk-label>
+            </app-menu>
+          </header>
+      </psk-container>
+    </psk-example>
+  </psk-chapter>
+
+</psk-page>

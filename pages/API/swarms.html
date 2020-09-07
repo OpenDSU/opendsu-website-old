@@ -1,0 +1,503 @@
+<psk-page title="Swarm and Flow APIs">
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="Recommendation">
+        For a better understanding of Swarms and Swarm Communication we recommend first to read <psk-link page="overview/swarms explained">Swarms explained</psk-link>
+    </psk-chapter>
+    <psk-highlight type-of-highlight="note">
+        The main difference between <b>Swarms</b> and <b>Flows</b> is that a Swarm has the capability to change the execution context and a Flow can be executed only in the context where is defined.
+        Under $$.swarm and $$.flow spaces are available a number of APIs that enable to describe and start Swarms and Flows.
+        The following APIs are available from Swarms and Flows. For the simplicity we will present the APIs using <b>$$.swarm</b> space.
+    </psk-highlight>
+    <psk-chapter title="$$.swarm APIs">
+        <psk-chapter title="describe">
+            Creates  a swarm description named swarmTypeName and register in the specific name space.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    $$.swarm.describe(swarmTypeName, description);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>swarmTypeName</b></code>
+                        A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>description</b></code>
+                        An object that represents the swarm's definition.
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+            <psk-card title="Details">
+                The description argument needs to be an object with the following structure:
+                <psk-code language="JavaScript">
+                    {
+                        public: {},
+                        secured: {},
+                        local: {},
+                        phase1: function(){},
+                        phase2: function(){}
+                    }
+                </psk-code>
+                Keywords like <b>public</b>, <b>secured</b> and <b>local</b> are used in order to describe the properties of the SWARM and, at the same time, to specify if and in which conditions the properties should be serialized with the SWARM when passing from a execution context to another.<br>
+                The properties description object can look something like this:
+                <psk-code language="JavaScript">
+                    {
+                        public:{
+                            property_name:"property_type"
+                        }
+                    }
+                </psk-code>
+                If in a SWARM phase a new property that is not declared is set then the property is marked by default as <b>local</b>.<br>
+                Now that SWARM phase mention was made, a phase is a function that can take arguments and is modeling a task/login specific to the SWARM.
+                <psk-code language="JavaScript">
+                    {
+                        phaseName: function(arg[, arg2, arg3, ...]){
+                                        //swarm phase logic
+                                   }
+                    }
+                </psk-code>
+                A SWARM phase can be part of a list of phases that the SWARM needs to pass in order to complete a specific task or can be used as standalone function that can return directly.
+            </psk-card>
+            <psk-card title="Example">
+                In the example below, a swarm with the name <code>Echo</code> is described.
+                <psk-code language="JavaScript">
+                    $$.swarm.describe("echo", {
+                        say: function (message) {
+                                this.return(undefined, `Echo is saying: ${message}`);
+                            }
+                        }
+                    );
+                </psk-code>
+                <psk-card title="Explication">
+                    Basically we just described the <b>"Echo"</b> Swarm that has only one phase called <b>"say"</b>. The Swarm phase say can be called standalone and it returns the <code>Echo is saying: ${message}</code> to the caller.<br>
+                    The <b>this.return</b> call can be made from async code if need be. It is not the same as the return of a basic Javascript function, but more like "return of the swarm from the phase".<br>
+                    If no call of the <b>this.return</b> is made that the Swarm remains <b>"in execution"</b> and no result is return to the caller of the Swarm.<br>
+                </psk-card>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter title="start">
+            Creates a Swarm instance based on swarmTypeName and on that instance calls the specified function.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    $$.swarm.start(swarmTypeName, ctor, ...params)
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>swarmTypeName</b></code>
+                        A <code>string</code> representing the type of the swarm that will be instantiated.<br><br>
+                        <code><b>ctor</b></code>
+                        The function called. <br><br>
+                        <code><b>...params</b></code>
+                        The arguments that will be passed to the <code>ctor</code> function once the instance will be ready.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Example">
+                    In this example we start an Echo swarm described in the above.
+                    <psk-code language="JavaScript">
+                        $$.swarm.start("Echo", "say", "Hello World!").onReturn(function(err, result){
+                            if(err){
+                                throw err;
+                            }
+                            console.log(result);
+                        }
+                    </psk-code>
+                    <psk-card title="Explication">
+                        In the above example we have started an <b>Echo</b> swarm based on the earlier description and on that swarm we called <b>say</b> phase with the <b>"Hello World!"</b> argument.
+                    </psk-card>
+                </psk-card>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter title="startWithContext">
+            Calls the specified function from the specified swarm with the specified context.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    $$.swarm.startWithContext(context, swarmTypeName, ctor, ...params);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>context</b></code>
+                        The <code>string</code> passed to the <code>homeSecurityContext</code> metadata in the swarm instance.<br><br>
+                        <code><b>swarmTypeName</b></code>
+                        A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>ctor</b></code>
+                        The function called. <br><br>
+                        <code><b>...params</b></code>
+                        The arguments the function <code>ctor</code> takes.
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter title="continue">
+            Continue a swarm with the provided serialization.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    $$.swarm.continue(swarmTypeName, initialValues);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>swarmTypeName</b></code>
+                        A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>initialValues</b></code>
+                        The swarm serialization.
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="inline">
+            Starts a swarm based on a description without registering and giving a name.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    $$.swarm.inline(description, ctor, ...args);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>description</b></code>
+                        The swarm description.<br><br>
+                        <code><b>swarmTypeName</b></code>
+                        A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>ctor</b></code>
+                        The function called. <br><br>
+                        <code><b>...args</b></code>
+                        The arguments the function <code>ctor</code> takes.
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+        </psk-chapter>
+    </psk-chapter>
+    <psk-chapter title="Flow instance APIs">
+        <psk-chapter title="runPhase">
+            For a specific flow instance it calls a phase identified by name passing a list of arguments.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    runPhase(phaseName, args);
+                </psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>phaseName</b></code>
+                    <code><b>args</b></code>
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+                In the bellow example we describe a flow and show how a call of runPhase can be made. Also we show the possibility of calling flow phase directly.
+                <psk-code language="JavaScript">
+                    const demoFlow = $$.flow.describe("demo", {
+                        firstPhase: function(){
+                            return "first";
+                        },
+                        secondPhase: function(){
+                            return "second";
+                        },
+                        thirdPhase: function(){
+                            return this.runPhase("second");
+                        }
+                    })();
+                    //run phase using runPhase method
+                    console.log(demoFlow.runPhase("firstPhase")); //displays "first"
+                    //run phase with direct call
+                    console.log(demoFlow.secondPhase()); //displays "second"
+                    //run a phase that calls another one
+                    console.log(demoFlow.thirdPhase()); //displays "second"
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="actualize">
+            <code>actualize()</code> method enables the possibility to update a flow instance with a serialization.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">actualize(serialisation)</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>serialization</b></code>
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="serial">
+            <code>serial()</code> returns a proxy that will order and execute flow phases (does not matter if they are sync or async) in order one after one. Once all phases are done calls the callback function.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">serial(callback)</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>callback</b></code> function that will be called once all the phases are executed.
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+                Sometimes there is a need ensure that the phases of a flow are executed serial even if they are async how the callback or promise hassle.
+                <psk-code language="JavaScript">
+                    $$.flow.describe("flowName", {
+                        phase1: function () {
+                                    var serial = this.serial(this.result);
+                                    //this.result function will be called once the execution of serial steps/phases are made
+
+                                    serial.phase2(this.progress);
+                                    //the serial.progress function will be called once the phase2 is executed in case there
+                                    //is a need verify the status of the business logic or gain control of execution in order
+                                    // to change the workflow in case of need.
+
+                                    serial.phase3(this.progress);
+                                    //once the calls are registered into serial the execution mechanism starts and makes the
+                                    //real calls in order to ensure the execution order described above.
+                                    //...
+                                },
+                        phase2: function () {
+                                    //...
+                                },
+                        phase3: function () {
+                                    //...
+                                },
+                        progress: function (err, result) {
+                                    //...
+                                    //used to ensure that everything goes according to plan and no error occurs
+
+                                    //if there is need to stop the rest of execution sequence just throw an error.
+                                    //The execution mechanism will capture the error and will call the this.result
+                                    //function with the err object
+                                },
+                        result: function (err, result) {
+                                    //if err is not null it means that an error was thrown by an execution phase or
+                                    //by the progress function to prevent the rest of execution to take place.
+
+                                    //...
+                                    //here we have the result
+                                }
+                    });
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="parallel">
+            <code>parallel()</code> returns a proxy that will execute flow phases(sync or async) in parallel. When all phases are done parallel does a callback call.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">parallel(callback)</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>callback</b></code> function that will be called once all the phases are done.
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+                Sometimes there is a need ensure that the phases of a flow are executed serial even if they are async how the callback or promise hassle.
+                <psk-code language="JavaScript">
+                    $$.flow.describe("flowName", {
+                        phase1: function(){
+                                    var parallel = this.parallel(this.result);
+                                    //this.result function will be called once the execution of parallel steps/phases are made
+
+                                    parallel.phase2(this.progress);
+                                    //the parallel.progress function will be called once the phase2 is executed in case there
+                                    //is a need verify the status of the business logic or gain control of execution in order
+                                    // to change the workflow in case of need
+
+                                    parallel.phase3(this.progress);
+                                    //once the calls are registered into parallel the execution mechanism starts and makes the
+                                    //real calls in order to ensure the execution all phases and only then calling this.result function.
+                                    //...
+                                },
+                        phase2: function(){
+                                    //...
+                                },
+                        phase3: function(){
+                                    //...
+                                },
+                        progress: function(err, result){
+                                    //...
+                                    //used to ensure that everything goes according to plan and no error occurs
+
+                                    //if there is need to stop the rest of execution sequence just throw an error.
+                                    //The execution mechanism will capture the error and will call the this.result
+                                    //function with the err object
+                                },
+                        result: function(err, result){
+                                    //if err is not null it means that an error was thrown by an execution phase or
+                                    //by the progress function to prevent the rest of execution to take place.
+
+                                    //...
+                                    //here we have the result and a this.return() can be made.
+                                }
+                    });
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="setMetadata">
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">setMetadata(metadata, value);</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>metadata</b></code> a string representing the name of metadata
+                    <code><b>value</b></code> value of metadata that needs to be stored
+                </psk-list>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="getMetadata">
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">getMetadata(metadata)</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>metadata</b></code> a string representing the name of metadata
+                </psk-list>
+            </psk-card>
+        </psk-chapter>
+    </psk-chapter>
+    <psk-chapter title="Swarm instance APIs">
+        <psk-highlight highlight-type="note">
+            All the APIs described above for Flows are also available for Swarms.
+        </psk-highlight>
+        <psk-chapter title="swarm">
+            <code>swarm()</code> method changes the execution context and continues swarm execution with a specified phase and args.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">swarm(context, phaseName[, arg1, arg2, ...])</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>context</b></code> - decentralized identity of the new context to which the swarm should move.
+                    <code><b>phaseName</b></code> - name of swarm phase that should be called once the swarm changes the execution context
+                    <code><b>args</b></code> - args that will be used to make the call of swarm phase
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+                In this example there is presented a swarm that models the borrowing process between a user and a banker.
+                <psk-code language="JavaScript">
+                    $$.swarms.describe("borrow", {
+                        public: { collected_amount: "int" },
+                        local: {
+                            available_amount: {
+                                type: "int",
+                                value:"100"
+                            }
+                        },
+                        start: function(amount){
+                                this.swarm("agent/banker", "receive", amount);
+                        },
+                        receive:function(amount){
+                                let message = "failed";
+                                if(this.available_amount >= amount){
+                                    this.collected_amount = amount;
+                                    this.available_amount -= amount;
+                                    message = "success";
+                                }
+                                this.return(undefined, message);
+                        };
+                    });
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="home">
+            A call of <code>home()</code> method force swarm to return to the execution context from which was started.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">home(error, result);</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>error</b></code> an error object if needed to send a signal to the identity that started the swarm that something bad happened
+                    <code><b>result</b></code> any type of object representing a potential result of the swarm.
+                </psk-list>
+            </psk-card>
+            <psk-highlight title="Warning" type-of-highlight="example">
+                The call of <code>home()</code> does not prevent to code following this statement to be executed!
+            </psk-highlight>
+        </psk-chapter>
+        <psk-chapter title="return">
+            A call of <code>return()</code> method force swarm to return to the previous execution context.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">return(error, result);</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>error</b></code> an error object if needed to send a signal to the identity that started the swarm that something bad happened
+                    <code><b>result</b></code> any type of object representing a potential result of the swarm.
+                </psk-list>
+            </psk-card>
+            <psk-highlight title="Warning" type-of-highlight="example">
+                The call of <code>return()</code> does not prevent to code following this statement to be executed!
+            </psk-highlight>
+        </psk-chapter>
+        <psk-chapter title="interact">
+            A call of <code>interact()</code> method force swarm to return to the execution context from which was started and execute an interaction phase. It is similar somehow to <code>swarm()</code> method that with the difference without the need to know to which context should go and the phase that will get called is one that uses some sort of input method in order to interact with the user interface(terminal, web page etc.).
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">interact(interactionPhaseName[, arg1, arg2, ...]);</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>interactionPhaseName</b></code> interaction phase name that will be called once swarm returns to the initial execution context.
+                    <code><b>args</b></code> args that will be passed to the interaction phase name.
+                </psk-list>
+            </psk-card>
+            <psk-highlight title="Warning" type-of-highlight="example">
+                The call of <code>interact()</code> does not prevent to code following this statement to be executed!
+            </psk-highlight>
+            <psk-card title="Example">
+                <psk-code language="JavaScript">
+                    $$.swarm.describe("twoFactorValidation", {
+                        firstValidation: function(argumentToValidate){
+                            // ... validation code
+                            this.interact("requestSecondArgument");
+                        },
+                        secondValidation: function(argumentToValidate){
+                            // ... validation code that will be executed once the interaction happens on the initial execution context
+                        }
+                    });
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="onReturn">
+            Registers a callback function that will get called one the swarm returns to the current execution context with a result or error.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">onReturn(callback)</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>callback</b></code> function that will get called one the swarm returns to the current execution context with a result or error.
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+                <psk-code language="JavaScript">
+                    $$.swarm.describe("demo", {
+                        firstPhase: function(){
+                            this.swarm("decentralized_agent_identity", "secondPhase").onReturn(function(err, result){
+                                if(err){
+                                    throw err;
+                                }
+                                console.log("Got result", result);
+                            });
+                        },
+                        secondPhase: function(){
+                            this.return(undefined, "job_done");
+                        }
+                    });
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="onResult">
+            Registers a callback function that will get called one the swarm returns to the current execution context with a result or error.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">onResult(callback)</psk-code>
+            </psk-card>
+            <psk-card title="Parameters">
+                <psk-list>
+                    <code><b>callback</b></code> function that will get called one the swarm returns to the current execution context with a result or error.
+                </psk-list>
+            </psk-card>
+            <psk-card title="Example">
+                <psk-code language="JavaScript">
+                    $$.swarm.describe("demo", {
+                        firstPhase: function(){
+                            this.swarm("decentralized_agent_identity", "secondPhase").onResult(function(err, result){
+                                if(err){
+                                    throw err;
+                                }
+                                console.log("Got result", result);
+                            });
+                        },
+                        secondPhase: function(){
+                            this.return(undefined, "job_done");
+                        }
+                    });
+                </psk-code>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

@@ -1,0 +1,84 @@
+<psk-page title="EDFS Explained">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-chapter title="Abstract">
+        <p align="justify">The PrivateSky’s EDFS subproject aims at implementing a distributed file system named EDFS (Encrypted Distributed File System).
+            EDFFs is a file system form the point of the programmer and teh user but compared with other network based distributed file systems (eg. NFS, GFS, HDFS,etc) in the case of EDFS
+            the server side is restricted to a simple cloud services called "Brick Storage". The bricks are always encrypted when are stored on the Bricks Storage.
+            The file system is available only for the entities that have access to a secret key they we tend to call as "SEED".
+            As with a Unix File Systems,actually there are multiple atomic file systems that are composed together with an operation that it usually called "mounting".
+            For the EDFS, the  atomic file system is called a BAR (Brick Archive).
+            The BARs can be easily understood as a some sort of zip files (archives) that are reconstructed when they are needed from the  compressed and encrypted bricks.
+            Anybody  can host a Brick Storage and they are interoperable in the sense that a BAR can use  bricks from multiple Brick Storage instances.
+            Currently we do not have any restriction on how the replication of bricks Brick Storage should be implemented,we provide SDKs for how they should be used.
+            From teh user perspective, EDFS is its  potentially a single file system.
+            Actually, each user will have a different vision over the EDFS, accordingly with his particular permissions (access to the right SEEDs)
+            <psk-img src="assets/images/BAR_Usage.png" title="Typical usage of BARs, Dossiers, etc. "></psk-img>
+
+            The files in EDFS are are simply encrypted files stored in the cloud, without the storage service to be able to access them without the right SEED .
+            The folders in this file system may be of three categories: mounted BARs, mounted  Dossiers and regular folders.
+            A Dossier is a special category of BAR, as may be observed on the corresponding page.
+            A Dossier can contain code and even fairly complex web applications that we call SSApps (Self Sovereign Applications)
+            <psk-img src="assets/images/EDFS_Wallet.png" title="EDFS as a file system in a digital wallet "></psk-img>
+            In a end, we can say that EDFS is formed from BARs containing data and code.
+            The BARS  are loaded in JavaScript sandboxes in the appropriate environments (servers, edge devices, etc) that can be assimilated under the concept of digital wallets.
+            </p>
+
+    </psk-chapter>
+
+    <psk-chapter title="Concepts">
+        <p align="justify">EDFS was born as a result of an initial attempt to implement the Dossier concept using ZIP files to group more folders and files. This first iteration raised the necessity to optimise storage and loading these zips on the network (towards client servers or clients running web browsers or mobile applications). In this sense we invented a novel concept, named “Brick" based storage and loading system.</p>
+
+
+        <psk-chapter title="The Brick Concept">
+            <p align="justify">A Brick is actually just a buffer (a collection of bytes compressed by a compression algorithm and encrypted with a secret encryption key). In the EDFS compatible storage services, any Brick is referenced by the cryptographic HASH of its compressed and encrypted content. The decryption of the BRICK content requires a decryption key.</p>
+
+        </psk-chapter>
+
+        <psk-chapter title="The Concepts of BarMap">
+
+            <p align="justify">In order to store the content of a folder (subfolders and files in the subfolders) in EDFS, we use the concept of BAR (Brick ARchive).
+                The files content is broken into Bricks, encrypted and stored in the EDFS compatible brick storage services.
+                In order to retrieve the initial content of a BAR, it is required in EDFS to save a special Brick, named BarMap containing a map of the Bricks and the files these Bricks are part of.
+                The BarMap also contains the Bricks decryption keys (each Brick is encrypted with a separate key).</p>
+        </psk-chapter>
+
+        <psk-chapter title="The Concept of Dossier">
+            <p align="justify">A Dossier is actually a BAR containing a PrivateSky Blockchain, while  also could contain the code for a Self Sovereign Application (SSApps).  </p>
+        </psk-chapter>
+
+    </psk-chapter>
+
+    <psk-chapter title="EDFS compatible Storage services">
+        <p align="justify">Storing the Bricks is made using storage services. Such a service is easily implementable because it implies just the storage of an encrypted buffer using an encryption key that is the very HASH of the Brick. In the development schedule of PrivateSky, there are provisioned storage systems in AWS S3, Google Drive, Dropbox and other cloud storage systems.</p>
+    </psk-chapter>
+
+    <psk-chapter title= "The versioning of Dossiers and BARs. Anchors">
+        <p align="justify">As previously mentioned, a BAR (as well as a Dossier, because any Dossier is a BAR) is identifiable by the BarMap HASH. When the content of a BAR is encrypted, the BarMap must be automatically modified. This led us to the case when the previous BarMap HASH is no longer useful to identify the entire BAR. In order to address this issue, the EDFS compatible storage services are required to implement a naming service we will call “Anchoring". This service is not doing anything but to assign a random identifier(user generated) to the HASH of the last BarMap generated for a given BAR.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Referencing Dossiers and BARs using a SEED">
+        <p align="justify">As mentioned in the previous chapter, a BAR or a Dossier is identifiable by the HASH of the last BarMap, at its turn being assigned an “anchor". PrivateSky is introducing a generation method for these anchores named SEEDs able to solve both the issue of identifying the last BarMap version, and the administration of the encryption key of a BarMap Brick corresponding to a BAR. Beside the secret decryption key, the SEED also contains location data for the EDFS storage system of a given BAR.</p>
+
+        <p align="justify">By applying a HASHing algorithm (or any one direction key derivation algorithm) on the SEED, a string may be obtained to be used as an anchor in the EDFS starge system. We will name this string BAR_UID.</p>
+
+        <p align="justify">This model enables the SEED owner to quickly find a BAR’s HashMap brick without giving away data on the encryption key.</p>
+
+        <p align="justify">The BAR (or Dossier) identification using SEED enables:</p>
+        <ul>
+            <li> Saving and recovering encrypted data in cloud </li>
+            <li> Fast data sharing between the users. The speed is due to the fact that only the SEED must be shared, not the entire BAR content</li>
+        </ul>
+
+    </psk-chapter>
+
+    <psk-chapter title="Blockchain Referencing and Anchoring">
+
+        <p align="justify">The storage of a BAR_UID will be named referencing, while the storage of a BAR_UID together with the BarMap HASHes history will be named anchoring.</p>
+        <p align="justify">In order to be certain of BAR’s and Dossier’s content accuracy and traceability, the EDFS anchoring service must be offer integrity and provenance for the BarMaps HASHes </p>
+        
+    </psk-chapter>
+
+</psk-page>
+

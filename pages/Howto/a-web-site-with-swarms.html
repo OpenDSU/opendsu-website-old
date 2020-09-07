@@ -1,0 +1,103 @@
+<psk-page title="How to web">
+    <psk-toc title="Table of contents"></psk-toc>
+    <style type="text/css">
+        img{
+            max-width: 500px!important;
+        }
+    </style>
+    <psk-highlight title="Note" type-of-highlight="note">
+        This page represents a short tutorial about how to implement a classic Client-Server model using PrivateSky. Tutorial begins with how to define a basic echo swarm on a PrivateSky node and then make a request execute the swarm from a web page.
+    </psk-highlight>
+    <psk-chapter title="Prerequisites">
+        First we recommend to read and follow the information found on
+        <psk-link page="quick start/installation">Setup page</psk-link>
+    </psk-chapter>
+    <psk-chapter title="Add new functionality to a PSK Node">
+        <psk-description>
+            Extending PSK Node functionality means adding new SWARM definitions that model new business workflows.
+            Adding new SWARM definitions is really easy, all we need to do is to create or update a file with the
+            business logic that is desired. Suppose that the PSK Node needs an <i>Echo</i> swarm capable to show that the
+            system is up and running and everything goes according to plan.
+        </psk-description>
+        <psk-list list-type="ordered">
+            Navigate to the directory that holds the PSK Node source code and identify the <b>domain</b> folder
+            Open the <b>domain</b> folder
+            Open the file <b>index.js</b> and add the following code:
+                <psk-code language="JavaScript">
+                    $$.swarms.describe("Echo",{
+                        say: function(input){
+                            this.return(null, "Echo: "+ input);
+                        }
+                    });
+                </psk-code>
+                <b>Note:</b> Basically we describe a swarm called "Echo" that has a phase called "say". The phase takes an argument "message" that is concatenated with the string "Echo is saying: " and returned back to the client.
+            After pasting the above code <b>save and exit</b> file.
+            Navigate to <b>privatesky/conf</b> folder and ensure there is no file except the ssl folder. If you find any files delete them!
+                <psk-img title="Ensure that conf folder has only the ssl folder as child"
+                         src="/assets/images/how_to_web/conf_folder_content.png">
+                </psk-img>
+            Open an terminal in the PrivateSky project location and run the start command
+                <psk-code language="bash">
+                    npm run start
+                </psk-code>
+                <psk-img title="Verify that PrivateSky Node started"
+                         src="/assets/images/how_to_web/privatesky_terminal.png">
+                </psk-img>
+        </psk-list>
+    </psk-chapter>
+    <psk-chapter title="Start a SWARM from Web">
+        <psk-description>
+            A SWARM can be started from any JavaScript capable environment type. If current tutorial we will start the SWARM from a web page.
+        </psk-description>
+        <psk-list list-type="ordered">
+            Create a folder called <b>web</b> in the <b>PrivateSky</b> root folder
+                <psk-img title="Create web folder"
+                         src="/assets/images/how_to_web/web_folder.png">
+                </psk-img>
+            Into web folder create a file called <b>index.html</b>
+                <psk-img title="Create index.html file"
+                         src="/assets/images/how_to_web/web_index_html_file.png">
+                </psk-img>
+            Open and paste into file <b>index.html</b> the following code
+                <psk-code language="html">
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html&gt;
+                    &lt;head&gt;
+                        <meta charset="UTF-8">
+                        <title>PSK Web demo</title>
+                        <script type="application/javascript" src="../psknode/bundles/webshims.js"></script>
+                        <script type="application/javascript" src="../psknode/bundles/pskruntime.js"></script>
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                    <script type="application/javascript">
+                        const pskCommunicationNodeAddrs = ["http://127.0.0.1:8080/", "http://localhost:8080/"];
+                        const se = require("swarm-engine");
+                        se.initialise();
+
+                        const powerCord = new se.SmartRemoteChannelPowerCord(pskCommunicationNodeAddrs);
+                        $$.swarmEngine.plug("*", powerCord);
+
+                        $$.interactions.startSwarmAs("demo/agent/system", "Echo", "say", "Hello swarm world!")
+                            .onReturn((err, result)=>{
+                                if(err){
+                                    throw err;
+                                }
+                                console.log(result);
+                            });
+
+                    </script>
+                    &lt;/body&gt;
+                    &lt;/html&gt;
+                </psk-code>
+                <b>Notes:</b><psk-list>
+                                Make sure that the connection data (<b>'http://127.0.0.1:8080'</b> and '<b>demo</b>/agent/example') are the correct ones that are displayed in the terminal.
+                                In few words all we do in client application is to start the swarm called "Echo" with the phase name "say" and the argument "Hello swarm world!". And in order to receive our swarm result from the PSK Node we call the onReturn function passing a handler function.
+                             </psk-list>
+
+            Now run the <b>index.html</b> file in a browser and check Developer Console
+                <psk-img title="Verify Developer Console for the SWARM return answer"
+                         src="/assets/images/how_to_web/browser_console.png">
+                </psk-img>
+        </psk-list>
+    </psk-chapter>
+</psk-chapter>

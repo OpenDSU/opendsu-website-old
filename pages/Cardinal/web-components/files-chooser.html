@@ -1,0 +1,43 @@
+<psk-page title="psk-files-chooser">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+        This component allows the user to select multiple files from his device to load them into the application
+        providing him a customizable way to do this.
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-files-chooser data-define-props="true">
+        </psk-files-chooser>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML children.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Examples">
+        <psk-code language="markup">
+            <psk-files-chooser label="Select files" accept="png">
+            </psk-files-chooser>
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <p>In case the controller isn't set up then the component will be rendered in this fashion :</p>
+            <psk-files-chooser label="Select files" accept="png">
+            </psk-files-chooser>
+            <psk-container>
+                <script>
+                    console.log(controller);
+                    controller.onFilesSelect = function() {
+                        console.log('10');
+                    }
+                </script><br>
+                <p>But in case a controller with the onFilesSelect function exists and the 
+                    psk-files-chooser sends an event, then the component will be rendered like this:</p>
+                <psk-files-chooser label="Select files" accept="png" event-name="privatesky_example">
+                </psk-files-chooser>
+            </psk-container>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

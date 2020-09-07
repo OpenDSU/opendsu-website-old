@@ -1,0 +1,255 @@
+<psk-page title="EDFS APIs">
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="createBar">
+        The <code>createBar()</code> creates and returns an instance of Archive class;
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                createBar();
+            </psk-code>
+            <psk-card title="Return value">
+                <psk-list list-type="unordered">
+                    An instance of Archive class. <br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example, the <code>createBar()</code> method is used to create an instance of Archive class. The function <code>writeFile()</code>
+            </code> is then called on the acquired Archive instance. In order for this example to work it is necessary that a VirtualMQ server is started
+            as shown <a href="?API/virtualmq/overview&chapter=how-to-create-a-virtualmq-server">here</a>;
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const edfs = EDFS.attachToEndpoint("http://127.0.0.1:8080");
+
+                const archive = edfs.createBar();
+
+                archive.writeFile("someFilePath", "someContent", (err => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("Data has been written to file");
+                }));
+
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="loadBar">
+        The <code>loadBar()</code> loads an archive stored in EDFS.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                loadBar(seed);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>seed</b></code>
+                                The SEED of the loaded archive.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    An instance of Archive class.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example, the <code>loadBar()</code> method is used to create an archive using the seed of a previously created archive. The function <code>writeFile()</code>
+            </code> is then called on the acquired Archive instance. In order for this example to work it is necessary that a VirtualMQ server is started
+            as shown <a href="?API/virtualmq/overview&chapter=how-to-create-a-virtualmq-server">here</a>.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const edfs = EDFS.attachToEndpoint("http://127.0.0.1:8080");
+
+                const archive = edfs.createBar();
+                const newArchive = edfs.loadBar(archive.getSeed());
+                newArchive.writeFile("someFilePath", "someContent", (err => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("Data has been written to file");
+                }));
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="createRawDossier">
+        The <code>createRawDossier()</code> creates and returns an instance of RawDossier class.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                createRawDossier();
+            </psk-code>
+            <psk-card title="Return value">
+                <psk-list list-type="unordered">
+                    An instance of RawDossier class.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example, the <code>createRawDossier()</code> method is used to create an instance of RawDossier class.  The function <code>writeFile()</code>
+            </code> is then called on the acquired RawDossier instance. In order for this example to work it is necessary that a VirtualMQ server is started
+            as shown <a href="?API/virtualmq/overview&chapter=how-to-create-a-virtualmq-server">here</a>.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const edfs = EDFS.attachToEndpoint("http://127.0.0.1:8080");
+
+                const rawDossier = edfs.createRawDossier();
+                rawDossier.writeFile("someFilePath", "someContent", (err => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("Data has been written to file");
+                }));
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="loadRawDossier">
+        The <code>loadRawDossier()</code> loads an archive stored in EDFS.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                loadRawDossier(seed);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>seed</b></code>
+                        The SEED of the loaded RawDossier.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    An instance of RawDossier class.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example, the <code>loadRawDossier()</code> method is used to create an RawDossier using the seed of a previously created RawDossier. The function <code>writeFile()</code>
+            </code> is then called on the acquired Archive instance. In order for this example to work it is necessary that a VirtualMQ server is started
+            as shown <a href="?API/virtualmq/overview&chapter=how-to-create-a-virtualmq-server">here</a>.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const edfs = EDFS.attachToEndpoint("http://127.0.0.1:8080");
+
+                const rawDossier = edfs.rawDossier();
+                const newRawDossier = edfs.loadRawDossier(rawDossier.getSeed());
+                newRawDossier.writeFile("someFilePath", "someContent", (err => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("Data has been written to file");
+                }));
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="createWallet">
+        The <code>createWallet()</code> method creates a wallet given a RawDossier's SEED.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                createWallet(templateSeed, pin [, overwrite], callback);
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>templateSeed</b></code>
+                        The SEED of the RawDossier mounted inside the wallet.<br><br>
+                    <code><b>pin</b></code>
+                        The passphrase used for deriving the encryption key used for encrypting the wallet's SEED.<br><br>
+                    <code><b>overwrite</b></code> <b>|</b>  Optional
+                        A boolean variable used for deciding whether an existent SeedCage is overwritten. By default is <code>false</code>. <br><br>
+                    <code><b>callback</b></code>
+                        The function called when the wallet is created.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            <psk-highlight type-of-highlight="note">
+                A wallet is a RawDossier inside which is mounted another RawDossier, called <i><b>template RawDossier</b></i>. The <code>template Raw Dossier</code>  contains the code that forms the constitution of the
+                wallet RawDossier. The template RawDossier is mounted inside the wallet at path <code>/code/constitution</code>. Also the wallet's SEED is encrypted with a passphrase and stored
+                locally in a file called <code>.seedCage</code>. As a result, in order to access the wallet it is sufficient to know the passphrase used for wallet's SEED encryption.
+            </psk-highlight>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example, a wallet is created using the SEED of the <code>template RawDossier</code> that stores the code at path <code>/home/foo/psknode/bundles</code>.
+            In order for this example to work it is necessary that a VirtualMQ server is started
+            as shown <a href="?API/virtualmq/overview&chapter=how-to-create-a-virtualmq-server">here</a>.
+            <psk-code language="JavaScript">
+                    const EDFS = require("edfs");
+                    const edfs = EDFS.attachToEndpoint("http://127.0.0.1:8080");
+                    const pin = "123456";
+                    const templateRawDossier = edfs.createRawDossier();
+
+                    templateRawDossier.addFolder("/home/foo/psknode/bundles", "/", (err) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        edfs.createWallet(templateRawDossier.getSeed(), pin, true, (err, wallet) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log("The wallet has been created");
+                        });
+                    });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="loadWallet">
+       The <code>loadWallet()</code> loads a wallet given its SEED or the passphrase used for encrypting the SEED.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                createWallet(walletSeed, pin [, overwrite], callback);
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>walletSeed</b></code>
+                        The wallet's SEED.<br><br>
+                    <code><b>pin</b></code>
+                        The passphrase used for deriving the encryption key used for encrypting the wallet's SEED.<br><br>
+                    <code><b>overwrite</b></code> <b>|</b>  Optional
+                        A boolean variable used for deciding whether an existent SeedCage is overwritten. By default is <code>false</code>. <br><br>
+                    <code><b>callback</b></code>
+                        The function called when the wallet is loaded.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            <psk-highlight type-of-highlight="note">
+                    The <code>loadWallet()</code> method loads the wallet using the wallet's SEED, or, in case the SEED is not
+                    provided, using the passphrase used for deriving the key used when encrypting the wallet's SEED. If both the <code>seed</code>
+                    and <code>pin</code> are provided, then the wallet's SEED is automatically encrypted.
+            </psk-highlight>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example, the wallet created in the example <a href="?API/edfs/edfs&chapter=createrawdossier">above</a> is loaded using the passphrase <code>pin</code>.
+            In order for this example to work it is necessary that a VirtualMQ server is started
+            as shown <a href="?API/virtualmq/overview&chapter=how-to-create-a-virtualmq-server">here</a>.
+            <psk-code language="JavaScript">
+                    const EDFS = require("edfs");
+                    const edfs = EDFS.attachToEndpoint("http://127.0.0.1:8080");
+                    const pin = "123456";
+                    edfs.loadWallet(undefined, pin, (err, wallet) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("The wallet has been loaded. This is its SEED:", wallet.getSeed());
+                    });
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
+</psk-page>

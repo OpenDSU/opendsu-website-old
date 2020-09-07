@@ -1,0 +1,400 @@
+<psk-page title="How to create a SSApp">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>This guide will provide the necessary information on how to create and run a SSApp.</p>
+    </psk-description>
+
+    <psk-chapter title="Prerequisites">
+        <p>In order to get started you need to install the <a href="https://github.com/PrivateSky/ssapp-demo-workspace" target="_blank">ssapp-demo-workspace</a> by following the steps provided on the <psk-link page="quick start/installation">Setup page</psk-link> (Setup SSApps section).</p>
+
+        <p><strong>ssapp-demo-workspace</strong> bundles all the necessary dependencies for building and running SSApps in a single package.</p>
+    </psk-chapter>
+
+    <psk-chapter title="ssapp-demo-workspace architecture">
+        <psk-chapter title="Core components">
+            <p>The <strong>ssapp-demo-workspace</strong> bundle contains the following core components required for building and running a Self Sovereign Application:</p>
+
+            <ul>
+                <li>Octopus task runner</li>
+                <li>PrivateSky local installation</li>
+                <li>Web Server</li>
+                <li>Wallet template</li>
+                <li>User Profile demo application</li>
+                <li>SSApp application loader</li>
+            </ul>
+
+            <p><strong>Octopus</strong> is the first tool installed by the ssapp-demo-workspace and it is used to further fetch and build the rest of the dependencies. For more information on Octopus read the <psk-link page="Tools/Octopus">dedicated page</psk-link> in the documentation.</p>
+
+            <p><strong>PrivateSky</strong> provides the VirtualMQ service and the javascript runtime bundles required for a SSApp to interact with EDFS and PrivateSky nodes</p>
+
+            <p>The <strong>web server</strong> is configured to serve static files from the <code>web-server</code> directory inside the <strong>ssapp-demo-workspace</strong> installation. Besides serving static files, the server exposes the Brick Storage API required to store data to EDFS.</p>
+
+            <p>The <strong>wallet template</strong> installed by <strong>ssapp-demo-workspace</strong> is a plain customisable SSApp which once loaded will display a menu with  all the SSApp applications contained in this <code>ssapp-demo-workspace</code> installation. Through this app you will be able to access your newly created SSApp.</p>
+
+            <p>The <strong>SSApp application loader</strong> is the first thing you'll see after running the <code>ssapp-demo-workspace</code> web server and accessing <code>http://localhost:8080/secure-channels/loader</code>. It is a basic web application which allows creation and loading of wallets based on the <em>menu wallet</em> template. The SSApp loader registers a service worker responsible with loading the built SSApps from the Brick Storage.</p>
+
+            <p><strong>Before advancing to the next chapters make sure you have correctly installed <code>ssapp-demo-workspace</code> and have started the web server:</strong></p>
+            <psk-code language="bash">
+                cd ssapp-demo-workspace
+                npm run server
+            </psk-code>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="SSApp Tutorial">
+        <psk-highlight type-of-highlight="example">If you are using a Windows operating system you may need to adapt some bash commands shown in this tutorial in order to execute them.</psk-highlight>
+
+        <p>The gist of creating, integrating and developing a SSApp in <code>ssapp-demo-workspace</code> is:</p>
+        <psk-list list-type="ordered">
+            Create a git repository containing the minimum required configuration files for your application
+            Add the application into <code>ssapp-demo-workspace</code>
+            Bind the application to the ssapp-demo-workspace's solution
+            Enter the development cycle
+        </psk-list>
+
+        <p>All of the above steps are detailed in the following chapters.</p>
+
+        <psk-chapter title="Creating the folder structure">
+            <p>Start by cloning the <a href="https://github.com/privatesky/ssapp-template" target="_blank">ssapp-template</a> repository and rename the <code>ssapp-template</code> directory. For the purpose of this tutorial we will create a basic "To Do list" application, thus, the name of our new app will be <code>todo-ssapp-prototype</code>. The <em>prototype</em> suffix denotes the fact that multiple "To Do List" applications can be latter instantiated based on this prototype.</p>
+            <psk-code language="bash">
+                git clone https://github.com/privatesky/ssapp-template todo-ssapp-prototype
+            </psk-code>
+
+            <p>Next, go ahead and remove the existing <code>.git</code> folder from <code>todo-ssapp-prototype</code>, initialize a new empty git repo and commit the existing content to your own repository.</p>
+
+            <psk-code language="bash">
+                cd todo-ssapp-prototype
+                rm -rf .git
+                git init
+
+                # set the url of your git repository
+                # replace 'https://github.com/username/todo-ssapp-prototype.git' with the your own url
+                git remote add origin https://github.com/username/todo-ssapp-prototype.git
+                git fetch
+
+                git add --all
+                git commit -m "Todo List SSApp structure"
+
+                # push the files to your git repository.
+                git push --set-upstream origin master
+            </psk-code>
+
+            <p>A typical SSApp will have the following structure:
+                <ul>
+                    <li>bin/</li>
+                    <li>code/</li>
+                    <li>domain/</li>
+                    <li>octopus.json</li>
+                    <li>package.json</li>
+                </ul>
+            </p>
+            <p>The <code>bin</code> folder contains executable scripts and for this SSApp to be compatible with <strong>ssapp-demo-workspace</strong> a <code>build.js</code> script is required. This build script will create an empty Brick Archive, copy the application's code from the <code>code</code> folder into the BAR and write the BAR's SEED into a file in the root of the application's directory. This seed file will be later read by the SSApp loader in order to load the application.</p>
+
+            <p>The <code>code</code> folder will contain the application source code files (html, javacript &amp; css files).</p>
+            <p>The <code>package.json</code> contains a single dependency, the <strong>Octopus</strong> package which will help with building and installing the application in <code>ssapp-demo-workspace</code>. You are free to add as many dependencies as you want in order to develop your application.
+
+            <p>The <code>octopus.json</code> file contains actions executed by Octopus that will copy the runtime javascript bundles from PrivateSky into our new application into the <code>code</code> folder and install the <psk-link page="Cardinal/web-components-mvc">Cardinal</psk-link> framework.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Adding the SSApp in ssapp-demo-workspace">
+            <psk-highlight type-of-highlight="issue">
+                <p>Make sure the ssapp-demo-workspace web server is running before proceeding with the next examples.</p>
+            </psk-highlight>
+            <p>It is time to integrate our application inside <code>ssapp-demo-workspace</code> by running a few octopus commands inside the ssapp-demo-workspace directory:</p>
+            <psk-code language="bash">
+                cd ssapp-demo-workspace
+
+                # This command will tell octopus to fetch the application from your git repository
+                # Make sure you replace 'https://github.com/username/todo-ssapp-prototype.git' with your
+                # actual git repository url
+                npm run add todo-ssapp-prototype https://github.com/username/todo-ssapp-prototype.git
+
+                npm run bind-app secure-channels todo-ssapp-prototype
+            </psk-code>
+
+            <p>Some of the things the <code>bind-app</code> command does is run our <code>todo-ssapp-prototype/bin/build.js</code> script to copy the application code into a Brick Archive and write the seed of that BAR in a file which will be used by the SSApp loader to load the application. If you browse the <code>ssapp-demo-workspace</code> directory you'll see that Octopus has fetched the application from git and placed inside it.<br />
+            The <strong>secure-channels</strong> argument refers to the name of the software solution built with this ssapp-demo-workspace. You can think of <strong>secure-channels</strong> as container for SSApps, for more information read the <strong>SSApp loader</strong> chapter of this document.</p>
+
+            <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into ssapp-demo-workspace and we have binded it to the ssapp-demo-workspace's solution. One last step before doing the actual development work is to add a link to our application in the wallet template - if you remember the <code>ssapp-demo-workspace</code> comes with a wallet template which is a SSApp that displays a menu allowing you to select which application to run. We do this by editing <code>web-server/secure-channels/wallet-template/menu.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
+            <psk-code language="javascript">
+                "pages": [
+                    {
+                        "name": "Home"
+                    },
+                    {
+                        "name": "Inbox"
+                    },
+                    {
+                        "name": "Outbox"
+                    },
+                    {
+                        "name": "Contacts"
+                    },
+                    {
+                        "name": "Profile",
+                        "children":[
+                            {"name":"View"},
+                            {"name":"Edit"},
+                            {"name":"Share"}
+                        ]
+                    },
+                    {
+                        "name": "To do List"
+                    }
+                ]
+            </psk-code>
+
+            <p>Next, go ahead and create a new html file named <code>to-do-list.html</code> inside <code>web-server/secure-channels/wallet-template/pages/</code>:</p>
+
+            <psk-code language="markup">
+
+                &#x3C;psk-container controller-name=&#x22;SSAppController&#x22;&#x3E;
+                    &#x3C;psk-ssapp app-name=&#x22;todo-ssapp&#x22;&#x3E;
+                    &#x3C;/psk-ssapp&#x3E;
+                &#x3C;/psk-container&#x3E;
+
+            </psk-code>
+            <p>The <code>psk-ssapp</code> is a Cardinal web component which handles loading and running a SSApp. The <code>to-do-list.html</code> file is actually a <code>View</code> file from the <code>wallet template</code> SSApp which will load our To do List SSApp.</p>
+
+            <p>To verify that the application was built correctly, open the browser and load <a href="http://localhost:8080/secure-channels/loader" target="_blank">http://localhost:8080/secure-channels/loader</a>. If you have previously created a wallet using the loader make sure you clear your local storage and refresh the page. Follow the steps to create a new wallet and then open it. You should see a link to our To Do application in the left menu and when clicking it you should see the Cardinal framework starting page.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Application Development">
+            <psk-highlight type-of-highlight="example">
+                <p>From now on the development work will be done from within the <code>todo-ssapp-prototype</code> folder in the <code>ssapp-demo-workspace</code>. The only purpose for the initial todo-ssapp-prototype directory was to be able to install it inside ssapp-demo-workspace.</p>
+            </psk-highlight>
+            <p>The first thing you'll need to do before adding new code to the application is to switch the SSApp loader to run in "development" mode. To do that, go into <code>web-server/secure-channels/loader</code> and create a copy of <code>loader-config.local.json-template</code> file:</p>
+
+            <psk-code language="bash">
+                cd web-server/secure-channels/loader
+                cp loader-config.local.json-template loader-config.local.json
+            </psk-code>
+
+            <p>The <code>loader-config.local.json</code> is a configuration file that will allow us to override the default loader options set in <code>loader-config.js</code>. Our local configuration file will override the loader mode setting from "secure" to "development". While in development mode, the loader will skip the UI and create a new wallet if one doesn't exist, or update an existing one as the source code changes to speed up development.</p>
+
+            <p>Next start the "watch" feature of the <code>ssapp-demo-workspace</code> that watches for source code changes and updates the application's BAR - remember, the SSApp, once built it is stored in a BAR in Brick Storage. In order to update the code we need to somehow update the BAR:</p>
+
+            <psk-code language="bash">
+                # inside ssapp-demo-workspace's directory
+                npm run watch -- --app=todo-ssapp-prototype
+            </psk-code>
+
+            <p>Clear the browse's local storage and refresh. You should see that the loader's UI isn't shown anymore and you are automatically presented with the SSApps menu. Now, everytime you change the source code of your application the wallet will be automatically rebuilt.</p>
+
+            <p>It's time to add some functionality to our app and the first thing we need to do is add a <psk-link page="Cardinal/Views">View</psk-link> for our to do list. Edit the <code>/code/pages/home.html</code> file and replace its existing content with the one presented in the following chapter.</p>
+
+            <psk-chapter title="View">
+                <p>The <code>code/pages/home.html</code> view of our application will display the items in our to do list and will allow any user to add new items to that list:</p>
+                <psk-code language="markup">
+
+                    &#x3C;psk-page title=&#x22;To do list&#x22;&#x3E;
+                        &#x3C;psk-container controller-name=&#x22;TodoListController&#x22;&#x3E;
+                            &#x3C;!-- Render each list item from the model --&#x3E;
+                            &#x3C;psk-for-each data-view-model=&#x22;items&#x22;&#x3E;
+                                &#x3C;p&#x3E;&#x3C;psk-text-input value=&#x22;@item&#x22; read-only=&#x22;true&#x22;&#x3E;&#x3C;/psk-text-input&#x3E;&#x3C;/p&#x3E;
+                            &#x3C;/psk-for-each&#x3E;
+
+
+                            &#x3C;!-- Form controls for adding a new item --&#x3E;
+                            &#x3C;p&#x3E;
+                                &#x3C;psk-text-input view-model=&#x22;item&#x22;&#x3E;&#x3C;/psk-text-input&#x3E;&#x3C;br /&#x3E;
+                                &#x3C;psk-button label=&#x22;Add&#x22; button-class=&#x22;btn btn-info&#x22; event-name=&#x22;list:newItem&#x22;&#x3E;&#x3C;/psk-button&#x3E;
+                            &#x3C;/p&#x3E;
+
+                            &#x3C;!-- Save button --&#x3E;
+                            &#x3C;p&#x3E;&#x3C;psk-button label=&#x22;Save list&#x22; button-class=&#x22;btn btn-primary&#x22; event-name=&#x22;list:save&#x22;&#x3E;&#x3C;/psk-button&#x3E;&#x3C;/p&#x3E;
+                        &#x3C;/psk-container&#x3E;
+                    &#x3C;/psk-page&#x3E;
+
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Controller">
+                <p>The controller will initialize the model and handle all the events triggered by the view controls. Create the <code>code/scripts/controllers/TodoListController.js</code> file:</p>
+
+                <psk-code language="javascript">
+
+                    import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+                    import ListModel from "./../models/ListModel.js";
+
+                    export default class TodoListController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+
+                            // List model
+                            this.listModel = new ListModel();
+
+                            // Set some default values for the view model
+                            this.model = this.setModel(this.listModel.toJSON());
+
+                            // Fetch data from EDFS and populate the view model
+                            this.listModel.hydrate(this.model);
+
+                            // Add new item to the list
+                            this.on('list:newItem', (e) => {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                this._addNewListItem();
+                            })
+
+                            // Save the list to EDFS
+                            this.on('list:save', (e) => {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                this._saveList();
+                            })
+                        }
+
+                        _addNewListItem() {
+                            // Get the value from the "item" view model
+                            const newItem = this.model.item.value;
+
+                            // Appended to the "items" array
+                            this.model.items.push({
+                                item: newItem
+                            });
+
+                            // Clear the "item" view model
+                            this.model.item.value = '';
+                        }
+
+                        _saveList() {
+                            // Save data to EDFS
+                            this.listModel.save(this.model)
+                                .then((result) => {
+                                    console.log('List was saved!')
+                                })
+                                .catch((err) => {
+                                    console.log("An error occured");
+                                    console.error(err);
+                                });
+                        }
+                    }
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Model">
+                <p>The last piece of the puzzle is the model. Add the following code in <code>code/scripts/models/ListModel.js</code>. The model will fetch the data from EDFS using the <psk-link page="API/ssapps/service-worker-middleware">Download Middleware</psk-link> of its service worker. When saving the data, the model will upload the list as a JSON file to EDFS using the <psk-link page="API/ssapps/service-worker-middleware">Upload Middleware</psk-link> provided by the service worker.</p>
+
+                <psk-code language="javascript">
+                    export default class ListModel {
+
+                        constructor() {
+                            this.data = {
+                                items: [], // holds all the items of the list
+                                // view model for the "add new item" input
+                                item: {
+                                    name: 'item',
+                                    label: 'New item',
+                                    value: ''
+                                }
+                            };
+                        }
+
+                        /**
+                        * Fetch data from EDFS and populate the view model
+                        */
+                        hydrate(model) {
+                            // We're getting the data through the Download
+                            // middleware of the Service Worker
+                            return fetch('/download/data/list.json')
+                                .then((response) => {
+                                    if (!response.ok) {
+                                        return;
+                                    }
+
+                                    return response.json().then((data) => {
+                                        model.items = data.items;
+                                    })
+                                })
+                                .catch((err) => {
+                                    console.error(err);
+                                })
+
+                        }
+
+                        /**
+                        * Save the model to EDFS
+                        */
+                        save(data) {
+                            this.data.items = data.items;
+
+                            const listFile = new File([JSON.stringify(this.data)], 'list.json');
+
+                            // We're using the Upload middleware of the Service Worker
+                            // to upload data to EDFS.
+                            const saveEndpointUrl = `/upload?path=/data&filename=${listFile.name}`;
+
+                            return fetch(saveEndpointUrl, {
+                                method: 'POST',
+                                body: listFile
+                            }).then((response) => {
+                                return this.getJsonResponseBody(response).then((data) => {
+                                    if (!response.ok || response.status != 201) {
+                                        return Promise.reject("Unable to save list");
+                                    }
+
+                                    return Promise.resolve();
+                                })
+                            })
+                        }
+
+                        getJsonResponseBody(response) {
+                            return response.json((result) => {
+                                return result;
+                            }).catch((err) => {
+                                return Promise.resolve({});
+                            })
+                        };
+
+                        /**
+                        * Return a copy of the data
+                        */
+                        toJSON() {
+                            return JSON.parse(JSON.stringify(this.data));
+                        }
+                    }
+                </psk-code>
+            </psk-chapter>
+
+            <psk-highlight type-of-highlight="issue">
+                <p>Keep in mind that this application lacks a lot of validation and error handling. The purpose of the code presented in this tutorial is to show you how to get started developing SSApps. You are encouraged to continue working on the app and add more features and validation in order to better understand the SSApp concept, Cardinal and all the related PrivateSky technologies.</p>
+            </psk-highlight>
+        </psk-chapter>
+
+    </psk-chapter>
+
+    <psk-chapter title="SSApp loader">
+        <p>This section focuses a bit on the inner workings of the SSApp/Wallet loader, specifically on how it loads and runs wallets and SSApps.</p>
+        <p>The loader makes heavy use of service workers in order to load wallets and SSApps from EDFS. Once a wallet has been created and a SEED is generated, using that SEED the loader is able to request the content of that wallet from EDFS and load any SSApps found in it.</p>
+        <p>In order to better understand the loading process let's have a look at the structure of a wallet:</p>
+
+
+
+        <psk-img src="assets/images/wallet-structure.svg"></psk-img>
+
+        <p>A <strong>solution wallet</strong> is a <psk-link page="API/edfs/overview">Dossier</psk-link> containing a blockchain and a set of SSApps which encapsulate business logic. In the diagram above you can see that the "Secure Channels Solution" is based on the <strong>menu-wallet-prototype</strong> template and contains 3 more SSApps: profile-sapp, secure-channels-sapp and our newly created todo-ssapp. The "menu-wallet-prototype" template is in itself just a regular SSApp which displays a menu in the UI with links to the rest of the SSApps contained in the solution. Each individual SSApp (including the menu-wallet) is built by Octopus using the command line (<code>npm run build-all</code> command) while the <strong>solution wallet</strong> is build by the loader during first use. The steps for creating the solution wallet in the loader are the following:</p>
+
+        <psk-list list-type="ordered">
+            Create a new Dossier
+            Mount the "menu-wallet" in the <code>code/</code> folder inside the new Dossier
+            Copy any files found in the web server's wallet-template folder inside the <code>app/</code> folder of the new Dossier
+        </psk-list>
+
+        <p>The purpose of the <code>app/</code> folder in a Dossier folder is to customize/overwrite any existing fuctionality stored in the <code>code/</code> folder. When an SSApp is loaded and run, its assigned service worker will first try to load files from the <code>app/</code> folder and if it fails it will use the <code>code/</code> folder as failover. This applies to all the other SSApps in the solution.<br />
+        Once the solution's dossier has been created the loader adds the rest of the applications by using the following algorithm:</p>
+
+        <psk-list list-type="ordered">
+            Create a new application Dossier
+            Mount the application's source code in the new Dossier's <code>code/</code> folder
+            Copy any files found in the web server's [solution-name]/apps/[application-name] folder inside the <code>app/</code> folder of the new Dossier
+            Mount the new Dossier in the solutions wallet under <code>apps/[application-name]</code>
+        </psk-list>
+
+        <p>Another way to understand this structure is by using an OOP analogy: The <strong>solution wallet</strong> is a collection of application instances created from application classes. For example, the <strong>todo-ssapp</strong> application instance is the "My To do List App" from the diagram, mounted in the <code>apps/</code> folder in the solution's wallet, while the <strong>todo-ssapp</strong> application class is the "To do list App" from the diagram.</p>
+        <p>In order to load and run the solution, the loader will load each SSApp (including the menu-wallet) in its separate iframe and register dedicated instances of a service worker for that iframe to handle HTTP requests:</p>
+
+        <psk-img src="assets/images/wallet-loader.svg"></psk-img>
+    </psk-chapter>
+</psk-page>

@@ -1,0 +1,123 @@
+<psk-page title="Views">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary & Definition">
+        <p>Table of contents, we will explain what is a view, how to write a view and how to bind it to a model for a controlled section of the page.</p>
+        <p>A controlled section inside a page can be a
+            <psk-link tag='psk-form'>psk-form</psk-link> or a set of components wrapped inside a
+            <psk-link tag='psk-container'>psk-container</psk-link>.</p>
+        <psk-chapter title="What is a view?">
+            <p>A view, for Cardinal.Js framework, is a set of Web Components or HTML elements that will be displayed in the browser.</p>
+            <p>A view can accept one or more models, deppending on the needs. Informations about what is a model, how can be defined and how to bind it to a view cand be found here:
+                <psk-link page="cardinal/models"><i>MODELS</i></psk-link>
+            </p>
+            <p>For now, each model can be defined inside a controller as in the examples found at the page
+                <psk-link tag='using-forms'>Using Forms</psk-link>.</p>
+            <p>One of the most important feature that a view-model can provide is the support for internationalization and localization, a feature we target with our implementation.</p>
+        </psk-chapter>
+    </psk-description>
+
+    <psk-chapter title="How to write a view">
+        <p>A view can be written only insde a HTML file, so here are two possible ways to do so:</p>
+        <psk-list>
+            <span>Edit an existing HTML page</span>
+            <span>Create a new HTML page by following the guidelines from this page: <psk-link tag="documentation-site">How to write a page</psk-link></span>
+        </psk-list>
+    </psk-chapter>
+
+    <psk-example title="View-Model example">
+        <psk-chapter title="Controller - Model example - Source code">
+            <psk-code language="javascript">
+               import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+
+                const model = {
+                    sectionTitle: {
+                        label: "Your personal information"
+                    },
+                    name: {
+                        label: "Name",
+                        name: "name",
+                        required: true,
+                        placeholder: "Name here...",
+                        value: ''
+                    },
+                    subSection: {
+                        title: {
+                            label: "Personal information from sub-tree of a model"
+                        },
+                        otherInformation: {
+                            email: {
+                                label: "Email address",
+                                name: "email",
+                                required: true,
+                                placeholder: "Email address here...",
+                                value: ''
+                            },
+                            otherLabels: [{
+                                label: "Zero Label",
+                                subLabel: {
+                                    label: "Zero sub-label"
+                                }
+                            }, {
+                                label: "One Label"
+                            }, {
+                                label: "Two Label"
+                            }]
+                        }
+                    }
+                };
+
+                export default class TestFormChildrenController extends ContainerController {
+                    constructor(element) {
+                        super(element);
+                        this.model = this.setModel(model);
+                    }
+                }
+
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="View example - Source code">
+            <psk-code>
+                <psk-form controller-name="TestFormChildrenController">
+                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                        <psk-label view-model="sectionTitle"></psk-label>
+                        <psk-text-input view-model="name"></psk-text-input>
+                    </psk-form-row>
+
+                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                        <psk-label view-model="subSection.title"></psk-label>
+                        <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
+                    </psk-form-row>
+
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                        <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
+                        <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
+                        <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
+                    </psk-form-row>
+                </psk-form>
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="View-Model - Visual example">
+            <psk-form controller-name="TestFormChildrenController">
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="sectionTitle"></psk-label>
+                    <psk-text-input view-model="name"></psk-text-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="subSection.title"></psk-label>
+                    <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
+                </psk-form-row>
+            </psk-form>
+        </psk-chapter>
+    </psk-example>
+
+</psk-page>

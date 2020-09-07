@@ -1,0 +1,69 @@
+<psk-page title="psk-barcode-generator">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+        <p>This component is useful in order to generate various types of barcodes (1D or 2D).</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-barcode-generator data-define-props="true">
+        </psk-barcode-generator>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML children.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Examples">
+        <psk-code language="javascript">
+            // Controller
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            export default class BarcodeController extends ContainerController{
+                constructor(element) {
+                    super(element);
+                    this.setModel({
+                        data:"1234567890"
+                        gs1datamatrix:"(01)03594455500071(17)220506(21)0100110082245392(10)6006495"
+                    })
+                }
+            }
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live example: code128 and qrcode">
+            <psk-code language="markup">
+                <psk-container controller-name="BarcodeController">
+                    <psk-text-input value="@data" label="Enter data from which you want to generate a barcode"></psk-text-input>
+                    <psk-grid columns="2" layout="xs=[12,12] m=[8,4 l=[8,4] xl=[9,3]">
+                        <psk-barcode-generator type="code128" size="16" include-text="true" data="@data"></psk-barcode-generator>
+                        <psk-barcode-generator type="qrcode" size="16" data="@data"></psk-barcode-generator>
+                    </psk-grid>
+                </psk-container>
+            </psk-code>
+            <psk-example class="app-example">
+                <psk-container controller-name="BarcodeController">
+                    <psk-text-input value="@data" label="Enter data from which you want to generate a barcode"></psk-text-input>
+                    <psk-grid columns="2" layout="xs=[12,12] m=[8,4 l=[8,4] xl=[9,3]">
+                        <psk-barcode-generator type="code128" size="16" include-text="true" data="@data"></psk-barcode-generator>
+                        <psk-barcode-generator type="qrcode" size="16" data="@data"></psk-barcode-generator>
+                    </psk-grid>
+                </psk-container>
+            </psk-example>
+    </psk-chapter>
+
+    <psk-chapter title="Live example: gs1datamatrix">
+        <psk-code language="markup">
+            <psk-container controller-name="BarcodeController">
+                <psk-text-input value="@gs1datamatrix" label="Enter data in valid gs1datamatrix format"></psk-text-input>
+                <psk-barcode-generator type="gs1datamatrix" size="32" data="@gs1datamatrix"></psk-barcode-generator>
+            </psk-container>
+        </psk-code>
+        <psk-example class="app-example">
+            <psk-container controller-name="BarcodeController">
+                <psk-text-input value="@gs1datamatrix" label="Enter data in valid gs1datamatrix format"></psk-text-input>
+                <psk-barcode-generator type="gs1datamatrix" size="32" data="@gs1datamatrix"></psk-barcode-generator>
+            </psk-container>
+        </psk-example>
+    </psk-chapter>
+
+</psk-page>

@@ -1,0 +1,89 @@
+<psk-page title="Psk Button">
+
+    <psk-toc title="Table of Contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>Basic button component used to trigger button events for any need.</p>
+        <p>This button is not like standard HTML button, which in HTML it submits a form, instead it is able to trigger
+            custom button events with custom data to be handled in a parent controller.</p>
+        <p>The button comes with a default style from boostrap using primary color(blue), but it can be easily designed
+            using CSS files according to the selected theme for the web-site.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-button data-define-props="true">
+        </psk-button>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>Recommended to be used in case of displaying a label or an icon. To be used if attribute <code>label</code>
+            is not defined.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Psk-Button Examples">
+        <psk-chapter title="Source code for click and double click">
+            <psk-code>
+                <!-- This example displays a button witha label and next to it an icon. -->
+                <!-- By clicking this button, a custom ebutton event named "send-user-data" will be triggered sending with it all the informations found inside "event-data" attribute. -->
+                <psk-button label="Send user data" event-name="send-user-data"
+                            event-data="some informations about the user / can also be a JavaScript Object written as a string.">
+                    <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
+                </psk-button>
+
+                <!--
+                If we want to display the icon on the left side of the label, we will not use the label attribute and we
+                can write down the text after the icon component.
+                -->
+                <psk-button button-class="btn btn-success" event-name="need-double-click" event-data="This is not the way this button works, how about a double click ? Just saying."
+                                double-click-event-name="double-click-event">
+                    <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
+                    Send user data
+                </psk-button>
+            </psk-code>
+        </psk-chapter>
+        <psk-chapter title="Souce code for disabled property">
+            <psk-code>
+                <psk-form form-controller="ComponentsExampleController" form-actions="Disable Button Submit">
+                    <psk-checkbox view-model="disabled"></psk-checkbox>
+                </psk-form>
+                <psk-button label="@button.label" disabled="@button.disabled"></psk-button>  
+
+            </psk-code>
+        </psk-chapter>
+        <psk-chapter   title="Visual example">
+            <psk-example class="app-example">
+                <psk-container controller-name="ComponentsExampleController">
+                    <psk-grid columns="2" layout ="xl=[4,8]">
+                        <div>
+                            <div>
+                                <psk-button label="Send user data" event-name="send-user-data"
+                                            event-data="some informations about the user / can also be a JavaScript Object written as a string.">
+                                    <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
+                                </psk-button>
+                            </div>
+
+                            <div>
+                                <psk-button button-class="btn btn-success" event-name="need-double-click" event-data="This is not the way this button works, how about a double click ? Just saying."
+                                            double-click-event-name="double-click-event">
+                                    <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
+                                    Send user data
+                                </psk-button>
+                            </div>
+                            
+                            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                            </psk-list-feedbacks>
+                        </div>
+                        <div>
+                            <psk-form form-controller="ComponentsExampleController" form-actions="Disable Button Submit">
+                                <psk-checkbox view-model="disabled"></psk-checkbox>
+                            </psk-form>
+                            <psk-button label="@button.label" disabled="@button.disabled"></psk-button>  
+
+                        </div>
+                    </psk-grid>
+                </psk-container>
+            </psk-example>
+        </psk-chapter>
+    </psk-chapter>
+
+</psk-page>

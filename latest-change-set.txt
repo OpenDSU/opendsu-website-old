@@ -2,3 +2,5 @@
     added a src folder to theme
     added new lighter bindableModel
     new styles for sidebar
+    added new lighter bindableModel
+    new styles for sidebar

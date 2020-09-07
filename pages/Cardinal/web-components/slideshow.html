@@ -1,0 +1,44 @@
+<psk-page title="psk-slideshow">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+        <p>This components purpose is to create a slideshow of images using a given images source string:
+            <code>images</code>.</p>
+        <p>In order to create the nice opacity switching effect between the images we use a function where we switch
+            between an <code>opacity</code> of 1 or 0 this way:
+            <p>At the two end, 0% and 100%, and when the animation time expires(at the moment we use 10),
+                then the <code>opacity</code> is considered 0 and in any other moment of the animation the
+                <code>opacity</code> is 1.</p>
+        </p>
+        <p>Because some images may not be the same size we made a fucnction that will resize the height of the slideshow
+            everytime it is necessary. </p>
+        <p>If the <code>title</code>,<code>caption</code> or if the element has any HTML children, then an auxiliary div
+            container is created with <code>content</code> class and all given info in the three at question.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-slideshow data-define-props="true">
+        </psk-slideshow>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>If there are any actions (any children) then a slot will be created (inside a <code>actions</code> classed
+            div) where any info will be rendered without any modifications made.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Examples">
+        <psk-code language="markup">
+            <psk-slideshow images="/assets/slideshow/1.jpg , /assets/slideshow/2.jpg" title="Psk slideshow example"
+                caption="Just one simple example">
+            </psk-slideshow>
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="Live Example">
+        <psk-slideshow images="/assets/slideshow/1.jpg , /assets/slideshow/2.jpg" title="Psk slideshow example"
+            caption="Just one simple example">
+        </psk-slideshow>
+    </psk-chapter>
+
+</psk-page>

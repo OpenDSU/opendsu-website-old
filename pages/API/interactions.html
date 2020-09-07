@@ -1,0 +1,32 @@
+<psk-page title="Interaction concept">
+  <psk-toc title="Table of contents"></psk-toc>
+  <psk-chapter title="Interactions: swarms sent to clients and recieved back ">
+     Typically a swarm (as a choreography) or as a blockchain transaction is started in a different application from the place where is executed. Typically a client is starting swarms or transaction on a remote node.
+    The swarm communication paradigms is trying to go beyond the request/answer pattern of the client/server (RPC) paradigm while still keeping things simple for programmers.
+    Even in a simple setup involving communication between two parties the same communication process (lets call them client and server for simplicity) could involve a multi-step communication between client and server.
+    For example, the server could require additional information from the client (for example input of a secret key)  continue with processing an additional steps ( phases) and then returning some results.
+      <psk-img src="assets/images/newlook/csinteraction.png" title="Typical communication pattern requiring interactions"></psk-img>
+      <psk-list list-type="ordered">
+      Client asking a service from a server (startSwarm primitive used in client)
+      Phase execution between some servers (swarm primitive called in servers)
+      Server sending a phase to the client (interaction phase)
+      Client sending a phase back to server (swarm primitive in interaction)
+      Result phase sent from server to client (home primitive)
+      </psk-list>
+  </psk-chapter>
+
+  <psk-chapter title="Benefits of the interactions">
+    <psk-list>
+        The main benefit is that you could have different code on the client side while still using the same server side swarm
+        Abstract the remote part of the swarm. It is possibile to start swarms over
+        Another benefit is that the swarm communication paradigm can be used properly on the server
+    </psk-list>
+  </psk-chapter>
+
+    <psk-chapter title="The PowerCord Concept">
+        <psk-list>
+
+        </psk-list>
+    </psk-chapter>
+
+</psk-page>

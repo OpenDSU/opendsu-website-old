@@ -1,0 +1,65 @@
+<psk-page title="psk-toolbar">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <p>This component creates a toolbar using the given properties and the HTML children.</p>
+        <span>If the property <code>icons</code> is passed ,then a pool of <psk-link tag="/psk-icon">psk-icon
+            </psk-link>, else a pool of <code>button</code> will be instantiated.</span>
+        <p>Each time a pool item is clicked a new event is created with the <code>eventData</code> property passed
+            along.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-toolbar data-define-props="true">
+        </psk-toolbar>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component consumes properties inside the HTML children in this way:</p>
+        <ul>
+            <li>If the slot has the same name as one of the actions, then a new slot with that name is created.</li>
+            <li>The icon sent as property will be rendered just like a normal <code>psk-icon</code>.</li>
+        </ul>
+    </psk-chapter>
+
+    <psk-chapter title="Icon Code Example">
+        <psk-code language="markup">
+            <psk-toolbar slot="toolbar" actions="active, inactive">
+                <psk-icon slot="active" icon="check-circle" title="Active Tender"></psk-icon>
+                <!-- This psk-icon creates an span with the icon attribute and the disable-color attribute as classes if the slot exists in the actions -->
+                <psk-icon slot="inactive" icon="circle" title="Inactive Tender" disable-color="true">
+                </psk-icon> 
+            </psk-toolbar>
+        </psk-code>
+
+        <psk-chapter title="Icon Example">
+            <psk-toolbar actions="active, inactive">
+                <psk-icon slot="active" icon="check-circle" title="Active Tender"></psk-icon>
+                <psk-icon slot="inactive" icon="circle" title="Inactive Tender" disable-color="true">
+                </psk-icon>
+            </psk-toolbar>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="Button Code Example">
+        <psk-code language="markup">
+            <psk-toolbar slot="toolbar" actions="click,no-click">
+                <!-- This psk-button creates a button with the btn and btn-primary classes if the slot exists in the actions-->
+                <psk-button slot="click" title="Active Button">Click Action
+                </psk-button>
+                <!-- Since the "no-click" action hasn't been used the toolbar creates anothe button with the name of the unused action  -->
+            </psk-toolbar>
+        </psk-code>
+        <psk-chapter title="Button Example">
+            <psk-example>
+                <psk-toolbar actions="click,no-click">
+                    <psk-button slot="click" title="Active Button">Click Action
+                    </psk-button>
+                </psk-toolbar>
+            </psk-example>
+        </psk-chapter>
+    </psk-chapter>
+
+</psk-page>

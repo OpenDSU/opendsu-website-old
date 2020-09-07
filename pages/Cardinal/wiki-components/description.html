@@ -1,0 +1,43 @@
+<psk-page title="psk-description">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <span>This component creates a <psk-link tag="psk-chapter">psk-chapter</psk-link> using the title
+            property.</span>
+        <p>It's role is to create a good looking description for the documentaion. </p>
+        <span>If the title property is not given than the component will create a <psk-link tag="psk-card">
+                psk-card</psk-link> instead of a <code>psk-chapter</code></span>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-description data-define-props="true">
+        </psk-description>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has one <code>slot</code> as a HTML child in which the data between tags will be rendered
+            inside the :</p>
+        <p><code>psk-chapter</code>(if the title is given) or <code>psk-card</code>(if it is not given)</p>
+    </psk-chapter>
+
+    <psk-chapter  title="Code Example">
+        <psk-code language="markup">
+            <psk-description title="PSK-description Example">
+                <p>Minus 40 degrees Celsius is exactly the same as minus 40 degrees Fahrenheit.</p>
+                <p>A lion's roar can be heard from eight kilometres away.</p>
+                <p>Cats can hear ultrasound.</p>
+            </psk-description>
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <psk-description title="PSK-description Example">
+                <p>Minus 40 degrees Celsius is exactly the same as minus 40 degrees Fahrenheit.</p>
+                <p>A lion's roar can be heard from eight kilometres away.</p>
+                <p>Cats can hear ultrasound.</p>
+            </psk-description>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

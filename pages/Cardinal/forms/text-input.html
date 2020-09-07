@@ -1,0 +1,87 @@
+<psk-page title="Psk-Text-Input Component">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description title="Definition">
+        <p>This component is extended from the
+            <psk-link tag="psk-input">psk-input</psk-link> component, it is used inside a
+            <psk-link tag="psk-form">psk-form</psk-link> component and is intending to be used as input for simple texts, like name, address and so on.</p>
+        <p>The other components derived from
+            <psk-link tag="psk-input">psk-input</psk-link> are:</p>
+        <psk-list>
+            <psk-link tag="psk-password-input">psk-password-input</psk-link>
+            <psk-link tag="psk-email-input">psk-email-input</psk-link>
+            <psk-link tag="psk-date-input">psk-date-input</psk-link>
+            <psk-link tag="psk-number-input">psk-number-input</psk-link>
+        </psk-list>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-text-input data-define-props="true">
+        </psk-text-input>
+    </psk-property-descriptor>
+
+    <psk-chapter title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                },
+                password: {
+                    label: "Password",
+                    name: "password",
+                    required: true,
+                    placeholder: "Password here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="View Example">
+        <psk-code>
+            <psk-container controller-name="FormComponentsExampleController" form-actions="Text submit">
+                <psk-grid columns = "3" layout="l=[4,4,4]">
+                    <psk-text-input view-model="name"></psk-text-input>
+                    <psk-text-input view-model="email"></psk-text-input>
+                </psk-grid>
+            </psk-container>
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example" >
+            <psk-form  controller-name="FormComponentsExampleController" form-actions="Text submit">
+                <psk-grid columns = "3" layout="l=[4,4,4]">
+                    <psk-text-input view-model="name"></psk-text-input>
+                    <psk-text-input view-model="email"></psk-text-input>
+                </psk-grid>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>        
+            </psk-form>
+        </psk-example>
+    </psk-chapter>
+    <p>A very good example of using this component and the other form components can be found here:
+        <psk-link tag="using-forms">Using forms</psk-link>.
+    </p>
+</psk-page>

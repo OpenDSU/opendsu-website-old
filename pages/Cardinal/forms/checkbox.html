@@ -1,0 +1,131 @@
+<psk-page title="Psk-Checkbox Component">
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <p>psk-checkboxes are rendered by default as boxes that are checked (ticked) when activated.</p>
+        <p>The exact appearance depends upon the operating system configuration under which the browser is running.</p>
+        <p>Generally this is a square but it may have rounded corners. A checkbox allows you to select single values for
+            submission in a form</p>
+        <p>Take in mind that checked-value and unchecked-value attributes are never seen on client-side, but on the
+            server-side these are the values sent by the form when it is submitted, using the checkbox's name.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-checkbox data-define-props="true">
+        </psk-checkbox>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no children elements.</p>
+    </psk-chapter>
+
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                gdpr: {
+                    label: "Check if you agree with GDPR regulations",
+                    name: "gdpr",
+                    required: true,
+                    checkboxLabel: "GDPR Consent",
+                    checkedValue: "yes",
+                    uncheckedValue: "no"
+                },
+                    terms: {
+                    label: "Do you accept our terms and conditions?",
+                    name: "terms",
+                    required: true,
+                    checkboxLabel: "Terms & Conditions",
+                    checkedValue: "yes",
+                    uncheckedValue: "no"
+                }
+            }
+
+            export default class TestFormController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    this.feedbackEmitter = null;
+
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                        console.log(this.feedbackEmitter)
+                    });
+                    let checkSubmit = () => {
+                        this.feedbackEmitter("Never forget to check the terms and the gdpr!","Checkbox Example","alert-warning")
+                    }
+                    this.on("Check submit",checkSubmit,true);
+                }
+            }
+        </psk-code>
+    </psk-example>
+    <psk-chapter title="View Example">
+        <psk-chapter title="Component usage with model">
+            <psk-code language="markup">
+                <psk-form controller-name="TestFormController" actions="submit,custom-submit">
+                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label>Agreements</psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                        <psk-checkbox view-model="terms"></psk-checkbox>
+                        <psk-checkbox view-model="gdpr"></psk-checkbox>
+                    </psk-form-row>
+                </psk-form>
+            </psk-code>
+        </psk-chapter>
+    
+        <psk-chapter title="Component usage as it is">
+            <psk-code language="markup">
+
+                <psk-form controller-name="TestFormController" form-actions="Check submit">
+                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label>Choose your favorites social medias</psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                        <!-- The attribute "label" is not mandatory to be used, but it is recommended if you want to group the checkbox with an explanatory label -->
+                        <psk-checkbox checkbox-label="Facebook" label="Check if you like Facebook"
+                            checked-value="facebook" unchecked-value="deny-facebook"></psk-checkbox>
+                        <psk-checkbox checkbox-label="Instagram" label="Check if you like Instagram"
+                            checked-value="instagram" unchecked-value="deny-instagram"></psk-checkbox>
+                    </psk-form-row>
+                </psk-form>
+
+            </psk-code>
+        </psk-chapter>
+    </psk-chapter>
+    <psk-chapter title="Live example">
+        <psk-example class="app-example" >
+            <psk-form controller-name="TestFormController" form-actions="Check submit">
+                <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                    <psk-label>Agreements</psk-label>
+                </psk-form-row>
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-checkbox view-model="terms"></psk-checkbox>
+                    <psk-checkbox view-model="gdpr"></psk-checkbox>
+                </psk-form-row>
+
+                <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                    <psk-label>Choose your favorites social medias</psk-label>
+                </psk-form-row>
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <!-- The attribute "label" is not mandatory to be used, but it is recommended if you want to group the checkbox with an explanatory label -->
+                    <psk-checkbox checkbox-label="Facebook" label="Check if you like Facebook" checked-value="facebook"
+                        unchecked-value="deny-facebook"></psk-checkbox>
+                    <psk-checkbox checkbox-label="Instagram" label="Check if you like Instagram" checked-value="instagram"
+                        unchecked-value="deny-instagram"></psk-checkbox>
+                </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+
+            <psk-chapter title="Form Usage">
+                <p>An explanatory example using a full form can be found at:
+                    <psk-link tag="using-forms">Using forms</psk-link> page.</p>
+            </psk-chapter>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

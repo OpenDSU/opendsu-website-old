@@ -1,0 +1,45 @@
+<psk-page title="psk-live-code">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <p>The main purpose of the component is to edit text files. A code-editor is embedded into this component, for the moment with the markup, css and javascript languages.</p>
+        <p>The component has the markup(HTML, XML, Markup, SVG.) language as the default one in case no other is given.</p>
+        <p>More informations about the editor used can be found at
+            <a href="https://live.prismjs.com/">PrismJs.Live</a>
+        </p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-code data-define-props="true">
+        </psk-code>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML children.</p>
+    </psk-chapter>
+
+    <psk-container controller-name='LiveCodeEditorController'>
+        <psk-chapter title='JavaScript editor'>
+            <psk-code>
+                <psk-live-code value='@javascriptValue' language="javascript"></psk-live-code>
+            </psk-code>
+            <psk-live-code value='@javascriptValue' language="javascript"></psk-live-code>
+        </psk-chapter>
+
+        <psk-chapter title='CSS editor'>
+            <psk-code>
+                <psk-live-code value='@cssValue' language="css"></psk-live-code>
+            </psk-code>
+            <psk-live-code value='@cssValue' language="css"></psk-live-code>
+        </psk-chapter>
+
+        <psk-chapter title='HTML editor'>
+            <psk-code>
+                <psk-live-code value='@htmlValue' language="markup"></psk-live-code>
+            </psk-code>
+            <psk-live-code value='@htmlValue' language="markup"></psk-live-code>
+        </psk-chapter>
+    </psk-container>
+</psk-page>

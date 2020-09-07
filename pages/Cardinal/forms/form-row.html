@@ -1,0 +1,110 @@
+<psk-page title="Psk-Form-Row Component">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description title="Definition and Usage">
+        <p>Psk-Form-Row is a wrapper component used to group a list of components into a single inline row, so the number of the <code>COLUMNS</code> for the inner grid is given by the number of the children components.</p>
+        <p>On mobile devices, the responsive design is making all the form components to be displayed in a single column.</p>
+        <p>It has no other special behaviour.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-form-row data-define-props="true"></psk-form-row>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>Every form component will be rendered on a single row.</p>
+        <p>On mobile devices, the responsive design is making all the form components to be displayed in a single column.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                },
+                password: {
+                    label: "Password",
+                    name: "password",
+                    required: true,
+                    placeholder: "Password here...",
+                    value: ''
+                }
+            }
+
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    this.feedbackEmitter = null;
+
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                        console.log(this.feedbackEmitter)
+                    });
+
+                    let rowSubmit = () => {
+                        let name = this.model.name.value;
+                        let email = this.model.email.value;
+                        if(name != "" && email !=""){
+                            this.feedbackEmitter(`You successfully sent your data, Thank you!`,"row Example","alert-success")
+                        } else{
+                            this.feedbackEmitter("You have not entered a name or an email, please enter one!","row Example","alert-danger")
+
+                        }
+                    }
+                    this.on("Row submit",rowSubmit, true);
+                }
+            }
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="View Examples">
+        <psk-example >
+            <psk-code language="markup">
+                <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
+                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label>Name, E-mail & Password</psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4]">
+                        <psk-text-input view-model="name"></psk-text-input>
+                        <psk-email-input view-model="email"></psk-email-input>
+                    </psk-form-row>
+                </psk-form>
+            </psk-code>
+            <p>A complete live example can be found at:
+                <psk-link tag="using-forms">Using forms</psk-link> page.</p>
+        </psk-example>
+    </psk-chapter>
+    <psk-chapter title="Live Examples">
+        <psk-example class="app-example">
+            <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
+                <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                    <psk-label>Name, E-mail & Password</psk-label>
+                </psk-form-row>
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4]">
+                    <psk-text-input view-model="name"></psk-text-input>
+                    <psk-email-input view-model="email"></psk-email-input>
+                </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+        </psk-example>
+    </psk-chapter>
+
+</psk-page>

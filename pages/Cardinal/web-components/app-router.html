@@ -1,0 +1,34 @@
+<psk-page title="psk-app-router">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+        <p>This component is in charge with the routing of the application using a simple
+            <code><i>configuration JSON file</i></code>.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-app-router data-define-props="true">
+        </psk-app-router>
+    </psk-property-descriptor>
+
+    <psk-controller-descriptor title="Events that supports Controllers">
+        <psk-app-router data-define-controller="true">
+        </psk-app-router>
+    </psk-controller-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML children.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Examples">
+        <psk-code language="markup">
+            <psk-app-router historyType="browser" menuItems="[{
+                name: Home , path : /home , icon : fa-home , type : route , component : app-home
+                , exact : true },{ name : PSK Components , path : /psk-components , icon : fa-bars , type
+                : abstract , children : [{ name : App Menu , path : /psk-components/app-menu , component
+                : app-menu-usage , icon : fa-bars , type : route , exact : true }] }]">
+            </psk-app-router>
+        </psk-code>
+    </psk-chapter>
+</psk-page>

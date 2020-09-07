@@ -1,8 +1,14 @@
+.navbar-nav {
+    position: absolute;
+    left: 0; right: 0;
+    z-index: 2;
+    background-color: #EEEEEE;
+}
+
 .navbar-collapse.show {
-    position: fixed;
+    position: absolute;
     top: 3.5rem;
     left: 0; right: 0;
-    background-color: #EEEEEE;
 }
 
 .navbar-toggler {

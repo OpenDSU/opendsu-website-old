@@ -1,0 +1,492 @@
+<psk-page title="Brick Archives APIs">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-chapter title="BARs">
+
+    As a difference from the regular archives, BARs are created to follow this list of properties:
+    <ol>
+        <li>
+            BARs can be stored in files but also in cloud encrypted with a secret key that we call SEED.
+        </li>
+        <li>
+            A SEED is an encyption key but it is used to cryptographically derivate an identifier for the BAR archive. This identifier is called LSEED (Location Seed) and can be used to locate a BAR file.
+            The name of the file and the LSEED are called "Aliases".
+        </li>
+
+        <li>
+            BARs are stored in cloud as compressed Bricks. A large file is divided into Bricks. A Brick is just an encrypted buffer identifiable by its hash (after compression and encryption).
+            Each Brick is encrypted with a different gey (randomly generated)
+        </li>
+        <li>
+            A specific version of a BAR is identifiable by cryptographic hash  of it's content by computing the hash of the hashes of all its Bricks.
+        </li>
+    </ol>
+
+    For storing those Bricks, we have created the EDFS storage service but we plan to have similar storages that are using various cloud storages (Dropbox , Google Drive, Amazon S3,IPFS, etc)
+
+    <ul>
+        Therefore a BAR is:
+        <li>
+            An archive storable in cloud as Bricks
+        </li>
+        <li>
+            Anchorable in blockchains by it's HASH
+        </li>
+
+        <li>
+            Referencable in blockchain by an Alias
+        </li>
+
+        <li>
+            Retrievable from cloud by a SEED
+        </li>
+    </ul>
+
+    </psk-chapter>
+
+    <psk-chapter title="addFolder">
+        The <code>addFolder()</code> method adds all the files in a specified folder in a brick archive.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                addFolder(fsPath, barPath [, options], callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>fsPath</b></code>
+                        The filesystem path where the folder is located. <br><br>
+                    <code><b>barPath</b></code><br><br>
+                        The name associated with the folder entry inside the archive.<br><br>
+                    <code><b>options</b></code> <b>|</b> Optional
+                        An object that allows to set whether the folder is encrypted or not through <code>encrypt</code> property. If <code>encrypt</code> is set to <code>false</code>
+                        then the added folder is not encrypted.
+                        If <code>encrypt</code> is set to <code>true</code> then the added folder is encrypted. If the options argument is missing then, by default,
+                        the folder is encrypted.
+                    <code><b>callback</b></code>
+                        The function called when all files in the specified folder have been added to the archive.
+                        It receives an error and the archive's hash.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>addFolder()</code> method reads all files inside a directory located at a specified path, breaks them into bricks and adds
+            an entry inside the archive's bar map where bricks' hashes are kept. The hashes are used to locate the bricks inside EDFS.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the folder "/home/foo/bar" is added to archive under the entry "bar". The callback receives the archive's hash.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="extractFolder">
+        The <code>extractFolder()</code> extracts a folder from a brick archive to a specified location.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                extractFolder(fsPath, barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>fsPath</b></code>
+                        The filesystem path where the extracted folder is located. <br><br>
+                    <code><b>barPath</b></code>
+                        The path inside the archive where the folder's brick references are stored.<br><br>
+                    <code><b>callback</b></code>
+                        The function when the extraction process is completed.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>extractFolder()</code> method reads all the brick whose references are kept inside the archive at path <code>barPath</code> and combines
+            them in order to obtain all the files inside the folder at the specified path.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the folder stored inside the archive under the name "bar" is extracted at path "/home/foo/bar".
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                    archive.extractFolder("/home/foo/bar", "bar", (err) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("Successfully extracted");
+                    });
+                });
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="addFile">
+        The <code>addFile()</code> method adds the file at a specified path in a brick archive.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                addFile(fsPath, barPath [, options], callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>fsPath</b></code>
+                        The filesystem path where the file is located. <br><br>
+                    <code><b>barPath</b></code>
+                        The name associated with the file entry inside the archive.<br><br>
+                    <code><b>options</b></code> <b>|</b> Optional
+                        An object that allows to set whether the file is encrypted or not through <code>encrypt</code> property. If <code>encrypt</code> is set to <code>false</code>
+                        then the added file is not encrypted.
+                        If <code>encrypt</code> is set to <code>true</code> then the added file is encrypted. If the options argument is missing then, by default,
+                        the file is encrypted.
+                    <code><b>callback</b></code>
+                        The function called when the file has been added to the archive.
+                        It receives an error and the archive's hash.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>addFile()</code> method reads the file at the specified path, breaks it into bricks and adds
+            an entry inside the archive's bar map where bricks' hashes are kept. The hashes are used to locate the bricks inside EDFS.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the file "/home/foo/bar.js" is added to archive under the entry "bar". The callback receives the archive's hash.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.addFile("/home/foo/bar.js", "bar", (err, archiveDigest) => {
+                    if (err) {
+                         throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="extractFile">
+        The <code>extractFile()</code> extracts a file from a brick archive to a specified location.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                extractFile(fsPath, barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>fsPath</b></code>
+                        The filesystem path where the extracted file is located. <br><br>
+                    <code><b>barPath</b></code>
+                        The path inside the archive where the file's brick references are stored.<br><br>
+                    <code><b>callback</b></code>
+                        The function when the extraction process is completed.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>extractFile()</code> method reads all the brick whose references are kept inside the archive at the path <code>barPath</code> and combines
+            them in order to obtain the file stored at <code>fsPath</code>.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the file stored inside the archive under the name "bar" is extracted at path "/home/foo/bar.js".
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.addfile("/home/foo/bar.js", "bar", (err, archiveDigest) => {
+                    if (err) {
+                          throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                    archive.extractFolder("/home/foo/bar.js", "bar", (err) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("Successfully extracted");
+                    });
+                });
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="writeFile">
+        The <code>writeFile()</code> method writes the given data in a brick archive.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                writeFile(barPath, data [, options], callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive entry were the data is written.<br><br>
+                    <code><b>data</b></code>
+                        The data added to the archive.<br><br>
+                    <code><b>options</b></code> <b>|</b> Optional
+                        An object that allows to set whether the data is encrypted or not through <code>encrypt</code> property. If <code>encrypt</code> is set to <code>false</code>
+                        then the added data is not encrypted.
+                        If <code>encrypt</code> is set to <code>true</code> then the added data is encrypted. If the options argument is missing then, by default,
+                        the data is encrypted.
+                    <code><b>callback</b></code>
+                        The function called when the data is added to the archive.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>writeFile()</code> breaks the given data into bricks whose references are kept at the specified path inside the archive.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the data "content" is added to archive under the entry "bar". The callback receives the archive's hash.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.writeFile("bar", "content", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="readFile">
+        The <code>readFile()</code> reads the data written in a brick archive at a specific path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                readFile(barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive entry from were the data is read.<br><br>
+                    <code><b>callback</b></code>
+                        The function called when the data is added to the archive. It receives an error and the read data.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>readFile()</code> reads the bricks at a specified entry inside the archive and returns the data that was split in order to form the bricks.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the data stored at path "bar" inside the archive is read and returned through the callback.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.writeFile("bar", "content", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                    archive.readFile("bar", (err, readData) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("This is the data", readData);
+                    });
+                });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="createReadStream">
+        The <code>createReadStream()</code> method creates a readable stream from the data written in a brick archive at a specific path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                createReadStream(barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive entry from were the data is read.<br><br>
+                    <code><b>callback</b></code>
+                        The function called after the stream has been initialized or if an error occurs. It receives an error and the readable stream.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>createReadStream()</code> reads the bricks at a specified entry inside the archive and pushes the data into a readable stream.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the data stored at path "bar" inside the archive is read and returned through the callback.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.writeFile("bar", "content", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                    archive.createReadStream("bar", (err, stream) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        stream.on('data', (chunk) => {
+                            console.log("Received part of the data: ", chunk);
+                        });
+
+                        stream.on('error', (err) => {
+                            console.error(err);
+                        })
+
+                        stream.on('end', () => {
+                            console.log("Stream has no more data");
+                        });
+                    });
+                });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="listFiles">
+        The <code>listFiles()</code> returns the names of all the files stored inside a brick archive at a specific path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                listFiles(barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive path from where the file names are read.<br><br>
+                    <code><b>callback</b></code>
+                        The function called when the file names have been read. It receives an error and the list of files.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>listFiles()</code> traverses the specified path inside the archive and returns the names of all the files
+            stored at the specified path.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the filenames stored inside the archive at path "bar" are returned through the provided callback.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                    archive.listFiles( "bar", (err, fileNames) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("These are the files", fileNames);
+                    });
+                });
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="listFolders">
+        The <code>listFiles()</code> returns the names of all the folders stored inside a brick archive at a specific path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                listFolders(barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive path from where the folder names are read.<br><br>
+                    <code><b>callback</b></code>
+                        The function called when the folder names have been read. It receives an error and the list of folders.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>listFiles()</code> traverses the specified path inside the archive and returns the names of all the files
+            stored at the specified path.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the folders stored inside the archive at path "/" are returned through the provided callback.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    archive.addFolder("/home/foo", "/foo", (err, archiveDigest) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("This is the archive's hash", archiveDigest);
+                        archive.listFiles( "/", (err, folders) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log("These are the folders", folders);
+                        });
+                    });
+                });
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+</psk-page>

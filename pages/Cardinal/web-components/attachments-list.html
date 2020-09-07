@@ -1,0 +1,34 @@
+<psk-page title="psk-attachments-list">
+
+        <psk-toc title="Table of contents"></psk-toc>
+
+        <psk-description>
+            <p>This component is intended to display a list of files with the possibility to download them.</p>
+            <p>You can remove them only if you created a function that removes it and passing it to removeFileFromList
+                property</p>
+        </psk-description>
+
+        <psk-property-descriptor title="Supported properties">
+            <psk-attachments-list data-define-props="true">
+            </psk-attachments-list>
+        </psk-property-descriptor>
+
+        <psk-chapter title="HTML Children">
+            <p>This component has no HTML children.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Code Examples">
+            <psk-code language="markup">
+                <psk-attachments-list attachments-class="example-attachments" files="@attachments">
+                </psk-attachments-list>
+            </psk-code>
+        </psk-chapter>
+        <psk-chapter title="Live example">
+            <psk-container controller-name="AttachmentsController">
+                <psk-example class="app-example">
+                    <psk-attachments-list attachments-class="example-attachments" files="@attachments">
+                    </psk-attachments-list>
+                </psk-example>
+            </psk-container>
+        </psk-chapter>
+</psk-page>

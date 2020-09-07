@@ -1,0 +1,37 @@
+<psk-page title="psk-toc">
+
+    <psk-toc title="Table of contents">
+    </psk-toc>
+
+    <psk-description>
+        <span>This component creates a Table of Content in which every item is a link to that item's position in our
+            <psk-link tag="psk-page">psk-page</psk-link>.</span>
+        <span>It renders a psk-card with the given <code>title</code> in which every <code>psk-page</code>
+            and <psk-link tag="psk-chapter">psk-chapter</psk-link> is rendered.</span>
+        <p>This components selects all <code>psk-chapter</code> components and creates a ordered list based on each
+            chapter existing in the page.</p>
+        <p>It renders a unordered list with it's HTML children.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-toc data-define-props="true">
+        </psk-toc>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no html children.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Code Example">
+        <psk-code language="markup">
+            <psk-toc title="PSK-toc Example">
+            </psk-toc>
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <psk-toc title="PSK-toc Example">
+            </psk-toc>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

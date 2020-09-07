@@ -1,0 +1,61 @@
+<psk-page title="PrivateSky Build Process">
+    <psk-description>
+        PrivateSky Building Process is done automatically before starting to running PrivateSky, however, not always the default configuration is desired. Furthermore, for releasing PrivateSky a production build needs to be created instead of the default debug build.
+    </psk-description>
+    <psk-toc title="Table of contents">
+    </psk-toc>
+    <psk-chapter title="How to build">
+        Building PrivateSky project suppose to run an build process based on using <a href="http://browserify.org/">Browserify</a> over some specific targets and deps configuration. PrivateSky main build configuration can be found be accessing file <b>builds/build.json</b>
+        <psk-code language="bash">
+            cd privatesky/builds
+            cat build.json
+        </psk-code>
+        <psk-chapter title="Build options">
+            In order to customize the building process, the following options can be used:
+            <ul>
+                <li><psk-code language="bash">
+                        --prod=[true|false]
+                    </psk-code>
+                    Remove the source maps from builds and optimizes for production.
+                </li>
+                <li><psk-code language="bash">
+                        --quick=[true|false]
+                    </psk-code>
+                    Build fewer targets, only those for Node.js
+                </li>
+                <li><psk-code language="bash">
+                    --projectMap="path_to_project_map"
+                </psk-code>
+                    Use this to specify a different file for configuring targets and their dependencies instead of the default build.json.
+                </li>
+                <li><psk-code language="bash">
+                    --output="path_to_a_folder"
+                </psk-code>
+                    Used to specify a folder where bundles are written to after they are build.
+                </li>
+                <li><psk-code language="bash">
+                    --externalTarget="path_to_a_folder"
+                </psk-code>
+                    Used to specify a second output folder.
+                </li>
+                <li><psk-code language="bash">
+                    --input="path_to_a_folder"
+                </psk-code>
+                    Used to specify an entry folder containing files that Browserify will scan for dependencies.
+                </li>
+                <li><psk-code language="bash">
+                    --only="target1[,target2,...]"
+                </psk-code>
+                    Used to specify the list of targets that needs to be built.
+                </li>
+            </ul>
+        </psk-chapter>
+        <psk-chapter title="Example">
+            <psk-code language="bash">
+                npm run build -- --prod --input="path_to_input_folder" --output="path_to_output_folder"
+            </psk-code>
+            <b>Take note about -- . It is used to pass arguments to the build script via npm run command<b>
+        </psk-chapter>
+    </psk-chapter>
+    <br><br>
+</psk-page>

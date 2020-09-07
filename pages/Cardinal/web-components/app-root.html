@@ -1,0 +1,184 @@
+<psk-page title="psk-app-root">
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+          This is the main component of your cardinal application. It should be present in your <code><i>index.html</i></code> file.
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-app-root data-define-props="true">
+        </psk-app-root>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <psk-description>
+            This component accepts children elements.
+        </psk-description>
+
+        <psk-list>
+            <psk-chapter title="This website">
+                <psk-code language="markup">
+                    <psk-app-root></psk-app-root>
+                </psk-code>
+                <psk-description>
+                    If no children is provided, a default renderer will be used. The default render has the following layout:
+                    <psk-list list-type="ordered">
+                        left sidebar : page identity (logo, title), footer;
+                        right container : page title, page content;
+                    </psk-list>
+                    <psk-img src="/assets/images/newlook/DefaultLayout.png" title="Default web layout"></psk-img>
+                </psk-description>
+            </psk-chapter>
+            <psk-chapter title="Custom website">
+                <psk-description>
+                    For providing a custom layout, the slot of the psk-app-root could be provided as follows:
+                </psk-description>
+                <psk-code language="markup">
+                    <psk-app-root>
+                        <div class="global_container">
+                            <aside>
+                                <app-menu item-renderer = "sidebar-renderer">
+                                    <psk-user-profile slot="before"></psk-user-profile>
+                                </app-menu>
+                            </aside>
+                            <section>
+                                <psk-app-router></psk-app-router>
+                            </section>
+                        </div>
+                    </psk-app-root>
+                </psk-code>
+                <psk-chapter title="Custom layout">
+                    If the initial renderer is slotted with a custom renderer, as shown above, the CSS rules should be placed in <code>psk-app-root.css</code> or in another CSS file loaded from the <code>index.html</code> file.
+                    In the following CSS example we present the CSS for the presented custom renderer example, which, in this case, is identical with default renderer.
+                    <psk-code language="css">
+                        div.global_container {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: flex-start;
+                            height: 100%;
+                            background-color: #fff;
+                        }
+
+                        aside {
+                            height: 100%;
+                            background-image: linear-gradient(180deg, #5e7fe1 30%, #354f9b 100%);
+                            color: white;
+                            order: 1;
+                            flex: 0.5;
+                            display: grid!important;
+                            grid-template-rows: auto 1fr 40px;
+                            min-width: 320px;
+                            overflow: auto;
+                        }
+
+                        section {
+                             order: 2;
+                             flex: 8;
+                             height: 100%;
+                             overflow: hidden;
+                             position: relative;
+                         }
+
+                        .is-mobile div.global_container {
+                            width: 100%;
+                            flex-direction: column;
+                        }
+
+                        .is-mobile aside {
+                            width: 100%;
+                            height: auto;
+                            overflow: inherit;
+                            display: inline;
+                        }
+
+                        .is-mobile psk-user-profile{
+                            display: flex;
+                        }
+
+                        .is-mobile psk-user-profile .profile .card-body{
+                            padding: 15px 15px 15px 25px;
+                        }
+
+                        .is-mobile psk-user-profile img{
+                            width: 32px;
+                        }
+
+                        .is-mobile psk-user-profile p.card-text{
+                            display: none;
+                        }
+
+
+                        aside::-webkit-scrollbar {
+                            background-color: #fff;
+                            width: 7px;
+                        }
+
+
+
+                        aside::-webkit-scrollbar-track {
+                            background-color: #354f9b;
+                        }
+
+
+                        aside::-webkit-scrollbar-thumb{
+                            background-color: #fff;
+                            border-radius: 10px;
+                            border: 1px solid #354f9b;
+                        }
+
+
+
+                        aside::-webkit-scrollbar-button {
+                            display: none;
+                        }
+                    </psk-code>
+                </psk-chapter>
+                <psk-description>
+                    More details on how to style the slotted components or elements is described in <psk-link tag="Themes">Themes</psk-link>.
+                    <psk-img src="/assets/images/newlook/CustomLayout.png" title="Custom web layout"></psk-img>
+                </psk-description>
+            </psk-chapter>
+        </psk-list>
+    </psk-chapter>
+
+    <psk-chapter title="Code Example">
+        <psk-description>
+            In the end, the <code><i>index.html</i></code> file should look like the following code example.
+        </psk-description>
+        <psk-code language="markup">
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+            &lt;head&gt;
+            <title>Cardinal.js - Mini Framework for building web applications</title>
+                <meta charset="UTF-8">
+                &lt;link rel="icon" type="image/png" sizes="96x96" href="/favicon.png"&gt;
+                &lt;link href="/assets/css/main.css" rel="stylesheet" type="text/css"&gt;
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+                <meta name="apple-mobile-web-app-capable" content="yes">
+            &lt;/head&gt;
+            &lt;body&gt;
+            <psk-app-root>
+                <div class="global_container">
+                    <aside>
+                        <app-menu item-renderer = "sidebar-renderer">
+                            <psk-user-profile slot="before"></psk-user-profile>
+                        </app-menu>
+                    </aside>
+                    <section>
+                        <psk-app-router></psk-app-router>
+                    </section>
+                </div>
+            </psk-app-root>
+
+            <script src="/scripts/privatesky/webshims.js"></script>
+            <script src="/scripts/privatesky/bindableModel.js"></script>
+            <script type="module" src="/cardinal/cardinal.esm.js"></script>
+            <script nomodule src="/cardinal.js"></script>
+            &lt;/body&gt;
+            &lt;/html&gt;
+        </psk-code>
+    </psk-chapter>
+
+
+</psk-page>

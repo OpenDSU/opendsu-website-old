@@ -1,0 +1,147 @@
+<psk-page title="Blockchain module">
+    <psk-toc title="Table of contents"> </psk-toc>
+    <psk-chapter title="Introduction">
+        The <code>blockchain</code> module provides the ability to create public or private custom blockchains.
+        Our blockchain implementation is capable of adapting to different needs for the consensus algorithm, history storage,
+        public and private signature generator, cache state storage and also assets and transactions definitions.
+    </psk-chapter>
+    <psk-chapter title="APIs">
+        Blockchain module exposes the following APIs:
+        <psk-chapter title="createWorldStateCache">
+            The <code>createWorldStateCache()</code> returns an instance of the specified world state cache.
+            The <code>world state cache</code> is a storage where
+            a snapshot of the blockchain's state at a specific moment in time is kept. Different storage strategies
+            for implementing a world state cache can be employed. PrivateSky provides three world state cache strategies: <code>Memory Cache</code>, that stores the
+            blockchain state in memory, <code>LocalWSCache</code>, that stores the blockchain state in the local file system and <code>BarCache</code> that stores the
+            blockchain state inside a <code>Brick Archive</code>.<br><br>
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    createWorldStateCache(type, ...args);
+                </psk-code>
+                    <psk-card title="Parameters">
+                        <psk-list list-type="unordered">
+                            <code><b>type</b></code> - The type name of the strategy that will be used as world state cache strategy. By default, it can get one of the three values: <code>memory</code>, <code>fs</code> or <code>bar</code>.
+                            <code><b>...args</b></code> - The arguments list that the strategy with the <code>type</code> name takes.
+                        </psk-list>
+                    </psk-card>
+                    <psk-card title="Return value">
+                        An instance of the world state cache strategy having the name <code>type</code>.
+                    </psk-card>
+            </psk-card>
+            <psk-card title="Examples">
+                Creating a <code>MemoryCache</code> for storing the blockchain state.
+                <psk-code language="JavaScript">
+                    const bm = require("blockchain");
+                    let worldStateCache = bm.createWorldStateCache("memory");
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="createHistoryStorage">
+            The <code>createHistoryStorage()</code> returns an instance of the specified history storage type. The <code>history storage</code> is a storage where that keeps a list of all transactions executed on the blockchain since its creation. Different storage strategies for implementing a history storage can be employed. PrivateSky provides three history storage strategies: <code>MemoryStorage</code>, that stores the blockchain history in memory, <code>FsHistoryStorage</code>, that stores the blockchain history in the local file system and <code>BarHistoryStorage</code> that stores the blockchain history inside a <code>Brick Archive</code>
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    createHistoryStorage(type, ...args);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>type</b></code> - The type name of the history storage strategy. By default, it can get one of the three values: <code>memory</code>, <code>fs</code> or <code>bar</code>.
+                        <code><b>...args</b></code> - The arguments list that the strategy with the <code>type</code> takes.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    An instance of the history storage strategy <code>type</code>.
+                </psk-card>
+            </psk-card>
+            <psk-card title="Examples">
+                Creating a <code>BarHistoryStorage</code> for storing the blockchain blockchain history.
+                <psk-code language="JavaScript">
+                    const bm = require("blockchain");
+                    let historyStorage = bm.createHistoryStorage("bar");
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="createAlgorithm">
+            The <code>createAlgorithm()</code> returns an instance of the specified consensus algorithm.
+            The <code>consensus algorithm</code> is the algorithm used for reaching consensus between nodes when validating blockchain transactions.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    createAlgorithm(name, ...args);
+                </psk-code>
+                    <psk-card title="Parameters">
+                        <psk-list list-type="unordered">
+                            <code><b>name</b></code> - The name of the consensus algorithm used. The name can take one of the followings values: <code>direct</code>, <code>SignSensus</code> or <code>OBFT</code>.
+                            <code><b>...args</b></code> - The arguments list that the algorithm takes.
+                        </psk-list>
+                    </psk-card>
+                    <psk-card title="Return value">
+                        An instance of the consensus algorithm.
+                    </psk-card>
+            </psk-card>
+
+            <psk-card title="Examples">
+                <psk-code language="JavaScript">
+                    const bm = require("blockchain");
+                    let consensusAlgorithm = bm.createAlgorithm("direct");
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="createSignatureProvider">
+            The <code>createSignatureProvider()</code> returns an instance of a signature provider.
+            The signature provider will be used each time a node communicates with another in order to propose a transaction or to vote and validate one.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    createSignatureProvider(name, ...args);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>name</b></code> - The name of the signature provider that will be instantiated. The name can take one of the followings values: <code>permissive</code> or <code>blockchain</code>.
+                        <code><b>...args</b></code> - The arguments list that the signature provider constructor takes.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    An instance of the signature provider.
+                </psk-card>
+            </psk-card>
+            <psk-card title="Examples">
+                <psk-code language="JavaScript">
+                    const bm = require("blockchain");
+                    let consensusAlgorithm = bm.createSignatureProvider("direct");
+                </psk-code>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter title="createBlockchain">
+            The <code>createBlockchain()</code> creates a custom <code>Blockchain</code> instance. The blockchain instance will be accessible via <code>$$.blockchain</code> reference.
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    createBlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider[, loadDefaultConstitution, forcedBoot]);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>worldStateCache</b></code> - World state cache strategy instance
+                        <code><b>historyStorage</b></code> - History storage strategy instance
+                        <code><b>consensusAlgorithm</b></code> - Consensus algorithm instance
+                        <code><b>signatureProvider</b></code> - The signature provider
+                        <code><b>loadDefaultConstitution</b></code> - A <code>boolean</code> variable used for deciding whether the default constitution (a collection of assets and transactions available in the Blockchain module) is used. Default <code>true</code>
+                        <code><b>forcedBoot</b></code> - A <code>boolean</code> variable used to decide whether $$.blockchain instance of should be overwritten. Default <code>false</code>
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+        </psk-chapter>
+    </psk-chapter>
+    <psk-chapter title="Examples">
+        In the following example, we configure a Blockchain instance with proper strategies.
+        <psk-code language="JavaScript">
+            const bm = require("blockchain");
+
+            let worldStateCache = bm.createWorldStateCache("memory");
+            let historyStorage = bm.createHistoryStorage("fs");
+            let consensusAlgorithm = bm.createConsensusAlgorithm("direct");
+            let signatureProvider = bm.createSignatureProvider("permissive");
+
+            bm.createBlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider, true);
+
+            //from this step forward $$.blockchain is ready and can be used
+
+        </psk-code>
+    </psk-chapter>
+</psk-page>

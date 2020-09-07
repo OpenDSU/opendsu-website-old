@@ -1,0 +1,79 @@
+<psk-page title="Brick Storage API">
+    <psk-highlight type-of-highlight="note">
+        The Brick Storage component of VirtualMQ allows the storage and retrieval of bricks (blocks of data from a
+        file).
+        As a brick is uniquely identified by the cryptographic hash of its content, any brick stored in VirtualMQ is an
+        unique block of data. Also, when receiving
+        a brick, VirtualMQ computes the hash of the data and compares it with the brick id included in the request
+        parameters and if the two do not coincide, the data is discarded and the
+        an error is thrown.
+    </psk-highlight>
+
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="put brick">
+        Saves a brick in EDFS Brick Storage.
+        <psk-card title="Syntax">
+            <psk-list list-type="unordered">
+                <psk-card title="URL">
+                    <code>/:fileId</code>
+                </psk-card>
+                <psk-card title="Method">
+                    <code>POST</code>
+                </psk-card>
+                <psk-card title="URL Params">
+                    <code>fileId = [alphanumeric]</code>
+                </psk-card>
+                <psk-card title="Data Params">
+                    Content-Type: <code>application/octet-stream</code><br>
+                    Content: <code>data stream</code>
+
+                </psk-card>
+                <psk-card title="Success Response">
+                    Code: <code>200 OK</code><br>
+                    Content: <code>None</code>
+                </psk-card>
+            </psk-list>
+        </psk-card>
+        <psk-card title="Description">
+
+        </psk-card>
+        <psk-card title="Example">
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="get brick">
+        Retrieves a brick from EDFS Brick Storage.
+        <psk-card title="Syntax">
+            <psk-list list-type="unordered">
+                <psk-card title="URL">
+                    <code>/:fileId</code>
+                </psk-card>
+                <psk-card title="Method">
+                    <code>GET</code>
+                </psk-card>
+                <psk-card title="URL Params">
+                    <code>fileId = [alphanumeric]</code>
+                </psk-card>
+                <psk-card title="Data Params">
+                    <code>None</code>
+                </psk-card>
+                <psk-card title="Success Response">
+                    Code: <code>200 OK</code><br>
+                    Content-Type: <code>application/octet-stream</code><br>
+                    Content: <code>data stream</code>
+                </psk-card>
+                <psk-card title="Error Response">
+                    Code: <code>404</code><br>
+                    Reason: The file does not exist.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+        <psk-card title="Description">
+
+        </psk-card>
+        <psk-card title="Example">
+
+        </psk-card>
+    </psk-chapter>
+</psk-page>

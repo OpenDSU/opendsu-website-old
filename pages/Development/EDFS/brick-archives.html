@@ -1,0 +1,234 @@
+<psk-page title="Brick Archives">
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="Introduction">
+        <p>In order to overcome some of the limitations (such as the inability to stream) of the
+            existent archiving protocols (such as zip), PrivateSky created its own archiving protocol, BAR (Brick
+            Archive). In short, the BAR protocol breaks files into blocks of equal length called “bricks”, and keeps
+            references to all the bricks in a separate file called “bar map”. Optionally, the protocol allows the
+            compression and/or encryption of the “bricks”.
+        </p>
+    </psk-chapter>
+    <psk-chapter title="Archiving process">
+        <p>
+            As mentioned above, the archiving mechanism that BAR protocol employs relies on breaking files into “bricks”
+            and keeping references to these bricks in an additional brick called bar map. The bar map also keeps the
+            order of the bricks in the original file and, in the case in which the archive is encrypted, the bar map
+            keeps the encryption key for each brick. When encryption is employed, each brick is individually encrypted
+            with its own cryptographic key in order to prevent compromising the entire archive if a brick’s key is
+            compromised (that will be the case if all bricks in the archive would be encrypted using the same
+            cryptographic key). Figure 1 illustrates the bar map’s format.
+        </p>
+        <psk-img title="Figure 1 - Bar Map's structure" src="/assets/images/newlook/BarMap.svg"></psk-img>
+        <p>
+            In the figure above:
+        </p>
+        <ul>
+            <li>filepath_i, i = 1, m represents the file’ s path inside the BAR archive; the path separator inside an
+                archive is “/”.
+            </li>
+            <li>{ hash_ij: key_ij }, i=1, m, j=1, nl are the hash of brick j and the cryptographic key used to encrypt
+                brick j of file i; nl is the number of bricks in file i.
+            </li>
+        </ul>
+        <p>
+            As seen above, the pairs <i>{ hash: key }</i> are stored inside an array to preserve the order of bricks
+            inside a
+            file;
+            knowing the order of bricks inside a file is paramount for reconstructing said file from its component
+            bricks at
+            extraction. Data inside the bar map are, also, kept inside a brick. The reference to this brick and the
+            cryptographic key used for its encryption (if the archive is encrypted) are returned at the end of the
+            archiving
+            process. The bar map brick’s reference and cryptographic key are the only data one needs in order to decrypt
+            and
+            extract all the files inside the archive.
+        </p>
+    </psk-chapter>
+    <psk-chapter title="Extraction">
+        <p>
+            Extraction of files from a BAR means reconstructing the files inside the archive from its bricks. As the bar
+            map contains the references to all bricks of each file, as well as the keys used for bricks’ encryption, in
+            order to extract files from an archive one needs only the reference of the brick that stores the bar map and
+            the key used for its encryption ( if it is the case ). After reading the data from bar map, the rest of the
+            extraction process is pretty straightforward, as bricks’ hashes and keys for each file inside the archive
+            are kept in bar map.
+        </p>
+    </psk-chapter>
+
+    <psk-chapter title="BAR library">
+        <p>
+            At an abstract level, the BAR library takes files from some file system which are then transferred in a
+            brick storage and, conversely, takes archives from a brick storage and extracts them in some file system. To
+            this extent, the BAR library is configurable such that both the file system from which the files that are
+            added to the archive (FsAdapter) and the brick storage can be specified.
+            The BAR library exposes the methods the <i>Archive</i> class. An instance of the <i>Archive</i> class takes
+            as argument an
+            instance of the <i>ArchiveConfigurator</i> class; the <i>ArchiveConfigurator</i> instance contains the brick
+            storage, the
+            file system that stores the files added to the archive, the brick size in bytes. Below are described the
+            <i>Archive</i> and <i>ArchiveConfigurator</i> classes.
+        </p>
+        <psk-chapter title="ArchiveConfigurator class">
+            <p>
+                <i>ArchiveConfigurator</i> is the class through which the instances of the <i>Archive</i> class are
+                configured. It
+                allows to specify the file system that stores the files added to the archive, the brick storage, the
+                brick size and the type of encryption and/or compression used, through the following interface:
+            </p>
+             <p> 
+                <psk-code language="Javascript">
+     registerStorageProvider (storageProviderName, factory)
+                </psk-code>
+                
+                <p>Associates to <i>storageProviderName</i> the function factory which generates
+                    instances of the brick
+                    storage having the name <i>storageProviderName</i>.
+                </p>
+            </p>  
+            <p>
+                <psk-code language="Javascript">
+     registerFsAdapter (fsAdapterName, factory)
+                </psk-code>
+                
+                <p>
+                    Associates to <i>fsAdapterName</i> the function factory which generates instances of the file system
+                    adapter having the name <i>fsAdapterName</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    setStorageProvider (storageProviderName, ...args)
+                </psk-code>
+                
+                <p>Calls the function factory associated with the brick storage provider <i>storageProviderName</i>
+                    (by
+                    calling registerStorageProvider)in order to generate an instance of the <i>storageProviderName</i>
+                    that
+                    is kept inside the ArchiveConfigurator instance. <i>...args</i> is an array of arguments passed to
+                    function factory.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    setFsAdapter(fsAdapterName, ...args)
+                </psk-code>
+                
+                <p>
+                    Calls the function factory associated with the file system adapter <i>fsAdapterName</i> (by calling
+                    <i>registerFsAdapter</i>)in order to generate an instance of the <i>storageProviderName</i> that is
+                    kept inside the ArchiveConfigurator instance. <i>...args</i> is an array of arguments passed to
+                    function factory.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    setEncryptionAlgorithm(algorithm)
+                </psk-code>
+                
+                <p>
+                    Sets the encryption algorithm used when encrypting the archive. The <i>algorithm</i> argument is the
+                    name
+                    of the encryption algorithm used. If this function is called, then implicitly the archive is
+                    considered encrypted and subsequently all bricks will be encrypted with its own cryptographic key.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    setCompressionAlgorithm(algorithm)
+                </psk-code>
+                
+                <p>
+                    Sets the compression algorithm used when compressing the archive. The <i>algorithm</i> argument is
+                    the name
+                    (taken from the NodeJs zlib library) of the compression algorithm used. If this function is called,
+                    then implicitly the archive is considered compressed and subsequently all bricks will be compressed
+                    using the compression algorithm specified.
+                </p>
+            </p>
+
+        </psk-chapter>
+        <psk-chapter title="Archive class">
+            <p>
+                <i>Archive</i> is the main class of the BAR library and contains the methods that form the BAR library’s
+                API. Below are described <i>Archive</i>’s methods:
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    addFolder(fsFolderPath, barPath, callback)
+                </psk-code>
+                
+                <p>
+                    Adds the folder at <i>fsFolderPath</i> to the current archive at <i>barPath</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    addFile(fsFilePath, barPath, callback)
+                </psk-code>
+                
+                <p>
+                    Adds the file at <i>fsFilePath</i> to the current archive at <i>barPath</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    extractFolder(fsFolderPath, barPath, callback)
+                </psk-code>
+                
+                <p>
+                    Extracts the folder, stored inside the current archive at <i>barPath</i>, to local path <i>fsFolderPath</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    extractFile(fsFilePath, barPath, callback)
+                </psk-code>
+                
+                <p>
+                    Extracts the file, stored inside the current archive at <i>barPath</i>, to local path
+                    <i>fsFilePath</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    writeFile(barPath, data, callback)
+                </psk-code>
+                
+                <p>
+                    Stores the bytes in <i>data</i> argument in the current archive at <i>barPath</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    readFile(barPath, callback)
+                </psk-code>
+                
+                <p>
+                    Extracts and returns data stored inside the current archive at <i>barPath</i>.
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    getSeed()
+                </psk-code>
+                
+                <p>
+                    Returns the <i>SEED</i> serialization of the current <i>Archive</i> instance. The <i>SEED</i> will
+                    be later used when extracting the archive to localize and decrypt the archive’s bar map
+                </p>
+            </p>
+            <p>
+                <psk-code language="Javascript">
+    setSeed(seedSerialization)
+                </psk-code>
+                
+                <p>
+                  This function is called before extracting the archive. The <i>seedSerialization</i> argument is used to
+                    localize and decrypt the archive’s bar map.
+                </p>
+            </p>
+            
+        </psk-chapter>
+    </psk-chapter>
+
+</psk-page>

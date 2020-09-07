@@ -1,0 +1,126 @@
+<psk-page title="PrivateSky Installation">
+  <psk-toc title="Table of contents">
+  </psk-toc>
+  <psk-chapter title="Prerequisites">
+    <psk-list list-type="ordered">
+		Install or update <a href="https://nodejs.org/en/">Node</a> and Npm to version <b>12.14.0</b> or newer.
+		Install <a href="https://www.python.org/">Python 2.7</a> if it is not currently installed. <a href="https://www.python.org/downloads/release/python-2716/">(download)</a>
+		Ensure that you have <a href="https://git-scm.com/">Git</a> properly configured in your PATH environment.
+		Install a C/C++ toolchain, like GCC, with support for C++14 minimum. (Instructions bellow)
+			<psk-card title="To install C/C++ toolchain on Windows">
+				Run "as administrator" the following command:
+				<psk-code language="bash">
+					npm install --global --production windows-build-tools
+				</psk-code>
+				Depending on Windows version may be required to run the above command with <b>--vs2015</b> argument. For other args plese check <a href="https://www.npmjs.com/package/windows-build-tools" target="_blank">Windows Build Tools npm page</a>
+			</psk-card>
+			<psk-card title="To install C/C++ toolchain on CentOS">
+				<psk-code language="bash">
+					sudo yum install centos-release-scl-rh
+					sudo yum --enablerepo=centos-sclo-rh-testing install devtoolset-7-gcc*
+					echo "source scl_source enable devtoolset-7" >> ~/.bashrc
+					source ~/.bashrc
+				</psk-code>
+			</psk-card>
+			<psk-card title="To install C/C++ toolchain on MacOS">
+				Install Xcode.
+				You also need to install the Command Line Tools via Xcode. You can find this under the menu Xcode -> Preferences -> Locations (or by running xcode-select --install in your Terminal)
+			</psk-card>
+		Install node-gyp by following the instruction <a href="https://github.com/nodejs/node-gyp">here</a>
+    </psk-list>
+  </psk-chapter>
+
+    <psk-chapter title="Setup SSApps (eg ssapp-demo-workspace or your solution based on ssapp-demo-workspace)">
+        <psk-description>
+            The setup process of an development environment for building and running SSApps. For example, we use ssapp-demo-workspace.
+        </psk-description>
+        <psk-chapter title="Clone ssapp-demo-workspace">
+            First of all, create a local clone of the ssapp-demo-workspace Github project:
+            <psk-code language="bash">
+                git clone https://github.com/PrivateSky/ssapp-demo-workspace.git
+            </psk-code>
+            Enter into checkout folder and run the following command:
+            <psk-code language="bash">
+                npm install
+            </psk-code>
+
+            Optionally (if something crashed or you add changes) do a privatesky build
+            <psk-code language="bash">
+                cd privatesky
+                npm install
+                #if you want to run the tests, have to install zeromq manually
+                #npm install zeromq@4.6.0
+                npm run build
+                cd ..
+            </psk-code>
+
+            Run the brick storage and static file http server
+            <psk-code language="bash">
+                npm run server
+            </psk-code>
+
+            Wait for a message like "Domain boot successfully" and then open a new terminal and build all the ssapps, wallets, etc in the current project
+            <psk-code language="bash">
+                npm run build-all
+            </psk-code>
+
+            Finally, open the browser (in incognito tab is the best) and go to <a href="http://localhost:8080/secure-channels/loader">http://localhost:8080/secure-channels/loader</a>
+
+        </psk-chapter>
+    </psk-chapter>
+
+
+
+  <psk-chapter title="Setup PrivateSky">
+    <psk-description>
+      The setup process of PrivateSky <b>(contributors project version)</b> can be reduced to git clone the project and run npm install process. (steps bellow)
+    </psk-description>
+    <psk-chapter title="Install a PSK Node (contributors project version)">
+      First of all, create a local clone of the PrivateSky Github project:
+          <psk-code language="bash">
+            git clone https://github.com/PrivateSky/privatesky.git
+          </psk-code>
+      Enter into checkout folder and run the following command:
+          <psk-code language="bash">
+            cd privatesky
+            npm install
+          </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Install a PSK Node (release version)">
+      First of all, create a local clone of the PrivateSky Github project:
+      <psk-code language="bash">
+        git clone https://github.com/PrivateSky/psk-release.git
+      </psk-code>
+      Enter into checkout folder and run the following command:
+      <psk-code language="bash">
+        cd privatesky
+        npm install
+      </psk-code>
+    </psk-chapter>
+  </psk-chapter>
+
+
+
+    <psk-chapter title="Run PSK Node">
+    The Node version is checked and if is all good the installation process begins by downloading the required dependencies. Once the installation process has finished successfully, the following command needs to be run:
+        <psk-code language="bash">
+          npm run start
+        </psk-code>
+    At this point, the PrivateSky installation is <b>done</b> and the PrivateSky Node is up and <b>ready to go!</b>
+  </psk-chapter>
+  <psk-chapter title="Run PSK Node during development">
+    <psk-description>
+      The difference is that during development PSK Node code is necessary to be rebuilt every time that source code and folders are modified according to the project's needs.
+    </psk-description>
+    During development, instead of the <b>npm run start</b> command run
+    <psk-code language="bash">
+      npm run watch
+    </psk-code>
+  </psk-chapter>
+  <psk-chapter title="Update">
+    To update an existing PrivateSky installation run command:
+    <psk-code language="bash">
+      npm run update
+    </psk-code>
+  </psk-chapter>
+</psk-page>
