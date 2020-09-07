@@ -47,3 +47,27 @@
     grid-column-start: 2;
     background-color: #F6F6F6;
 }
+
+@media only screen and (max-width: 1360px) {
+    :host([has-toc]) .page-title h1 {
+        font-size: 1.4rem;
+        margin-right: 0;
+    }
+
+    :host([has-toc]) .page-content {
+        grid-template-columns: 1fr;
+    }
+
+    :host([has-toc]) .page-content > .toc {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        max-width: 100%;
+        min-height: auto;
+    }
+
+    :host([has-toc]) .page-content > .container {
+        grid-row-start: 2;
+    }
+}

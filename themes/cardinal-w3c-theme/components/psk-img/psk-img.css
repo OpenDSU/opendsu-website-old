@@ -4,6 +4,8 @@
 
 :host {
     scroll-behavior: smooth;
+    display: block;
+    font-family: sans-serif;
 }
 
 .image_container {
@@ -12,16 +14,11 @@
 }
 
 .image_container img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .image_description {
     text-align: center;
     padding: 10px;
     font-style: italic;
-}
-
-:host {
-    display: block;
-    font-family: sans-serif;
 }
