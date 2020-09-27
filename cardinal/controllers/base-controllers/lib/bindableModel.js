@@ -611,6 +611,30 @@ class PskBindableModel {
 
         root = proxify(_model);
 
+        /**
+         * This function is returning the object representanion of the proxified model.
+         * It accepts only one optional parameter, chain.
+         * If no chain is provided, the root model becomes the source.
+         * 
+         * @param {string | null} chain - (Optional) The chain inside the root model.
+         * @returns {Object} - The object representanion of the proxified model
+         */
+        root.toObject = function(chain) {
+            let source = {};
+
+            if (!chain) {
+                source = root;
+            } else if (typeof chain === 'string') {
+                source = root.getChainValue(chain);
+            }
+
+            if (source && typeof source === 'object') {
+                return JSON.parse(JSON.stringify(source));
+            }
+
+            return source;
+        }
+
         ////////////////////////////
         // Model expressions support
         ////////////////////////////

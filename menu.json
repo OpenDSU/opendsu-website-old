@@ -16,182 +16,48 @@
       "pageSrc": "index.html"
     },
     {
-      "name": "Overview",
-      "path": "/Overview",
+      "name": "Papers",
+      "path": "/Papers",
       "icon": "fa-cog",
       "children": [
         {
-          "name": "Why",
-          "tags": "why"
-        },
-        {
-          "name": "Main Innovations",
-          "tags": "main-innovations"
-        },
-        {
-          "name": "Architecture",
-          "tags": "arhitecture"
-        },
-        {
-          "name": "Blockchain",
-          "path": "Blockchain",
-          "icon": "fa-cog",
-          "children": [
-            {
-              "name": "Secret Smart Contracts",
-              "tags": "secret-smart-contracts"
-            }
-          ]
-        },
-        {
-          "name": "Development Vision",
-          "tags": "development-vision",
-          "indexed": "false"
-        },
-        {
-          "name": "Swarms Explained",
-          "tags": "swarms-explained"
-        },
-        {
-          "name": "Dependencies",
-          "tags": "dependencies"
+          "name": "Bluepaper",
+          "tags": "bluepaper",
+          "pageSrc": "https://docs.google.com/document/d/e/2PACX-1vQUoIiaXr7T3ZEF48Gs6p-c9l6NX18qAN2cHDDPHdW-e4GI6_KaL7eTIAeDmOzIQ-cET8Sc5WFA14uo/pub",
+          "options": {
+            "type": "iframe"
+          }
         }
       ]
     },
     {
-      "name": "APIs",
-      "path": "/API",
+      "name": "OpenDSU SDK",
+      "path": "/OpenDSU",
       "icon": "fa-cog",
       "children": [
         {
-          "name": "PrivateSky APIs",
-          "tags": "privatesky-apis"
-        },
-        {
-          "name": "Swarms",
-          "tags": "swarms"
-        },
-        {
-          "name": "Blockchain",
-          "children": [
-            {
-              "name": "Overview",
-              "tags": "overview"
-            },
-            {
-              "name": "Blockchain",
-              "tags": "blockchain"
-            }
-          ]
-        },
-        {
-          "name": "EDFS",
-          "children": [
-            {
-              "name": "Overview"
-            },
-            {
-              "name": "EDFS"
-            },
-            {
-              "name": "BARs"
-            },
-            {
-              "name": "Dossiers"
-            },
-            {
-              "name": "Key SSIs"
-            }
-          ]
-        },
-        {
-          "name": "Web - Services",
-          "children": [
-            {
-              "name": "Overview"
-            },
-            {
-              "name": "Brick Storage"
-            },
-            {
-              "name": "Anchoring"
-            },
-            {
-              "name": "VirtualMQ"
-            },
-            {
-              "name": "Dossier wizard"
-            }
-          ]
-        },
-        {
-          "name": "SSApps",
-          "children": [
-            {
-              "name": "Overview",
-              "tags": "ss-app-overview"
-            }
-          ]
-        },
-        {
-          "name": "Interactions"
-        },
-        {
-          "name": "Classes",
-          "children": [
-            {
-              "name": "Seed"
-            },
-            {
-              "name": "Anchor"
-            }
-          ]
+          "name": "RFC05 OpenDSU SDK",
+          "pageSrc": "https://docs.google.com/document/d/e/2PACX-1vQGkWqlkxMUy_QUmr07npMy53pHssTR6W3zOM5mCuzLrI3HJmAqZYcIC8b929CIr-6-KqvLiAKVHh15/pub",
+          "options": {
+            "type": "iframe"
+          }
         }
       ]
     },
     {
-      "name": "FAQ",
-      "path": "/FAQ",
-      "icon": "fa-cog"
+      "name": "Specifications",
+      "path": "/specifications",
+      "pageSrc": "specifications/index.html"
     },
     {
-      "name": "How To Create",
-      "path": "/Howto",
-      "icon": "fa-cog",
-      "children": [
-        {
-          "name": "A site with Cardinal"
-        },
-        {
-          "name": "A SSApp",
-          "tags": "a-ssapp"
-        },
-        {
-          "name": "A documentation site",
-          "tags": "documentation-site, ssapp"
-        },
-        {
-          "name": "A web site with swarms"
-        }
-      ]
+      "name": "Best Practices",
+      "path": "/best-practices",
+      "pageSrc": "best-practices/index.html"
     },
     {
-      "name": "Quick Start",
-      "path": "/Start",
-      "icon": "fa-cog",
-      "children": [
-        {
-          "name": "Installation"
-        },
-        {
-          "name": "Build"
-        }
-      ]
-    },
-    {
-      "name": "Glossary",
-      "path": "/glossary",
-      "pageSrc": "About/glossary.html"
+      "name": "Recommendations",
+      "path": "/recommendations",
+      "pageSrc": "ecommendations/index.html"
     },
     {
       "name": "About",
@@ -200,106 +66,7 @@
       "pageSrc": "About/about.html",
       "tags": "about, open-source"
     },
-    {
-      "name": "Tools",
-      "path": "/Tools",
-      "icon": "fa-cog",
-      "children": [
-        {
-          "name": "Octopus"
-        },
-        {
-          "name": "bar"
-        },
-        {
-          "name": "CSBWizard",
-          "indexed": "false"
-        },
-        {
-          "name": "Governance",
-          "indexed": "false"
-        },
-        {
-          "name": "PSKMonitor",
-          "indexed": "false"
-        },
-        {
-          "name": "pskwallet",
-          "indexed": "false"
-        },
-        {
-          "name": "Tool List",
-          "indexed": "false"
-        }
-      ]
-    },
-    {
-      "name": "Development",
-      "path": "/Development",
-      "icon": "fa-cog",
-      "children": [
-        {
-          "name": "For PrivateSky Contributors"
-        },
-        {
-          "name": "Coding style"
-        },
-        {
-          "name": "Unit testing map",
-          "indexed": "false"
-        },
-        {
-          "name": "Node Modules"
-        },
-        {
-          "name": "Workers and Isolates"
-        },
-        {
-          "name": "Encrypted Choreographies"
-        },
-        {
-          "name": "Development guide",
-          "indexed": "false"
-        },
-        {
-          "name": "Communication",
-          "indexed": "false"
-        },
-        {
-          "name": "Advanced",
-          "indexed": "false"
-        },
-        {
-          "name": "Swarm Engine"
-        },
-        {
-          "name": "Syndicate"
-        },
-        {
-          "name": "Annotation Engine"
-        },
-        {
-          "name": "EDFS",
-          "path": "/EDFS",
-          "icon": "fa-cog",
-          "children": [
-            {
-              "name": "Brick Archives"
-            },
-            {
-              "name": "Raw Dossiers"
-            }
-          ]
-        },
-        {
-          "name": "Smoke Tests Results",
-          "pageSrc": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
-          "options": {
-            "type": "iframe"
-          }
-        }
-      ]
-    },
+
     {
       "name": "404"
     },

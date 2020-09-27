@@ -1,0 +1,1 @@
+import{r,h as s,H as o}from"./p-dac455db.js";const t=class{constructor(s){r(this,s)}render(){return s(o,null)}};export{t as psk_hoc}

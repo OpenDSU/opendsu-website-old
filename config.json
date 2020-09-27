@@ -2,8 +2,8 @@
     "basePagesUrl": "/pages/",
     "profile": {
         "username": "OpenDSU RFC",
-        "email": "privatesky@axiologic.net",
-        "avatar": "/assets/images/cardinal.png"
+        "email": "opendsu@axiologic.net",
+        "avatar": "/assets/images/logo.png"
     },
     "theme": "cardinal-w3c-theme"
 }
