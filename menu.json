@@ -36,11 +36,7 @@
       "icon": "fa-cog",
       "children": [
         {
-          "name": "RFC05 OpenDSU SDK",
-          "pageSrc": "https://docs.google.com/document/d/e/2PACX-1vQGkWqlkxMUy_QUmr07npMy53pHssTR6W3zOM5mCuzLrI3HJmAqZYcIC8b929CIr-6-KqvLiAKVHh15/pub",
-          "options": {
-            "type": "iframe"
-          }
+          "name": "RFC05"
         }
       ]
     },

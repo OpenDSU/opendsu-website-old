@@ -48,6 +48,33 @@
     background-color: #F6F6F6;
 }
 
+:host(.full-viewport) .page-title{
+    display: none;
+}
+
+:host(.full-viewport) .page-content{
+    margin: 0;
+    padding: 0;
+}
+
+:host(.full-viewport) .page-content > .container{
+    margin: 0;
+    padding: 0;
+    max-width: initial;
+}
+
+:host(.full-viewport) .page-content > .container > .container-content{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+:host(.full-viewport) ::slotted(iframe.fill-page)  {
+    flex: 1;
+    border: none;
+}
+
 @media only screen and (max-width: 1360px) {
     :host([has-toc]) .page-title h1 {
         font-size: 1.4rem;
