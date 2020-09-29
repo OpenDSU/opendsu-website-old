@@ -217,9 +217,10 @@ export default class AppConfigurationHelper {
       return tagsDictionary;
     };
 
-    let routes = JSON.parse(JSON.stringify(configuration.routes));
-    configuration.menu = filterIndexedItems(routes);
-    configuration.tags = getPagesTags(routes);
+    let routesForTags = JSON.parse(JSON.stringify(configuration.routes));
+    let routesForMenu = JSON.parse(JSON.stringify(routesForTags));
+    configuration.menu = filterIndexedItems(routesForMenu);
+    configuration.tags = getPagesTags(routesForTags);
     configuration.pagesHierarchy = AppConfigurationHelper._prepareRoutesTree(configuration.routes, historyType);
     return configuration;
   }

@@ -48,10 +48,6 @@
     background-color: #F6F6F6;
 }
 
-:host(.full-viewport) .page-title{
-    display: none;
-}
-
 :host(.full-viewport) .page-content{
     margin: 0;
     padding: 0;
