@@ -8,8 +8,7 @@
     "pagePrefix": "?",
     "historyType": "query"
   },
-  "pages": [
-    {
+  "pages": [{
       "name": "Home",
       "path": "/home",
       "icon": "fa-home",
@@ -19,37 +18,47 @@
       "name": "Papers",
       "path": "/Papers",
       "icon": "fa-cog",
-      "children": [
-        {
-          "name": "Bluepaper",
-          "tags": "bluepaper"
-        }
-      ]
+      "children": [{
+        "name": "Bluepaper",
+        "tags": "bluepaper"
+      }]
     },
     {
       "name": "OpenDSU SDK",
       "path": "/OpenDSU",
       "icon": "fa-cog",
-      "children": [
-        {
+      "children": [{
           "name": "RFC05"
+        },
+        {
+          "name": "RFC022"
         }
       ]
     },
     {
       "name": "Specifications",
       "path": "/specifications",
-      "pageSrc": "specifications/index.html"
+      "children": [{
+        "name": "RFC03"
+      }, {
+        "name": "RFC04"
+      }]
     },
     {
       "name": "Best Practices",
       "path": "/best-practices",
-      "pageSrc": "best-practices/index.html"
+      "children": [{
+        "name": "RFC038"
+      }]
     },
     {
       "name": "Recommendations",
       "path": "/recommendations",
-      "pageSrc": "ecommendations/index.html"
+      "children": [{
+        "name": "RFC044"
+      }, {
+        "name": "RFC045"
+      }]
     },
     {
       "name": "About",
