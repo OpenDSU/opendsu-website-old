@@ -37,7 +37,7 @@
     },
     {
       "name": "Specifications",
-      "path": "/specifications",
+      "path": "/Specifications",
       "children": [{
         "name": "RFC03"
       }, {
@@ -46,14 +46,14 @@
     },
     {
       "name": "Best Practices",
-      "path": "/best-practices",
+      "path": "/Best-Practices",
       "children": [{
         "name": "RFC038"
       }]
     },
     {
       "name": "Recommendations",
-      "path": "/recommendations",
+      "path": "/Recommendations",
       "children": [{
         "name": "RFC044"
       }, {
