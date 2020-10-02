@@ -28,9 +28,20 @@
       "path": "/OpenDSU",
       "icon": "fa-cog",
       "children": [{
-          "name": "RFC05"
-        },
-        {
+          "name": "RFC002"
+        },{
+          "name": "RFC005"
+        },{
+          "name": "RFC006"
+        }, {
+          "name": "RFC010"
+        }, {
+          "name": "RFC011"
+        }, {
+          "name": "RFC012"
+        }, {
+          "name": "RFC013"
+        }, {
           "name": "RFC022"
         }
       ]
@@ -39,9 +50,9 @@
       "name": "Specifications",
       "path": "/Specifications",
       "children": [{
-        "name": "RFC03"
+        "name": "RFC003"
       }, {
-        "name": "RFC04"
+        "name": "RFC004"
       }]
     },
     {
