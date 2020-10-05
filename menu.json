@@ -28,31 +28,30 @@
       "path": "/OpenDSU",
       "icon": "fa-cog",
       "children": [{
-          "name": "RFC002"
-        },{
-          "name": "RFC005"
-        },{
-          "name": "RFC006"
-        }, {
-          "name": "RFC010"
-        }, {
-          "name": "RFC011"
-        }, {
-          "name": "RFC012"
-        }, {
-          "name": "RFC013"
-        }, {
-          "name": "RFC018"
-        }, {
-          "name": "RFC019"
-        }, {
-          "name": "RFC020"
-        }, {
-          "name": "RFC021"
-        }, {
-          "name": "RFC022"
-        }
-      ]
+        "name": "RFC002"
+      }, {
+        "name": "RFC005"
+      }, {
+        "name": "RFC006"
+      }, {
+        "name": "RFC010"
+      }, {
+        "name": "RFC011"
+      }, {
+        "name": "RFC012"
+      }, {
+        "name": "RFC013"
+      }, {
+        "name": "RFC018"
+      }, {
+        "name": "RFC019"
+      }, {
+        "name": "RFC020"
+      }, {
+        "name": "RFC021"
+      }, {
+        "name": "RFC022"
+      }]
     },
     {
       "name": "Specifications",
@@ -68,6 +67,8 @@
       "path": "/Best-Practices",
       "children": [{
         "name": "RFC038"
+      }, {
+        "name": "RFC061"
       }]
     },
     {
