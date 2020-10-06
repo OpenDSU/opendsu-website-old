@@ -15,6 +15,11 @@
       "pageSrc": "index.html"
     },
     {
+      "name": "API",
+      "path": "/api",
+      "pageSrc": "/API/index.html"
+    },
+    {
       "name": "Papers",
       "path": "/Papers",
       "icon": "fa-cog",
