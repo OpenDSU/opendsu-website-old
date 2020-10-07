@@ -92,10 +92,6 @@
       "pageSrc": "About/about.html",
       "tags": "about, open-source"
     },
-
-    {
-      "name": "404"
-    },
     {
       "name": "404",
       "indexed": false
