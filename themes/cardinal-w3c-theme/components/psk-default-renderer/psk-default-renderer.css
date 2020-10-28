@@ -9,7 +9,7 @@ aside {
     background-color: #EEEEEE;
 }
 
-aside app-menu {
+aside psk-app-menu {
     align-self: start;
 }
 
@@ -59,7 +59,7 @@ section {
     overflow: hidden auto;
 }
 
-app-menu,
+psk-app-menu,
 psk-app-router {
     flex-grow: 1;
 }
