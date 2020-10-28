@@ -22,4 +22,6 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
 /dev/
+/latest-change-set.txt
