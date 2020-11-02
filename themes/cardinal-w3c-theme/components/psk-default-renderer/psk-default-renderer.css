@@ -3,7 +3,9 @@ aside {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     align-items: center;
-    width: 280px; height: 100vh;
+    height: 100vh;
+    min-width: 280px;
+    max-width: 350px;
     overflow: auto;
     color: #FFFFFF;
     background-color: #EEEEEE;

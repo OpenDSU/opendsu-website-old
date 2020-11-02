@@ -9,7 +9,7 @@
 .wrapper_container .item_container {
     display: flex;
     align-items: center;
-    height: 2.5rem;
+    min-height: 2.5rem;
     border-top: 1px solid #00336620;
 }
 
@@ -45,6 +45,7 @@ a {
 
 .children .wrapper_container .item_container {
     border: none;
+    margin: 0.25em 0;
 }
 
 .dropdown .close-section {

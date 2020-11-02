@@ -1,0 +1,1 @@
+import{P as e}from"./p-e995cab0.js";const n={bubbles:!0,cancelable:!0,composed:!0};function o(o,t,a=n){if(!t.eventName)return;const{eventName:c,eventData:s,eventDispatcher:i}=t,w=i&&-1!==[document,window].indexOf(window[i]),d=new e(c,s,a);(w?window[i]:o).dispatchEvent(d)}export{o as d}

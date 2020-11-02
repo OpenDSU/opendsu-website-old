@@ -1,1 +1,0 @@
-import{P as e}from"./p-2c4adcd7.js";const n={bubbles:!0,cancelable:!0,composed:!0};function o(o,t,c=n){if(!t.eventName)return;const{eventName:a,eventData:d,eventDispatcher:s}=t,i=s&&-1!==[document,window].indexOf(window[s]),w=new e(a,d,c);(i?window[s]:o).dispatchEvent(w)}export{o as d}
