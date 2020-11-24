@@ -117,6 +117,41 @@
         "name": "RFC035 - Object observability standard",
         "path" : "rfc035.html",
         "pageSrc" : "/OpenDSU/rfc035.html"
+      },
+      {
+        "name": "RFC065 - OpenDSU SDK: resolver",
+        "path" : "rfc065.html",
+        "pageSrc" : "/OpenDSU/rfc065.html"
+      },
+      {
+        "name": "RFC066 - OpenDSU SDK: crypto",
+        "path" : "rfc066.html",
+        "pageSrc" : "/OpenDSU/rfc066.html"
+      },
+      {
+        "name": "RFC067 - OpenDSU SDK: BDNS",
+        "path" : "rfc067.html",
+        "pageSrc" : "/OpenDSU/rfc067.html"
+      },
+      {
+        "name": "RFC068 - OpenDSU SDK: keyssi",
+        "path" : "rfc068.html",
+        "pageSrc" : "/OpenDSU/rfc068.html"
+      },
+      {
+        "name": "RFC069 - OpenDSU SDK: anchoring",
+        "path" : "rfc069.html",
+        "pageSrc" : "/OpenDSU/rfc069.html"
+      },
+      {
+        "name": "RFC070 -  OpenDSU SDK: bricking",
+        "path" : "rfc070.html",
+        "pageSrc" : "/OpenDSU/rfc070.html"
+      },
+      {
+        "name": "OpenDSU SDK - GitBook",
+        "path" : "opendsusdk.html",
+        "pageSrc" : "/OpenDSU/opendsusdk.html"
       }]
     },
     {
