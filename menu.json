@@ -149,6 +149,46 @@
         "pageSrc" : "/OpenDSU/rfc070.html"
       },
       {
+        "name": "RFC071 -  OpenDSU SDK: http",
+        "path" : "rfc071.html",
+        "pageSrc" : "/OpenDSU/rfc071.html"
+      },
+      {
+        "name": "RFC072 -  OpenDSU SDK: notifications",
+        "path" : "rfc072.html",
+        "pageSrc" : "/OpenDSU/rfc072.html"
+      },
+      {
+        "name": "RFC073 -  OpenDSU SDK: mq",
+        "path" : "rfc073.html",
+        "pageSrc" : "/OpenDSU/rfc073.html"
+      },
+      {
+        "name": "RFC074 -  OpenDSU SDK: dc",
+        "path" : "rfc074.html",
+        "pageSrc" : "/OpenDSU/rfc074.html"
+      },
+      {
+        "name": "RFC075 -  OpenDSU SDK: sc",
+        "path" : "rfc075.html",
+        "pageSrc" : "/OpenDSU/rfc075.html"
+      },
+      {
+        "name": "RFC076 -  OpenDSU SDK: dt",
+        "path" : "rfc076.html",
+        "pageSrc" : "/OpenDSU/rfc076.html"
+      },
+      {
+        "name": "RFC077 -  OpenDSU SDK: cache",
+        "path" : "rfc077.html",
+        "pageSrc" : "/OpenDSU/rfc077.html"
+      },
+      {
+        "name": "RFC078 -  OpenDSU SDK: config",
+        "path" : "rfc078.html",
+        "pageSrc" : "/OpenDSU/rfc078.html"
+      },
+      {
         "name": "OpenDSU SDK - GitBook",
         "path" : "opendsusdk.html",
         "pageSrc" : "/OpenDSU/opendsusdk.html"
