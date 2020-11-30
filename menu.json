@@ -151,24 +151,19 @@
                 "pageSrc" : "/Specifications/keyssi/rfc013.html"
               }, 
               {
-                "name": "RFC018 - MasterKeySSIs V0: SecretSlaveSSIs",
-                "path" : "rfc018.html",
-                "pageSrc" : "/Specifications/keyssi/rfc018.html"
+                "name": "RFC014 - Brick-pointing keySSIs",
+                "path" : "rfc014.html",
+                "pageSrc" : "/Specifications/keyssi/rfc014.html"
               }, 
               {
-                "name": "RFC019 - MasterKeySSIs V1: SlaveSSIs",
-                "path" : "rfc019.html",
-                "pageSrc" : "/Specifications/keyssi/rfc019.html"
+                "name": "RFC015 - Peer and Group KeySSIs",
+                "path" : "rfc015.html",
+                "pageSrc" : "/Specifications/keyssi/rfc015.html"
               }, 
               {
-                "name": "RFC020 - MasterKeySSIs V2: QueueSSIs",
-                "path" : "rfc020.html",
-                "pageSrc" : "/Specifications/keyssi/rfc020.html"
-              }, 
-              {
-                "name": "RFC021 - MasterKeySSIs V3: CredentialsSSIs",
-                "path" : "rfc021.html",
-                "pageSrc" : "/Specifications/keyssi/rfc021.html"
+                "name": "RFC016 - MasterKeySSIs",
+                "path" : "rfc016.html",
+                "pageSrc" : "/Specifications/keyssi/rfc016.html"
               }
           ]
         },
@@ -176,16 +171,21 @@
           "name": "DSU specification",
           "path": "/dsu",
           "children": 
-          [
+          [   
+              {
+                "name": "RFC001 - DSU (Data Sharing Units) Introduction",
+                "path" : "rfc001.html",
+                "pageSrc" : "/Specifications/dsu/rfc001.html"
+              }, 
               {
                 "name": "RFC003 - OpenDSU Bricks Storages",
                 "path" : "rfc003.html",
-                "pageSrc" : "/Specifications/others/rfc003.html"
+                "pageSrc" : "/Specifications/dsu/rfc003.html"
               }, 
               {
                 "name": "RFC004 - OpenDSU Anchoring",
                 "path" : "rfc004.html",
-                "pageSrc" : "/Specifications/others/rfc004.html"
+                "pageSrc" : "/Specifications/dsu/rfc004.html"
               }
           ]
         },
