@@ -65,3 +65,22 @@ div.website-identity{
     font-size: 1rem;
   }
 }
+
+
+#contents{
+  padding:0!important;
+  padding-left:10%;
+}
+
+.embedded-doc{
+  width:100%;
+}
+
+.embedded-doc div{
+  max-width:90%!important;
+
+}
+
+#interval{
+  margin-right:10%!important;
+}

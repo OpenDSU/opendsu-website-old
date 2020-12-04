@@ -307,9 +307,14 @@
       "name": "Best Practices",
       "path": "/Best-Practices",
       "children": [ {
-        "name": "RFC036 - Secret Smart Contracts",
-        "path" : "rfc036.html",
-        "pageSrc" : "//Best-Practices/rfc036.html"
+        "name": "RFC000 - RFC Template",
+        "path" : "rfc000.html",
+        "pageSrc" : "//Best-Practices/rfc000.html"
+      }, 
+      {
+        "name": "RFC037 - Strategies for optimisation of OpenDSU microledgers",
+        "path" : "rfc037.html",
+        "pageSrc" : "//Best-Practices/rfc037.html"
       }, 
       {
         "name": "RFC037 - Strategies for optimisation of OpenDSU microledgers",

@@ -1,0 +1,37 @@
+#contents{
+  padding:0!important;
+  padding-left:10%;
+}
+
+.embedded-doc{
+  width:100%;
+}
+
+.embedded-doc div{
+  max-width:90%!important;
+
+}
+
+#interval{
+  margin-right:10%!important;
+}
+
+span.Released{
+	color:green;
+	margin-right:50px;
+}
+
+span.Obsolete{
+	color:purple;
+	margin-right:50px;
+}
+
+span.Rejected{
+	color:red;
+	margin-right:50px;
+}
+
+span.UnderReview{
+	color:red;
+	margin-right:50px;
+}
