@@ -15,18 +15,31 @@
       "pageSrc": "index.html"
     },
     {
-      "name": "API",
-      "path": "/api",
-      "pageSrc": "/API/index.html"
-    },
-    {
       "name": "Papers",
       "path": "/Papers",
       "icon": "fa-cog",
       "children": [{
         "name": "Bluepaper",
-        "tags": "bluepaper"
+        "tags": "bluepaper",
+        "path" : "bluepaper.html",
+        "pageSrc" : "/Papers/bluepaper.html"
+      },
+      {
+        "name": "Whitepaper",
+        "tags": "Whitepaper",
+        "path" : "whitepaper.html",
+        "pageSrc" : "/Papers/whitepaper.html"
       }]
+    },
+       {
+      "name": "API",
+      "path": "/api",
+      "pageSrc": "/API/index.html"
+    },
+    {
+      "name": "How to submit a RFC proposal",
+      "path": "/rfchowto",
+      "pageSrc": "/rfchowto/index.html"
     },
     {
       "name": "OpenDSU SDK",
@@ -35,79 +48,89 @@
       "children": [
           
       {
-        "name": "RFC005 - OpenDSU SDK, JavaScript client-side standard APIs",
+        "name": "JavaScript client-side standard APIs summary",
         "path" : "rfc005.html",
         "pageSrc" : "/OpenDSU/rfc005.html"
-      }, 
-      {
-        "name": "RFC065 - OpenDSU SDK: resolver",
-        "path" : "rfc065.html",
-        "pageSrc" : "/OpenDSU/rfc065.html"
       },
       {
-        "name": "RFC066 - OpenDSU SDK: crypto",
-        "path" : "rfc066.html",
-        "pageSrc" : "/OpenDSU/rfc066.html"
-      },
-      {
-        "name": "RFC067 - OpenDSU SDK: BDNS",
-        "path" : "rfc067.html",
-        "pageSrc" : "/OpenDSU/rfc067.html"
-      },
-      {
-        "name": "RFC068 - OpenDSU SDK: keyssi",
-        "path" : "rfc068.html",
-        "pageSrc" : "/OpenDSU/rfc068.html"
-      },
-      {
-        "name": "RFC069 - OpenDSU SDK: anchoring",
+        "name": "Anchoring",
         "path" : "rfc069.html",
         "pageSrc" : "/OpenDSU/rfc069.html"
       },
       {
-        "name": "RFC070 -  OpenDSU SDK: bricking",
+        "name": "BDNS",
+        "path" : "rfc067.html",
+        "pageSrc" : "/OpenDSU/rfc067.html"
+      },
+      {
+        "name": "Bricking",
         "path" : "rfc070.html",
         "pageSrc" : "/OpenDSU/rfc070.html"
-      },
+      }, 
       {
-        "name": "RFC071 -  OpenDSU SDK: http",
-        "path" : "rfc071.html",
-        "pageSrc" : "/OpenDSU/rfc071.html"
-      },
-      {
-        "name": "RFC072 -  OpenDSU SDK: notifications",
-        "path" : "rfc072.html",
-        "pageSrc" : "/OpenDSU/rfc072.html"
-      },
-      {
-        "name": "RFC073 -  OpenDSU SDK: mq",
-        "path" : "rfc073.html",
-        "pageSrc" : "/OpenDSU/rfc073.html"
-      },
-      {
-        "name": "RFC074 -  OpenDSU SDK: dc",
-        "path" : "rfc074.html",
-        "pageSrc" : "/OpenDSU/rfc074.html"
-      },
-      {
-        "name": "RFC075 -  OpenDSU SDK: sc",
-        "path" : "rfc075.html",
-        "pageSrc" : "/OpenDSU/rfc075.html"
-      },
-      {
-        "name": "RFC076 -  OpenDSU SDK: dt",
-        "path" : "rfc076.html",
-        "pageSrc" : "/OpenDSU/rfc076.html"
-      },
-      {
-        "name": "RFC077 -  OpenDSU SDK: cache",
+        "name": "Cache",
         "path" : "rfc077.html",
         "pageSrc" : "/OpenDSU/rfc077.html"
       },
       {
-        "name": "RFC078 -  OpenDSU SDK: config",
+        "name": "Config",
         "path" : "rfc078.html",
         "pageSrc" : "/OpenDSU/rfc078.html"
+      },
+      {
+        "name": "Crypto",
+        "path" : "rfc066.html",
+        "pageSrc" : "/OpenDSU/rfc066.html"
+      },
+      {
+        "name": "DSU Channels (dc)",
+        "path" : "rfc074.html",
+        "pageSrc" : "/OpenDSU/rfc074.html"
+      },
+      {
+        "name": "DSU Types (dt)",
+        "path" : "rfc076.html",
+        "pageSrc" : "/OpenDSU/rfc076.html"
+      },
+      {
+        "name": "Error",
+        "path" : "rfc064.html",
+        "pageSrc" : "/OpenDSU/rfc064.html"
+      },
+      {
+        "name": "Http",
+        "path" : "rfc071.html",
+        "pageSrc" : "/OpenDSU/rfc071.html"
+      },
+      {
+        "name": "Keyssi",
+        "path" : "rfc068.html",
+        "pageSrc" : "/OpenDSU/rfc068.html"
+      },
+      {
+        "name": "Message queues (mq)",
+        "path" : "rfc073.html",
+        "pageSrc" : "/OpenDSU/rfc073.html"
+      },
+      {
+        "name": "Notifications",
+        "path" : "rfc072.html",
+        "pageSrc" : "/OpenDSU/rfc072.html"
+      },
+      {
+        "name": "Resolver",
+        "path" : "rfc065.html",
+        "pageSrc" : "/OpenDSU/rfc065.html"
+      },
+      {
+        "name": "Security context (sc)",
+        "path" : "rfc075.html",
+        "pageSrc" : "/OpenDSU/rfc075.html"
+      },
+      {
+        "name": "System",
+        "path" : "rfc079.html",
+        "pageSrc" : "/OpenDSU/rfc079.html"
       }]
     },
     {

@@ -1,5 +1,6 @@
 
 
+
 function changeCss(element){
 
 
@@ -14,10 +15,12 @@ function changeCss(element){
         element.parentElement.replaceChild(d, element);
 
         // CORS request
+        console.log('hello1');
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.onload = function() {
                     // display response
+                    console.log('hello2');
             splitResponse=xhr.responseText.split('<link');
             split2=splitResponse[1].split('.ico">')[1];
             responseWithCss=splitResponse[0]+'<link rel="stylesheet" href="/assets/css/rfcStyling.css">'+split2;
@@ -29,5 +32,13 @@ function changeCss(element){
         };
         xhr.send();
        
-
 	}
+
+
+
+function getFrameContent(element){
+    
+    console.log(element.getAttribute("src"));
+   //console.log(element.contents().find('div'));
+       
+}
