@@ -134,14 +134,24 @@
       }]
     },
     {
-      "name": "Specifications",
+      "name": "OpenDSU Specifications",
       "path": "/Specifications",
       "children": 
       [ 
         {
-           "name": "Specifications summary",
-           "path" : "index.html",
-           "pageSrc" : "/Specifications/index.html"
+          "name": "DSU (Data Sharing Units) Introduction",
+          "path" : "rfc001.html",
+          "pageSrc" : "/Specifications/rfc001.html"
+        },
+        {
+          "name": "Bricks Storages",
+          "path" : "rfc003.html",
+          "pageSrc" : "/Specifications/rfc003.html"
+        }, 
+        {
+          "name": "Anchoring",
+          "path" : "rfc004.html",
+          "pageSrc" : "/Specifications/rfc004.html"
         },
         {
           "name": "KeySSI specification",
@@ -149,66 +159,44 @@
           "children": 
           [
               {
-                "name": "RFC002 - KeySSI Introduction",
+                "name": "KeySSI Introduction",
                 "path" : "rfc002.html",
                 "pageSrc" : "/Specifications/keyssi/rfc002.html"
               }, 
               {
-                "name": "RFC010 - SecretSSIs",
+                "name": "SecretSSIs",
                 "path" : "rfc010.html",
                 "pageSrc" : "/Specifications/keyssi/rfc010.html"
               }, 
               {
-                "name": "RFC011 - SeedSSIs",
+                "name": "SeedSSIs",
                 "path" : "rfc011.html",
                 "pageSrc" : "/Specifications/keyssi/rfc011.html"
               }, 
               {
-                "name": "RFC012 - ConstSSIs",
+                "name": "ConstSSIs",
                 "path" : "rfc012.html",
                 "pageSrc" : "/Specifications/keyssi/rfc012.html"
               }, 
               {
-                "name": "RFC013 - EncSSIs",
+                "name": "EncSSIs",
                 "path" : "rfc013.html",
                 "pageSrc" : "/Specifications/keyssi/rfc013.html"
               }, 
               {
-                "name": "RFC014 - Brick-pointing keySSIs",
+                "name": "Brick-pointing keySSIs",
                 "path" : "rfc014.html",
                 "pageSrc" : "/Specifications/keyssi/rfc014.html"
               }, 
               {
-                "name": "RFC015 - Peer and Group KeySSIs",
+                "name": "Peer and Group KeySSIs",
                 "path" : "rfc015.html",
                 "pageSrc" : "/Specifications/keyssi/rfc015.html"
               }, 
               {
-                "name": "RFC016 - MasterKeySSIs",
+                "name": "MasterKeySSIs",
                 "path" : "rfc016.html",
                 "pageSrc" : "/Specifications/keyssi/rfc016.html"
-              }
-          ]
-        },
-        {
-          "name": "DSU specification",
-          "path": "/dsu",
-          "children": 
-          [   
-              {
-                "name": "RFC001 - DSU (Data Sharing Units) Introduction",
-                "path" : "rfc001.html",
-                "pageSrc" : "/Specifications/dsu/rfc001.html"
-              }, 
-              {
-                "name": "RFC003 - OpenDSU Bricks Storages",
-                "path" : "rfc003.html",
-                "pageSrc" : "/Specifications/dsu/rfc003.html"
-              }, 
-              {
-                "name": "RFC004 - OpenDSU Anchoring",
-                "path" : "rfc004.html",
-                "pageSrc" : "/Specifications/dsu/rfc004.html"
               }
           ]
         },

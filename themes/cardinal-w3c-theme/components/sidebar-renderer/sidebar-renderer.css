@@ -9,7 +9,7 @@
 .wrapper_container .item_container {
     display: flex;
     align-items: center;
-    min-height: 2.5rem;
+    min-height: 2rem;
     border-top: 1px solid #00336620;
 }
 
@@ -51,7 +51,7 @@ a {
 .dropdown .close-section {
     position: absolute;
     top: 0; left: 0; width: 100%;
-    height: 2.5rem;
+    height: 2rem;
     background-color: transparent;
     border: none;
 }
