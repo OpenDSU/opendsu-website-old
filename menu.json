@@ -201,6 +201,11 @@
           ]
         },
         {
+          "name": "SSApp Architecture",
+          "path" : "rfc004.html",
+          "pageSrc" : "/Specifications/rfc028.html"
+        },
+        {
           "name": "Others",
           "path": "/others",
           "children": 
@@ -358,12 +363,17 @@
       "path": "/Recommendations",
       "children": [
         {
-        "name": "RFC044 - The BricksLedger Architecture",
-        "path" : "rfc044.html",
-        "pageSrc" : "/Recommendations/rfc044.html"
+        "name": "SSApp implementation",
+        "path" : "rfc034.html",
+        "pageSrc" : "/Recommendations/rfc034.html"
       }, 
       {
-        "name": "RFC045 - Highly Scalable Ledgers",
+        "name": "The BricksLedger Architecture",
+        "path" : "rfc044.html",
+        "pageSrc" : "/Recommendations/rfc044.html"
+      },
+      {
+        "name": "Highly Scalable Ledgers",
         "path" : "rfc045.html",
         "pageSrc" : "/Recommendations/rfc045.html"
       }]
