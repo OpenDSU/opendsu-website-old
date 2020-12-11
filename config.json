@@ -1,9 +1,9 @@
 {
     "basePagesUrl": "/pages/",
     "profile": {
-        "username": "OpenDSU RFC",
+        "username": "OpenDSU RFC Documentation",
         "email": "opendsu@axiologic.net",
-        "avatar": "/assets/images/logo.png"
+        "avatar": "/assets/images/logo3.jpg"
     },
     "theme": "cardinal-w3c-theme"
 }

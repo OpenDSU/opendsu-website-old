@@ -42,6 +42,11 @@
       "pageSrc": "/rfchowto/index.html"
     },
     {
+      "name": "RFCs status monitor",
+      "path": "/rfcstatus",
+      "pageSrc": "/rfcstatus/index.html"
+    },
+    {
       "name": "OpenDSU SDK",
       "path": "/OpenDSU",
       "icon": "fa-cog",
@@ -322,38 +327,29 @@
     {
       "name": "Best Practices",
       "path": "/Best-Practices",
-      "children": [ {
-        "name": "RFC000 - RFC Template",
-        "path" : "rfc000.html",
-        "pageSrc" : "/Best-Practices/rfc000.html"
-      }, 
+      "children": [ 
       {
-        "name": "RFC037 - Strategies for optimisation of OpenDSU microledgers",
+        "name": "Strategies for optimisation of OpenDSU microledgers",
         "path" : "rfc037.html",
         "pageSrc" : "/Best-Practices/rfc037.html"
       }, 
       {
-        "name": "RFC037 - Strategies for optimisation of OpenDSU microledgers",
-        "path" : "rfc037.html",
-        "pageSrc" : "/Best-Practices/rfc037.html"
-      }, 
-      {
-        "name": "RFC038 - How to choose a ledger. When to choose ZKP.",
+        "name": "How to choose a ledger. When to choose ZKP.",
         "path" : "rfc038.html",
         "pageSrc" : "/Best-Practices/rfc038.html"
       }, 
       {
-        "name": "RFC040 - Classification of the Blockchain Architectures",
+        "name": "Classification of Blockchain Architectures",
         "path" : "rfc040.html",
         "pageSrc" : "/Best-Practices/rfc040.html"
       }, 
       {
-        "name": "RFC041 - Differential Privacy in OpenDSU",
+        "name": "Differential Privacy in OpenDSU",
         "path" : "rfc041.html",
         "pageSrc" : "/Best-Practices/rfc041.html"
       }, 
       {
-        "name": "RFC061 - MITM avoidance strategies",
+        "name": "MITM avoidance strategies",
         "path" : "rfc061.html",
         "pageSrc" : "/Best-Practices/rfc061.html"
       }]
