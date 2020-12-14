@@ -93,6 +93,11 @@
         "pageSrc" : "/OpenDSU/rfc074.html"
       },
       {
+        "name": "DSU Operations",
+        "path" : "rfc063.html",
+        "pageSrc" : "/OpenDSU/rfc063.html"
+      },
+      {
         "name": "DSU Types (dt)",
         "path" : "rfc076.html",
         "pageSrc" : "/OpenDSU/rfc076.html"
@@ -364,6 +369,11 @@
         "pageSrc" : "/Recommendations/rfc034.html"
       }, 
       {
+        "name": "Profile and personas as decentralised identities",
+        "path" : "rfc043.html",
+        "pageSrc" : "/Recommendations/rfc044.html"
+      },
+      {
         "name": "The BricksLedger Architecture",
         "path" : "rfc044.html",
         "pageSrc" : "/Recommendations/rfc044.html"
@@ -372,6 +382,16 @@
         "name": "Highly Scalable Ledgers",
         "path" : "rfc045.html",
         "pageSrc" : "/Recommendations/rfc045.html"
+      }]
+    },
+    {
+      "name": "Rules",
+      "path": "/Rules",
+      "children": [
+        {
+        "name": "OpenDSU gouvernance",
+        "path" : "rfc031.html",
+        "pageSrc" : "/Rules/rfc031.html"
       }]
     },
     {
