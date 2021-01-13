@@ -15,17 +15,6 @@
           "cmd": "cd ./dev/cardinal && npm install"
         }
       ]
-    },
-    {
-      "name": "cardinal-w3c-theme",
-      "src": "https://github.com/PrivateSky/cardinal-w3c-theme.git",
-      "actions": [
-        {
-          "type": "smartClone",
-          "target": "./dev/themes",
-          "collectLog": false
-        }
-      ]
     }
   ],
   "build-cardinal": [
@@ -45,20 +34,6 @@
     }
   ],
   "copy-w3c-theme": [
-    {
-      "name": "w3c-theme-copy",
-      "src": "",
-      "actions": [
-        {
-          "type": "remove",
-          "target": "./themes/cardinal-w3c-theme"
-        },
-        {
-          "type": "copy",
-          "src": "./dev/themes/cardinal-w3c-theme/src",
-          "target": "./themes/cardinal-w3c-theme"
-        }
-      ]
-    }
+    
   ]
 }

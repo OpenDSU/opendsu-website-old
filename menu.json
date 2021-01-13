@@ -54,8 +54,8 @@
           
       {
         "name": "JavaScript client-side standard APIs summary",
-        "path" : "rfc005.html",
-        "pageSrc" : "/OpenDSU/rfc005.html"
+        "path" : "rfc060.html",
+        "pageSrc" : "/OpenDSU/rfc060.html"
       },
       {
         "name": "Anchoring",
@@ -88,19 +88,19 @@
         "pageSrc" : "/OpenDSU/rfc066.html"
       },
       {
-        "name": "DSU Channels (dc)",
-        "path" : "rfc074.html",
-        "pageSrc" : "/OpenDSU/rfc074.html"
+        "name": "Database (db)",
+        "path" : "rfc061.html",
+        "pageSrc" : "/OpenDSU/rfc061.html"
+      },
+      {
+        "name": "Database operations",
+        "path" : "rfc062.html",
+        "pageSrc" : "/OpenDSU/rfc062.html"
       },
       {
         "name": "DSU Operations",
         "path" : "rfc063.html",
         "pageSrc" : "/OpenDSU/rfc063.html"
-      },
-      {
-        "name": "DSU Types (dt)",
-        "path" : "rfc076.html",
-        "pageSrc" : "/OpenDSU/rfc076.html"
       },
       {
         "name": "Error",

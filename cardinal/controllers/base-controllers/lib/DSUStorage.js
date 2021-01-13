@@ -1,3 +1,5 @@
+import fetch from "../../../utils/fetch.js";
+
 function doDownload(url, expectedResultType, callback) {
   fetch(url)
     .then((response) => {
