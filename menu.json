@@ -172,12 +172,7 @@
                 "name": "KeySSI Introduction",
                 "path" : "rfc002.html",
                 "pageSrc" : "/Specifications/keyssi/rfc002.html"
-              }, 
-              {
-                "name": "SecretSSIs",
-                "path" : "rfc010.html",
-                "pageSrc" : "/Specifications/keyssi/rfc010.html"
-              }, 
+              },  
               {
                 "name": "SeedSSIs",
                 "path" : "rfc011.html",
@@ -187,26 +182,11 @@
                 "name": "ConstSSIs",
                 "path" : "rfc012.html",
                 "pageSrc" : "/Specifications/keyssi/rfc012.html"
-              }, 
+              },  
               {
-                "name": "EncSSIs",
-                "path" : "rfc013.html",
-                "pageSrc" : "/Specifications/keyssi/rfc013.html"
-              }, 
-              {
-                "name": "Brick-pointing keySSIs",
+                "name": "HashLinkSSIs",
                 "path" : "rfc014.html",
                 "pageSrc" : "/Specifications/keyssi/rfc014.html"
-              }, 
-              {
-                "name": "Peer and Group KeySSIs",
-                "path" : "rfc015.html",
-                "pageSrc" : "/Specifications/keyssi/rfc015.html"
-              }, 
-              {
-                "name": "MasterKeySSIs",
-                "path" : "rfc016.html",
-                "pageSrc" : "/Specifications/keyssi/rfc016.html"
               }, 
               {
                 "name": "SymetricalEncyptionSSIs",
@@ -217,7 +197,7 @@
         },
         {
           "name": "SSApp Architecture",
-          "path" : "rfc004.html",
+          "path" : "rfc028.html",
           "pageSrc" : "/Specifications/rfc028.html"
         },
         {
