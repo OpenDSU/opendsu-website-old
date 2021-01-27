@@ -13,6 +13,7 @@
     border-top: 1px solid #00336620;
 }
 
+
 .item_container .icon,
 .item_container .item_name {
     color: #003366;
@@ -81,4 +82,8 @@ a {
 
 .dropdown.isOpened .children .dropdown.isOpened .children {
     display: block;
+}
+
+.important{
+    background-color: #ffe599; 
 }
