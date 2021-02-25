@@ -92,14 +92,14 @@
     },
     {
       "name": "Dev documentation (SDK)",
-      "path": "/technical-doc",
+      "path": "/dev-doc",
       "icon": "fa-cog",
       "children": [
           
       {
         "name": "JavaScript client-side standard APIs summary",
         "path" : "rfc060.html",
-        "pageSrc" : "/technical-doc/rfc060.html"
+        "pageSrc" : "/dev-doc/rfc060.html"
       },
       {
         "name": "Basic APIs",
@@ -109,32 +109,32 @@
           {
           "name": "Crypto",
           "path" : "rfc066.html",
-          "pageSrc" : "/technical-doc/rfc066.html"
+          "pageSrc" : "/dev-doc/rfc066.html"
           },
           {
             "name": "DSU Object",
             "path" : "rfc063.html",
-            "pageSrc" : "/technical-doc/rfc063.html"
+            "pageSrc" : "/dev-doc/rfc063.html"
           },
           {
             "name": "Error",
             "path" : "rfc064.html",
-            "pageSrc" : "/technical-doc/rfc064.html"
+            "pageSrc" : "/dev-doc/rfc064.html"
           },
           {
             "name": "Http",
             "path" : "rfc071.html",
-            "pageSrc" : "/technical-doc/rfc071.html"
+            "pageSrc" : "/dev-doc/rfc071.html"
           },
           {
             "name": "Keyssi",
             "path" : "rfc068.html",
-            "pageSrc" : "/technical-doc/rfc068.html"
+            "pageSrc" : "/dev-doc/rfc068.html"
           },
           {
             "name": "Resolver",
             "path" : "rfc065.html",
-            "pageSrc" : "/technical-doc/rfc065.html"
+            "pageSrc" : "/dev-doc/rfc065.html"
           }
         ]
       },
@@ -146,52 +146,52 @@
           {
             "name": "Anchoring",
             "path" : "rfc069.html",
-            "pageSrc" : "/technical-doc/rfc069.html"
+            "pageSrc" : "/dev-doc/rfc069.html"
           },
           {
             "name": "BDNS",
             "path" : "rfc067.html",
-            "pageSrc" : "/technical-doc/rfc067.html"
+            "pageSrc" : "/dev-doc/rfc067.html"
           },
           {
             "name": "Bricking",
             "path" : "rfc070.html",
-            "pageSrc" : "/technical-doc/rfc070.html"
+            "pageSrc" : "/dev-doc/rfc070.html"
           }, 
           {
             "name": "Cache",
             "path" : "rfc077o.html",
-            "pageSrc" : "/technical-doc/rfc077.html"
+            "pageSrc" : "/dev-doc/rfc077.html"
           },
           {
             "name": "Config",
             "path" : "rfc078.html",
-            "pageSrc" : "/technical-doc/rfc078.html"
+            "pageSrc" : "/dev-doc/rfc078.html"
           },
           {
             "name": "Database (db)",
             "path" : "rfc061.html",
-            "pageSrc" : "/technical-doc/rfc061.html"
+            "pageSrc" : "/dev-doc/rfc061.html"
           },
           {
             "name": "Message queues (mq)",
             "path" : "rfc073.html",
-            "pageSrc" : "/technical-doc/rfc073.html"
+            "pageSrc" : "/dev-doc/rfc073.html"
           },
           {
             "name": "Notifications",
             "path" : "rfc072.html",
-            "pageSrc" : "/technical-doc/rfc072.html"
+            "pageSrc" : "/dev-doc/rfc072.html"
           },
           {
             "name": "Security context (sc)",
             "path" : "rfc075.html",
-            "pageSrc" : "/technical-doc/rfc075.html"
+            "pageSrc" : "/dev-doc/rfc075.html"
           },
           {
             "name": "System",
             "path" : "rfc079.html",
-            "pageSrc" : "/technical-doc/rfc079.html"
+            "pageSrc" : "/dev-doc/rfc079.html"
           }
           
         ]
@@ -204,22 +204,22 @@
           {
             "name": "Cache objects",
             "path" : "rfc077o.html",
-            "pageSrc" : "/technical-doc/rfc077o.html"
+            "pageSrc" : "/dev-doc/rfc077o.html"
           },
           {
             "name": "Db objects",
             "path" : "rfc062.html",
-            "pageSrc" : "/technical-doc/rfc062.html"
+            "pageSrc" : "/dev-doc/rfc062.html"
           },
           {
             "name": "DSU Object",
             "path" : "rfc063.html",
-            "pageSrc" : "/technical-doc/rfc063.html"
+            "pageSrc" : "/dev-doc/rfc063.html"
           },
           {
             "name": "SecurityContext object",
             "path" : "rfc075o.html",
-            "pageSrc" : "/technical-doc/rfc075o.html"
+            "pageSrc" : "/dev-doc/rfc075o.html"
           }
         ]
       }
@@ -232,7 +232,7 @@
         {
         "name": "Development guidelines",
         "path" : "rfc020.html",
-        "pageSrc" : "/use-cases/rfc0344.html"
+        "pageSrc" : "/use-cases/rfc020.html"
       }]
     },
     {
