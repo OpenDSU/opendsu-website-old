@@ -15,43 +15,91 @@
       "pageSrc": "index.html"
     },
     {
-      "name": "Papers",
-      "path": "/Papers",
-      "icon": "fa-cog",
-      "children": [{
-        "name": "Bluepaper",
-        "tags": "bluepaper",
-        "path" : "bluepaper.html",
-        "pageSrc" : "/Papers/bluepaper.html"
-      },
-      {
-        "name": "Whitepaper",
-        "tags": "Whitepaper",
-        "path" : "whitepaper.html",
-        "pageSrc" : "/Papers/whitepaper.html"
-      }]
+      "name": "OpenDSU",
+      "path": "/openDSU",
+      "children": 
+      [ 
+        {
+          "name": "DSU (Data Sharing Units) Introduction",
+          "path" : "rfc001.html",
+          "pageSrc" : "/openDSU/rfc001.html"
+        },
+        {
+          "name": "Bricks Storages",
+          "path" : "rfc003.html",
+          "pageSrc" : "/openDSU/rfc003.html"
+        }, 
+        {
+          "name": "Anchoring",
+          "path" : "rfc004.html",
+          "pageSrc" : "/openDSU/rfc004.html"
+        },
+        {
+          "name": "KeySSI specification",
+          "path": "/keyssi",
+          "children": 
+          [
+              {
+                "name": "KeySSI Introduction",
+                "path" : "rfc002.html",
+                "pageSrc" : "/openDSU/keyssi/rfc002.html"
+              },  
+              {
+                "name": "SeedSSIs",
+                "path" : "rfc011.html",
+                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+              }, 
+              {
+                "name": "ConstSSIs",
+                "path" : "rfc012.html",
+                "pageSrc" : "/openDSU/keyssi/rfc012.html"
+              },  
+              {
+                "name": "HashLinkSSIs",
+                "path" : "rfc014.html",
+                "pageSrc" : "/openDSU/keyssi/rfc014.html"
+              }, 
+              {
+                "name": "SymetricalEncyptionSSIs",
+                "path" : "rfc017.html",
+                "pageSrc" : "/openDSU/keyssi/rfc017.html"
+              }
+          ]
+        },
+        {
+          "name": "SSApp Architecture",
+          "path" : "rfc028.html",
+          "pageSrc" : "/openDSU/rfc028.html"
+        },
+        {
+          "name": "Papers",
+          "path": "/papers",
+          "icon": "fa-cog",
+          "children": [{
+            "name": "Bluepaper",
+            "tags": "bluepaper",
+            "path" : "bluepaper.html",
+            "pageSrc" : "/papers/bluepaper.html"
+          },
+          {
+            "name": "Whitepaper",
+            "tags": "Whitepaper",
+            "path" : "whitepaper.html",
+            "pageSrc" : "/papers/whitepaper.html"
+          }]
+        }     
+      ]
     },
     {
-      "name": "How to submit a RFC proposal",
-      "path": "/rfchowto",
-      "pageSrc": "/rfchowto/index.html"
-    },
-    {
-      "name": "RFCs Feedbacks",
-      "class":"important",
-      "path": "/rfcstatus",
-      "pageSrc": "/rfcstatus/index.html"
-    },
-    {
-      "name": "OpenDSU SDK",
-      "path": "/OpenDSU",
+      "name": "Dev documentation (SDK)",
+      "path": "/technical-doc",
       "icon": "fa-cog",
       "children": [
           
       {
         "name": "JavaScript client-side standard APIs summary",
         "path" : "rfc060.html",
-        "pageSrc" : "/OpenDSU/rfc060.html"
+        "pageSrc" : "/technical-doc/rfc060.html"
       },
       {
         "name": "Basic APIs",
@@ -61,32 +109,32 @@
           {
           "name": "Crypto",
           "path" : "rfc066.html",
-          "pageSrc" : "/OpenDSU/rfc066.html"
+          "pageSrc" : "/technical-doc/rfc066.html"
           },
           {
             "name": "DSU Object",
             "path" : "rfc063.html",
-            "pageSrc" : "/OpenDSU/rfc063.html"
+            "pageSrc" : "/technical-doc/rfc063.html"
           },
           {
             "name": "Error",
             "path" : "rfc064.html",
-            "pageSrc" : "/OpenDSU/rfc064.html"
+            "pageSrc" : "/technical-doc/rfc064.html"
           },
           {
             "name": "Http",
             "path" : "rfc071.html",
-            "pageSrc" : "/OpenDSU/rfc071.html"
+            "pageSrc" : "/technical-doc/rfc071.html"
           },
           {
             "name": "Keyssi",
             "path" : "rfc068.html",
-            "pageSrc" : "/OpenDSU/rfc068.html"
+            "pageSrc" : "/technical-doc/rfc068.html"
           },
           {
             "name": "Resolver",
             "path" : "rfc065.html",
-            "pageSrc" : "/OpenDSU/rfc065.html"
+            "pageSrc" : "/technical-doc/rfc065.html"
           }
         ]
       },
@@ -98,52 +146,52 @@
           {
             "name": "Anchoring",
             "path" : "rfc069.html",
-            "pageSrc" : "/OpenDSU/rfc069.html"
+            "pageSrc" : "/technical-doc/rfc069.html"
           },
           {
             "name": "BDNS",
             "path" : "rfc067.html",
-            "pageSrc" : "/OpenDSU/rfc067.html"
+            "pageSrc" : "/technical-doc/rfc067.html"
           },
           {
             "name": "Bricking",
             "path" : "rfc070.html",
-            "pageSrc" : "/OpenDSU/rfc070.html"
+            "pageSrc" : "/technical-doc/rfc070.html"
           }, 
           {
             "name": "Cache",
             "path" : "rfc077o.html",
-            "pageSrc" : "/OpenDSU/rfc077.html"
+            "pageSrc" : "/technical-doc/rfc077.html"
           },
           {
             "name": "Config",
             "path" : "rfc078.html",
-            "pageSrc" : "/OpenDSU/rfc078.html"
+            "pageSrc" : "/technical-doc/rfc078.html"
           },
           {
             "name": "Database (db)",
             "path" : "rfc061.html",
-            "pageSrc" : "/OpenDSU/rfc061.html"
+            "pageSrc" : "/technical-doc/rfc061.html"
           },
           {
             "name": "Message queues (mq)",
             "path" : "rfc073.html",
-            "pageSrc" : "/OpenDSU/rfc073.html"
+            "pageSrc" : "/technical-doc/rfc073.html"
           },
           {
             "name": "Notifications",
             "path" : "rfc072.html",
-            "pageSrc" : "/OpenDSU/rfc072.html"
+            "pageSrc" : "/technical-doc/rfc072.html"
           },
           {
             "name": "Security context (sc)",
             "path" : "rfc075.html",
-            "pageSrc" : "/OpenDSU/rfc075.html"
+            "pageSrc" : "/technical-doc/rfc075.html"
           },
           {
             "name": "System",
             "path" : "rfc079.html",
-            "pageSrc" : "/OpenDSU/rfc079.html"
+            "pageSrc" : "/technical-doc/rfc079.html"
           }
           
         ]
@@ -156,268 +204,115 @@
           {
             "name": "Cache objects",
             "path" : "rfc077o.html",
-            "pageSrc" : "/OpenDSU/rfc077o.html"
+            "pageSrc" : "/technical-doc/rfc077o.html"
           },
           {
             "name": "Db objects",
             "path" : "rfc062.html",
-            "pageSrc" : "/OpenDSU/rfc062.html"
+            "pageSrc" : "/technical-doc/rfc062.html"
           },
           {
             "name": "DSU Object",
             "path" : "rfc063.html",
-            "pageSrc" : "/OpenDSU/rfc063.html"
+            "pageSrc" : "/technical-doc/rfc063.html"
           },
           {
             "name": "SecurityContext object",
             "path" : "rfc075o.html",
-            "pageSrc" : "/OpenDSU/rfc075o.html"
+            "pageSrc" : "/technical-doc/rfc075o.html"
           }
         ]
       }
     ]
     },
     {
-      "name": "OpenDSU Specifications",
-      "path": "/Specifications",
-      "children": 
-      [ 
+      "name": "Use cases",
+      "path": "/use-cases",
+      "children": [
         {
-          "name": "DSU (Data Sharing Units) Introduction",
-          "path" : "rfc001.html",
-          "pageSrc" : "/Specifications/rfc001.html"
-        },
-        {
-          "name": "Bricks Storages",
-          "path" : "rfc003.html",
-          "pageSrc" : "/Specifications/rfc003.html"
-        }, 
-        {
-          "name": "Anchoring",
-          "path" : "rfc004.html",
-          "pageSrc" : "/Specifications/rfc004.html"
-        },
-        {
-          "name": "KeySSI specification",
-          "path": "/keyssi",
-          "children": 
-          [
-              {
-                "name": "KeySSI Introduction",
-                "path" : "rfc002.html",
-                "pageSrc" : "/Specifications/keyssi/rfc002.html"
-              },  
-              {
-                "name": "SeedSSIs",
-                "path" : "rfc011.html",
-                "pageSrc" : "/Specifications/keyssi/rfc011.html"
-              }, 
-              {
-                "name": "ConstSSIs",
-                "path" : "rfc012.html",
-                "pageSrc" : "/Specifications/keyssi/rfc012.html"
-              },  
-              {
-                "name": "HashLinkSSIs",
-                "path" : "rfc014.html",
-                "pageSrc" : "/Specifications/keyssi/rfc014.html"
-              }, 
-              {
-                "name": "SymetricalEncyptionSSIs",
-                "path" : "rfc017.html",
-                "pageSrc" : "/Specifications/keyssi/rfc017.html"
-              }
-          ]
-        },
-        {
-          "name": "SSApp Architecture",
-          "path" : "rfc028.html",
-          "pageSrc" : "/Specifications/rfc028.html"
-        },
-        {
-          "name": "Others",
-          "path": "/others",
-          "children": 
-          [
-              {
-                "name": "RFC006 - DSU Types(Constitutions)",
-                "path" : "rfc006.html",
-                "pageSrc" : "/Specifications/others/rfc006.html"
-              },  
-              {
-                "name": "RFC022 - BDNS Specifications",
-                "path" : "rfc022.html",
-                "pageSrc" : "/Specifications/others/rfc022.html"
-              }, 
-              {
-                "name": "RFC023 - KeySSIs based notification services",
-                "path" : "rfc023.html",
-                "pageSrc" : "/Specifications/others/rfc023.html"
-              }, 
-              {
-                "name": "RFC024 - KeySSIs based message queues",
-                "path" : "rfc024.html",
-                "pageSrc" : "/Specifications/others/rfc024.html"
-              }, 
-              {
-                "name": "RFC033 - JSON packaging for hashing",
-                "path" : "rfc033.html",
-                "pageSrc" : "/Specifications/others/rfc033.html"
-              }, 
-              {
-                "name": "RFC034 - Signatures and credentials",
-                "path" : "rfc034.html",
-                "pageSrc" : "/Specifications/others/rfc034.html"
-              }, 
-              {
-                "name": "RFC035 - Object observability standard",
-                "path" : "rfc035.html",
-                "pageSrc" : "/Specifications/others/rfc035.html"
-              },
-              {
-                "name": "RFC003 - OpenDSU Bricks Storages",
-                "path" : "rfc003.html",
-                "pageSrc" : "/Specifications/others/rfc003.html"
-              }, 
-              {
-                "name": "RFC004 - OpenDSU Anchoring",
-                "path" : "rfc004.html",
-                "pageSrc" : "/Specifications/others/rfc004.html"
-              },
-              {
-                "name": "RFC025 - Choreographic Communication based on KeySSI",
-                "path" : "rfc025.html",
-                "pageSrc" : "/Specifications/others/rfc025.html"
-              }, 
-              {
-                "name": "RFC026 - Secure Channels",
-                "path" : "rfc026.html",
-                "pageSrc" : "/Specifications/others/rfc026.html"
-              }, 
-              {
-                "name": "RFC051 - SecretDSU",
-                "path" : "rfc051.html",
-                "pageSrc" : "/Specifications/others/rfc051.html"
-              }, 
-              {
-                "name": "RFC052 - SeedDSU",
-                "path" : "rfc052.html",
-                "pageSrc" : "/Specifications/others/rfc052.html"
-              }, 
-              {
-                "name": "RFC053 - ImmutableDSU",
-                "path" : "rfc053.html",
-                "pageSrc" : "/Specifications/others/rfc053.html"
-              }, 
-              {
-                "name": "RFC054 - RedirectDSU",
-                "path" : "rfc054.html",
-                "pageSrc" : "/Specifications/others/rfc054.html"
-              }, 
-              {
-                "name": "RFC055 - BrickDSU",
-                "path" : "rfc055.html",
-                "pageSrc" : "/Specifications/others/rfc055.html"
-              }, 
-              {
-                "name": "RFC056 - ConsentDSU",
-                "path" : "rfc056.html",
-                "pageSrc" : "/Specifications/others/rfc056.html"
-              }, 
-              {
-                "name": "RFC057 - CredentialsDSU",
-                "path" : "rfc057.html",
-                "pageSrc" : "/Specifications/others/rfc057.html"
-              }, 
-              {
-                "name": "RFC058 - BDSU",
-                "path" : "rfc058.html",
-                "pageSrc" : "/Specifications/others/rfc058.html"
-              }, 
-              {
-                "name": "RFC059 - DSU Mounting",
-                "path" : "rfc059.html",
-                "pageSrc" : "/Specifications/others/rfc059.html"        
-              }, 
-              {
-                "name": "RFC060 - KeySSI based executable choreographie",
-                "path" : "rfc060.html",
-                "pageSrc" : "/Specifications/others/rfc060.html"
-              }
-          ]
-        }     
-      ]
+        "name": "Development guidelines",
+        "path" : "rfc020.html",
+        "pageSrc" : "/use-cases/rfc0344.html"
+      }]
     },
     {
       "name": "Best Practices",
-      "path": "/Best-Practices",
+      "path": "/best-practices",
       "children": [ 
       {
         "name": "Strategies for optimisation of OpenDSU microledgers",
         "path" : "rfc037.html",
-        "pageSrc" : "/Best-Practices/rfc037.html"
+        "pageSrc" : "/best-practices/rfc037.html"
       }, 
       {
         "name": "How to choose a ledger. When to choose ZKP.",
         "path" : "rfc038.html",
-        "pageSrc" : "/Best-Practices/rfc038.html"
+        "pageSrc" : "/best-practices/rfc038.html"
       }, 
       {
         "name": "Classification of Blockchain Architectures",
         "path" : "rfc040.html",
-        "pageSrc" : "/Best-Practices/rfc040.html"
+        "pageSrc" : "/best-practices/rfc040.html"
       }, 
       {
         "name": "Differential Privacy in OpenDSU",
         "path" : "rfc041.html",
-        "pageSrc" : "/Best-Practices/rfc041.html"
+        "pageSrc" : "/best-practices/rfc041.html"
       }, 
       {
         "name": "MITM avoidance strategies",
         "path" : "rfc061.html",
-        "pageSrc" : "/Best-Practices/rfc061.html"
+        "pageSrc" : "/best-practices/rfc061.html"
       }]
     },
     {
       "name": "Recommendations",
-      "path": "/Recommendations",
+      "path": "/recommendations",
       "children": [
         {
         "name": "SSApp implementation",
         "path" : "rfc034.html",
-        "pageSrc" : "/Recommendations/rfc034.html"
+        "pageSrc" : "/recommendations/rfc034.html"
       }, 
       {
         "name": "Profile and personas as decentralised identities",
         "path" : "rfc043.html",
-        "pageSrc" : "/Recommendations/rfc044.html"
+        "pageSrc" : "/recommendations/rfc044.html"
       },
       {
         "name": "The BricksLedger Architecture",
         "path" : "rfc044.html",
-        "pageSrc" : "/Recommendations/rfc044.html"
+        "pageSrc" : "/recommendations/rfc044.html"
       },
       {
         "name": "Highly Scalable Ledgers",
         "path" : "rfc045.html",
-        "pageSrc" : "/Recommendations/rfc045.html"
+        "pageSrc" : "/recommendations/rfc045.html"
       }]
     },
     {
-      "name": "Rules",
-      "path": "/Rules",
-      "children": [
+      "name": "Contribute to the documentation",
+      "path": "/contribution",
+      "class":"important",
+      "children": 
+      [
         {
-        "name": "OpenDSU gouvernance",
-        "path" : "rfc031.html",
-        "pageSrc" : "/Rules/rfc031.html"
-      }]
+          "name": "RFC proposal guidelines",
+          "path": "rfchowto.html",
+          "pageSrc": "/contribution/rfchowto.html"
+        },
+        {
+          "name": "Give Feedbacks",        
+          "path": "rfcstatus.html",
+          "pageSrc": "/contribution/rfcstatus.html"
+        }
+      ]
     },
     {
       "name": "About",
-      "path": "/About",
+      "path": "/about",
       "icon": "fa-cog",
-      "pageSrc": "About/about.html",
+      "pageSrc": "about/about.html",
       "tags": "about, open-source"
     },
     {
