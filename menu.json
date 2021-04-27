@@ -35,7 +35,7 @@
           "pageSrc" : "/openDSU/rfc004.html"
         },
         {
-          "name": "KeySSI specification",
+          "name": "KeySSIs specifications",
           "path": "/keyssi",
           "children": 
           [
@@ -57,17 +57,17 @@
               {
                 "name": "ArraySSIs",
                 "path" : "rfc012.html",
-                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+                "pageSrc" : "/openDSU/keyssi/rfc012.html"
               }, 
               {
                 "name": "PasswordSSIs",
                 "path" : "rfc013.html",
-                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+                "pageSrc" : "/openDSU/keyssi/rfc013.html"
               }, 
               {
                 "name": "WalletSSIs",
                 "path" : "rfc014.html",
-                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+                "pageSrc" : "/openDSU/keyssi/rfc014.html"
               }, 
               {
                 "name": "HashLinkSSIs",
