@@ -24,10 +24,6 @@ function changeCss(element){
             splitResponse=xhr.responseText.split('<link');
             split2=splitResponse[1].split('.ico">')[1];
             responseWithCss=splitResponse[0]+'<link rel="stylesheet" href="/assets/css/rfcStyling.css">'+split2;
-            tmpStatus=responseWithCss.split('&lt;status&gt;');
-            status=tmpStatus[1];
-            cleanResponse=tmpStatus[0]+tmpStatus[2];
-            cleanResponse=cleanResponse.split('<div id="interval">')[0]+'<div id="interval"><p> Status: <span class="'+status+'">'+status+'</span></p></div></div><div id="contents">'+cleanResponse.split('<div id="contents">')[1];
             d.innerHTML = cleanResponse;
         };
         xhr.send();

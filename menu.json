@@ -46,23 +46,38 @@
               },  
               {
                 "name": "SeedSSIs",
-                "path" : "rfc011.html",
-                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+                "path" : "rfc010.html",
+                "pageSrc" : "/openDSU/keyssi/rfc010.html"
               }, 
               {
                 "name": "ConstSSIs",
-                "path" : "rfc012.html",
-                "pageSrc" : "/openDSU/keyssi/rfc012.html"
+                "path" : "rfc011.html",
+                "pageSrc" : "/openDSU/keyssi/rfc011.html"
               },  
               {
-                "name": "HashLinkSSIs",
+                "name": "ArraySSIs",
+                "path" : "rfc012.html",
+                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+              }, 
+              {
+                "name": "PasswordSSIs",
+                "path" : "rfc013.html",
+                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+              }, 
+              {
+                "name": "WalletSSIs",
                 "path" : "rfc014.html",
-                "pageSrc" : "/openDSU/keyssi/rfc014.html"
+                "pageSrc" : "/openDSU/keyssi/rfc011.html"
+              }, 
+              {
+                "name": "HashLinkSSIs",
+                "path" : "rfc015.html",
+                "pageSrc" : "/openDSU/keyssi/rfc015.html"
               }, 
               {
                 "name": "SymetricalEncyptionSSIs",
-                "path" : "rfc017.html",
-                "pageSrc" : "/openDSU/keyssi/rfc017.html"
+                "path" : "rfc016.html",
+                "pageSrc" : "/openDSU/keyssi/rfc016.html"
               }
           ]
         },
@@ -110,6 +125,11 @@
           "name": "Crypto",
           "path" : "rfc066.html",
           "pageSrc" : "/dev-doc/rfc066.html"
+          },
+          {
+            "name": "Database (db)",
+            "path" : "rfc061.html",
+            "pageSrc" : "/dev-doc/rfc061.html"
           },
           {
             "name": "DSU Object",
@@ -167,11 +187,6 @@
             "name": "Config",
             "path" : "rfc078.html",
             "pageSrc" : "/dev-doc/rfc078.html"
-          },
-          {
-            "name": "Database (db)",
-            "path" : "rfc061.html",
-            "pageSrc" : "/dev-doc/rfc061.html"
           },
           {
             "name": "Message queues (mq)",
