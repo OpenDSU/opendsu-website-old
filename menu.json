@@ -213,11 +213,6 @@
           "path": "/sdk-objects",
           "children": [
             {
-              "name": "Cache objects",
-              "path": "rfc077o.html",
-              "pageSrc": "/dev-doc/rfc077o.html"
-            },
-            {
               "name": "Db objects",
               "path": "rfc062.html",
               "pageSrc": "/dev-doc/rfc062.html"
@@ -226,11 +221,6 @@
               "name": "DSU Object",
               "path": "rfc063.html",
               "pageSrc": "/dev-doc/rfc063.html"
-            },
-            {
-              "name": "SecurityContext object",
-              "path": "rfc075o.html",
-              "pageSrc": "/dev-doc/rfc075o.html"
             }
           ]
         }
