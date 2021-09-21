@@ -240,6 +240,11 @@
           "name": "Give Feedbacks",
           "path": "rfcstatus.html",
           "pageSrc": "/contribution/rfcstatus.html"
+        },
+        {
+          "name": "Changes Tracking",
+          "path": "changestracking.html",
+          "pageSrc": "/contribution/changestracking.html"
         }
       ]
     },
