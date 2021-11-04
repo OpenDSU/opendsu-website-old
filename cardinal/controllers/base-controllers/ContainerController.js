@@ -184,7 +184,7 @@ export default class ContainerController {
 
 
   /* psk-modal functions */
-  showModal(modalName, bindContextData, returnCallback) {
+  showModal(modalName, bindContextData, returnCallback = () => {}) {
 
     const completeCallback = (...args) => {
       this.hideModal();
@@ -275,14 +275,29 @@ export default class ContainerController {
     }, timeout)
   }
 
-  displayModal(message, title) {
+  displayModal(message, title, modalName = "loadingModal") {
     if(!title){
       title = "Info";
     }
-    this.showModal('loadingModal', {
+    this.showModal(modalName, {
       title: title,
       description: message
     });
+  }
+
+  displayConfigurableModal(configModal){
+    let config = {
+      title: "Info",
+      modalName: "loadingModal",
+      modalContent: {},
+      modalOptions: {}
+    }
+    Object.assign(config, configModal)
+    this.showModal(config.modalName, {
+      title: config.title,
+      modalContent: config.modalContent,
+      modalOptions: config.modalOptions
+    })
   }
 
 
