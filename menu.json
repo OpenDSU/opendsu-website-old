@@ -223,6 +223,11 @@
               "pageSrc": "/dev-doc/rfc063.html"
             }
           ]
+        },
+        {
+          "name": "Smoke Tests Results",
+          "loader": "iframe",
+          "src": "https://cdn.jsdelivr.net/gh/PrivateSky/privatesky@test_reports/tests/psk-smoke-testing/testReport.html"
         }
       ]
     },

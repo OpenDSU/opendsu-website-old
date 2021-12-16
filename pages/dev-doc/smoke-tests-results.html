@@ -1,0 +1,16 @@
+<psk-page class="full-viewport">
+    <psk-container style="width: 100%">
+        <script type="text/javascript">
+            // old url
+            // https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html
+			fetch("https://cdn.jsdelivr.net/gh/PrivateSky/privatesky@test_reports/tests/psk-smoke-testing/testReport.html")
+				.then( res => res.text())
+				.then(html => {
+					let iframe = controller.element.querySelector("#iframeWrapper");
+					iframe.setAttribute("srcdoc", html);
+				})
+        </script>
+        <iframe id="iframeWrapper" height="100%" width="100%">
+        </iframe>
+    </psk-container>
+</psk-page>
