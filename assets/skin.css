@@ -65,7 +65,7 @@ webc-app-menu[mode=vertical] .app-menu webc-app-menu-item[level="0"]:last-child 
     border-bottom: none;
 }
 
-webc-app-identity::before {
+webc-app-menu[mode=vertical] webc-app-identity::before {
     content: '';
     background: url("/assets/images/opendsu-logo.png") no-repeat;
     background-size: contain;
@@ -77,14 +77,34 @@ webc-app-identity::before {
     margin: auto;
 }
 
+webc-app-menu[mode=mobile] header {
+    align-items: unset;
+    height: 100px;
+    background: #cfe3f8;
+}
+
+webc-app-menu[mode=mobile] webc-app-identity::before {
+    content: '';
+    background: url("/assets/images/opendsu-logo.png") no-repeat;
+    background-size: contain;
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    display: block;
+    justify-content: center;
+}
+
 webc-app-identity {
     text-align: center;
     display: flex;
     flex-direction: column;
     --color: #003366;
     --avatar-radius: 0;
-    justify-content: center;
+    --avatar-width: 30px;
+    width: 100%;
+    align-items: center;
 }
+
 
 iframe.fill-page {
     width: 100vw;
@@ -92,9 +112,17 @@ iframe.fill-page {
     height: 100vh;
     border: none;
 }
-.page-content {
-    color: #565656;
-    padding: 0 45px 30px;
-    display: flex;
+
+@media only screen and (max-width: 1160px) {
+    psk-page::part(page-header) {
+        margin-top: 110px;
+    }
+
+    psk-page::part(page-grid).page-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
+
+
 
