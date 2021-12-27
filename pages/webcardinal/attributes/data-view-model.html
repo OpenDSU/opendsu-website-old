@@ -1,0 +1,104 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="data-view-model attribute">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+    ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+    ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>This attribute is used to apply a model to a HTML element.</p>
+        <p>The model is declared in the controller and via <code>data-view-model</code> attribute any HTML element will be responsible for binding.</p>
+        <psk-highlight type-of-highlight="issue">
+            <p>The model must be written as a JavaScript object.</p>
+        </psk-highlight>
+    </psk-description>
+
+    <psk-chapter title="Usage">
+        <p>The general use of <code>data-view-model</code> is the following:</p>
+        <psk-code>
+            <element data-view-model="@model">
+                CONTENT
+            </element>
+        </psk-code>
+        <p>Where <code>CONTENT</code> can be a <code>child node</code> of an HTML element or one of the following expressions: <span style="white-space: nowrap;"><code>{{ @value }}</code>, <code>{{ $value }}</code></span>.</p>
+        <p><strong>Note</strong>: <code>value</code> must be present in the model!</p>
+    </psk-chapter>
+
+    <psk-chapter title="Examples">
+        <psk-chapter title="Simple example">
+            <psk-code title="Markup" language="markup">
+                <webc-container controller="webcardinal/examples/DataModelExample1Controller">
+                    <div data-view-model="@divModel">{{ @divModel.content }}</div>
+                </webc-container>
+            </psk-code>
+
+            <psk-code title="Controller" language="JavaScript" class="small-size" file="/scripts/controllers/webcardinal/examples/DataViewModelExample1Controller.js"></psk-code>
+
+            <psk-chapter title="Result">
+                <psk-example class="app-example">
+                    <webc-container controller="webcardinal/examples/DataViewModelExample1Controller">
+                        <div data-view-model="@divModel">{{ @divModel.content }}</div>
+                    </webc-container>
+                </psk-example>
+            </psk-chapter>
+
+            <psk-code title="Node in DOM">
+                <div data-view-model="@divModel"
+                     class="example-class"
+                     id="example-id"
+                     data-tag="example-tag"
+                     data-custom="example-data">
+                    Hello "data-view-model"!
+                </div>
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="PrivateSky components (psk-<component>)">
+            <psk-code title="Markup" language="markup">
+                <webc-container controller="webcardinal/examples/DataViewModelExample2Controller">
+                    <psk-layout data-view-model="@layout">
+                        <psk-input data-view-model="@email"></psk-input>
+                        <psk-button data-view-model="@subscribe"></psk-button>
+                    </psk-layout>
+                </webc-container>
+            </psk-code>
+
+            <psk-code title="Controller" language="JavaScript" class="small-size"  file="/scripts/controllers/webcardinal/examples/DataViewModelExample1Controller.js"></psk-code>
+
+            <psk-chapter title="Result">
+                <psk-example class="app-example">
+                    <webc-container controller="webcardinal/examples/DataViewModelExample2Controller">
+                        <psk-layout data-view-model="@layout">
+                            <psk-input data-view-model="@email"></psk-input>
+                            <psk-button data-view-model="@subscribe"></psk-button>
+                        </psk-layout>
+                    </webc-container>
+                </psk-example>
+            </psk-chapter>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

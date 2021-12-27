@@ -1,0 +1,212 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    psk-list.no-padding ul {
+        padding: 0 0 0 0.75rem;
+    }
+    psk-list.no-padding ul li {
+        padding: 0;
+    }
+    psk-list.no-padding ul li p {
+        padding: 0.15rem 0;
+    }
+    .small-size > code {
+        font-size: 90% !important;
+    }
+</style>
+
+<psk-page title="Migrate from Cardinal to WebCardinal">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+    ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+    ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Overview">
+        <p>Web Cardinal has a number of advantages over Cardinal.</p>
+        <psk-list class="no-padding">
+            <p>It is much more extensible and its generated distribution can be customized.</p>
+            <p>It can be used with other web components not only with its own.</p>
+            <p>WebCardinal models can be applied to any HTML Element not only for a <code>psk-&ltcomponent&gts</code>.</p>
+            <p>It has built-in support for translations.</p>
+            <p>Application root is much more versatile and application router is more powerful.</p>
+        </psk-list>
+    </psk-description>
+
+    <psk-chapter title="Replacement of components">
+        <p>
+            After <a href="/webcardinal/overview?chapter=how-to-install-webcardinal">installing</a> WebCardinal
+            (witch involves a different mechanisms than the Cardinal offers), you should be aware that all <code>psk-&ltcomponent&gts</code>
+            from <strong>@cardinal/core</strong> are deprecated.
+        </p>
+        <p>
+            So it is necessary to update your application with corresponding replacement from WebCardinal (if the replacement exists). For example
+            <code>&ltpsk-app-root&gt</code> will be replaced by <code>&ltwebc-app-root&gt</code>, <code>&ltpsk-link&gt</code> by <code>&ltwebc-link&gt</code> and so on.
+            The pattern is the following, if a component from <strong>psk</strong> has a <strong>webc</strong> replacement, you should use the newer version which WebCardinal offers.
+        </p>
+        <psk-highlight type-of-highlight="example">
+            Do not forget to replace cardinal distribution, with WebCardinal distribution!
+        </psk-highlight>
+        <psk-tab-navigator>
+            <psk-tab title="WebCardinal">
+                <psk-code>
+                    <!-- WebCardinal dist -->
+                    &ltlink rel="stylesheet" href="webcardinal/webcardinal.css">
+                    &ltscript type="module" src="webcardinal/webcardinal.js">&lt/script>
+                </psk-code>
+            </psk-tab>
+            <psk-tab title="Cardinal">
+                <psk-code>
+                    <!-- Cardinal dist -->
+                    &ltscript type="module" src="cardinal/cardinal.esm.js">&lt/script>
+                    &ltscript nomodule src="cardinal.js">&lt/script>
+                </psk-code>
+            </psk-tab>
+        </psk-tab-navigator>
+        <div>
+            <p><strong>Q: </strong> What exactly should be replaced?</p>
+            <p class="small-size">
+                <strong>A: </strong> If is related to controllers (<code>psk-container</code> → <code>webc-container</code>),
+                routing (<code>psk-app-menu</code> → <code>webc-app-menu</code>),
+                binding (<code>psk-condition</code> → <code>data-if</code> attribute, <code>psk-for-each</code> → <code>data-for</code> and you should also use <code>data-view-model</code>).
+                <br>
+                If is an UI element (like <code>psk-page</code> or <code>psk-button</code>) the element does not need to be changed.
+            </p>
+        </div>
+    </psk-chapter>
+
+    <psk-chapter title="Newer configuration">
+        <p>In Cardinal, there were 2 configuration files called: <code>menu.json</code> and <code>config.json</code>.</p>
+        <p>
+            WebCardinal uses only 1 file for this type of settings named <code>webcardinal.json</code>.
+            <webc-link tag="webcardinal-configuration">Here</webc-link> you can read in more detail about newer configuration,
+            but the main difference is that each child now can be positioned relative to his parent.
+        </p>
+    </psk-chapter>
+
+    <psk-chapter title="Updated Controllers">
+        <p>Another modification brought by WebCardinal are the new controllers: <webc-link href="/webcardinal/controllers/controller">Controller</webc-link> and <webc-link href="/webcardinal/controllers/webccontroller">WebcController</webc-link>.</p>
+        <p>Controller offers the basic functionalities of the framework. </p>
+        <p>WebController offers some basic interaction with the WebCardinal components (for example <code>createWebcModal</code>).</p>
+        <p>In old Cardinal controllers must be imported from: <psk-code>../../cardinal/controllers/base-controllers/ContainerController.js</psk-code></p>
+        <p>In WebCardinal controllers are exposed in <code>WebCardinal.controllers</code> from <code>window</code>: <psk-code language="JavaScript">const { WebcController } = WebCardinal.controllers;</psk-code></p>
+        <psk-highlight type-of-highlight="note">
+            <code>window.WebCardinal</code> can be inspected, in order to understand better the current configuration of your application.
+        </psk-highlight>
+        <psk-highlight type-of-highlight="issue">
+            There is no <code>ModalController</code> or <code>WebcModalController</code> in WebCardinal.
+        </psk-highlight>
+    </psk-chapter>
+
+<!--    <psk-chapter title="Extended Models"></psk-chapter>-->
+<!--    TODO: continue -->
+
+    <psk-chapter title="Build-in skins & translation">
+        <p>Now each page loaded by WebCardinal can have a custom skin, or a default one. Each skin can come with translations if it is desired.</p>
+        <p>Another advantage of WebCardinal over Cardinal is that has built-in translation integrated in a separated model called <strong>translationModel</strong>.</p>
+        <p>From any controller you can call <code>translate</code> function and in any page a translation can be applied with a specific syntax (<code>{{ $keyword }}</code>) as long as the translations are enable.</p>
+        <p>Read more about <webc-link tag="webcardinal-skins">skins and translations</webc-link> here.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Templates and CustomElements">
+        <p>WebCardinal also offers the possibility to use templates through a custom component called <webc-link tag="webc-template">webc-template</webc-link>.</p>
+        <p>A template can have its own controller and models or those can be inherited from the page that uses the template.</p>
+        <psk-tab-navigator>
+            <psk-tab title="Example">
+                <psk-code>
+                    &ltmy-custom-header>&lt/my-custom-header>
+                </psk-code>
+                <psk-example>
+                    <my-custom-header></my-custom-header>
+                </psk-example>
+            </psk-tab>
+            <psk-tab title="How it works">
+                <p>1. Define element</p>
+                <psk-code class="small-size" language="JavaScript">
+                customElements.define('my-custom-header', class _ extends HTMLElement {
+                    connectedCallback() {
+                        this.innerHTML =
+                            `&ltwebc-container controller="MyCustomHeaderController">
+                                &ltwebc-template template="my-custom-header"
+                                               data-view-model="@"
+                                               disable-container>
+                                &lt/webc-template>
+                             &lt/webc-container>`
+                    }
+                });
+                </psk-code>
+                <p>2. Define the controller</p>
+                <psk-code class="small-size" language="JavaScript">
+                /* /scripts/controllers/MyCustomHeaderController */
+                const { Controller } = WebCardinal.controllers;
+
+                class MyCustomHeaderController extends Controller {
+                    initializeModel = () => ({
+                        text: 'My awesome header!'
+                    });
+
+                    constructor(element, history) {
+                        super(element, history);
+                        this.setModel(this.initializeModel());
+                    }
+                }
+
+                export default MyCustomHeaderController;
+                </psk-code>
+                <p>3. Define your template</p>
+                <psk-code>
+                    <!-- /templates/my-custom-header.html -->
+                    &ltstyle>
+                        .custom-header {
+                            padding: 1rem;
+                            border: 1px dashed #0c5460;
+                            border-radius: 3px;
+                        }
+                    &lt/style>
+                    &ltheader class="custom-header">{{ @text }}&lt/header>
+                </psk-code>
+            </psk-tab>
+        </psk-tab-navigator>
+    </psk-chapter>
+
+    <psk-chapter title="CSS Custom Properties">
+        <p>Majority of <code>webc-&ltcomponent&gts</code> are using some custom properties. On the docs for any <code>webc-&ltcomponent&gt</code> there is a section called <strong>CSS Variables</strong>.</p>
+        <p>Check <a href="https://raw.githubusercontent.com/webcardinal/webcardinal-core/master/src/globals/styles/_variables.css">the list with all <code style="color: currentcolor;">--webc-custom-properties</code></a>.</p>
+    </psk-chapter>
+
+    <psk-chapter title="External WebComponents">
+        <p>
+            Because binding of the model is made by a <strong>BindingService</strong> for each component that has
+            <webc-link tag="data-view-model">data-view-model</webc-link>,
+            <webc-link tag="data-for">data-for</webc-link> or
+            <webc-link tag="data-if">data-if</webc-link>,
+            not by a specific web component (that was the case in Cardinal),
+            in WebCardinal there is the possibility to use external web components from other libraries.
+        </p>
+        <div>
+            <p>A good example is <a href="https://ionicframework.com/docs/components" target="_blank">Ionic Framework</a> that can be used inside a WebCardinal application.</p>
+        </div>
+    </psk-chapter>
+</psk-page>

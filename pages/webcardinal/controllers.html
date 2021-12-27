@@ -1,0 +1,175 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NW4R664');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="Controllers. How to write controllers. How to use controllers.">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>This page is intending to display how <strong>Controllers</strong> are written in this framework and the ways of how to use the controllers.</p>
+
+        <p>At this moment, the following ways of implementing a controller are available (we will get into detail in the chapters below):</p>
+        <psk-list list-type="ordered">
+            <span>By creating a javascript class inside <code>controller</code> folder of the application. This class needs to be registered. </span>
+            <span>By writing javascript code inside the tag <code>script</code>. This tag will be connected as controller only inside <webc-link tag="psk-container">psk-container</webc-link> and <webc-link tag="psk-form">psk-form</webc-link> components.</span>
+        </psk-list>
+
+        <p>There is also a default controller that is available, which is named <code>"ContainerController"</code>. Our suggestion is that when you want to create a controller, is to extend this already available controller.</p>
+        <p>Why? There are two reasons for this: First, we already handle the HTML container where you desire to use the controller and the second reason is that the controller already handles the possibility to listen or to trigger events. More about these,
+            in the chapters below.</p>
+
+        <p>Also, after you define your custom controllers, or maybe you want to use the provided controller, you have the following ways to include the controller inside your components, all of them by using the component <code><webc-link tag="psk-container">psk-container</webc-link></code>            (we will get into detail in the chapters below): </p>
+        <psk-list list-type="ordered">
+            Load the <webc-link tag="psk-container">psk-container</webc-link> component without any attribute.
+            Load the <webc-link tag="psk-container">psk-container</webc-link> component by giving the <code>controller-name</code> attribute.
+            Load the <webc-link tag="psk-container">psk-container</webc-link> component with or without the <code>controller-name</code> attribute, and also, write javascript source code inside <code>script</code> tag.
+        </psk-list>
+    </psk-description>
+
+    <psk-chapter title="Create a controller">
+        <psk-chapter title="Create a controller by creating a Javascript class">
+			<p>Javascript classes that will serve as controllers should be created in the directory <code>/src/scripts/controllers</code> in order to mentain the project structure.</p>
+			<p>Also, in the folder structure, there are also a folder, <code>base-controllers</code>. It is very important that these controllers remain not changed, as we are under development and we will provide updates from time to time.</p>
+            <p>After the creation of this class, you should extend the base controller named <code>ContainerController</code>, like in the below example. If you chose not to extend the controller, then you will nt have to possibility to use the binding features.</p>
+            <p>The base controller has already some functionalities provided, like triggering and listening to events, binding (one-way and two-way binding) and in the future we will bring other features.</p>
+            <p>The starting point of your class should look like the below one (the class <strong>must</strong> be created in the base path of controllers - <code>/src/scripts/controllers</code>)</p>
+			<psk-code language="Javascript">
+                import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+
+				export default class TestFormController extends ContainerController {
+					constructor(element) {
+						super(element);
+					}
+				}
+			</psk-code>
+        </psk-chapter>
+        <psk-chapter title="Create a controller by writing javascript source code">
+            <p>Let's assume that you want to have displayed a list of sale products on a page, but for some of them you want a specific behavior, like triggering an event when a special product has been clicked. In order to do this, you can write some javascript
+                logic only for that product.</p>
+            <p>The source code for that product will look something like the following one:</p>
+            <psk-code language="markup">
+                <!-- The controller name is not mandatory, an instance of the default controller is being attached to the container in case no controller is provided. -->
+                <psk-container controller-name="TestFormController">
+                    <script type="text/javascript">
+                        // The variable "controller" is mandatory to be used like this, named controller.
+                        // The method "receive" is defined in the default controller, and it adds and event listener to the container.
+                        // If you do not extend the default controller, you will need to define your own functionalities
+                        controller.on('clickOnSpecialProduct', function() {
+                            // Define what should happen
+                        });
+                    </script>
+                    <!-- YOUR WEB COMPONENTS HERE -->
+                </psk-container>
+            </psk-code>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="Loading a controller">
+            <p>To load a controller by name is possible using one of the following methods:</p>
+            <psk-list>
+                    Load the <webc-link tag="psk-container">psk-container</webc-link> component without any attribute.
+                    Load the <webc-link tag="psk-container">psk-container</webc-link> component by giving the <code>controller-name</code> attribute.
+                    Load the <webc-link tag="psk-container">psk-container</webc-link> component and define <code>script</code> source code.
+            </psk-list>
+            <psk-chapter title="Loading a controller by default">
+                <p>This type of controller is the easiest to be instantiated. You just need to load the <webc-link tag="psk-container">psk-container</webc-link> component, and inside it you only need to write down the web components you desire for the layout. The source code should look like the following: </p>
+				<psk-code language="markup">
+					<!-- In this way, the default controller named "ContainerController" is loaded inside the container -->
+					<psk-container>
+						<!-- YOUR WEB COMPONENTS HERE -->
+					</psk-container>
+				</psk-code>
+            </psk-chapter>
+            <psk-chapter title="Loading a controller by name">
+                <p>This type of controller can be loaded by providing to <webc-link tag="psk-container">psk-container</webc-link> component, the attribute controller-name with the name of the controller.</p>
+                <p>If the controller given as attribute does not exists, no controller will be attached to the container, so pay attention when you type the controller-name.</p>
+                <p>The source code of the container component should look like this:</p>
+				<psk-code language="markup">
+					<!-- In this way, your controller is instantiated on this container -->
+					<psk-container controller-name="TestFormController">
+						<!-- YOUR WEB COMPONENTS HERE -->
+					</psk-container>
+				</psk-code>
+            </psk-chapter>
+            <psk-chapter title="Loading a controller by defining Javascript source code">
+                <p>In the chapter above, <code>Create a controller by writing javascript source code</code>, we have described how to create a controller inside the HTML tag <code>script</code> and provided a small example of usage.</p>
+                <p>Here we have two cases, to provide a <code>controller-name</code> attribute or not. If we provide a controller, it will be verified and only if it exists, the <code>script</code> tag will be taken into consideration.</p>
+                <p>If the <code>controller-name</code> attribute is not provided, then <code>ContainerController</code> will be attached to the container and the script defined will be executed.</p>
+            </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="API Definition - ContainerController">
+        <psk-chapter   class="api-title" title="controller.on()">
+            <p>The function <code>on</code> will listen for the event and when the event is triggered, the callback function given as parameter will be executed.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.on(eventName: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <psk-list>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be listened</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter >
+        <psk-chapter  class="api-title" title="controller.off()">
+            <p>The function <code>off</code> will remove the provided event listener.</p>
+            <p>In order to remove the correct event listener, the function should receive the same arguments (eventName, callback, options) like on the registering the event.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.off(eventName: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <psk-list>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be listened</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter >
+        <psk-chapter class="api-title" title="controller.send()">
+            <p>The function <code>send</code> is resposable with triggering events by using a given name and optionaly, some information to be sent with the event.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.send(eventName: string, data: any, htmlElement?: HTMLElement)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <psk-list>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be triggered</span>
+                    <span><strong>data</strong> <i>(optional)</i> - The information that will be sent to the event. </span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+        <psk-chapter class="api-title" title="controller.setModel()">
+            <p>The function <code>setModel</code> is a setter for the model. The model will be attached to the controller, so after that one-way and two-way binding can happen.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.setModel(model: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <psk-list>
+                    <span><strong>model</strong> <i>(mandatory)</i> - The javascript object to be set as model</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>The proxified model</p>
+            </psk-card>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

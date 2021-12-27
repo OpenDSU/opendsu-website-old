@@ -1,0 +1,452 @@
+{
+  "theme": "cardinal-w3c-theme",
+  "identity": {
+    "name": "OpenDSU RFC Documentation",
+    "email": "opendsu@axiologic.net"
+  },
+  "pages": [
+    {
+      "name": "Home",
+      "path": "/",
+      "icon": "fa-home",
+      "src": "index.html"
+    },
+    {
+      "name": "OpenDSU",
+      "path": "/openDSU",
+      "children": [
+        {
+          "name": "DSU (Data Sharing Units) Introduction",
+          "path": "/openDSU/rfc001",
+          "src": "/openDSU/rfc001.html"
+        },
+        {
+          "name": "Bricks Storages",
+          "path": "/openDSU/rfc003",
+          "src": "/openDSU/rfc003.html"
+        },
+        {
+          "name": "Anchoring",
+          "path": "/openDSU/rfc004",
+          "src": "/openDSU/rfc004.html"
+        },
+        {
+          "name": "KeySSIs specifications",
+          "path": "/keyssi",
+          "children": [
+            {
+              "name": "KeySSI Introduction",
+              "path": "/keyssi/rfc002",
+              "src": "/openDSU/keyssi/rfc002.html"
+            },
+            {
+              "name": "SeedSSIs",
+              "path": "/keyssi/rfc010",
+              "src": "/openDSU/keyssi/rfc010.html"
+            },
+            {
+              "name": "ConstSSIs",
+              "path": "/keyssi/rfc011",
+              "src": "/openDSU/keyssi/rfc011.html"
+            },
+            {
+              "name": "ArraySSIs",
+              "path": "/keyssi/rfc012",
+              "src": "/openDSU/keyssi/rfc012.html"
+            },
+            {
+              "name": "PasswordSSIs",
+              "path": "/keyssi/rfc013",
+              "src": "/openDSU/keyssi/rfc013.html"
+            },
+            {
+              "name": "WalletSSIs",
+              "path": "/keyssi/rfc014",
+              "src": "/openDSU/keyssi/rfc014.html"
+            },
+            {
+              "name": "HashLinkSSIs",
+              "path": "/keyssi/rfc015",
+              "src": "/openDSU/keyssi/rfc015.html"
+            },
+            {
+              "name": "SymetricalEncyptionSSIs",
+              "path": "/keyssi/rfc016",
+              "src": "/openDSU/keyssi/rfc016.html"
+            }
+          ]
+        },
+        {
+          "name": "SSApp Architecture",
+          "path": "/openDSU/rfc028",
+          "src": "/openDSU/rfc028.html"
+        },
+        {
+          "name": "Papers",
+          "path": "/papers",
+          "icon": "fa-cog",
+          "children": [
+            {
+              "name": "Bluepaper",
+              "tags": "bluepaper",
+              "path": "/papers/bluepaper",
+              "src": "/papers/bluepaper.html"
+            },
+            {
+              "name": "Whitepaper",
+              "tags": "Whitepaper",
+              "path": "/papers/whitepaper",
+              "src": "/papers/whitepaper.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dev documentation (SDK)",
+      "path": "/dev-doc",
+      "src": "./dev-doc/index.html",
+      "icon": "fa-cog",
+      "children": [
+        {
+          "name": "JavaScript client-side standard APIs summary",
+          "path": "/dev-doc/rfc060",
+          "src": "/dev-doc/rfc060.html"
+        },
+        {
+          "name": "Basic APIs",
+          "path": "/sdk-basics",
+          "children": [
+            {
+              "name": "Crypto",
+              "path": "/sdk-basics/rfc066",
+              "src": "/dev-doc/rfc066.html"
+            },
+            {
+              "name": "Database (db)",
+              "path": "/sdk-basics/rfc061",
+              "src": "/dev-doc/rfc061.html"
+            },
+            {
+              "name": "DSU Object",
+              "path": "/sdk-basics/rfc063",
+              "src": "/dev-doc/rfc063.html"
+            },
+            {
+              "name": "Error",
+              "path": "/sdk-basics/rfc064",
+              "src": "/dev-doc/rfc064.html"
+            },
+            {
+              "name": "Http",
+              "path": "/sdk-basics/rfc071",
+              "src": "/dev-doc/rfc071.html"
+            },
+            {
+              "name": "Keyssi",
+              "path": "/sdk-basics/rfc068",
+              "src": "/dev-doc/rfc068.html"
+            },
+            {
+              "name": "Resolver",
+              "path": "/sdk-basics/rfc065",
+              "src": "/dev-doc/rfc065.html"
+            }
+          ]
+        },
+        {
+          "name": "Advanced APIs",
+          "path": "/sdk-advanced",
+          "children": [
+            {
+              "name": "Anchoring",
+              "path": "/sdk-advanced/rfc069",
+              "src": "/dev-doc/rfc069.html"
+            },
+            {
+              "name": "BDNS",
+              "path": "/sdk-advanced/rfc067",
+              "src": "/dev-doc/rfc067.html"
+            },
+            {
+              "name": "Bricking",
+              "path": "/sdk-advanced/rfc070",
+              "src": "/dev-doc/rfc070.html"
+            },
+            {
+              "name": "Cache",
+              "path": "/sdk-advanced/rfc077",
+              "src": "/dev-doc/rfc077.html"
+            },
+            {
+              "name": "Config",
+              "path": "/sdk-advanced/rfc078",
+              "src": "/dev-doc/rfc078.html"
+            },
+            {
+              "name": "Message queues (mq)",
+              "path": "/sdk-advanced/rfc073",
+              "src": "/dev-doc/rfc073.html"
+            },
+            {
+              "name": "Notifications",
+              "path": "/sdk-advanced/rfc072",
+              "src": "/dev-doc/rfc072.html"
+            },
+            {
+              "name": "Security context (sc)",
+              "path": "/sdk-advanced/rfc075",
+              "src": "/dev-doc/rfc075.html"
+            },
+            {
+              "name": "System",
+              "path": "/sdk-advanced/rfc079",
+              "src": "/dev-doc/rfc079.html"
+            }
+          ]
+        },
+        {
+          "name": "OpenDSU Objects",
+          "path": "/sdk-objects",
+          "children": [
+            {
+              "name": "Db objects",
+              "path": "/sdk-objects/rfc062",
+              "src": "/dev-doc/rfc062.html"
+            },
+            {
+              "name": "DSU Object",
+              "path": "/sdk-objects/rfc063",
+              "src": "/dev-doc/rfc063.html"
+            }
+          ]
+        },
+        {
+          "name": "Smoke Tests Results",
+          "loader": "iframe",
+          "src": "https://cdn.jsdelivr.net/gh/PrivateSky/privatesky@test_reports/tests/psk-smoke-testing/testReport.html"
+        }
+      ]
+    },
+    {
+      "name": "Contribute to the documentation",
+      "path": "/contribution",
+      "class": "important",
+      "children": [
+        {
+          "name": "RFC proposal guidelines",
+          "path": "/contribution/rfchowto",
+          "src": "/contribution/rfchowto.html"
+        },
+        {
+          "name": "Give Feedbacks",
+          "path": "/contribution/rfcstatus",
+          "src": "/contribution/rfcstatus.html"
+        },
+        {
+          "name": "Changes Tracking",
+          "path": "/contribution/changestracking",
+          "src": "/contribution/changestracking.html"
+        }
+      ]
+    },
+    {
+      "name": "Wallets (apps)",
+      "path": "/wallets",
+      "src": "./",
+      "children": [
+        {
+          "name": "WebCardinal",
+          "children": [
+            {
+              "name": "Overview"
+            },
+            {
+              "name": "Configuration",
+              "tag": "webcardinal-configuration"
+            },
+            {
+              "name": "Controllers",
+              "children": [
+                {
+                  "name": "Controller",
+                  "tag": "webcardinal-controller"
+                },
+                {
+                  "name": "WebcController",
+                  "path": "./webc-controller",
+                  "tag": "webcardinal-webccontroller"
+                }
+              ]
+            },
+            {
+              "name": "Components",
+              "children": [
+                {
+                  "name": "Web Components MVC",
+                  "tag": "cardinal-web-components-mvc"
+                },
+                {
+                  "name": "webc-app-root",
+                  "tag": "webc-app-root"
+                },
+                {
+                  "name": "webc-app-container",
+                  "tag": "webc-app-container"
+                },
+                {
+                  "name": "webc-app-router",
+                  "tag": "webc-app-router"
+                },
+                {
+                  "name": "webc-app-loader",
+                  "tag": "webc-app-loader"
+                },
+                {
+                  "name": "webc-app-menu",
+                  "tag": "webc-app-menu"
+                },
+                {
+                  "name": "webc-app-identity",
+                  "tag": "webc-app-identity"
+                },
+                {
+                  "name": "webc-app-error-toast",
+                  "tag": "webc-app-error-toast"
+                },
+                {
+                  "name": "webc-container",
+                  "tag": "webc-container"
+                },
+                {
+                  "name": "webc-docs",
+                  "tag": "webc-docs"
+                },
+                {
+                  "name": "webc-link",
+                  "tag": "webc-link"
+                },
+                {
+                  "name": "webc-modal",
+                  "tag": "webc-modal"
+                },
+                {
+                  "name": "webc-skin",
+                  "tag": "webc-skin"
+                },
+                {
+                  "name": "webc-spinner",
+                  "tag": "webc-spinner"
+                },
+                {
+                  "name": "webc-template",
+                  "tag": "webc-template"
+                }
+              ]
+            },
+            {
+              "name": "Attributes",
+              "children": [
+                {
+                  "name": "data-for",
+                  "tag": "data-for"
+                },
+                {
+                  "name": "data-if",
+                  "tag": "data-if"
+                },
+                {
+                  "name": "data-view-model",
+                  "tag": "data-view-model"
+                },
+                {
+                  "name": "data-tag",
+                  "tag": "data-tag"
+                }
+              ]
+            },
+            {
+              "name": "Forms",
+              "tag": "webcardinal-forms"
+            },
+            {
+              "name": "Skins",
+              "tag": "webcardinal-skins",
+              "skin": {
+                "name": "advanced"
+              }
+            },
+            {
+              "name": "Migration",
+              "tag": "webcardinal-migration"
+            }
+          ]
+        },
+        {
+          "name": "How to create",
+          "path": "./how-to",
+          "src": "./how-to",
+          "children": [
+            {
+              "name": "A site with WebCardinal"
+            },
+            {
+              "name": "A SSApp"
+            }
+          ]
+        },
+        {
+          "name": "FAQ",
+          "tag": "faq"
+        },
+        {
+          "name": "Tools",
+          "children": [
+            {
+              "name": "Octopus",
+              "tag": "octopus"
+            },
+            {
+              "name": "bar"
+            },
+            {
+              "name": "CSBWizard",
+              "indexed": false
+            },
+            {
+              "name": "Governance",
+              "indexed": false
+            },
+            {
+              "name": "PSKMonitor",
+              "indexed": false
+            },
+            {
+              "name": "pskwallet",
+              "indexed": false
+            },
+            {
+              "name": "Tool List",
+              "indexed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "path": "/about",
+      "icon": "fa-cog",
+      "src": "about/about.html",
+      "tags": "about, open-source"
+    },
+    {
+      "name": "Glossary",
+      "src": "./about/glossary.html"
+    },
+    {
+      "name": "404",
+      "indexed": false
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NW4R664');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="PSKDOMAIN command">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="Summary">
+      <psk-card>
+        <b>pskdomain</b> [-option]
+      </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="Description">
+      <psk-card>
+        Allows the creation and manipulation of privatesky domains.
+      </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="Options">
+        <psk-chapter title="create csb">
+            <p class="subtitle">
+                <i>alias constitutionPath</i>
+            </p> 
+            <p>
+            Creates a privatesky domain as a new CSB that contains the constitution at <code>constitutionPath</code>. This
+            command generates a CSB whose SEED is associated locally (inside the SeedCage) with the <code>alias</code>
+            argument. A prompt that requires the insertion of a PIN will appear. The provided PIN will be required for
+            all subsequent commands.
+            </p>
+        </psk-chapter>
+        <psk-chapter title="create bar">
+            <p class="subtitle"><i>alias localPath</i></p>
+            <p>
+            Creates a BAR that stores the files at <code>localPath</code>. The command generates a BAR whose SEED is
+            associated locally (inside the SeedCage) with the <code>alias</code> argument.
+            </p>
+        </psk-chapter>
+        <psk-chapter title="add folder">
+            <p class="subtitle"><i>barAlias barPath localPath</i></p>
+            <p>
+            Adds the files at <code>localPath</code> to the BAR whose SEED is associated locally with the <code>barAlias</code>
+            argument. The files are added in BAR at bar <code>barPath</code>.
+            </p>
+        </psk-chapter>
+        <psk-chapter title="update constitution">
+            <p class="subtitle"><i>domainAlias constitutionPath</i></p>
+            <p>
+            Replaces the constitution in the domain whose SEED is associated with <code>domainAlias</code> with the
+            constitution at <code>constitutionPath</code>.
+            </p>
+        </psk-chapter>
+        <psk-chapter title="add agent">
+            <p class="subtitle"><i>domainAlias agentAlias</i></p>
+            <p>
+            Adds agent <code>agentAlias</code> to the domain whose SEED is associated with <code>domainAlias</code>. A prompt for
+            PIN introduction will appear.
+            </p>
+        </psk-chapter>
+        <psk-chapter title="publish">
+        <p class="subtitle"><i>domainAlias remoteAddress</i></p>
+        </psk-chapter>
+        <psk-chapter title="set pin">
+            <p>
+            Allows the change of PIN. Firstly, a prompt that requires the current PIN will appear. After the PIN is
+            validated another prompt will appear for the introduction of the new PIN.
+            </p>
+        </psk-chapter>
+        <psk-chapter title="anchor">
+            <p class="subtitle"><i>anchoreeAlias anchoratorAlias</i></p>
+            <p>
+            Allows the anchoring of the domain whose SEED is associated locally with the <code>anchoreeAlias</code> argument
+            inside the domain whose SEED is associated with the <code>anchoratorAlias</code>. By anchoring it is meant that
+            “anchorator” domain contains the hash of the anchorated domain, thus reflecting each change of the latter in
+            the former.
+            </p>
+        </psk-chapter>
+    </psk-chapter>
+    <psk-chapter title="Concept definitions">
+        <psk-table header="true">
+            Concept| Description
+            BAR | An archive that stores files that were previously divided into blocks called bricks. A BAR is referenced by its SEED. The SEED could be also used to encrypt the archive.
+
+            CSB | An encrypted BAR that contains a blockchain.
+
+            SEED | A string used to derive the encryption keys for  BARs. It is also used for referencing BARs.
+
+            SEED Cage | A dictionary that stores domainAliases and SEEDs.
+
+            PIN | A string used to derive the key used for the SEED Cage encryption.
+
+            Domain | A domain is a CSB that stores domain constitutions.
+
+            Domain Constitution | A list of files that contain assets and transactions used for the manipulation of a domain’s blockchain.
+
+        </psk-table>
+    </psk-chapter>
+</psk-page>

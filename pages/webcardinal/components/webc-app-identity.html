@@ -1,0 +1,38 @@
+<psk-page title="Application identity">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-app-identity">
+        <psk-description title="Summary">
+            <p>This is your digital identity, you should fill in your <strong>name</strong> (full name, organization name, etc.), <strong>email</strong> and your <strong>avatar</strong> (logo, profile picture).</p>
+            <psk-highlight type-of-highlight="example">
+                <code>webc-app-identity</code> is an internal component used by <webc-link tag="webc-app-menu">webc-app-menu</webc-link>.
+            </psk-highlight>
+        </psk-description>
+        <psk-chapter title="Usage">
+            <article>
+                <p>From <code>webcardinal.json</code>:</p>
+                <psk-code language="json">
+                    "identity": {
+                        "avatar": "/assets/logo.svg",
+                        "name": "MyOrganisation",
+                        "email": "MyOrganisation@example.com"
+                    }
+                </psk-code>
+                <p><a href="https://github.com/webcardinal/webcardinal-core/blob/master/src/controllers/config/default.ts#L12">Default values</a> are set in <code>default.ts</code>;</p>
+            </article>
+        </psk-chapter>
+    </webc-docs>
+
+    <psk-chapter title="Example">
+        <psk-example>
+            <style>
+                psk-example {
+                    --webc-app-identity-color: #4c71dd;
+                    display: block;
+                    border: 1px solid #CDCDCD;
+                    padding: 0 1rem 1rem 1rem;
+                }
+            </style>
+            <webc-app-identity></webc-app-identity>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

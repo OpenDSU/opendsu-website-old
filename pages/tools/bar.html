@@ -1,0 +1,79 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NW4R664');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="BAR command">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="Summary">
+        <psk-card>
+            <b> bar </b> [-option] [-modifier]
+        </psk-card>
+    </psk-chapter>
+    <psk-chapter title="Description">
+        <psk-card>
+            The bar command allows the storage of files in BAR archives and the manipulation of these archives.
+        </psk-card>
+    </psk-chapter>
+    <psk-chapter title="Options">
+        <psk-card>
+            <b>-c</b> <i>folderPath</i><br>
+            Allows the creation of a BAR archive that stores the files in the directory at folderPath. If a name for the
+            resulting archive was not specified, then, by default the archive will have the same name as the folder at
+            folderPath.<br><br>
+        </psk-card>
+
+        <psk-card>
+            <b>-f</b> <i>archiveName</i><br>
+            This option allows to specify a name for the resulting archive when creating it. It is used in conjunction
+            with the -c option, as follows:<br><br>
+            <b>bar -cf</b> <i>folderPath archiveName</i><br><br>
+            The command above creates an archive having the name <i>archiveName</i> that contains the files from the
+            directory at <i>folderPath</i>.<br><br>
+        </psk-card>
+        <psk-card>
+            <b>-x</b> <i>folderPath archiveName</i><br>
+            Allows the extraction of files stored by the archive archiveName in the directory at
+            <i>folderPath</i>.<br><br>
+        </psk-card>
+        <psk-card>
+            <b>-t</b> <i>archiveName</i><br>
+            Lists all the files contained by the archive <i>archiveName</i>.<br><br>
+        </psk-card>
+        <psk-card>
+            <b>-z</b><br>
+            The option above allows the compression of the files when creating an archive. This option is used in
+            conjunction with the option <b>-c</b>, as follows:<br><br>
+            <b>bar -czf</b> <i>folderPath archiveName</i><br><br>
+            The above command has as a result the creation of an archive having the name <i>archiveName</i>, that
+            contains the previously compressed files stored in the directory at <i>folderPath</i>. The <i>gzip</i>
+            algorithm is used for compression.<br>
+        </psk-card>
+    </psk-chapter>
+    <psk-chapter title="Modifiers">
+        <psk-card>
+            <b>--key</b> <i>cryptographicKey</i><br>
+            Allows the encryption of an archive when creating it. The encryption uses the <i>cryptographicKey</i>
+            argument. The encryption algorithm used is AES in mode GCM. Below is an example that illustrates the usage
+            of this modifier when creating an archive.<br><br>
+            <b>bar -czf</b> <i>folderPath archiveName</i> <b>--key=</b><i>cryptographicKey</i><br><br>
+        </psk-card>
+        <psk-card>
+            <b>--usage</b><br>
+            Prints a short message that shows how to use the <b>bar</b> command.<br><br>
+        </psk-card>
+        <psk-card>
+            <b>--version</b><br>
+            Prints the current version of the <b>bar</b> CLI.
+        </psk-card>
+    </psk-chapter>
+</psk-page>

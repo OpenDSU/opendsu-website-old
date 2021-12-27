@@ -1,0 +1,29 @@
+:host {
+    position: fixed;
+    right: 2rem; bottom: 0;
+    display: flex;
+    width: 2rem; height: 2rem;
+    background: var(--background);
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+:host button {
+    display: flex;
+    width: 100%; height: 100%;
+    place-items: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+:host button svg {
+    width: 100%; height: auto;
+    fill: var(--color);
+    transition: transform 200ms linear;
+}
+
+:host button:hover svg {
+    transform: rotateZ(180deg);
+}

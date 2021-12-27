@@ -1,0 +1,14 @@
+<div>
+    <header>
+        <div>{{ @title }}</div>
+        <slot name="header"></slot>
+    </header>
+    <main>
+        <article>{{ @article }}</article>
+        <slot></slot>
+    </main>
+    <footer>
+        <div>{{ @copyright }}</div>
+        <slot name="footer"></slot>
+    </footer>
+</div>

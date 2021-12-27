@@ -1,0 +1,261 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    .skin-list {
+        font-size: 90%;
+        list-style-position: inside;
+        padding: 0 !important;
+    }
+    .no-padding .psk-highlight {
+        padding: 0 !important;
+    }
+    psk-chapter[title="Visual example"] webc-container > div {
+        display: flex;
+        gap: 1rem;
+    }
+    psk-chapter[title="Visual example"] button, input {
+        border: 0;
+        padding: 0.35rem;
+        border-radius: 5px;
+        color: var(--webc-app-menu-vertical-color);
+        background: var(--webc-app-menu-vertical-background);
+    }
+    psk-chapter[title="Visual example"] button:hover, input:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<psk-page title="Skins">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+    ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+    ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>Each page of an application made with WebCardinal can have a certain skin.</p>
+
+        <p>Webcardinal offers basic support for translations via this skins mechanism.</p>
+    </psk-description>
+
+    <psk-chapter title="How to configure">
+        <p>In <webc-link tag="webcardinal-configuration"><code>webcardinal.json</code></webc-link> you can declare how many skins you want.</p>
+        <p>For example:</p>
+        <psk-code language="JSON">
+        "skins": [
+            { "name": "skin 1" },
+            { "name": "skin 2", "translations": true },
+            { "name": "advanced_en" }
+        ]
+        </psk-code>
+        <p>Keyword <strong>name</strong> is required and keyword <strong>translations</strong> is options for a skin.</p>
+        <psk-highlight type-of-highlight="note">
+            <p>The <strong>preferred</strong> skin will be the first skin from the skins array.</p>
+            <p>If a page is not part of this skin, the fallback is the <strong>default</strong> skin</p>
+        </psk-highlight>
+        <p>In the above example "skin 1" is the main skin and "default" is the fallback.</p>
+        <br>
+        <p>For those skins that do not have "translations" option, the default value is set through global "translations" flag.</p>
+        <psk-code class="small-size" language="JSON">
+            "translations": true, // if not specified, it is false
+            "skins": [
+                { "name": "A" }, // translations is true
+                { "name": "B", "translations": false }, // translations is false
+                { "name": "default" } // translations is true
+            ]
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="How to create pages, scripts, tempaltes and modals for a skin">
+        <p>WebCardinal chooses its <code>pages</code>, <code>scripts</code>, <code>modals</code> and <code>templates</code> first from the specified skin folder, then from the defaults (root level).</p>
+        <psk-highlight type-of-highlight="note">
+            <p>The skin resources can be found at <code>/skins/{SKIN_NAME}</code></p>
+        </psk-highlight>
+
+        <p>For example, if there is a skin:</p>
+        <psk-code language="JSON">
+            "name": "simplified",
+            "translations": true
+        </psk-code>
+        <p>The skin area would be <code>/skins/simplified</code></p>
+        <p>For a page "simple-page.html" that contains a template "simple-template.html" and a modal "simple-model.html", the resource are at the following paths:</p>
+        <p>
+            <ul class="skin-list small-size">
+                <li>Page: <code>/skins/simplified/pages/simple-page.html</code></li>
+                <li>Template: <code>/skins/simplified/templates/simple-template.html</code></li>
+                <li>Modal: <code>/skins/simplified/modals/simple-modals.html</code></li></li>
+                <li>Translations: <code>/skins/simplified/pages/simple-page.translate.json</code></li></li>
+            </ul>
+        </p>
+    </psk-chapter>
+
+    <psk-chapter title="How to use a skin for a certain page">
+        <p>In <webc-link tag="webcardinal-configuration"><code>webcardinal.json</code></webc-link> in the configuration of the current page <strong>skin</strong> keyword can be added.</p>
+        <p>For example:</p>
+        <psk-code class="small-size" language="JSON">
+        "pages": [
+            {
+                "name": "Sample page",
+                ...
+                "skin": { "name": "simplified", "translations": false }
+            }
+        ]
+        </psk-code>
+        <psk-highlight type-of-highlight="issue" class="no-padding">
+            <p>In the above example <code>simplified</code> must be present in the skin array.</p>
+        </psk-highlight>
+    </psk-chapter>
+
+    <psk-chapter title="How to change a skin programmatically">
+        <p>In <code>Controller</code> from <code>WebCardinal.controller</code> there are the following methods:</p>
+        <p>
+            <ul class="skin-list small-size">
+                <li><code>setPreferredSkin</code> - set a new preffered skin</li>
+                <li><code>getPreferredSkin</code></li>
+                <li><code>changeSkinForCurrentPage</code> - change the skin for current page</li>
+            </ul>
+        </p>
+        <p>Read more in <webc-link tag="webcardinal-controller">Controller documentation</webc-link>.</p>
+    </psk-chapter>
+
+    <psk-chapter title="How to use translations">
+        <p>
+            The translation mechanism can be used both inside the HTML files and also inside the JavaScript (inside
+            controllers).
+        </p>
+        <psk-chapter title="Usage inside HTML">
+            <p>There are two ways to use translations inside the HTML files:</p>
+            <p>
+                <ul class="skin-list" style="font-size: 100%">
+                    <li>
+                        Inside tag attributes, using the <code>$</code> prefix.
+                        <psk-code language="markup">
+                            <input type="button" value="$submit" />
+                        </psk-code>
+                        <psk-highlight type-of-highlight="note" class="no-padding">
+                            This will get the translation for the key <code>submit</code> and display it inside the input
+                            button.
+                        </psk-highlight>
+                    </li>
+                    <li>
+                        Inside nodes, using the <code>$</code> prefix inside the <code>{{ }}</code> notation.
+                        <psk-code language="markup">
+                            <button>{{ $submit }}</button>
+                        </psk-code>
+                        <psk-highlight type-of-highlight="note" class="no-padding">
+                            This will get the translation for the key <code>submit</code> and display it inside the button.
+                        </psk-highlight>
+                    </li>
+                </ul>
+            </p>
+        </psk-chapter>
+        <psk-chapter title="Usage inside JavaScript">
+            <p>
+                There are situations where the translation mechanism must be used inside the controller files. For this
+                the controller must extends <code>WebCardinal</code>'s <code>Controller</code> or any other existing
+                controller which extends <code>Controller</code>.
+            </p>
+            <p>
+                The translation can be used by calling the <code>translate</code> function and giving the translationKey
+                as the parameter.
+            </p>
+            <psk-code language="Javascript" class="small-size">
+                const { WebcController } = WebCardinal.controllers;
+
+                class TranslationsController extends WebcController {
+                    constructor(...props) {
+                        super(...props);
+
+                        this.model = {
+                            submitText: this.translate("submit")
+                        }
+                    }
+                }
+            </psk-code>
+            <psk-highlight type-of-highlight="note" class="no-padding">
+                The <code>submitText</code> will be populated with the translation for the key <code>submit</code>, found in
+                "skins.translate.json".
+                The <code>submitText</code> can be used inside the HTML as an ordinary model.
+            </psk-highlight>
+        </psk-description>
+        </psk-chapter>
+
+        <psk-chapter title="Examples">
+            <psk-chapter title="Controller example">
+                <p>File <code>SkinController.js</code></p>
+                <psk-code language="Javascript" file="/skins/advanced/scripts/controllers/SkinController.js"></psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Template example">
+                <p>File <code>skins.html</code></p>
+                <psk-code language="HTML">
+                    <webc-container controller="SkinController">
+                        <div>
+                            <input id="attributeUseCase" type="button" value="$submitInputButton" />
+                            <button id="bindTranslationUseCase">{{ $submitButton }}</button>
+                            <button id="bindUseCase">{{ @submitText }}</button>
+                            <button id="missingTranslationCase">{{ $noTranslationValue }}</button>
+                        </div>
+                    </webc-container>
+                </psk-code>
+                <psk-highlight type-of-highlight="note">
+                    The usage of "<b>$</b>" in <b>attributeUseCase</b> and <b>bindTranslationUseCase</b> 
+                    automatically calls for the translation API; it binds data from the translation model 
+                    (found in [PageName].translate.json).<br>
+                    The "<b>@</b>" in the <b>bindUseCase</b> binds data from a Controller's set model. 
+                    This way, in the Controller we can explicitly call "this.translate()" to use the bound
+                    data in the translation model; 
+                    if no data is bound to it ("e.g, <b>missingTranslationCase</b>"), the same 
+                    value will be returned to the View.
+                </psk-highlight>
+            </psk-chapter>
+
+            <psk-chapter title="Translation file example">
+                <p>File <code>skins.translate.json</code></p>
+                <psk-code language="JSON">
+                    {
+                        "submitInputButton": "Submit for input button",
+                        "submitButton": "Submit for button",
+                        "submit": "Submit 🔥"
+                    }
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Visual example">
+                <psk-example class="app-example">
+                    <webc-container controller="SkinController">
+                        <div>
+                            <input type="button" value="$submitInputButton" />
+                            <button>{{ $submitButton }}</button>
+                            <button>{{ @submitText }}</button>
+                            <button>{{ $noTranslationValue }}</button>
+                        </div>
+                    </webc-container>
+                </psk-example>
+            </psk-chapter>
+        </psk-chapter>
+
+    </psk-chapter>
+</psk-page>

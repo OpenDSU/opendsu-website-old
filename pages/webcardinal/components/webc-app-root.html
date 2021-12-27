@@ -1,0 +1,79 @@
+<style>
+    psk-description[title="Summary"] ul {
+        margin-top: -1rem;
+        padding-left: 1rem;
+    }
+</style>
+<psk-page title="Application root">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-app-root">
+        <psk-description title="Summary">
+            <p>The entry point of your application.</p>
+            <p>This component has attached a controller called
+                <a title="ApplicationController" href="https://raw.githubusercontent.com/webcardinal/webcardinal-core/master/src/controllers/ApplicationController.ts">ApplicationController</a>
+                that converts the configurations from <code>webcardinal.json</code> into a WebCardinal application.
+                <a title="Default Configuration" href="https://raw.githubusercontent.com/webcardinal/webcardinal-core/master/src/controllers/config/default.ts">Default Configuration</a> of WebCardinal can and should be modified.
+            </p>
+            <p><strong><code>webc-app-root</code></strong> contains by default:</p>
+            <ul>
+                <li><webc-link tag="webc-app-menu"><code>webc-app-menu</code></webc-link></li>
+                <li><webc-link tag="webc-app-container"><code>webc-app-container</code></webc-link></li>
+                <li><webc-link tag="webc-app-error-toast"><code>webc-app-error-toast</code></webc-link></li>
+            </ul>
+            <p><strong>Notes:</strong></p>
+            <psk-highlight type-of-highlight="example">
+                Components that have in their name <code>webc-app</code> are internal and are not part of a normal page.
+            </psk-highlight>
+            <psk-highlight type-of-highlight="note">
+                <code>ApplicationController</code> responds to all events that are prefixed with <code>webcardinal:config</code>.
+            </psk-highlight>
+            <small>
+                <p>
+                    <code>webc-app-menu</code> and <code>webc-app-container</code> can be managed using slots, but <code>webc-app-error-toast</code> will always be appended.
+                </p>
+            </small>
+            <p>The element <code>webc-app-root</code> is accessible from <code class="accent">window.WebCardinal.root</code>.</p>
+        </psk-description>
+        <psk-chapter title="Usage">
+            <!-- normal usage -->
+            <p>You must place this component in <code>index.html</code>.</p>
+
+            <psk-example>
+                <psk-code title="Normal usage:" language="markup">
+                    &ltwebc-app-root>&lt/webc-app-root>
+                </psk-code>
+            </psk-example>
+
+            <psk-highlight type-of-highlight="note">
+                <p>Responsiveness of components is managed by the <code>webc-app-root</code> itself.</p>
+            </psk-highlight>
+
+            <psk-example>
+                <psk-code title="Without application menu:" language="markup">
+                    &ltwebc-app-root>
+                        &ltwebc-app-container>
+                            &ltwebc-app-router>&lt/webc-app-router>
+                        &lt/webc-app-container>
+                    &lt/webc-app-root>
+                </psk-code>
+            </psk-example>
+
+            <!-- complex usage -->
+            <psk-example>
+                <psk-code title="If something more custom is desired:" language="markup" class="small-size">
+                    &ltwebc-app-root loader="custom-loader">
+                        &ltwebc-app-container>
+                            &ltheader slot="before">&lt/header>
+                            &ltwebc-app-router>&lt/webc-app-router>
+                            &ltfooter slot="after">&lt/footer>
+                        &lt/webc-app-container>
+                    &lt/webc-app-root>
+                </psk-code>
+            </psk-example>
+            <p>Where <code>header</code> and <code>footer</code> can be replaced with custom elements / components and <code>custom-loader</code> is a personalized web component.</p>
+            <psk-highlight type-of-highlight="issue">
+                <p>You must deal with responsiveness of these components.</p>
+            </psk-highlight>
+        </psk-chapter>
+    </webc-docs>
+</psk-page>

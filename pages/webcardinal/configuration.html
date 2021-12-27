@@ -1,0 +1,237 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    #abc {
+        padding: 0.9rem 0;
+    }
+    #abc table {
+        width: 100%;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+    #abc table th,
+    #abc table td {
+        border: 1px solid #CDCDCD;
+        padding: 0.25rem 0.15rem 0.25rem 0.3rem;
+    }
+    #abc table thead th {
+        padding-bottom: 0.35rem;
+        padding-top: 0.4rem;
+    }
+</style>
+
+<psk-page title="Configuration">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+    ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+    ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>WebCardinal can be configured using <code>webcardinal.json</code> or using a <strong>configuration script</strong>.</p>
+    </psk-description>
+
+    <psk-chapter title="webcardinal.json">
+        <p>The initial settings can be observed in <webc-link href="https://raw.githubusercontent.com/webcardinal/webcardinal-core/master/src/controllers/config/default.ts">default.ts</webc-link>.</p>
+
+        <psk-chapter title="Pages">
+            <p>Each page from <code>pages/</code> must be registered.</p>
+            <psk-code language="JSON" class="small-size">
+                "pages": [
+                    ...
+                    {
+                        /* required */
+                        "name": "My page"
+
+                        /* optional */
+                        "path": "/my-custom-path" // default value would have been "./my-page"
+                        "src": "./my-custom-page.html" // default: "./my-page.html"
+                        "indexed": false // default: true
+                        "children": [...] // array of multiple pages
+                        "tag": "my-page" // used by webc-link or navigateByPageTag from any Controller
+                    }
+                    ...
+                ]
+            </psk-code>
+            <psk-highlight type-of-highlight="example">
+                <code>src</code> and <code>path</code> are relative to <code>basePath</code> and parent page.
+            </psk-highlight>
+            <p>
+                To understand better, let's follow this example:
+                <psk-code language="JSON" class="small-size">
+                "pages": [
+                    {
+                        "name": "Page A", "path": "/a", "src": "/a"
+                        "children": [
+                            {
+                                "name": "Page B", "path": "./b", "src": "./b"
+                                "children": [
+                                    { "name": "Page C", "path": "./c" },
+                                    { "name": "Page D", "path": "../d" },
+                                    { "name": "Page E", "path": "/e", "src": "../e.html" },
+                                ]
+                            }
+                        ]
+                    },
+                    { "name": "Page F", "path": "/f" }
+                ]
+                </psk-code>
+            </p>
+            <div id="abc">
+                <p>The generated path will be:</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Path</th>
+                        <th>Src</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>/a/b/c</td>
+                        <td>pages/a/b/page-c.html</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>/a/d</td>
+                        <td>pages/a/b/page-d.html</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>/e</td>
+                        <td>pages/a/e.html</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>/f</td>
+                        <td>pages/page-f.html</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Page A and B are just categories for the <webc-link tag="webc-app-menu">webc-app-menu</webc-link>.</p>
+                <br>
+                <p><strong>NOTES: </strong></p>
+                <p>For first level pages there is no difference between <code>/page</code> and <code>./page</code>.</p>
+                <p>Paths and sources are generated by default from page names, for name <code>"Hello World"</code>,
+                    path is <code>"./hello-world"</code> and source is <code>"./hello-world.html"</code>.</p>
+                <p>Tags are used by <webc-link tag="webc-link">webc-link</webc-link> or <code>navigateToPageTag</code> method from Controllers.</p>
+            </div>
+        </psk-chapter>
+
+        <psk-chapter title="PagesFallback">
+            <p>If <code>window.location.href</code> does not match anything, application will use this page.</p>
+            <p>Concept of 404 Not Found.</p>
+            <psk-code language="JSON">
+                "pagesFallback": {
+                    /* required */
+                    "name": "My Fallback Page",
+
+                    /* optional */
+                    "src": "./404.html"
+                }
+            </psk-code>
+            <psk-highlight type-of-highlight="issue">
+                Other options from pages are not valid for <code>pagesFallback</code>.
+            </psk-highlight>
+        </psk-chapter>
+
+        <psk-chapter title="Identity">
+            <p>Configure application name, email and logo.</p>
+            <p>Read more about these settings in the documentation for <webc-link tag="webc-app-identity">webc-app-identity</webc-link>.</p>
+        </psk-chapter>
+
+        <psk-chapter title="LogLevel">
+            <p>Read more about in the documentation for <webc-link tag="webc-app-error-toast">webc-app-error-toast</webc-link>.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Skins">
+            <p>Each page loaded by WebCardinal can have a skin.</p>
+            <p>The resources for the <strong>default skin</strong> are placed at the root of the application, i.e. <code>/pages</code>, <code>/scripts</code> and so on.</p>
+            <p>For other skins the resources should be available in <code>/skins/{SKIN_NAME}</code> directory.</p>
+            <psk-code language="JavaScript">
+            "skin": "advanced"
+            </psk-code>
+            <psk-highlight type-of-highlight="note">If a skin is not specified, it will be "default".</psk-highlight>
+            <p>Read more in the <webc-link tag="webcardinal-skins">skins documentation</webc-link>.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Translations">
+            <p>Translations are closely related to the skins.</p>
+            <p>Each translation is loaded from a JSON file located near your HTML template.</p>
+            <p>Read mode in the <webc-link tag="webcardinal-skins">skins & translations documentation</webc-link>.</p>
+            <psk-code language="JavaScript">"translations": false // default is "true"</psk-code>
+            <psk-highlight type-of-highlight="note">If translations is not specified, it will be "true".</psk-highlight>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="Configuration script">
+        <p>In some cases some configurations have to be done dynamically.</p>
+        <p>For example: <i>change the current skin depending on the language set on the user's device</i>.</p>
+        <psk-chapter title="How to set up?">
+            <p>In <code>index.html</code> add the <strong><code>preload</code></strong> attribute on <webc-link tag="webc-app-root">webc-app-root</webc-link> element.</p>
+            <psk-code title="index.html">
+                &ltwebc-app-root preload="scripts/config.js">&lt/webc-app-root>
+            </psk-code>
+            <p>Path from preload will be relative to <strong>base path</strong>.</p>
+            <p>Base path can be set with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" target="_blank">base</a> element.</p>
+            <psk-code langauge="HTML" class="small-size">
+                <base href="/">
+                <!-- or -->
+                <base href="/subdomain/path/">
+            </psk-code>
+            <p>Now the usage of WebCardinal APIs in the preload script is possible.</p>
+        </psk-chapter>
+
+        <psk-chapter title="How to use it?">
+            <p>In <code>window</code> there is an <code>object</code> called <code>WebCardinal</code>. That object contains WebCardinal APIs, controllers, elements and some state settings.</p>
+            <p>Here is a example of runtime valid configuration for WebCardinal.</p>
+            <psk-code title="config.js" language="JavaScript">
+                const { setSkin, getConfig } = WebCardinal.preload;
+                const { define } = WebCardinal.components;
+
+                // set the current skin to "advanced"
+                setSkin('advanced');
+
+                // current WebCardinal config
+                console.log(getConfig());
+
+                // define a CustomElement from a HTML template
+                define('my-custom-input', 'path/to/my-custom-input');
+            </psk-code>
+        </psk-chapter>
+    </psk-chapter>
+
+</psk-page>

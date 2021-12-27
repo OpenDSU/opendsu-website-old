@@ -1,0 +1,268 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NW4R664');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="pskwallet">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <psk-toc title="In this section"></psk-toc>
+
+    <psk-highlight type-of-highlight="note">
+        <code><b>Pskwallet</b></code> is a command line tool for creating and manipulating <webc-link href="/api/edfs/dossiers">dossiers</webc-link>.
+    </psk-highlight>
+
+    <psk-chapter title="create dossier">
+        <psk-highlight type-of-highlight="note">
+            The <code>create dossier</code> command creates a <webc-link href="/api/edfs/dossiers">dossier</webc-link> with the provided name and prints its
+            <webc-link href="/api/classes/seed">SEED</webc-link>.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet create DSU dossierName constitutionPath [nosave]
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>dossierName</code>
+                        The name of the <webc-link href="/api/edfs/dossiers">DSU</webc-link> that is being created.<br><br>
+                    <code>constitutionPath</code>
+                        The file system path where the bundles that form the DSU's constitution are located. When the <code>create DSU</code>
+                        command is executed, the files located at <code>constitutionPath</code> are added to the created DSU.<br><br>
+                    <code>nosave</code> | Optional
+                        A flag that establishes whether the created DSU is mounted inside the current <a href="?Tools/pskwallet&chapter=create-wallet">wallet</a>.
+                        If <code>nosave</code> is present, then the created DSU is not mounted inside the current wallet; if present, then the created DSU is mounted
+                        inside the wallet at path <code>/code/constitution/dossierName</code>. A DSU created using the <code>create DSU</code>
+                        command without the <code>nosave</code> flag is called a <code><b>template DSU</b></code>.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="create wallet">
+        <psk-highlight type-of-highlight="note">
+            The <code>create wallet</code> command creates a DSU that contains, mounted at path <code>/code/constitution</code>
+            another DSU created using the <a href="?Tools/pskwallet&chapter=create-dossier">create dossier</a> command without the <code>nosave</code> flag.
+            When the <code>create wallet</code> command is executed, a prompt appears requiring the user to insert a <code>password</code>. The password
+            is used as a cryptographic key to encrypt the wallet's SEED. The encrypted SEED is stored in the local file system, at path <code>/home/.seedCage</code>.
+            If the file exists, from a previous wallet, a prompt appears asking the user if the file can be overwritten.
+        </psk-highlight>
+
+        <psk-highlight type-of-highlight="example">
+            Note: After creating a wallet, any subsequent command that involves the wallet will require the password for authentication.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet create wallet templateSeed
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>templateSeed</code>
+                        The SEED of a <code>template dossier</code>.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="restore">
+        <psk-highlight type-of-highlight="note">
+            The <code>restore</code> command restores the wallet associated with the provided SEED. When the <code>restore</code> command is executed, a prompt appears requiring the user to insert a <code>password</code>. The password
+            is used as a cryptographic key to encrypt the wallet's SEED. The encrypted SEED is stored in the local file system, at path <code>/home/.seedCage</code>.
+            If the file exists, from a previous wallet, a prompt appears asking the user if the file can be overwritten.
+        </psk-highlight>
+
+        <psk-highlight type-of-highlight="example">
+            Note: After restoring a wallet, any subsequent command that involves the wallet will require the password for authentication.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet restore seed
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>seed</code>
+                    The SEED of the restored wallet.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+
+    <psk-chapter title="set app">
+        <psk-highlight type-of-highlight="note">
+            The <code>set app</code> command adds an <code>app</code> to a previously created dossier. An <code>app</code> is
+            folder in the local file system that contains all the code and data of an application. The app is added in the
+            target DSU at path <code>/code/app</code>.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet set app [seed] [alias] folderPath
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>seed</code> <b>|</b> Optional
+                        The SEED of the DSU in which the app is added.<br><br>
+                    <code>alias</code> <b>|</b> Optional
+                        The name that is given to a DSU when adding it to a wallet. This name is used to reference the dossier
+                        inside the wallet. Thus, an app can be added to a DSU mounted inside the wallet.<br><br>
+                    <psk-highlight type-of-highlight="example">
+                        Note: At least one of the parameters <code>seed</code> and <code>alias</code> should be specified.
+                    </psk-highlight>
+                    <code>folderPath</code>
+                        The file system path where the folder that contains the app is located.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="get app">
+        <psk-highlight type-of-highlight="note">
+            The <code>get app</code> command creates a extracts an app from a DSU to a folder in the local file system.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet get app [seed] [alias] barPath fsFolderPath
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>seed</code> <b>|</b> Optional
+                        The SEED of the DSU in which the app is added.<br><br>
+
+                    <code>alias</code> <b>|</b> Optional
+                        The name of the dossier, mounted inside the wallet, from which the app is extracted. <br><br>
+
+                    <psk-highlight type-of-highlight="example">
+                        Note: At least one of the parameters <code>seed</code> and <code>alias</code> should be specified.
+                    </psk-highlight>
+
+                    <code>barPath</code>
+                        The path inside the DSU where the app is located. <br><br>
+
+                    <code>fsFolderPath</code>
+                        The file system path where the app is extracted to.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="mount">
+        <psk-highlight type-of-highlight="note">
+            The <code>mount</code> command mounts a DSU (source) inside another DSU (destination).
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet mount [destinationSeed] [alias] path sourceSeed
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>destinationSeed</code> <b>|</b> Optional
+                        The destination dossier's SEED.<br><br>
+
+                    <code>alias</code> <b>|</b> Optional
+                        The destination dossier's name, if it is mounted inside the wallet. <br><br>
+
+                    <psk-highlight type-of-highlight="example">
+                        Note: At least one of the parameters <code>seed</code> and <code>alias</code> should be specified.
+                    </psk-highlight>
+
+                    <code>path</code>
+                        The path inside the destination DSU where the source DSU is mounted. <br><br>
+
+                    <code>sourceSeed</code>
+                        The source dossier's SEED.
+                </psk-list>
+
+            </psk-card>
+        </psk-card>
+        <psk-highlight type-of-highlight="example">
+            More information about the mount operation can be found <a href="?API/edfs/dossiers&chapter=mount">here</a>.
+        </psk-highlight>
+    </psk-chapter>
+
+    <psk-chapter title="unmount">
+        <psk-highlight type-of-highlight="note">
+            The <code>unmount</code> command deletes the reference of a DSU (source) from another DSU (destination) inside which
+            was previously mounted.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet unmount [destinationSeed] [alias] path
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>destinationSeed</code> <b>|</b> Optional
+                        The destination dossier's SEED.<br><br>
+
+                    <code>alias</code> <b>|</b> Optional
+                        The destination dossier's name, if it is mounted inside the wallet. <br><br>
+
+                    <psk-highlight type-of-highlight="example">
+                        Note: At least one of the parameters <code>seed</code> and <code>alias</code> should be specified.
+                    </psk-highlight>
+
+                    <code>path</code>
+                        The path inside the destination DSU where the source DSU is mounted.
+                </psk-list>
+
+            </psk-card>
+        </psk-card>
+        <psk-highlight type-of-highlight="example">
+            More information about the mount operation can be found <a href="?API/edfs/dossiers&chapter=unmount">here</a>.
+        </psk-highlight>
+    </psk-chapter>
+
+    <psk-chapter title="list mounts">
+        <psk-highlight type-of-highlight="note">
+            The <code>list mounts</code> command prints a list of all SEEDs and names of the dossiers mounted inside a destination
+            dossier.
+        </psk-highlight>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                pskwallet list mounts [destinationSeed] [alias] path
+            </psk-code>
+
+            <psk-card title="Parameters">
+                <psk-list type="unordered">
+                    <code>destinationSeed</code> <b>|</b> Optional
+                        The destination dossier's SEED.<br><br>
+
+                    <code>alias</code> <b>|</b> Optional
+                        The destination dossier's name, if it is mounted inside the wallet. <br><br>
+
+                    <psk-highlight type-of-highlight="example">
+                        Note: At least one of the parameters <code>seed</code> and <code>alias</code> should be specified.
+                    </psk-highlight>
+
+                    <code>path</code>
+                        The path inside the destination DSU from which the search begins.
+
+                </psk-list>
+
+            </psk-card>
+        </psk-card>
+        <psk-highlight type-of-highlight="example">
+            More information about the mount operation can be found <a href="?API/edfs/dossiers&chapter=list-mounted-dossiers">here</a>.
+        </psk-highlight>
+    </psk-chapter>
+</psk-page>

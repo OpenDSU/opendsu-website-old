@@ -1,0 +1,56 @@
+webc-xyz-slider {
+    --active-color: var(--webc-secondary-background);
+    --inactive-color: var(--webc-secondary-color);
+}
+
+webc-xyz-slider .switch {
+    --size: 22px;
+    --slider-margin: 3px;
+    position: relative;
+    display: inline-block;
+    width: calc(2 * (var(--size) - var(--slider-margin)));
+    height: var(--size);
+}
+
+webc-xyz-slider .switch input {
+    display: none;
+}
+
+webc-xyz-slider .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--inactive-color);
+    transition: 300ms;
+}
+
+webc-xyz-slider .slider:before {
+    position: absolute;
+    content: '';
+    width: calc(var(--size) - 2 * var(--slider-margin)); height: calc(var(--size) - 2 * var(--slider-margin));
+    left: var(--slider-margin);
+    bottom: var(--slider-margin);
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+webc-xyz-slider input:checked + .slider {
+    background-color: var(--active-color);
+}
+
+webc-xyz-slider input:focus + .slider {
+    box-shadow: 0 0 0 1px var(--webc-basic-color);
+}
+
+webc-xyz-slider input:checked + .slider:before {
+    transform: translateX(100%);
+}
+
+webc-xyz-slider .slider.round {
+    border-radius: 34px;
+}
+
+webc-xyz-slider .slider.round:before {
+    border-radius: 50%;
+}

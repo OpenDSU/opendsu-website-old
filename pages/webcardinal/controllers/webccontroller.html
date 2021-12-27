@@ -1,0 +1,203 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="WebcController">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>
+            The <code>WebcController</code> class extends the
+            <webc-link tag="webcardinal-controller">Controller</webc-link> class and offers some basic interaction with
+            the WebCardinal components.
+        </p>
+    </psk-description>
+
+    <psk-description title="Usage">
+        <!-- prettier-ignore -->
+        <psk-code language="JavaScript">
+            const { WebcController } = WebCardinal.controllers;
+
+            export default class PageController extends WebcController {
+                constructor(...props) {
+                    super(...props);
+
+                    this.model = {
+                        fieldNumber: 1,
+                        fieldString: 'Lorem...'
+                    };
+                }
+            }
+        </psk-code>
+    </psk-description>
+
+    <psk-chapter title="API Definition - ContainerController">
+        <psk-chapter class="api-title" title="controller.showModal()">
+            <p>The function <code>showModal</code> will create and show the desired modal.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.showModal(content: string, title?: string, onConfirm?: Function, onClose?: Function, props?: object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>content</strong> <i>(mandatory)</i> - The text that will be shown as the modal content</span>
+                    <span><strong>title</strong> <i>(optional)</i> - The text that will be shown in the modal header; will default to 'Info' if not provided</span>
+                    <span><strong>onConfirm</strong> <i>(optional)</i> - The function that will be executed when the modal confirm button will be pressed</span>
+                    <span><strong>onClose</strong> <i>(optional)</i> - The function that will be executed when the modal will be closed</span>
+                    <span><strong>props</strong> <i>(optional)</i> - All the properties available to a webc-modal plus standard properties of an HTML element</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>webc-modal HTMLElement</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.showModalFromTemplate()">
+            <p>
+                The function <code>showModalFromTemplate</code> will create and show the desired modal by loading the
+                modal content from the specified template.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.showModalFromTemplate(template: string, onConfirm?: Function, onClose?: Function, props?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>template</strong> <i>(mandatory)</i> - The modal name which will be loaded.</span>
+                    <span><strong>onConfirm</strong> <i>(optional)</i> - The function that will be executed when the modal confirm button will be pressed</span>
+                    <span><strong>onClose</strong> <i>(optional)</i> - The function that will be executed when the modal will be closed</span>
+                    <span><strong>props</strong> <i>(optional)</i> - All the properties available to a webc-modal plus standard properties of an HTML element</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>webc-modal HTMLElement</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.showErrorModal()">
+            <p>The function <code>showErrorModal</code> will create and show the desired error modal.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>
+                    controller.showErrorModal(error: string|Error|object, title?: string, onConfirm?: Function,
+                    onClose?: Function, props?: object)
+                </p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>error</strong> <i>(mandatory)</i> - The error which will be shown in the modal content; some processing is done in order to extract the error based on the provided value</span>
+                    <span><strong>title</strong> <i>(optional)</i> - The text that will be shown in the modal header; will default to 'Error' if not provided</span>
+                    <span><strong>onConfirm</strong> <i>(optional)</i> - The function that will be executed when the modal confirm button will be pressed</span>
+                    <span><strong>onClose</strong> <i>(optional)</i> - The function that will be executed when the modal will be closed</span>
+                    <span><strong>props</strong> <i>(optional)</i> - All the properties available to a webc-modal plus standard properties of an HTML element</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>webc-modal HTMLElement</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.showErrorModalAndRedirect()">
+            <p>
+                The function <code>showErrorModalAndRedirect</code> will create and show the desired error modal and
+                then will redirect automatically to the specified URL.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.showErrorModalAndRedirect(text: string, title?: string, url: string|object, timeout?: number)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>error</strong> <i>(mandatory)</i> - The error which will be shown in the modal content; some processing is done in order to extract the error based on the provided value</span>
+                    <span><strong>title</strong> <i>(optional)</i> - The text that will be shown in the modal header; will default to 'Info' if not provided</span>
+                    <span><strong>url</strong> <i>(mandatory)</i> - The URL which will be navigation to, after the timeout</span>
+                    <span><strong>timeout</strong> <i>(optional)</i> - The timeout (in ms) until the navigation will be executed; will default to 5000 if not provided</span>
+                </psk-list>
+                <p>In url object there is the possibility to specify a page tag or a history state.</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.createWebcModal()">
+            <p>
+                The function <code>createWebcModal</code> will create and show the desired modal. This is the most
+                general form of all the previous modal creation functions
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.createWebcModal(options: object)</p>
+                <psk-code class="small-size">
+                    // available options
+                    template,
+                    controller,
+                    model,
+                    translationModel,
+                    modalTitle,
+                    modalDescription,
+                    modalContent,
+                    modalFooter,
+                    confirmButtonText,
+                    cancelButtonText,
+                    centered,
+                    expanded,
+                    disableCancelButton,
+                    disableClosing,
+                    disableBackdropClosing,
+                    disableExpanding,
+                    disableFooter,
+                    autoShow,
+                    onConfirm,
+                    onClose,
+                    ...rest
+                </psk-code>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>options</strong> <i>(mandatory)</i> - The options used to configure the modal</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>webc-modal HTMLElement</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.hideModal()">
+            <p>
+                The function <code>hideModal</code> will hide every modal present in the root element of the Controller.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.hideModal()</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters"> None </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

@@ -1,0 +1,217 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="Forms">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>Webcardinal offers a two-way binding mechanism which makes form creation an easier process</p>
+
+        <p>Restrictions:</p>
+
+        <psk-highlight type-of-highlight="example">
+            Fully two-way binding works as expected only when using native HTML components (because it handles the
+            default events), non-shadow components and components which don't interrupt the DOM tree (because the
+            change events won't be processed correctly).
+        </psk-highlight>
+    </psk-description>
+
+    <psk-chapter title="Example">
+        <psk-chapter title="Controller example">
+            <!-- prettier-ignore -->
+            <psk-code language="Javascript">
+                const { WebcController } = WebCardinal.controllers;
+
+                const model = {
+                    name: {
+                        name: "name",
+                        placeholder: "name",
+                    },
+                    description: {
+                        name: "description",
+                        placeholder: "Description",
+                    },
+                    addresses: [
+                        {
+                            name: "address1",
+                            placeholder: "Address",
+                        },
+                        {
+                            name: "address2",
+                            placeholder: "Address 2",
+                        },
+                    ],
+                    options: [
+                        { value: "value1", text: "Text 1" },
+                        { value: "value2", text: "Text 2" },
+                        { value: "value3", text: "Text 3" },
+                    ],
+                    terms: {
+                        type: "checkbox",
+                        placeholder: "terms",
+                        checked: true,
+                    },
+                    selectedOption: "value2",
+                };
+
+                export default class FormsController extends WebcController {
+                    constructor(element, history) {
+                        super(element, history);
+                        this.setModel(JSON.parse(JSON.stringify(model)));
+
+                        this.onTagClick("add-address", () => {
+                            this.model.addresses.push({
+                                name: `address${this.model.addresses.length + 1}`,
+                                placeholder: "Extra address",
+                            });
+                        });
+
+                        this.onTagClick("submit", () => {
+                            const formData = this.model.toObject("name");
+                            console.log("submitted", formData);
+                        });
+                        
+                        this.model.addExpression("canAddAddresses", () => this.model.addresses.length < 4, "addresses");
+
+                        setTimeout(() => {
+                            this.model.selectedOption = "value3";
+                        }, 2000);
+                    }
+                }
+       
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="Template example">
+            <!-- prettier-ignore -->
+            <psk-code language="markup">
+                <webc-container controller="webcardinal/examples/FormsController">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <div>
+                                <label>{{ @name.placeholder}}</label>
+                                <input data-view-model="@name" />
+                            </div>
+
+                            <div>
+                                <label>{{ @description.placeholder}}</label>
+                                <textarea data-view-model="@description"></textarea>
+                            </div>
+
+                            <p>You can enter up to 4 addresses:</p>
+                            <div data-for="@addresses">
+                                {{ @placeholder}}
+                                <input data-view-model="@" />
+                                <br />
+                            </div>
+
+                            <div data-if="@canAddAddresses">
+                                <button data-tag="add-address">Add address</button>
+                            </div>
+
+                            <div>
+                                <label>{{ @terms.placeholder}}</label>
+                                <input data-view-model="@terms" />
+                                <span data-if="@terms.checked">Thank you for accepting</span>
+                            </div>
+
+                            <div>
+                                <select data-for="@options" value="@selectedOption">
+                                    <option value="@value">{{ @text }}</option>
+                                </select>
+                            </div>
+                            <button data-tag="submit">Submit</button>
+                        </div>
+                        <div>
+                            <p>Model:</p>
+                            <pre>{{ @modeString }}</pre>
+                        </div>
+                    </div>
+                </webc-container>
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="Visual example">
+            <psk-example class="app-example">
+                <webc-container controller="webcardinal/examples/FormsController">
+                    <div style="display: flex; flex-direction: row">
+                        <div>
+                            <div>
+                                <label>{{ @name.placeholder}}</label>
+                                <input data-view-model="@name" />
+                            </div>
+
+                            <div>
+                                <label>{{ @description.placeholder}}</label>
+                                <textarea data-view-model="@description"></textarea>
+                            </div>
+
+                            <p>You can enter up to 4 addresses:</p>
+                            <div data-for="@addresses">
+                                {{ @placeholder}}
+                                <input data-view-model="@" />
+                                <br />
+                            </div>
+
+                            <div data-if="@canAddAddresses">
+                                <button data-tag="add-address">Add address</button>
+                            </div>
+
+                            <div>
+                                <label>{{ @terms.placeholder}}</label>
+                                <input data-view-model="@terms" />
+                                <span data-if="@terms.checked">Thank you for accepting</span>
+                            </div>
+
+                            <div>
+                                <select data-for="@options" value="@selectedOption">
+                                    <option value="@value">{{ @text }}</option>
+                                </select>
+                            </div>
+                            <button data-tag="submit">Submit</button>
+                        </div>
+                        <div>
+                            <p>Model:</p>
+                            <pre>{{ @modeString }}</pre>
+                        </div>
+                    </div>
+                </webc-container>
+            </psk-example>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-description title="PrivateSky form components integration">
+        <psk-highlight type-of-highlight="example">
+            Webcardinal is designed to offer full two-way binding support for the native HTML form elements.
+            <br />
+            The two-way binding mechanism of WebCardinal may offer limited support when using PrivateSky form
+            components. In general, since every PrivateSky form component is handling its own binding it shouldn't cause
+            any integration issue.
+        </psk-highlight>
+    </psk-description>
+</psk-page>

@@ -1,0 +1,240 @@
+<head>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NW4R664');</script>
+	<!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="Octopus">
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-chapter title="Description">
+        <b>Octopus</b> is an adaptive and extendable Javascript task runner built without dependencies. It’s designed to handle all PrivateSky and related subprojects dependencies installation, updates, builds and so on. It bundles a collection of actions and scripts that can prove useful when needed to automate diverse types of development tasks. Octopus has a plugin mechanism in order allow extension of the action collection.
+    </psk-chapter>
+
+    <psk-chapter title="Installation">
+        <p><webc-link tag="octopus">Octopus</webc-link> can be installed using <code>npm</code> by adding its repository url to the list of dependencies in your <code>package.json</code> file:</p>
+        <psk-code language="javascript">
+            {
+                "name": "My Octopus Project",
+                "version": "1.0.0",
+                "description": "",
+                "main": "index.ts",
+                "scripts": {
+                    "octopus": "node ./node_modules/octopus/scripts/run"
+                },
+                "dependencies": {
+                    "octopus": "git+http://github.com/privatesky/octopus.git#1.0"
+                },
+                "license": "MIT"
+            }
+        </psk-code>
+
+        <psk-code>
+            npm install
+
+            # to run octopus after installing
+            npm run octopus
+        </psk-code>
+    </psk-chapter>
+
+    <psk-chapter title="Configuration">
+        <webc-link tag="octopus">Octopus</webc-link> executes in sequence all tasks found in a JSON configuration file called octopus.json. <br />
+        The structure of the <b>octopus.json</b> file is represented by an dictionary of tasks organized by purpose:
+        <psk-code language="javascript">
+            {
+                "workDir":"relative_or_global_path_to_be_used_as_current_working_dir",
+                "purpose_1": [task1, task2 ...],
+                "purpose_2": [task1, task2 ...],
+                ...
+            }
+        </psk-code>
+        Each task is an object with the following structure:
+        <psk-code language="javascript">
+            {
+                "name": "task_name_or_dependency_name",
+                "src": "",
+                "actions":[action1, action2 ...]
+            }
+        </psk-code>
+        Each action is an object with the following structure:
+        <psk-code language="javascript">
+            {
+                "type": "action_type_name",
+                "options": {
+                    "option_1": "option_value"
+                }
+            }
+        </psk-code>
+        The available action types that <webc-link tag="octopus">Octopus</webc-link> comes bundled with can be found by reading the Actions chapter.<br>
+        <psk-chapter title="Examples">
+            For example if we need to use Octopus as dependency manager we can write the following configuration:
+            <psk-code language="javascript">
+                {
+                    "workDir": ".",
+                    "dependencies": [
+                        {
+                            "name": "privatesky",
+                            "src": "http://github.com/privatesky/privatesky.git"
+                        }
+                    ]
+                }
+            </psk-code>
+            Running <webc-link tag="octopus">Octopus</webc-link> with the above configuration will result in a new folder <i>modules</i> which will contain a clone of the PrivateSky repository.<br>
+            If Octopus does not find any action specified for a task it defaults to a <strong>smartClone</strong> action:
+			<psk-code language="JavaScript">
+				{
+					"name": "privatesky",
+					"src": "http://github.com/privatesky/privatesky.git",
+					"actions":[
+						{
+							"type": "smartClone",
+							"target": "modules",
+							"options": {
+								"branch": "master",
+								"depth": 1
+							}
+						}
+					]
+				}
+			</psk-code>
+
+            <psk-code>
+                node ./node_modules/octopus/scripts/run
+                # or (if you added the run script in the "scripts" section of your package.json as in the Installation chapter)
+                npm run octopus
+            </psk-code>
+        </psk-chapter>
+
+        Example of an <b>octopus.json</b> file can be found accessing <a href="https://raw.githubusercontent.com/PrivateSky/privatesky/master/octopus.json">this link</a><br>
+    </psk-chapter>
+    <psk-chapter title="Actions">
+        <psk-table header="true" footer="false">
+            <p>Name (A>Z)</p>|Description
+            <b>checksum</b>|<p>Checksum is used to calculate the checksum of a specific file/Dir passed via {String}<b>action.src</b> and compare the result with a pre-recorded attribute passed via {String}<b>action.expectedChecksum</b>.<br>The checksum can be calculated with specific options {String}<b>action.algorithm</b>, {String}<b>action.encoding</b></p>
+            <b>clone</b>|<p>Clone used to make a git clone of repo {String}<b>dependency.src</b> in a specific location {String}<b>action.target</b><br>Optional clone options can be specified in {Object}<b>action.options</b><br>Optional credentials: username and password can be specified in {Object}<b>dependency.credentials</b></p>
+            <b>commit</b>|<p>Commit action can be used in release scripts to automate the push of a new version.<br>Commit is used to automate steps like git add -A, commit and push into a repo {String}<b>dependency.src</b> in a specific location {String}<b>action.target</b><br>Optional clone options can be specified in {Object}action.options<br>Optional credentials: username and password can be specified in {Object}<b>dependency.credentials</b></p>
+            <b>copy</b>|<p>Copy a file or a directory, from {String}<b>dependency.src</b> to {String}<b>action.target</b><br>NOTE: If src is a directory it will copy everything inside of the directory, not the entire directory itself.<br>NOTE: If src is a file, target cannot be a directory.</p>
+            <b>download</b>|<p>Download function, downloads from a source {String}<b>dependency.src</b> to a target {String}<b>action.target</b></p>
+            <b>execute</b>|<p>Execute action can be used to extend the capabilities of Octopus to execute specific terminal command passed via {String}<b>action.cmd</b> argument.<br>Optional can be passed command arguments via {Array}<b>action.args</b><br>Optional can receive options like cwd, stdio configuration etc. via {Object}<b>action.options</b></p>
+            <b>extract</b>|<p>Extracts a .zip file from a source path {String}<b>action.src</b> to a specific path {String}<b>action.target</b></p>
+            <b>install</b>|<p>Install action is capable to automate the installation of a dependency from a source (e.g. npm or URL package)</p>
+            <b>move</b>|<p>Moves file or directory from {String}<b>actions.src</b> to {String}<b>action.target</b></p>
+            <b>mkdir</b>|<p>Creates a new folder based on {String}<b>action.target</b></p>
+            <b>remove</b>|<p>Remove a file or directory from a specified path {String}<b>action.target</b></p>
+			<b>smartClone</b>|<p>SmartClone action tries to execute a git clone command and if it finds the repo already cloned and the origin remote matches {String}<b>dependency.src</b> then executes git pull in order to update the repo. All properties found in {Object}<b>action.options</b> ar passed to git clone command as arguments.</p>
+        </psk-table>
+    </psk-chapter>
+	<psk-chapter title="Octopus as a module">
+		<psk-highlight type-of-highlight="note">
+			Octopus module is composed of a <b>Runner</b> class and an <b>ActionRegistry</b> class.
+		</psk-highlight>
+		The <b>Runner</b> class exposes the following API:
+		<psk-chapter title="run">
+			The <code>run()</code> method allows configuration to be executed.<br>
+			<psk-chapter title="Syntax">
+				<psk-code languge="JavaScript">
+					run(configFileOrObject[, configTarget], callback)
+				</psk-code>
+			</psk-chapter>
+			<psk-chapter title="Parameters">
+				<psk-list>
+					<code>configFileOrObject</code> - path to octopus.json file or a JSON object containing the configuration
+					<code>configTarget</code> - the name of a single target to execute
+					<code>callback</code> - callback function that will be called if an error occurs or execution finishes
+				</psk-list>
+			</psk-chapter>
+			<psk-chapter title="Example">
+				Basic config with one target and one task that executes an echo command with "Hello World!".
+				<psk-code language="JavaScript">
+					const config = {
+						"workDir": ".",
+						"install": [
+							{
+								"name":"demo-task",
+								"actions":[
+									{
+										"type": "execute",
+										"cmd": "echo Hello World!"
+									}
+								]
+							}
+						]
+					};
+
+					const octopus = require("octopus");
+					octopus.run(config, "install", function(err, result){
+						if(err){
+							throw err;
+						}
+						console.log("Execution finished!");
+					});
+				</psk-code>
+			</psk-chapter>
+		</psk-chapter>
+		The <b>Action Registry</b> class exposes the following API:
+		<psk-chapter title="registerActionHandler">
+			The <code>registerActionHandler()</code> method allows to extend or overwrite actions collection.<br>
+			<psk-chapter title="Syntax">
+				<psk-code languge="JavaScript">
+					registerActionHandler(name, handler[, overwrite])
+				</psk-code>
+			</psk-chapter>
+			<psk-chapter title="Parameters">
+				<psk-list>
+					<code>name</code> - name of the action that need to be registered
+					<code>handler</code> - handler function that will be called when tha action will be found in a task configuration
+					<code>overwrite</code> - force to overwrite if there is already an action defined using the same name
+				</psk-list>
+			</psk-chapter>
+			<psk-chapter title="Example">
+				Register a new action called <i>echo</i> to display custom string to console
+				<psk-code language="JavaScript">
+					const octopus = require("octopus");
+					const actionRegistry = octopus.actionRegistry;
+
+					actionRegistry.registerActionHandler("echo", function(task, action, callback){
+						if(typeof action.args === "undefined"){
+							return callback(new Error("No args found on echo action"));
+						}
+						if(typeof actions.args === "string"){
+							console.log(action.args);
+						}
+						if(Array.isArray(actions.args)){
+							console.log(...action.args);
+						}
+						callback();
+					});
+
+					const config = {
+						"workDir": ".",
+						"demo": [
+							{
+								"name":"demo-task",
+								"actions":[
+									{
+										"type":"echo",
+										"args":"Hello World!"
+									}
+								]
+							}
+						]
+					};
+
+					octopus.run(config, "demo", function(err, result){
+						if(err){
+							throw err;
+						}
+						console.log("Example done!");
+					});
+				</psk-code>
+			</psk-chapter>
+		</psk-chapter>
+	</psk-chapter>
+</psk-page>

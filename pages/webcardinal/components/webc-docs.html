@@ -1,0 +1,29 @@
+<style>
+    psk-chapter[title="Usage"] psk-code pre {
+        margin-top: -1rem;
+    }
+</style>
+<psk-page title="Documentation">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-docs">
+        <psk-description title="Summary">
+            <p>
+                This component generates a visual representation of
+                <strong>properties</strong>,
+                <strong>events</strong>,
+                <strong>methods</strong>,
+                <strong>slots</strong>
+                and other useful information.
+            </p>
+        </psk-description>
+        <psk-chapter title="Usage">
+            <psk-example>
+                <psk-code language="markup">
+                    <webc-docs for="webc-<COMPLETE_NAME_OF_COMPONENT>">
+                        CONTENT_FOR_SUMMARY or ANY_CONTENT
+                    </webc-docs>
+                </psk-code>
+            </psk-example>
+        </psk-chapter>
+    </webc-docs>
+</psk-page>

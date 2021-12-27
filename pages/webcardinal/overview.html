@@ -1,0 +1,369 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    #bundles {
+        padding: 0.9rem 0;
+    }
+    #bundles table {
+        width: 100%;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+    #bundles table th,
+    #bundles table td {
+        border: 1px solid #CDCDCD;
+        padding: 0.25rem 0.15rem 0.25rem 0.3rem;
+    }
+    #bundles table thead th {
+        padding-bottom: 0.35rem;
+        padding-top: 0.4rem;
+    }
+    .bundles-steps {
+        padding-left: 1.4rem;
+    }
+</style>
+
+<psk-page title="Overview">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-chapter title="Why WebCardinal">
+        <p>
+            WebCardinal and Cardinal are two OpenSource JavaScript MVC frameworks that helps the creation of the user interfaces for Self Sovereign Applications (SSApps)
+            (a concept from PrivateSky and OpenDSU). Cardinal was the first iteration and the latest one stays under the name of WebCardinal 
+            (<a href="https://github.com/webcardinal" target="_blank">github.com/webcardinal</a>).
+            The need for a new framework arose from the negative experience with React or Angular.
+            These frameworks through the large ecosystem and too diverse pressures of the community have become sources of inefficiency.
+            WebCardinal and Cardinal evolve around the idea of adding a simple MVC layer over standard web components.
+            Additionally, controlling the MVC framework offered us opportunities to integrate OpenDSU Specific features in the controllers and therefore
+            make it the most appropriate way of creating UIs for SSApps.
+        </p>
+
+        <p>
+            WebCardinal represents the complete rewrite version of
+            Cardinal, with the aim to enable an even more rapid
+            development of WEB applications. WebCardinal offers almost all the functionalities of Cardinal, in the
+            same form or by providing an easier alternative. From 2021, we recommend to start to migrate Cardinal SSApps to WebCardinal.
+            Most of the Web Components from Cardinal are still usable in WebCardinal, however we encourage you to use external web-components collections
+            (as for example <a href="https://ionicframework.com/docs/components" target="_blank">Ionic</a> and <a href="https://shoelace.style" target="_blank">Shoelace</a>, simply because they are better and more flexible).
+            The only web-components that are mandatory to properly use WebCardinal are those from webcardinal-core.
+            FYI, this site is created using webcardinal-core and cardinal-wiki components.
+        </p>
+    </psk-chapter>
+
+    <psk-chapter title="How to install WebCardinal">
+        <p>You should use <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> which offers a series of predefined bundles that contain our web components.</p>
+        <p>WebCardinal can be used with Self Sovereign Applications (SSApps) or for normal WebApplications <small>(depending on your use-case select your installation method from below)</small></p>.
+        <br>
+        <psk-accordion>
+            <psk-accordion-item title="A SSApp with Octopus">
+                <ol class="bundles-steps">
+                    <li>
+                        Add WebCardinal as a dependency
+                        <psk-code language="JSON" class="small-size">
+                        "name": "webcardinal",
+                        "src": "https://github.com/webcardinal/webcardinal-bundler",
+                        "actions": [
+                            {
+                                "type": "smartClone",
+                                "target": ".",
+                                "collectLog": false
+                            },
+                            {
+                                "type": "execute",
+                                "cmd": "cd webcardinal && npm install && npm run bundle-minimal && npm run build"
+                                // or another bundle for more components (not minimal)
+                            }
+                        ]
+                        </psk-code>
+                    </li>
+                    <li>
+                        Add distribution in a new Dossier in <code>build</code> script
+                        <psk-code language="JSON" class="small-size">
+                        "name": "webcardinal-wallet-build",
+                        "actions": [
+                            {
+                                "type": "execute",
+                                "cmd": "cd webcardinal && npm run build-dossier"
+                            }
+                        ]
+                        </psk-code>
+                    </li>
+                </ol>
+            </psk-accordion-item>
+            <psk-accordion-item title="A Web Application">
+                <ol class="bundles-steps">
+                    <li>
+                        Clone WebCardinal bundler
+                        <psk-code language="bash" class="small-size">
+                            git clone https://github.com/webcardinal/webcardinal-bundler
+                        </psk-code>
+                    </li>
+                    <li>
+                        Install WebCardinal bundler
+                        <psk-code language="bash" class="small-size">
+                            cd webcardinal-bundler && npm install
+                        </psk-code>
+                    </li>
+                    <li>
+                        Install <code>minimal</code> bundle (or another bundle for more components)
+                        <br>
+                        Check each WebCardinal bundle in the dedicated section from below.
+                        <psk-code language="bash" class="small-size">
+                            npm run bundle-minimal
+                        </psk-code>
+                    </li>
+                    <li>
+                        Build components from bundle
+                        <psk-code language="bash" class="small-size">
+                            npm run build
+                        </psk-code>
+                    </li>
+                </ol>
+                <p>The generated distribution is now in <code>webcardinal-bundler/webcardinal</code> directory.</p>
+            </psk-accordion-item>
+        </psk-accordion>
+    </psk-chapter>
+
+    <psk-chapter title="How to use WebCardinal">
+        <p>In the <code>&lthead></code> from <code>index.html</code> of your application (WebApp, SSApp) insert the following:</p>
+        <psk-code language="markup">
+            <!-- WebCardinal dist -->
+            &ltscript type="module" src="webcardinal/webcardinal.js">&lt/script>
+            &ltlink rel="stylesheet" href="webcardinal/webcardinal.css">
+        </psk-code>
+        <p>In the <code>&ltbody></code> it is mandatory to add <webc-link tag="webc-app-root">webc-app-root</webc-link>.</p>
+        <psk-code language="markup" class="small-size">
+            &ltwebc-app-root>&lt/webc-app-root>
+        </psk-code>
+        <p>Concrete examples: <a href="https://github.com/PrivateSky/ssapp-template/blob/master/code/index.html" target="_blank">ssapp-template</a> (SSApp) and <a href="https://github.com/webcardinal/webcardinal-app-starter/blob/master/index.html" target="_blank">webcardinal-app-starter</a> (WebApp).</p>
+    </psk-chapter>
+
+    <psk-description title="Configuration">
+        Read more about it in the documentation for <webc-link tag="webcardinal-configuration">Configuration</webc-link>.
+    </psk-description>
+
+    <psk-description title="Components">
+        WebCardinal offers some useful components to make the development of applications more easier.
+        <br />
+        Read about each WebCardinal custom elements by checking each component from
+
+    </psk-description>
+
+    <psk-description title="Attributes">
+        WebCardinal comes with some very useful and powerful attributes that can be used on mainly every HTML element.
+
+        <!-- prettier-ignore -->
+        <psk-list>
+            <webc-link tag="data-for">data-for</webc-link> - used for iteration in markup over array<br><small>
+            <webc-link tag="data-if">data-if</webc-link> - used for add conditional capabilities to your application<br>
+            <webc-link tag="data-view-model">data-view-model</webc-link> - used for binding many tag attributes to the same element
+            <webc-link tag="data-tag">data-tag</webc-link> - used for an easier event subscription experience
+        </psk-list>
+
+    </psk-description>
+
+    <psk-description title="Controllers">
+        <p>WebCardinal's approach to controllers is similar with the one from Cardinal.</p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about <webc-link tag="webcardinal-controller">Cardinal's controllers </webc-link>.
+        </psk-highlight>
+
+        <p>
+            Currently, WebCardinal offers the following Controllers which can be extended based on the given
+            requirements:
+        </p>
+
+        <psk-list>
+            <code>Controller</code>: offers the basic functionalities of the framework
+            <code>WebController</code>: offers some basic interaction with the WebCardinal components
+        </psk-list>
+
+        <p>The controllers can be used from <code>WebCardinal.controllers</code> available on the window object.</p>
+
+        <!-- prettier-ignore -->
+        <psk-code language="JavaScript" file="scripts/controllers/webcardinal/examples/BindingExampleController.js"></psk-code>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about the <webc-link tag="webcardinal-controller">Controller class</webc-link>.
+        </psk-highlight>
+        <psk-highlight type-of-highlight="note">
+            Read more about the <webc-link tag="webcardinal-webccontroller">WebcController class</webc-link>.
+        </psk-highlight>
+    </psk-description>
+
+    <psk-description title="Models">
+        <p>
+            All of the HTML element and also custom elements have support for binding. One-way binding is ensured for
+            every element, but there may be some limitations for two-way binding when using non-native HTML form
+            elements. Read more about <webc-link tag="webcardinal-forms">WebcCardinal's forms</webc-link>.
+        </p>
+
+        <p>
+            In order to offer a consistent approach for binding, WebCardinal has support for a special attribute
+            <code>data-view-model</code>.
+        </p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about <webc-link tag="data-view-model">WebCardinal's data-view-model attribute</webc-link>.
+        </psk-highlight>
+
+
+        <h5>Binding syntax</h5>
+
+        <psk-code language="HTML">
+            <!-- Binding syntax for values from model -->
+            {{ @value }}
+
+            <!-- Binding syntax for values from translationModel -->
+            {{ $value }}
+        </psk-code>
+
+        <p>
+            WebCardinal has added a new syntax that allows model binding (and also translation binding) inside the
+            template nodes.
+        </p>
+
+        <br>
+
+        <h5>Example</h5>
+        <!-- prettier-ignore -->
+        <psk-code language="markup" title="Markup">
+            <webc-container controller="webcardinal/examples/BindingExampleController">
+                <button>{{ @buttonText }}</button>
+                <p>Message: {{ @hello }}</p>
+            </webc-container>
+        </psk-code>
+
+        <!-- prettier-ignore -->
+        <psk-code language="JavaScript" title="Controller" file="scripts/controllers/webcardinal/examples/BindingExampleController.js" class="small-size"></psk-code>
+
+        <psk-chapter title="Result">
+            <psk-example class="app-example">
+                <webc-container controller="webcardinal/examples/BindingExampleController">
+                    <button>{{ @buttonText }}</button>
+                    <p>Message: {{ @hello }}</p>
+                </webc-container>
+            </psk-example>
+        </psk-chapter>
+    </psk-description>
+
+    <psk-description title="Skins & Translations">
+        <p>WebCardinal has support for translations via skins.</p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about <webc-link tag="webcardinal-skins">WebCardinal's translation mechanism</webc-link>.
+        </psk-highlight>
+    </psk-description>
+
+    <psk-chapter title="Bundles">
+        <p>The content of each bundle can be viewed in the table below:</p>
+        <div id="bundles">
+            <table>
+                <thead>
+                <tr>
+                    <th>namespace</th>
+                    <th>package</th>
+                    <th colspan="5" align="center">bundle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th><pre>webcardinal</pre></th>
+                    <th><pre>cardinal</pre></th>
+                    <th><pre>minimal </pre></th>
+                    <th><pre>wiki    </pre></th>
+                    <th><pre>all     </pre></th>
+                </tr>
+                <tr>
+                    <td>webcardinal</td>
+                    <td><a href="https://github.com/webcardinal/webcardinal-core">core</a></td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">cardinal</td>
+                    <td><a href="https://github.com/webcardinal/cardinal-barcode">barcode</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-core">core</a></td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-essentials">essentials</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-forms">forms</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-wiki">wiki</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>More precise, after cloning and installing <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> you must:</p>
+        <ol class="bundles-steps">
+            <li>Create your desired bundle
+                <psk-code language="bash">
+                    npm run bundle-&ltBUNDLE_NAME&gt
+                    # example: npm run bundle-minimal
+                </psk-code></li>
+            <li>Build components from bundle <psk-code language="bash">npm run build</psk-code></li>
+        </ol>
+    </psk-chapter>
+
+</psk-page>

@@ -1,0 +1,55 @@
+{
+  "webc-app-container": {
+    "source": "@webcardinal/core"
+  },
+  "webc-app-error-toast": {
+    "source": "@webcardinal/core"
+  },
+  "webc-app-identity": {
+    "source": "@webcardinal/core"
+  },
+  "webc-app-loader": {
+    "source": "@webcardinal/core"
+  },
+  "webc-app-menu": {
+    "source": "@webcardinal/core"
+  },
+  "webc-app-menu-item": {
+    "source": "@webcardinal/core",
+    "disableCheatsheet": true
+  },
+  "webc-app-redirect": {
+    "source": "@webcardinal/core",
+    "disableCheatsheet": true
+  },
+  "webc-app-root": {
+    "source": "@webcardinal/core"
+  },
+  "webc-app-router": {
+    "source": "@webcardinal/core"
+  },
+  "webc-component": {
+    "source": "@webcardinal/core"
+  },
+  "webc-container": {
+    "source": "@webcardinal/core"
+  },
+  "webc-docs": {
+    "source": "@webcardinal/core"
+  },
+  "webc-link": {
+    "source": "@webcardinal/core"
+  },
+  "webc-modal": {
+    "source": "@webcardinal/core"
+  },
+  "webc-skin": {
+    "source": "@webcardinal/core"
+  },
+  "webc-spinner": {
+    "source": "@webcardinal/core"
+  },
+  "webc-template": {
+    "source": "@webcardinal/core"
+  }
+}

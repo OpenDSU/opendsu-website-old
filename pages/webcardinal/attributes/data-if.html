@@ -1,0 +1,270 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    [data-tag="toggle-property"],
+    [data-tag="validate-email"] {
+        border-color: transparent;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+    }
+    [data-tag="validate-email"] {
+        margin-top: 1.7rem;
+    }
+    .list-position ul {
+        list-style-position: inside;
+    }
+</style>
+
+<psk-page title="data-if attribute">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>This attribute allows conditional rendering of children components.</p>
+        <p>
+            If the value defined in the <code>data-if</code> attribute is evaluated to <code>true</code>,
+            <code>data-if</code> will render its children accordingly.
+        </p>
+
+        <p>The general use of <code>data-if</code> is the following:</p>
+
+        <!-- prettier-ignore -->
+        <psk-code language="markup">
+            <div data-if="@condition">
+                <container slot="true">
+                    CONTENT_TO_SHOW_WHEN_CONDITION_IS_TRUE
+                </container>
+                <container slot="false">
+                    CONTENT_TO_SHOW_WHEN_CONDITION_IS_FALSE
+                </container>
+            </div>
+        </psk-code>
+
+        <p>Use with <code>true</code> slot only</p>
+
+        <!-- prettier-ignore -->
+        <psk-code language="markup">
+            <div data-if="@condition">
+                <container slot="true">
+                    CONTENT_TO_SHOW_WHEN_CONDITION_IS_TRUE
+                </container>
+            </div>
+        </psk-code>
+
+        <p>Use with without slots</p>
+        <!-- prettier-ignore -->
+        <psk-code language="markup">
+            <div data-if="@condition">
+                <container>
+                    CONTENT_TO_SHOW_WHEN_CONDITION_IS_TRUE
+                </container>
+            </div>
+        </psk-code>
+
+        <p>
+            Notes:
+            <psk-highlight type-of-highlight="example">
+                <code>data-if</code> can be applied on any HTML tag, but it can cause unexpecte bahaviour if it's placed
+                on custom components (since it's changing the tag content)
+            </psk-highlight>
+            <psk-highlight type-of-highlight="note">
+                <code>container</code> can be any HTML tag or custom component
+            </psk-highlight>
+            <psk-highlight type-of-highlight="note">
+                data-if supports the if/else construct by using slots. To enable this behavior the children of the
+                component must name the slot for each outcome of the condition. This attribute supports the following
+                slots:
+                <psk-list class="list-position">
+                    <code>true</code>
+                    <code>false</code>
+                </psk-list>
+            </psk-highlight>
+            <psk-highlight type-of-highlight="note">
+                both <code>true</code> and <code>false</code> slots are optional. If neither of them are specified, then
+                the whole <code>data-if</code> content will be considered the <code>true</code> slot. Under this
+                consideration, the two above examples are identical functional-wise.
+            </psk-highlight>
+            <psk-highlight type-of-highlight="example">
+                A model expression can also return a <code>Promise</code>. When that happens, <code>data-if</code> will
+                wait for the Promise to be resolved and based on its value it will decide if the children nodes will be
+                rendered or not.
+            </psk-highlight>
+        </p>
+    </psk-description>
+
+    <psk-chapter title="Examples">
+        <psk-chapter title="Using a model property as a condition">
+            <p>
+                In this example the <code>data-if</code> attribute is bound to the value of the <code>gdpr</code> model
+                property and it will render the paragraph only if the property is <code>true</code>.
+            </p>
+
+            <!-- prettier-ignore -->
+            <psk-code language="javascript">
+            // Controller
+            const { WebcController } = WebCardinal.controllers;
+
+            export default class DataIfController extends WebcController {
+                initializeModel = () => ({ gdpr: 0 });
+
+                constructor(element, history) {
+                    super(element, history);
+                    this.setModel(this.initializeModel());
+
+                    this.onTagClick("toggle-property", () => {
+                        this.model.gdpr = !this.model.gdpr;
+                    });
+                }
+            }
+        </psk-code>
+
+            <psk-code language="markup">
+                <!-- View -->
+                <webc-container controller="webcardinal/examples/DataIfController">
+                    <div data-if="@gdpr">
+                        <p><strong>GDPR Notice...</strong></p>
+                    </div>
+                </webc-container>
+            </psk-code>
+
+            <webc-container controller="webcardinal/examples/DataIfController">
+                <div data-if="@gdpr">
+                    <p><strong>GDPR Notice...</strong></p>
+                </div>
+                <button data-tag="toggle-property">Click here to toggle the GDPR notice</button>
+            </webc-container>
+        </psk-chapter>
+
+        <psk-chapter title="Using a model expression as a condition">
+            <p>
+                This example will demonstrate how to use the <code>data-if</code> together with a model expression.
+            </p>
+            <p>
+                For this case, a model expression is used to validate the value of an email text input and show an error
+                message if validation fails.
+            </p>
+
+            <!-- prettier-ignore -->
+            <psk-code language="javascript">
+            // Controller
+            const { WebcController } = WebCardinal.controllers;
+
+            export default class DataIfController extends WebcController {
+                initializeModel = () => ({
+                    form: {
+                        wasSubmitted:false,
+                        email: {
+                            label: 'Email',
+                            name: 'email',
+                            isValid: true
+                        }
+                    }
+                });
+
+                constructor(element, history) {
+                    super(element, history);
+                    this.setModel(this.initializeModel());
+
+                    // Create the "formHasErrors" expression
+                    this.model.addExpression(
+                        "formHasErrors",
+                        () => {
+                            return !this.form.email.isValid;
+                        },
+                        "form.email.isValid"
+                    ); // watch the "form.email.isValid" model chain
+                    // for changes in order to trigger re-evaluation
+
+                    this.onTagClick("validate-email", () => {
+                        if (this.model.form.wasSubmitted === false) {
+                            this.model.form.wasSubmitted = true;
+                        }
+                        const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                        const emailValue = this.model.form.email.value;
+                        this.model.form.email.isValid = emailRegex.test(emailValue);
+                    });
+                }
+            }
+        </psk-code>
+
+            <psk-code language="markup">
+                <!-- View -->
+                <webc-container controller="webcardinal/examples/DataIfController">
+                    <div data-if="@form.wasSubmitted">
+                        <div data-if="@formHasErrors">
+                            <div slot="true" class="alert alert-danger">
+                                <p>The email address is invalid</p>
+                            </div>
+
+                            <div slot="false" class="alert alert-success">
+                                <p>The email address is valid</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <psk-form-row>
+                        <psk-text-input view-model="form.email"></psk-text-input>
+                    </psk-form-row>
+
+                    <psk-form-row>
+                        <button data-tag="validate-email" button-class="btn btn-info btn-sm">Validate Email</button>
+                    </psk-form-row>
+                </webc-container>
+            </psk-code>
+
+            <webc-container controller="webcardinal/examples/DataIfController">
+                <div data-if="@form.wasSubmitted">
+                    <div data-if="@formHasErrors">
+                        <div slot="true" class="alert alert-danger">
+                            <p>The email address is invalid</p>
+                        </div>
+
+                        <div slot="false" class="alert alert-success">
+                            <p>The email address is valid</p>
+                        </div>
+                    </div>
+                </div>
+
+                <psk-layout template-columns="1fr auto" align-items-y="center" gap="1rem">
+                    <psk-text-input view-model="form.email"></psk-text-input>
+                    <button data-tag="validate-email">Validate Email</button>
+                </psk-layout>
+            </webc-container>
+
+            <psk-highlight>
+                <p>
+                    As seen in the previous code samples, the <code>data-if</code> needs to be placed inside a
+                    controller aware component in order to have access to the model so it can evaluate either a property
+                    or a predefined expression.
+                    Regardless of the type of condition used, the attribute value must start with the
+                    <code>@</code> character.
+                </p>
+            </psk-highlight>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

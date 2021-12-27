@@ -1,0 +1,32 @@
+<style>
+    psk-description code.accent {
+        background: whitesmoke;
+        border-radius: 3px;
+    }
+    psk-example psk-button .btn.btn-primary, .submit {
+        margin-bottom: 0 !important;
+    }
+    webc-container {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<psk-page title="UI Loader">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-spinner">
+        <psk-description title="Summary">
+            <p>This is a loader / spinner that is visible when the Application is <strong>loading</strong>.</p>
+            <p>The element is accessible from <code class="accent">window.WebCardinal.loader</code>.</p>
+        </psk-description>
+    </webc-docs>
+    <psk-chapter title="Example">
+        <psk-example class="app-example">
+            <webc-container controller="webcardinal/examples/WebcSpinnerController">
+                <psk-button data-tag="button">
+                    <span>{{ @text }}</span>
+                    <span>{{ @seconds }}</span>
+                </psk-button>
+            </webc-container>
+        </psk-example>
+    </psk-chapter>
+</psk-page>

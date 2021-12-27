@@ -1,0 +1,24 @@
+<psk-page title="Application errors">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-app-error-toast">
+        <psk-description title="Summary">
+            <p>This component shows warnings and errors from console in your application as a toast.</p>
+            <psk-highlight type-of-highlight="example">
+                <code>webc-app-error-toast</code> is an internal component appended only by <webc-link tag="webc-app-root">webc-app-root</webc-link>.
+            </psk-highlight>
+        </psk-description>
+        <psk-chapter title="Usage">
+            <article>
+                <p>From <code>webcardinal.json</code>:</p>
+                <psk-code language="json">
+                    "logLevel": "error"
+                </psk-code>
+                <p>Other values: <code>"warn"</code>, <code>"none"</code>;</p>
+                <p>
+                    <a href="https://github.com/webcardinal/webcardinal-core/blob/master/src/controllers/config/default.ts#L26">
+                    Default value</a> is set in <code>default.ts</code>;
+                </p>
+            </article>
+        </psk-chapter>
+    </webc-docs>
+</psk-page>

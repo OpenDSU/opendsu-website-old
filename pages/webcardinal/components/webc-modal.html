@@ -1,0 +1,227 @@
+<style>
+    .methods ul {
+        padding-left: 1.15rem !important;
+    }
+    psk-button button {
+        margin-bottom: 0 !important;
+    }
+    psk-chapter h5 {
+        margin-top: 1.65rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    #error-modal {
+        --header-border: 1px dashed #dc3545;
+        --confirm-button-background: #dc3545;
+        --footer-align: space-around;
+    }
+    #error-modal::part(dialog) {
+        max-width: 300px;
+    }
+    #error-modal::part(cancel),
+    #error-modal::part(confirm) {
+        width: 100px;
+    }
+</style>
+<psk-page title="Modals">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-modal">
+        <psk-description title="Summary">
+            <p>This component should be used when a modal is needed in your application.</p>
+        </psk-description>
+        <psk-chapter title="Usage">
+            <p style="text-align: left">It is mandatory to use in a custom <strong>Controller</strong> of your page, who inherits the <code>WebController</code> from <code>WebCardinal.controllers</code>, one of the following methods: </p>
+            <psk-list class="methods">
+                <code>showModal</code>
+                <code>showModalFromTemplate</code>
+                <code>showErrorModal</code>
+                <code>showErrorModalAndRedirect</code>
+                <code>createWebcModal</code>
+                <code>createElement</code>
+            </psk-list>
+            </h2>
+        </psk-chapter>
+    </webc-docs>
+    <psk-chapter title="Examples">
+        <psk-chapter title="Simple modal">
+            <psk-code language="JavaScript">
+            /**
+             * @param {string} content
+             * @param {string} [title]
+             * @param {Function} [onConfirm]
+             * @param {Function} [onClose]
+             * @param {object} [props]
+             */
+            this.showModal('Hello Content 👋', 'Example 1', event => {
+                console.log('event', event, event.detail);
+                console.log('Good bye "Example 1"!');
+            });
+            </psk-code>
+            <p>If <code>onClose</code> is not specified, <code>onConfirm</code> will be triggered under any circumstances.</p>
+            <psk-example class="app-example">
+                <webc-container controller="webcardinal/examples/WebcModalExamplesController">
+                    <psk-button data-tag="show-example1" button-class="btn btn-secondary">Show modal</psk-button>
+                </webc-container>
+            </psk-example>
+        </psk-chapter>
+
+        <psk-chapter title="Error modal">
+            <psk-code language="JavaScript">
+            // page controller
+            const onYesResponse = () => console.log('Thank you!');
+            const onNoResponse = () => console.log('Why not?');
+
+            /**
+             * @param {string | Error | object} error
+             * @param {string} [title]
+             * @param {Function} [onConfirm]
+             * @param {Function} [onClose]
+             * @param {object} [props]
+             */
+            this.showErrorModal(
+                new Error(`Do you want to continue?`), // An error or a string, it's your choice
+                'Oh no, an error..',
+                onYesResponse,
+                onNoResponse,
+                {
+                    disableExpanding: true,
+                    cancelButtonText: 'No',
+                    confirmButtonText: 'Yes',
+                    id: 'error-modal'
+                }
+            );
+            </psk-code>
+            <psk-code language="CSS" class="small-size">
+            /* styling */
+            #error-modal {
+                --header-border: 1px dashed #dc3545;
+                --confirm-button-background: #dc3545;
+                --footer-align: space-around;
+            }
+            #error-modal::part(dialog) { max-width: 300px }
+            #error-modal::part(cancel),
+            #error-modal::part(confirm) { width: 100px }
+            </psk-code>
+
+            <psk-example class="app-example">
+                <webc-container controller="webcardinal/examples/WebcModalExamplesController">
+                    <psk-button data-tag="show-example2" button-class="btn btn-danger">Show modal</psk-button>
+                </webc-container>
+            </psk-example>
+        </psk-chapter>
+
+        <psk-chapter title="Redirect modal">
+            <psk-code language="JavaScript">
+            /**
+             * @param {string | Error | object} error
+             * @param {string} [title]
+             * @param {string | object} url
+             * @param {object} [props]
+             */
+            this.showErrorModalAndRedirect(
+                'Wait 3 seconds',
+                'Redirect...',
+                { tag: 'webcardinal-cheatsheet' },
+                3000
+            );
+            </psk-code>
+            <p>If you want to use page <strong>tags</strong> you must include the desired tag in the object from third parameter:</p>
+            <psk-code language="JavaScript">{ tag: 'webcardinal-cheatsheet' }</psk-code>
+            <p>Also for more advanced usage, a state can be included in the same spot: </p>
+            <psk-code language="JavaScript">{ state: myStateObject }</psk-code>
+            <psk-example class="app-example">
+                <webc-container controller="webcardinal/examples/WebcModalExamplesController">
+                    <psk-button data-tag="show-example3" button-class="btn btn-dark">Show modal</psk-button>
+                </webc-container>
+            </psk-example>
+        </psk-chapter>
+
+        <psk-chapter title="Templated modal">
+            <p>In the example below the modal template uses a <code>MyModalController</code> passed via <code>controller</code> property.</p>
+            <psk-code language="JavaScript">
+            const onConfirm = event => console.log(event);
+            const onClose = event => console.log(event);
+
+            /**
+             * @param {string} template,
+             * @param {Function} [onConfirm]
+             * @param {Function} [onClose]
+             * @param {object} [props]
+             */
+            this.showModalFromTemplate('my-modal-template', onConfirm, onClose, {
+                controller: 'webcardinal/examples/MyModalController',
+                disableExpanding: true,
+                disableBackdropClosing: false
+            });
+            </psk-code>
+            <p>If a controller is not desired for your use case, but binding values is required, <code>model</code> and <code>translationModel</code> can be passed as properties.</p>
+            <psk-code language="JavaScript">
+            this.showModalFromTemplate(..., { model: myModel })
+            </psk-code>
+            <br>
+            <psk-code language="JavaScript" class="small-size">
+            // MyModalController.js
+            const { WebcController } = WebCardinal.controllers;
+
+            class MyModalController extends WebcController {
+                initializeModel = () => ({
+                    complex: 'more complex',
+                    example: 'Form example',
+                    input: {
+                        fullName: {
+                            type: 'text',
+                            placeholder: 'Full name'
+                        },
+                        email: {
+                            type: 'email',
+                            placeholder: 'Email'
+                        },
+                        password: {
+                            type: 'password',
+                            placeholder: 'Password'
+                        }
+                    }
+                });
+
+                constructor(element, history) {
+                    super(element, history);
+                    this.setModel(this.initializeModel());
+                }
+            }
+
+            export default MyModalController;
+            </psk-code>
+            <psk-code language="markup" class="small-size">
+                <!-- my-modal-template.html -->
+                <!-- styling is missing from this snipped of code -->
+                <header slot="header">
+                    <h2>Modal from <span data-example="@example">template</span></h2>
+                    <h6>Can be much {{ @complex }}!</h6>
+                </header>
+                <main>
+                    <input data-view-model="@input.fullName"/>
+                    <input data-view-model="@input.email"/>
+                    <input data-view-model="@input.password"/>
+                </main>
+                <footer slot="footer">
+                    <button data-confirm>Save</button>
+                    <button data-close>Reset</button>
+                </footer>
+            </psk-code>
+            <p>
+                <code>my-modal-template.html</code> can be inspected <webc-link href="https://raw.githubusercontent.com/PrivateSky/privatesky-xyz/master/modals/my-modal-template.html">here</webc-link>.
+            </p>
+            <p>
+                In <code>webc-modal</code> each click on an element marked with <code>data-confirm</code> or <code>data-close</code> will trigger the related event.
+            </p>
+
+            <psk-example class="app-example">
+                <webc-container controller="webcardinal/examples/WebcModalExamplesController">
+                    <psk-button data-tag="show-example4" button-class="btn btn-success">Show modal</psk-button>
+                </webc-container>
+            </psk-example>
+        </psk-chapter>
+<!--        <psk-chapter title="Props usage">-->
+<!--            <p>Any method that invokes a <code>webc-modal</code> has <strong>props</strong> object as parameter.</p>-->
+<!--        </psk-chapter>-->
+    </psk-chapter>
+</psk-page>

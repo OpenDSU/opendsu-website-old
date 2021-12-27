@@ -1,0 +1,145 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    .increment-example psk-input .form-group {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .scale-example {
+        text-align: center;
+    }
+    .scale-example .wrapper {
+        padding-top: 0 !important;
+        text-align: center;
+    }
+    .scale-example .wrapper > span {
+        display: inline-block;
+        color: #F5F5F5;
+        background: #5E7FE1;
+        padding: 1rem;
+        border-radius: 3px;
+        cursor: crosshair;
+    }
+</style>
+
+<psk-page title="data-tag attribute">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>This attribute is used to tag elements for which listeners must be attached.</p>
+        <p>It can be thought of as a more convenient <code>querySelector</code> combined with <code>addEventListener</code> because it provides access to the attached model.</p>
+    </psk-description>
+
+    <psk-chapter title="Usage">
+        <p>The general use of <code>data-tag</code> is the following:</p>
+        <psk-code title="Markup">
+            <element data-tag="my-tag"></element>
+        </psk-code>
+        <psk-code title="Controller" language="JavaScript">
+            this.onTagEvent('my-tag', eventName, eventListener);
+        </psk-code>
+        <p>Where <strong><code>eventName</code></strong> is any <webc-link href="https://developer.mozilla.org/en-US/docs/Web/Events#event_listing">event type</webc-link> (like <code>click</code>, <code>focus</code>, <code>drag</code>, etc.) and <strong><code>eventListener</code></strong> is a callback that receive three parameters: <strong>model</strong>, <strong>target</strong> and <webc-link href="https://developer.mozilla.org/en-US/docs/Web/API/Event">event</webc-link>.</p>
+        <p>Derivatives such as <code>onTagClick</code> are also available.</p>
+        <p>If listening is done, <code>offTagEvent</code> (or derivatives <code>offTagClick</code>) should be used.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Examples">
+        <psk-chapter title="Example 'onclick'">
+            <psk-code title="Markup">
+                <webc-container controller="webcardinal/examples/DataTagExample1Controller">
+                    <psk-layout template-columns="auto auto 1fr" gap="20px">
+                        <psk-button data-tag="plus" button-class="btn btn-success">➕</psk-button>
+                        <psk-button data-tag="minus" button-class="btn btn-danger" >➖</psk-button>
+                        <psk-input value="@value"></psk-input>
+                    </psk-layout>
+                </webc-container>
+            </psk-code>
+
+            <psk-code title="Controller" language="JavaScript" class="small-size">
+            const { WebcController } = WebCardinal.controllers;
+
+            class DataTagExample1Controller extends WebcController {
+                initializeModel = () => ({ value: 0 });
+
+                constructor(element, history) {
+                    super(element, history);
+                    this.setModel(this.initializeModel());
+                    this.onTagEvent('plus', 'click', () => this.model.value++);
+                    this.onTagClick('minus', () => this.model.value--);
+                }
+            }
+
+            export default DataTagExample1Controller;
+            </psk-code>
+
+            <psk-chapter title="Result">
+                <psk-example class="app-example increment-example">
+                    <webc-container controller="webcardinal/examples/DataTagExample1Controller">
+                        <psk-layout template-columns="auto auto 1fr" gap="20px">
+                            <psk-button data-tag="plus" button-class="btn btn-success">➕</psk-button>
+                            <psk-button data-tag="minus" button-class="btn btn-danger" >➖</psk-button>
+                            <psk-input value="@value"></psk-input>
+                        </psk-layout>
+                    </webc-container>
+                </psk-example>
+            </psk-chapter>
+        </psk-chapter>
+
+        <psk-chapter title="Example 'onwheel'">
+            <psk-code title="Markup">
+                <webc-container controller="webcardinal/examples/DataTagExample2Controller">
+                    <div class="wrapper">
+                        <span data-tag="scale">Hover and scale me with your mouse wheel.</span>
+                    </div>
+                </webc-container>
+            </psk-code>
+
+            <psk-code title="Controller" language="JavaScript" class="small-size">
+            const { WebcController } = WebCardinal.controllers;
+
+            class DataTagExample2Controller extends WebcController {
+                initializeModel = () => ({ scale: 1 });
+
+                constructor(element, history) {
+                    super(element, history);
+                    this.setModel(this.initializeModel());
+                    this.onTagEvent('scale', 'wheel', (model, target, event) => {
+                        event.preventDefault();
+                        this.model.scale += event.deltaY * -0.005;
+                        this.model.scale = Math.min(Math.max(.5, this.model.scale), 2);
+                        target.style.transform = `scale(${this.model.scale})`;
+                    });
+                }
+            }
+
+            export default DataTagExample2Controller;
+            </psk-code>
+
+            <psk-chapter title="Result">
+                <psk-example class="app-example scale-example">
+                    <webc-container controller="webcardinal/examples/DataTagExample2Controller">
+                        <div class="wrapper">
+                            <span data-tag="scale">Hover and scale me with your mouse wheel.</span>
+                        </div>
+                    </webc-container>
+                </psk-example>
+            </psk-chapter>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

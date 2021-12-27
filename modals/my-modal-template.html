@@ -1,0 +1,46 @@
+<style>
+    webc-modal {
+        --padding: 1.2rem;
+        --radius: 5px;
+    }
+    webc-modal::part(dialog) { max-width: 340px }
+    webc-modal::part(footer) { background: #F9F9F9 }
+    header h2 {
+        padding-top: 0.25rem;
+        font-size: 1.4rem;
+    }
+    main {
+        display: grid;
+        gap: 1rem;
+    }
+    main input {
+        width: 100%; padding: 0.25rem 0.5rem;
+        border: none; border-radius: 5px; background: whitesmoke;
+        font-size: 1.1rem; font-weight: 300;
+    }
+    footer {
+        display: grid; width: 100%;
+        grid-template-columns: 1fr 1fr; gap: 1.2rem;
+    }
+    footer button {
+        padding: 0.25rem 1rem;
+        border: 1px solid transparent; border-radius: 5px;
+        background: transparent;
+    }
+    button[data-confirm] { border-color: lightgreen }
+    button[data-close] { border-color: orange }
+</style>
+
+<header slot="header">
+    <h2>Modal from <span data-example="@example">template</span></h2>
+    <h6>Can be much {{ @complex }}!</h6>
+</header>
+<main>
+    <input data-view-model="@input.fullName"/>
+    <input data-view-model="@input.email"/>
+    <input data-view-model="@input.password"/>
+</main>
+<footer slot="footer">
+    <button data-confirm>Save</button>
+    <button data-close>Reset</button>
+</footer>

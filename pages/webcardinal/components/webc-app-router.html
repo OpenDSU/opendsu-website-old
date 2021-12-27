@@ -1,0 +1,24 @@
+<style>
+    psk-description[title="Summary"] ul {
+        margin-top: -1rem;
+        padding-left: 1rem;
+    }
+</style>
+<psk-page title="Application router">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-app-router">
+        <psk-description title="Summary">
+            <p>Application's pages are rendered inside this web component.</p>
+            <p>Under the hood <code>webc-app-router</code> uses:
+                <ul>
+                    <li><code>stencil-router</code></li>
+                    <li><code>stencil-route-switch</code></li>
+                    <li><code>stencil-route</code></li>
+                </ul>
+            </p>
+            <psk-highlight type-of-highlight="example">
+                <code>webc-app-rooter</code> is an internal component used only by <webc-link tag="webc-app-container">webc-app-container</webc-link>.
+            </psk-highlight>
+        </psk-description>
+    </webc-docs>
+</psk-page>

@@ -1,0 +1,58 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NW4R664');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="WebCardinal a web components MVC framework">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<psk-toc title="Table of contents"></psk-toc>
+
+<psk-description>WebCardinal is introducing a programming mode (it is a micro framework) oriented to enable the rapid development of WEB applications (RAD - Rapid Application Development or low code development). WebCardinal appeared because of the frustration experienced with other frameworks and it aims at providing a guide  for fast and safe programming of SSApp graphic interface.</psk-description>
+
+<psk-chapter title="We bet on Web Components">
+<p align="justify">
+    For security reasons (minimizing the SSApp code), as well as to accelerate development, 
+    we chose to build WebCardinal on the Web Component standard.
+</p>
+<p align="justify">
+    The HTML programming model provided by the web-components technology enables the possibility 
+    to create your own tags as reusable components. The first obvious application of web-components 
+    in the PrivateSky ecosystem is the very page you are looking at (privatesky.xyz) because the 
+    entire site runs on CardinalIJS and the components it provides. In order to easily describe and 
+    publish this paper we opted to employ our own proprietary technology.
+</p>
+</psk-chapter>
+
+<psk-chapter title="Between MVC and MVVM">
+<p align="justify">
+    WebCardinal provides a mature and robust programming framework based on MVC and MVVM.</p>
+
+<p align="justify">
+    In WebCardinal “the models" are loaded and set up by “controllers". If required, the Controller
+    is setting up a View Model (an adapted model easier to connect to the View).
+    The View part in WebCardinal is accomplished by describing “pages" using the tag <i>psk-page</i>
+    and by writing HTML tags that are loading the web components provided by WebCardinal and described
+    in the PSK Wiki and Web Components sections of this site.
+</p>
+
+<p align="justify">
+    The controllers may only be attached  to certain components: psk-page, psk-container, etc.
+</p> 
+
+<p align="justify">
+    The components in view may communicate between them and to the controller using DOM transmitted 
+    messages. We encourage you to read the pages below in order to comprehend other specificities 
+    related to model use, views, controllers and events in WebCardinal.
+</p>
+</psk-chapter>
+
+</psk-page>
+

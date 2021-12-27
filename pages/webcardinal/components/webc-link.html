@@ -1,0 +1,39 @@
+<psk-page title="Link">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-link">
+        <psk-description title="Summary">
+            <p>Webcardinal equivalent for <code>a</code> (anchor tag).</p>
+        </psk-description>
+        <psk-chapter title="Usage">
+            <psk-list>
+                <div>
+                    <p>Using <code>href</code> attribute: </p>
+                    <psk-code>
+                        <webc-link href="https://example.com">example.com</webc-link>
+                    </psk-code>
+                    <p><strong>Result</strong>: <webc-link href="https://example.com">example.com</webc-link></p>
+                </div>
+                <div>
+                    <p>Using <code>tag</code> attribute: </p>
+                    <p>In your markup: </p>
+                    <psk-code>
+                        <webc-link tag="faq">FAQ Page</webc-link>
+                    </psk-code>
+                    <p>In <code>pages</code> from <code>webcardinal.json</code>: </p>
+                    <psk-code language="JSON">
+                    {
+                        ...
+                        "name": "Frequently asked questions", // name from webc-app-menu
+                        "tag": "faq"
+                        ...
+                    }
+                    </psk-code>
+                    <p><strong>Result</strong>: <webc-link tag="faq">FAQ Page</webc-link></p>
+                </div>
+            </psk-list>
+            <psk-highlight type-of-highlight="example">
+                <p>If <code>href</code> is specified, <code>tag</code> attribute is ignored!</p>
+            </psk-highlight>
+        </psk-chapter>
+    </webc-docs>
+</psk-page>

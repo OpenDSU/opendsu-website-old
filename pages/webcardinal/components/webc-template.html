@@ -1,0 +1,103 @@
+<psk-page title="Templates">
+    <psk-toc title="Table of contents"></psk-toc>
+    <webc-docs for="webc-template">
+        <psk-description title="Summary">
+            <p>This component attach a template to your page.</p>
+        </psk-description>
+
+        <psk-chapter title="Usage">
+            <psk-example>
+                <psk-code>
+                    <webc-template template="custom-template"></webc-template>
+                </psk-code>
+            </psk-example>
+            <p>
+                Where <code>custom-template</code> is a file named <code>custom-template.html</code> inside
+                <code>/templates</code> directory.
+            </p>
+        </psk-chapter>
+
+        <psk-chapter title="Usage with data-view-model attribute">
+            <p>
+                <code>webc-template</code> can also be used with the
+                <webc-link tag="data-if">data-if</webc-link> attribute in case binding is desired for the template.
+            </p>
+
+            <psk-chapter title="Template example">
+                <psk-code>
+                    <h1>Demo Template</h1>
+                    <psk-layout columns="2">
+                        <label data-view-model="@templateLabel"></label>
+                        <input data-view-model="@templateInput" />
+                    </psk-layout>
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Controller example">
+                <!-- prettier-ignore -->
+                <psk-code language="Javascript">
+                    const { WebcController } = WebCardinal.controllers;
+
+                    class WebcDemoTemplateController extends WebcController {
+                        getModel = (_) => ({
+                            templateInput: {
+                                type: "text",
+                                value: 1,
+                                style: "border: 1px solid yellow",
+                            },
+                            templateLabel: {
+                                text: "Outer template label",
+                            },
+                            templateInnerInput: {
+                                templateInput: {
+                                    type: "text",
+                                    value: 2,
+                                    style: "border: 1px solid red",
+                                },
+                                templateLabel: {
+                                    text: "Inner template label",
+                                },
+                            },
+                        });
+
+                        constructor(element, history) {
+                            super(element, history);
+
+                            this.setModel(this.getModel());
+                        }
+                    }
+
+                    export default WebcDemoTemplateController;
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Template usage example">
+                <psk-code>
+                    <webc-container controller="webcardinal/examples/WebcDemoTemplateController">
+                        <h6>Template without binding</h6>
+                        <webc-template template="webc-demo-template"></webc-template>
+
+                        <h6>Template with simple binding</h6>
+                        <webc-template template="webc-demo-template" data-view-model="@"></webc-template>
+
+                        <h6>Template with complex binding</h6>
+                        <webc-template template="webc-demo-template" data-view-model="@templateInnerInput"></webc-template>
+                    </webc-container>
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Visual example">
+                <webc-container controller="webcardinal/examples/WebcDemoTemplateController">
+                    <h6>Template without binding</h6>
+                    <webc-template template="webc-demo-template"></webc-template>
+
+                    <h6>Template with simple binding</h6>
+                    <webc-template template="webc-demo-template" data-view-model="@"></webc-template>
+
+                    <h6>Template with complex binding</h6>
+                    <webc-template template="webc-demo-template" data-view-model="@templateInnerInput"></webc-template>
+                </webc-container>
+            </psk-chapter>
+        </psk-chapter>
+    </webc-docs>
+</psk-page>

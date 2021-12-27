@@ -10,9 +10,24 @@
           "target": "./dev/",
           "collectLog": false
         },
-		 {
+        {
           "type": "execute",
           "cmd": "cd ./dev/cardinal && npm install"
+        }
+      ]
+    },
+    {
+      "name": "webcardinal",
+      "src": "https://github.com/webcardinal/webcardinal-bundler",
+      "actions": [
+        {
+          "type": "smartClone",
+          "target": "./",
+          "collectLog": false
+        },
+        {
+          "type": "execute",
+          "cmd": "cd ./webcardinal && npm install && npm run bundle-all && npm run build"
         }
       ]
     }
@@ -34,6 +49,6 @@
     }
   ],
   "copy-w3c-theme": [
-    
+
   ]
 }
