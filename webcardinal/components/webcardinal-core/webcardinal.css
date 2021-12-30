@@ -1,0 +1,193 @@
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box
+}
+
+:root {
+    --webc-primary-color: #FAFAFA;
+    --webc-primary-background: #354F9B;
+    --webc-secondary-color: #FAFAFA;
+    --webc-secondary-background: #5E7FE1;
+    --webc-third-color: #222222;
+    --webc-third-background: #EFEFEF;
+    --webc-basic-color: #222222;
+    --webc-basic-background: #FAFAFA;
+    --webc-line-height: 1.3;
+    --webc-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
+}
+
+:root [data-theme="dark"] {
+    --webc-primary-color: #E0E0E0;
+    --webc-primary-background: #161616;
+    --webc-secondary-color: #E0E0E0;
+    --webc-secondary-background: #262626;
+    --webc-third-color: #EFEFEF;
+    --webc-third-background: #222222;
+    --webc-basic-color: #FAFAFA;
+    --webc-basic-background: #2F2F2F
+}
+
+webc-app-root {
+    --mode: vertical;
+    --mode-mobile-breakpoint: 960px;
+}
+
+webc-app-container {
+    --background: var(--webc-basic-background);
+    --gap: 0.75em
+}
+
+[data-theme="dark"] webc-app-container {
+    --background: #222222
+}
+
+webc-app-identity {
+    --avatar-radius: 100%;
+    --avatar-width: 3.3rem;
+    --color: var(--webc-primary-color);
+    --column-gap: 0.5rem;
+    --email-font-size: 0.9rem;
+    --name-font-size: 1.2rem;
+    --row-gap: 0.3rem
+}
+
+webc-app-menu {
+    --z-index: 997;
+    --disable-identity: false;
+}
+
+webc-app-menu[mode='horizontal'] {
+    --background: var(--webc-primary-background);
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    --color: var(--webc-primary-color);
+    --dropdown-color: var(--webc-basic-color);
+    --dropdown-background: var(--webc-basic-background);
+    --dropdown-margin: 0 0 0 0.75rem;
+    --dropdown-padding: 0.5rem 0.75rem;
+    --dropdown-width: max-content;
+    --dropdown-radius: 2px;
+    --dropdown-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    --dropdown-items-padding: 0.2rem 0;
+    --height: 80px;
+    --gap: 0.75rem;
+    --padding: 0.35rem 1rem;
+    --triangle-size: 5px
+}
+
+webc-app-menu[mode='mobile'] {
+    --backdrop-background: rgba(0, 0, 0, 0.65);
+    --backdrop-filter: blur(5px);
+    --backdrop-transition-duration: 150ms;
+    --background: var(--webc-primary-background);
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    --burger-color: var(--color);
+    --burger-transition-duration: 150ms;
+    --color: var(--webc-primary-color);
+    --dropdown-gap: 0.2rem;
+    --dropdown-items-padding: 0;
+    --dropdown-margin: 0 0 0 1rem;
+    --items-border-color: rgba(255, 255, 255, 0.3);
+    --items-padding: 0.5rem;
+    --height: 80px;
+    --gap: 0.75rem;
+    --padding: 0.35rem 1rem
+}
+
+webc-app-menu[mode='vertical'] {
+    --background: linear-gradient(180deg, var(--webc-secondary-background) 30%, var(--webc-primary-background) 100%);
+    --border-color: rgba(255, 255, 255, 0.3);
+    --color: var(--webc-primary-color);
+    --dropdown-gap: 0.5rem;
+    --dropdown-margin: 0.4rem 0 0 1rem;
+    --dropdown-items-padding: 0;
+    --items-padding: 0.55rem 0;
+    --gap: 0.75rem;
+    --max-width: 100%;
+    --min-width: 220px;
+    --padding: 1.8rem 1.5rem;
+    --scrollbar-thumb-background: var(--webc-secondary-background);
+    --scrollbar-thumb-hover-background: var(--webc-third-background);
+    --scrollbar-thumb-border: 1px solid rgba(200, 200, 200, 0.5);
+    --scrollbar-track-background: var(--webc-primary-background)
+}
+
+[data-theme=dark] webc-app-menu[mode=vertical] {
+    --scrollbar-thumb-hover-background: #4c4c4c;
+    --scrollbar-thumb-border: 1px solid var(--scrollbar-thumb-hover-background)
+}
+
+webc-app-error-toast {
+    --error-color: #FFFFFF;
+    --error-background: #ED441B;
+    --margin: 1rem 1.5rem;
+    --max-height: 250px;
+    --padding: 10px;
+    --radius: 2px;
+    --warning-color: #FFFFFF;
+    --warning-background: #FFA900;
+    --width: 600px;
+    --z-index: 1000
+}
+
+webc-spinner {
+    --animation: spinner-default-animation 1s infinite linear;
+    --animation-delay: 1.2s;
+    --background: transparent;
+    --border: 0.15em solid transparent;
+    --box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    --color: var(--webc-primary-background);
+    --dot-radius: 100%;
+    --dot-size: 6px;
+    --height: 35px;
+    --radius: 100%;
+    --width: 35px;
+    --z-index: 999
+}
+
+webc-modal {
+    --backdrop-filter: none;
+    --backdrop-background: rgba(0, 0, 0, 0.25);
+    --background: var(--webc-basic-background);
+    --color: var(--webc-basic-color);
+    --margin: 1rem auto;
+    --padding: 1rem;
+    --radius: 3px;
+    --shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.075);
+    --z-index: 998;
+    --width: auto;
+    --max-width: 500px;
+    --header-border: 1px solid #E9E9E9;
+    --header-button-color: var(--webc-third-color);
+    --header-button-background: var(--webc-third-background);
+    --header-button-radius: var(--radius, 3px);
+    --title-color: var(--webc-basic-color);
+    --description-color: var(--webc-third-color);
+    --footer-align: flex-end;
+    --footer-border: 1px solid #EFEFEF;
+    --footer-button-radius: var(--radius, 3px);
+    --cancel-button-color: var(--webc-third-color);
+    --cancel-button-background: var(--webc-third-background);
+    --confirm-button-color: var(--webc-secondary-color);
+    --confirm-button-background: var(--webc-secondary-background)
+}
+
+[data-theme="dark"] webc-modal {
+    --header-border: 1px solid rgba(255, 255, 255, 0.2);
+    --footer-border: 1px solid rgba(255, 255, 255, 0.15);
+    --confirm-button-color: var(--webc-third-color);
+    --confirm-button-background: var(--webc-third-background)
+}
+
+body {
+    font-family: var(--webc-font-family);
+    line-height: var(--webc-line-height, 1.3)
+}

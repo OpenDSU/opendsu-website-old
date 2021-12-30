@@ -1,0 +1,1 @@
+import{r as t,h as s,g as r}from"./p-425ef2b7.js";const e=class{constructor(s){t(this,s)}render(){return this.htmlElement.isConnected?s("psk-chapter",{title:this.title},s("div",{class:"sub-card"},s("slot",null))):null}get htmlElement(){return r(this)}};export{e as psk_chapter_wrapper}

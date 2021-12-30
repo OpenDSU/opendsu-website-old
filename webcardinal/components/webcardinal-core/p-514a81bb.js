@@ -1,0 +1,1 @@
+import{s as o}from"./p-d4191909.js";const s=()=>o((o=>o.mode||o.getAttribute("mode")||"default"));export{s as a}

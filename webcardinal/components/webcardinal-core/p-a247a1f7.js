@@ -1,0 +1,1 @@
+import{A as o}from"./p-ad52b503.js";function i(i){o.injectProps(i,["history","location"])}export{i}
