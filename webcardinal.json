@@ -224,7 +224,7 @@
         {
           "name": "Smoke Tests Results",
           "loader": "iframe",
-          "src": "https://cdn.jsdelivr.net/gh/PrivateSky/privatesky@test_reports/tests/psk-smoke-testing/testReport.html"
+          "src": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html"
         }
       ]
     },
