@@ -16,7 +16,7 @@
       "pageSrc": "index.html"
     },
     {
-      "name": "OpenDSU",
+      "name": "Concepts",
       "path": "/openDSU",
       "children": [
         {
@@ -84,25 +84,6 @@
           "name": "SSApp Architecture",
           "path": "rfc028.html",
           "pageSrc": "/openDSU/rfc028.html"
-        },
-        {
-          "name": "Papers",
-          "path": "/papers",
-          "icon": "fa-cog",
-          "children": [
-            {
-              "name": "Bluepaper",
-              "tags": "bluepaper",
-              "path": "bluepaper.html",
-              "pageSrc": "/papers/bluepaper.html"
-            },
-            {
-              "name": "Whitepaper",
-              "tags": "Whitepaper",
-              "path": "whitepaper.html",
-              "pageSrc": "/papers/whitepaper.html"
-            }
-          ]
         }
       ]
     },
@@ -232,7 +213,7 @@
       ]
     },
     {
-      "name": "Contribute to the documentation",
+      "name": "Community",
       "path": "/contribution",
       "class": "important",
       "children": [
@@ -242,14 +223,9 @@
           "pageSrc": "/contribution/rfchowto.html"
         },
         {
-          "name": "Give Feedbacks",
+          "name": "All RFCs",
           "path": "rfcstatus.html",
           "pageSrc": "/contribution/rfcstatus.html"
-        },
-        {
-          "name": "Changes Tracking",
-          "path": "changestracking.html",
-          "pageSrc": "/contribution/changestracking.html"
         }
       ]
     },
