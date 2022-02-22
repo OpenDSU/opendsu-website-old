@@ -80,25 +80,6 @@
           "name": "SSApp Architecture",
           "path": "/openDSU/rfc028",
           "src": "/openDSU/rfc028.html"
-        },
-        {
-          "name": "Papers",
-          "path": "/papers",
-          "icon": "fa-cog",
-          "children": [
-            {
-              "name": "Bluepaper",
-              "tags": "bluepaper",
-              "path": "/papers/bluepaper",
-              "src": "/papers/bluepaper.html"
-            },
-            {
-              "name": "Whitepaper",
-              "tags": "Whitepaper",
-              "path": "/papers/whitepaper",
-              "src": "/papers/whitepaper.html"
-            }
-          ]
         }
       ]
     },
@@ -242,11 +223,6 @@
           "name": "Give Feedbacks",
           "path": "/contribution/rfcstatus",
           "src": "/contribution/rfcstatus.html"
-        },
-        {
-          "name": "Changes Tracking",
-          "path": "/contribution/changestracking",
-          "src": "/contribution/changestracking.html"
         }
       ]
     },
