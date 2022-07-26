@@ -1,0 +1,1 @@
+function n(n,t,o=null){const c=document.createElement("style");o&&(c.id=o),c.innerHTML=t,n.shadowRoot.appendChild(c)}function t(n,t){const o=n.shadowRoot.querySelector("#"+t);o&&o.remove()}export{n as a,t as d}

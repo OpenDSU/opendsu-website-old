@@ -19,14 +19,28 @@
             <p>The element is accessible from <code class="accent">window.WebCardinal.loader</code>.</p>
         </psk-description>
     </webc-docs>
-    <psk-chapter title="Example">
-        <psk-example class="app-example">
-            <webc-container controller="webcardinal/examples/WebcSpinnerController">
-                <psk-button data-tag="button">
-                    <span>{{ @text }}</span>
-                    <span>{{ @seconds }}</span>
-                </psk-button>
-            </webc-container>
-        </psk-example>
+    <psk-chapter title="Example"> 
+        <psk-chapter title="Markup"> 
+            <psk-example>
+                <psk-code>
+                    <webc-container controller="webcardinal/examples/WebcSpinnerController">
+                        <psk-button data-tag="button">
+                            <span>{{ @text }}</span>
+                            <span>{{ @seconds }}</span>
+                        </psk-button>
+                    </webc-container>
+                </psk-code>
+            </psk-example>
+        </psk-chapter>
+        <psk-code title="Controller" language="JavaScript" class="small-size"  file="/scripts/controllers/webcardinal/examples/WebcSpinnerController.js"></psk-code>
     </psk-chapter>
+    <psk-example class="app-example">
+        <webc-container controller="webcardinal/examples/WebcSpinnerController">
+            <psk-button data-tag="button">
+                <span>{{ @text }}</span>
+                <span>{{ @seconds }}</span>
+            </psk-button>
+        </webc-container>
+    </psk-example>
+    
 </psk-page>
