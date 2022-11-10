@@ -205,7 +205,7 @@
         {
           "name": "Smoke Tests Results",
           "loader": "iframe",
-          "src": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html"
+          "src": "https://raw.githubusercontent.com/opendsu/opendsu-sdk/test_reports/testReport.html"
         }
       ]
     },
