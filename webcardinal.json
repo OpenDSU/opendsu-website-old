@@ -80,6 +80,27 @@
           "name": "SSApp Architecture",
           "path": "/openDSU/rfc028",
           "src": "/openDSU/rfc028.html"
+        },
+        {
+          "name": "Auth",
+          "path": "/openDSU/rfc040",
+          "src": "/openDSU/rfc040.html"
+        },
+        {
+          "name": "APIHub",
+          "path": "/apihub",
+          "children": [
+            {
+              "name": "APIHub Configuration",
+              "path": "/apihub/rfc0100",
+              "src": "/openDSU/apihub/rfc0100.html"
+            },
+            {
+              "name": "APIHub SSO Implementation",
+              "path": "/apihub/rfc0101",
+              "src": "/openDSU/apihub/rfc0101.html"
+            }
+          ]
         }
       ]
     },
