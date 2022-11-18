@@ -212,7 +212,7 @@
           "path": "/sdk-objects",
           "children": [
             {
-              "name": "Db objects",
+              "name": "DB objects",
               "path": "/sdk-objects/rfc062",
               "src": "/dev-doc/rfc062.html"
             },
