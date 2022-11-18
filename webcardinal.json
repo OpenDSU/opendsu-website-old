@@ -12,7 +12,7 @@
       "src": "index.html"
     },
     {
-      "name": "OpenDSU",
+      "name": "OpenDSU Concepts",
       "path": "/openDSU",
       "children": [
         {
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "name": "Dev documentation (SDK)",
+      "name": "OpenDSU Core Developers",
       "path": "/dev-doc",
       "src": "./dev-doc/index.html",
       "icon": "fa-cog",
@@ -231,7 +231,34 @@
       ]
     },
     {
-      "name": "Contribute to the documentation",
+      "name": "OpenDSU Advanced",
+      "path": "/openDSU",
+      "children": [
+        {
+          "name": "DSU (Data Sharing Units) Introduction",
+          "path": "/openDSU/rfc001",
+          "src": "/openDSU/rfc001.html"
+        },
+        {
+          "name": "APIHub",
+          "path": "/opendsu",
+          "children": [
+            {
+              "name": "APIHub Configuration",
+              "path": "/opendsu/rfc0100",
+              "src": "/openDSU/rfc0100.html"
+            },
+            {
+              "name": "APIHub SSO Implementation",
+              "path": "/opendsu/rfc0101",
+              "src": "/openDSU/rfc0101.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Community",
       "path": "/contribution",
       "class": "important",
       "children": [
@@ -248,7 +275,7 @@
       ]
     },
     {
-      "name": "Wallets (apps)",
+      "name": "OpenDSU Wallets Developers",
       "path": "/wallets",
       "src": "./",
       "children": [
