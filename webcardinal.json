@@ -231,50 +231,6 @@
       ]
     },
     {
-      "name": "OpenDSU Advanced",
-      "path": "/openDSU",
-      "children": [
-        {
-          "name": "DSU (Data Sharing Units) Introduction",
-          "path": "/openDSU/rfc001",
-          "src": "/openDSU/rfc001.html"
-        },
-        {
-          "name": "APIHub",
-          "path": "/opendsu",
-          "children": [
-            {
-              "name": "APIHub Configuration",
-              "path": "/opendsu/rfc0100",
-              "src": "/openDSU/rfc0100.html"
-            },
-            {
-              "name": "APIHub SSO Implementation",
-              "path": "/opendsu/rfc0101",
-              "src": "/openDSU/rfc0101.html"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Community",
-      "path": "/contribution",
-      "class": "important",
-      "children": [
-        {
-          "name": "RFC proposal guidelines",
-          "path": "/contribution/rfchowto",
-          "src": "/contribution/rfchowto.html"
-        },
-        {
-          "name": "Give Feedbacks",
-          "path": "/contribution/rfcstatus",
-          "src": "/contribution/rfcstatus.html"
-        }
-      ]
-    },
-    {
       "name": "OpenDSU Wallets Developers",
       "path": "/wallets",
       "src": "./",
@@ -454,6 +410,50 @@
               "indexed": false
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "OpenDSU Advanced",
+      "path": "/openDSU",
+      "children": [
+        {
+          "name": "DSU (Data Sharing Units) Introduction",
+          "path": "/openDSU/rfc001",
+          "src": "/openDSU/rfc001.html"
+        },
+        {
+          "name": "APIHub",
+          "path": "/opendsu",
+          "children": [
+            {
+              "name": "APIHub Configuration",
+              "path": "/opendsu/rfc0100",
+              "src": "/openDSU/rfc0100.html"
+            },
+            {
+              "name": "APIHub SSO Implementation",
+              "path": "/opendsu/rfc0101",
+              "src": "/openDSU/rfc0101.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Community",
+      "path": "/contribution",
+      "class": "important",
+      "children": [
+        {
+          "name": "RFC proposal guidelines",
+          "path": "/contribution/rfchowto",
+          "src": "/contribution/rfchowto.html"
+        },
+        {
+          "name": "Give Feedbacks",
+          "path": "/contribution/rfcstatus",
+          "src": "/contribution/rfcstatus.html"
         }
       ]
     },
