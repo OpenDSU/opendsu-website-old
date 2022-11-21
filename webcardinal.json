@@ -16,141 +16,69 @@
       "path": "/Concepts",
       "children": [
         {
-          "name": "DSU Introduction (RFC001)",
+          "name": "DSU Introduction (RFC-001)",
           "path": "/rfc001",
           "src": "/Concepts/rfc001.html"
         },
         {
-          "name": "OpenDSU Introduction: KeySSI (RFC002)",
-          "path": "/Concepts/rfc001",
-          "src": "/Concepts/rfc001.html"
+          "name": "OpenDSU Introduction: KeySSI (RFC-002)",
+          "path": "/rfc002",
+          "src": "/Concepts/rfc002.html"
         },
         {
-          "name": "Bricks Storages RFC003",
-          "path": "/openDSU/rfc003",
-          "src": "/openDSU/rfc003.html"
+          "name": "Bricks Storages (RFC-003)",
+          "path": "/rfc003",
+          "src": "/Concepts/rfc003.html"
         },
         {
-          "name": "Brick Map Data Structures RFC004",
-          "path": "/openDSU/rfc004",
-          "src": "/openDSU/rfc004.html"
+          "name": "Brick Map Data Structures (RFC-004)",
+          "path": "/rfc004",
+          "src": "/Concepts/rfc004.html"
         },
         {
-          "name": "Anchoring RFC005",
-          "path": "/openDSU/rfc005",
-          "src": "/openDSU/rfc005.html"
+          "name": "Anchoring (RFC-005)",
+          "path": "/rfc005",
+          "src": "/Concepts/rfc005.html"
         },
         {
-          "name": "DSU Mounting RFC006",
-          "path": "/openDSU/rfc006",
-          "src": "/openDSU/rfc006.html"
+          "name": "DSU Mounting (RFC-006)",
+          "path": "/rfc006",
+          "src": "/Concepts/rfc006.html"
         },
         {
-          "name": "DSU Types RFC007",
-          "path": "/openDSU/rfc007",
-          "src": "/openDSU/rfc007.html"
+          "name": "DSU Types (RFC-007)",
+          "path": "/rfc007",
+          "src": "/Concepts/rfc007.html"
         },
         {
-          "name": "DSU Reconstruction RFC008",
-          "path": "/openDSU/rfc008",
-          "src": "/openDSU/rfc008.html"
+          "name": "DSU Reconstruction (RFC-008)",
+          "path": "/rfc008",
+          "src": "/Concepts/rfc008.html"
         },
         {
-          "name": "Cryptography Overview RFC017",
-          "path": "/openDSU/rfc017",
-          "src": "/openDSU/rfc017.html"
+          "name": "Cryptography (RFC-017)",
+          "path": "/rfc017",
+          "src": "/Concepts/rfc017.html"
         },
         {
-          "name": "BDNS RFC022",
-          "path": "/openDSU/rfc022",
-          "src": "/openDSU/rfc022.html"
+          "name": "BDNS (RFC-022)",
+          "path": "/rfc022",
+          "src": "/Concepts/rfc022.html"
         },
         {
-          "name": "SSApp architechture RFC028",
-          "path": "/openDSU/rfc028",
-          "src": "/openDSU/rfc028.html"
+          "name": "SSApp architechture (RFC-028)",
+          "path": "/rfc028",
+          "src": "/Concepts/rfc028.html"
         },
         {
-          "name": "Clouds and Edge Wallets RFC032",
-          "path": "/openDSU/rfc032",
-          "src": "/openDSU/rfc032.html"
+          "name": "Clouds and Edge Wallets (RFC-032)",
+          "path": "/rfc032",
+          "src": "/Concepts/rfc032.html"
         },
         {
-          "name": "Clouds Wallets and KMSes RFC033",
-          "path": "/openDSU/rfc033",
-          "src": "/openDSU/rfc033.html"
-        },
-        {
-          "name": "KeySSIs specifications",
-          "path": "/keyssi",
-          "children": [
-            {
-              "name": "KeySSI Introduction",
-              "path": "/keyssi/rfc002",
-              "src": "/openDSU/keyssi/rfc002.html"
-            },
-            {
-              "name": "SeedSSIs",
-              "path": "/keyssi/rfc010",
-              "src": "/openDSU/keyssi/rfc010.html"
-            },
-            {
-              "name": "ConstSSIs",
-              "path": "/keyssi/rfc011",
-              "src": "/openDSU/keyssi/rfc011.html"
-            },
-            {
-              "name": "ArraySSIs",
-              "path": "/keyssi/rfc012",
-              "src": "/openDSU/keyssi/rfc012.html"
-            },
-            {
-              "name": "PasswordSSIs",
-              "path": "/keyssi/rfc013",
-              "src": "/openDSU/keyssi/rfc013.html"
-            },
-            {
-              "name": "WalletSSIs",
-              "path": "/keyssi/rfc014",
-              "src": "/openDSU/keyssi/rfc014.html"
-            },
-            {
-              "name": "HashLinkSSIs",
-              "path": "/keyssi/rfc015",
-              "src": "/openDSU/keyssi/rfc015.html"
-            },
-            {
-              "name": "SymetricalEncyptionSSIs",
-              "path": "/keyssi/rfc016",
-              "src": "/openDSU/keyssi/rfc016.html"
-            }
-          ]
-        },
-        {
-          "name": "SSApp Architecture",
-          "path": "/openDSU/rfc028",
-          "src": "/openDSU/rfc028.html"
-        },
-        {
-          "name": "Auth",
-          "path": "/openDSU/rfc040",
-          "src": "/openDSU/rfc040.html"
-        },
-        {
-          "name": "APIHub",
-          "path": "/opendsu",
-          "children": [
-            {
-              "name": "APIHub Configuration",
-              "path": "/opendsu/rfc0100",
-              "src": "/openDSU/rfc0100.html"
-            },
-            {
-              "name": "APIHub SSO Implementation",
-              "path": "/opendsu/rfc0101",
-              "src": "/openDSU/rfc0101.html"
-            }
-          ]
+          "name": "Clouds Wallets and KMSes (RFC-033)",
+          "path": "/rfc033",
+          "src": "/Concepts/rfc033.html"
         }
       ]
     },
