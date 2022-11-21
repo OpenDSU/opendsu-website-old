@@ -84,127 +84,102 @@
     },
     {
       "name": "OpenDSU Core Developers",
-      "path": "/dev-doc",
-      "src": "./dev-doc/index.html",
-      "icon": "fa-cog",
+      "path": "/Core-Developers",
       "children": [
         {
-          "name": "JavaScript client-side standard APIs summary",
-          "path": "/dev-doc/rfc060",
-          "src": "/dev-doc/rfc060.html"
+          "name": "APIs Overview (RFC-060)",
+          "path": "/rfc060",
+          "src": "/Core-Developers/rfc060.html"
         },
         {
-          "name": "Basic APIs",
-          "path": "/sdk-basics",
-          "children": [
-            {
-              "name": "Crypto",
-              "path": "/sdk-basics/rfc066",
-              "src": "/dev-doc/rfc066.html"
-            },
-            {
-              "name": "Database (db)",
-              "path": "/sdk-basics/rfc061",
-              "src": "/dev-doc/rfc061.html"
-            },
-            {
-              "name": "DSU Object",
-              "path": "/sdk-basics/rfc063",
-              "src": "/dev-doc/rfc063.html"
-            },
-            {
-              "name": "Error",
-              "path": "/sdk-basics/rfc064",
-              "src": "/dev-doc/rfc064.html"
-            },
-            {
-              "name": "Http",
-              "path": "/sdk-basics/rfc071",
-              "src": "/dev-doc/rfc071.html"
-            },
-            {
-              "name": "Keyssi",
-              "path": "/sdk-basics/rfc068",
-              "src": "/dev-doc/rfc068.html"
-            },
-            {
-              "name": "Resolver",
-              "path": "/sdk-basics/rfc065",
-              "src": "/dev-doc/rfc065.html"
-            }
-          ]
+          "name": "SeedSSIs (RFC-010)",
+          "path": "/rfc010",
+          "src": "/Core-Developers/rfc010.html"
         },
         {
-          "name": "Advanced APIs",
-          "path": "/sdk-advanced",
-          "children": [
-            {
-              "name": "Anchoring",
-              "path": "/sdk-advanced/rfc069",
-              "src": "/dev-doc/rfc069.html"
-            },
-            {
-              "name": "BDNS",
-              "path": "/sdk-advanced/rfc067",
-              "src": "/dev-doc/rfc067.html"
-            },
-            {
-              "name": "Bricking",
-              "path": "/sdk-advanced/rfc070",
-              "src": "/dev-doc/rfc070.html"
-            },
-            {
-              "name": "Cache",
-              "path": "/sdk-advanced/rfc077",
-              "src": "/dev-doc/rfc077.html"
-            },
-            {
-              "name": "Config",
-              "path": "/sdk-advanced/rfc078",
-              "src": "/dev-doc/rfc078.html"
-            },
-            {
-              "name": "Message queues (mq)",
-              "path": "/sdk-advanced/rfc073",
-              "src": "/dev-doc/rfc073.html"
-            },
-            {
-              "name": "Notifications",
-              "path": "/sdk-advanced/rfc072",
-              "src": "/dev-doc/rfc072.html"
-            },
-            {
-              "name": "Security context (sc)",
-              "path": "/sdk-advanced/rfc075",
-              "src": "/dev-doc/rfc075.html"
-            },
-            {
-              "name": "System",
-              "path": "/sdk-advanced/rfc079",
-              "src": "/dev-doc/rfc079.html"
-            }
-          ]
+          "name": "ConstSSIs (RFC-011)",
+          "path": "/rfc011",
+          "src": "/Core-Developers/rfc011.html"
         },
         {
-          "name": "OpenDSU Objects",
-          "path": "/sdk-objects",
-          "children": [
-            {
-              "name": "DB objects",
-              "path": "/sdk-objects/rfc062",
-              "src": "/dev-doc/rfc062.html"
-            },
-            {
-              "name": "DSU Object",
-              "path": "/sdk-objects/rfc063",
-              "src": "/dev-doc/rfc063.html"
-            }
-          ]
+          "name": "ArraySSIS (RFC-012)",
+          "path": "/rfc012",
+          "src": "/Core-Developers/rfc012.html"
         },
         {
-          "name": "Smoke Tests Results",
-          "loader": "iframe",
-          "src": "https://raw.githubusercontent.com/opendsu/opendsu-sdk/test_reports/testReport.html"
+          "name": "PasswordSSIs (RFC-013)",
+          "path": "/rfc013",
+          "src": "/Core-Developers/rfc013.html"
+        },
+        {
+          "name": "WalletSSIs (RFC-014)",
+          "path": "/rfc014",
+          "src": "/Core-Developers/rfc014.html"
+        },
+        {
+          "name": "HashLinkSSIs (RFC-015)",
+          "path": "/rfc015",
+          "src": "/Core-Developers/rfc015.html"
+        },
+        {
+          "name": "SymetricalEncyptionSSIs (RFC-016)",
+          "path": "/rfc016",
+          "src": "/Core-Developers/rfc016.html"
+        },
+        {
+          "name": "SSapp implementation (RFC-034)",
+          "path": "/rfc034",
+          "src": "/Core-Developers/rfc034.html"
+        },
+        {
+          "name": "Auth (RFC-040)",
+          "path": "/rfc040",
+          "src": "/Core-Developers/rfc040.html"
+        },
+        {
+          "name": "Crypto (RFC-066)",
+          "path": "/rfc066",
+          "src": "/Core-Developers/rfc066.html"
+        },
+        {
+          "name": "Database (DB) (RFC-061)",
+          "path": "/rfc061",
+          "src": "/Core-Developers/rfc061.html"
+        },
+        {
+          "name": "DSU Object (RFC-063)",
+          "path": "/rfc063",
+          "src": "/Core-Developers/rfc063.html"
+        },
+        {
+          "name": "Error (RFC-064)",
+          "path": "/rfc064",
+          "src": "/Core-Developers/rfc064.html"
+        },
+        {
+          "name": "HTTP (RFC-071)",
+          "path": "/rfc071",
+          "src": "/Core-Developers/rfc071.html"
+        },
+        {
+          "name": "KeySSI (RFC-068)",
+          "path": "/rfc068",
+          "src": "/Core-Developers/rfc068.html"
+        },
+        {
+          "name": "Resolver (RFC-065)",
+          "path": "/rfc065",
+          "src": "/Core-Developers/rfc065.html"
+        },
+        {
+          "name": "APIHub Configuration (RFC-0100)",
+          "path": "/rfc0100",
+          "src": "/Core-Developers/rfc0100.html"
+        },
+        {
+          "name": "APIHub SSO Implementaton (RFC-0101)",
+          "path": "/rfc0101",
+          "src": "/Core-Developers/rfc0101.html"
         }
       ]
     },
