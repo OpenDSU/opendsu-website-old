@@ -180,6 +180,11 @@
           "name": "APIHub SSO Implementaton (RFC-0101)",
           "path": "/rfc0101",
           "src": "/Core-Developers/rfc0101.html"
+        },
+        {
+          "name": "Smoke Tests Results",
+          "loader": "iframe",
+          "src": "https://raw.githubusercontent.com/opendsu/opendsu-sdk/test_reports/testReport.html"
         }
       ]
     },
