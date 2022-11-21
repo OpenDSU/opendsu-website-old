@@ -506,12 +506,12 @@
       "children": [
         {
           "name": "RFC proposal guidelines",
-          "path": "/contribution/rfchowto",
+          "path": "/rfchowto",
           "src": "/contribution/rfchowto.html"
         },
         {
           "name": "Give Feedbacks",
-          "path": "/contribution/rfcstatus",
+          "path": "/rfcstatus",
           "src": "/contribution/rfcstatus.html"
         }
       ]
