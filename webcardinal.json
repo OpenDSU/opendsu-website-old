@@ -341,8 +341,9 @@
           "name": "Tools",
           "children": [
             {
-              "name": "Octopus",
-              "tag": "octopus"
+              "name": "Octopus (RFC-095)",
+              "path": "/rfc095",
+              "src": "/Concepts/rfc095.html"
             },
             {
               "name": "bar"
@@ -373,27 +374,127 @@
     },
     {
       "name": "OpenDSU Advanced",
-      "path": "/openDSU",
+      "path": "/Advanced",
       "children": [
         {
-          "name": "DSU (Data Sharing Units) Introduction",
-          "path": "/openDSU/rfc001",
-          "src": "/openDSU/rfc001.html"
+          "name": "Anchoring (RFC-069)",
+          "path": "/rfc069",
+          "src": "/Advanced/rfc069.html"
         },
         {
-          "name": "APIHub",
-          "path": "/opendsu",
+          "name": "BDNS (RFC-067)",
+          "path": "/rfc067",
+          "src": "/Advanced/rfc067.html"
+        },
+        {
+          "name": "Bricking (RFC-070)",
+          "path": "/rfc070",
+          "src": "/Advanced/rfc070.html"
+        },
+        {
+          "name": "Cache (RFC-077)",
+          "path": "/rfc077",
+          "src": "/Advanced/rfc077.html"
+        },
+        {
+          "name": "Config (RFC-078)",
+          "path": "/rfc078",
+          "src": "/Advanced/rfc078.html"
+        },
+        {
+          "name": "Message Queue (RFC-073)",
+          "path": "/rfc073",
+          "src": "/Advanced/rfc073.html"
+        },
+        {
+          "name": "Notifications (RFC-072)",
+          "path": "/rfc072",
+          "src": "/Advanced/rfc072.html"
+        },
+        {
+          "name": "Security Context (RFC-075)",
+          "path": "/rfc075",
+          "src": "/Advanced/rfc075.html"
+        },
+        {
+          "name": "Enclaves (RFC-097)",
+          "path": "/rfc097",
+          "src": "/Advanced/rfc097.html"
+        },
+        {
+          "name": "Mapping Engine (RFC-076)",
+          "path": "/rfc076",
+          "src": "/Advanced/rfc076.html"
+        },
+        {
+          "name": "Ledger (RFC-080)",
+          "path": "/rfc080",
+          "src": "/Advanced/rfc080.html"
+        },
+        {
+          "name": "Verifiable Credentials (RFC-057)",
+          "path": "/rfc057",
+          "src": "/Advanced/rfc057.html"
+        },
+        {
+          "name": "Verifiable Credentials - W3C (RFC-080)",
+          "path": "/rfc080",
+          "src": "/Advanced/rfc080.html"
+        },
+        {
+          "name": "W3C DIDs (RFC-082)",
+          "path": "/rfc082",
+          "src": "/Advanced/rfc082.html"
+        },
+        {
+          "name": "Self Validating Data (RFC-036)",
+          "path": "/rfc036",
+          "src": "/Advanced/rfc036.html"
+        },
+        {
+          "name": "Optimisation microledgers (RFC-037)",
+          "path": "/rfc037",
+          "src": "/Advanced/rfc037.html"
+        },
+        {
+          "name": "DB Object (RFC-062)",
+          "path": "/rfc062",
+          "src": "/Advanced/rfc062.html"
+        },
+        {
+          "name": "DSU Object(RFC-063)",
+          "path": "/rfc063",
+          "src": "/Advanced/rfc063.html"
+        },
+        {
+          "name": "Tutorials",
+          "path": "/Advanced",
           "children": [
             {
-              "name": "APIHub Configuration",
-              "path": "/opendsu/rfc0100",
-              "src": "/openDSU/rfc0100.html"
+              "name": "IT Managers and Solution Architects (RFC-0111)",
+              "path": "/rfc0111",
+              "src": "/Advanced/rfc0111.html"
             },
             {
-              "name": "APIHub SSO Implementation",
-              "path": "/opendsu/rfc0101",
-              "src": "/openDSU/rfc0101.html"
-            }
+              "name": "WebCardinal Begginers Tutorial (RFC-0113)",
+              "path": "/rfc0113",
+              "src": "/Advanced/rfc0113.html"
+            },
+            {
+              "name": "Developers Tutorial (RFC-0114)",
+              "path": "/rfc0114",
+              "src": "/Advanced/rfc0114.html"
+            },
+            {
+              "name": "Advanced Tutorial (RFC-0115)",
+              "path": "/rfc0115",
+              "src": "/Advanced/rfc0115.html"
+            },
+            {
+              "name": "DevOPS Tutorial (RFC-0116)",
+              "path": "/rfc0116",
+              "src": "/Advanced/rfc0116.html"
+            } 
           ]
         }
       ]
