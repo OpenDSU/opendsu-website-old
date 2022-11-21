@@ -16,19 +16,69 @@
       "path": "/openDSU",
       "children": [
         {
-          "name": "DSU (Data Sharing Units) Introduction",
-          "path": "/openDSU/rfc001",
-          "src": "/openDSU/rfc001.html"
+          "name": "OpenDSU Introduction: DSU (RFC001)",
+          "path": "rfc001",
+          "src": "rfc001.html"
         },
         {
-          "name": "Bricks Storages",
+          "name": "OpenDSU Introduction: KeySSI (RFC002)",
+          "path": "/rfc002",
+          "src": "/rfc002.html"
+        },
+        {
+          "name": "Bricks Storages RFC003",
           "path": "/openDSU/rfc003",
           "src": "/openDSU/rfc003.html"
         },
         {
-          "name": "Anchoring",
+          "name": "Brick Map Data Structures RFC004",
+          "path": "/openDSU/rfc004",
+          "src": "/openDSU/rfc004.html"
+        },
+        {
+          "name": "Anchoring RFC005",
           "path": "/openDSU/rfc005",
           "src": "/openDSU/rfc005.html"
+        },
+        {
+          "name": "DSU Mounting RFC006",
+          "path": "/openDSU/rfc006",
+          "src": "/openDSU/rfc006.html"
+        },
+        {
+          "name": "DSU Types RFC007",
+          "path": "/openDSU/rfc007",
+          "src": "/openDSU/rfc007.html"
+        },
+        {
+          "name": "DSU Reconstruction RFC008",
+          "path": "/openDSU/rfc008",
+          "src": "/openDSU/rfc008.html"
+        },
+        {
+          "name": "Cryptography Overview RFC017",
+          "path": "/openDSU/rfc017",
+          "src": "/openDSU/rfc017.html"
+        },
+        {
+          "name": "BDNS RFC022",
+          "path": "/openDSU/rfc022",
+          "src": "/openDSU/rfc022.html"
+        },
+        {
+          "name": "SSApp architechture RFC028",
+          "path": "/openDSU/rfc028",
+          "src": "/openDSU/rfc028.html"
+        },
+        {
+          "name": "Clouds and Edge Wallets RFC032",
+          "path": "/openDSU/rfc032",
+          "src": "/openDSU/rfc032.html"
+        },
+        {
+          "name": "Clouds Wallets and KMSes RFC033",
+          "path": "/openDSU/rfc033",
+          "src": "/openDSU/rfc033.html"
         },
         {
           "name": "KeySSIs specifications",
