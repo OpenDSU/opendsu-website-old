@@ -13,7 +13,7 @@
     },
     {
       "name": "OpenDSU Concepts",
-      "path": "/openDSU",
+      "path": "/",
       "children": [
         {
           "name": "OpenDSU Introduction: DSU (RFC001)",
