@@ -13,17 +13,17 @@
     },
     {
       "name": "OpenDSU Concepts",
-      "path": "/OpenDSU",
+      "path": "/Concepts",
       "children": [
         {
-          "name": "OpenDSU Introduction: DSU (RFC001)",
+          "name": "DSU Introduction (RFC001)",
           "path": "/rfc001",
-          "src": "/concepts/rfc001.html"
+          "src": "/Concepts/rfc001.html"
         },
         {
           "name": "OpenDSU Introduction: KeySSI (RFC002)",
-          "path": "/concepts/rfc001",
-          "src": "/concepts/rfc001.html"
+          "path": "/Concepts/rfc001",
+          "src": "/Concepts/rfc001.html"
         },
         {
           "name": "Bricks Storages RFC003",
