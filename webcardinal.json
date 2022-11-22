@@ -83,103 +83,103 @@
       ]
     },
     {
-      "name": "OpenDSU Core Developers",
-      "path": "/Core-Developers",
+      "name": "OpenDSU for Developers",
+      "path": "/For-Developers",
       "children": [
         {
           "name": "APIs Overview (RFC-060)",
           "path": "/rfc060",
-          "src": "/Core-Developers/rfc060.html"
+          "src": "/For-Developers/rfc060.html"
         },
         {
           "name": "SeedSSIs (RFC-010)",
           "path": "/rfc010",
-          "src": "/Core-Developers/rfc010.html"
+          "src": "/For-Developers/rfc010.html"
         },
         {
           "name": "ConstSSIs (RFC-011)",
           "path": "/rfc011",
-          "src": "/Core-Developers/rfc011.html"
+          "src": "/For-Developers/rfc011.html"
         },
         {
           "name": "ArraySSIS (RFC-012)",
           "path": "/rfc012",
-          "src": "/Core-Developers/rfc012.html"
+          "src": "/For-Developers/rfc012.html"
         },
         {
           "name": "PasswordSSIs (RFC-013)",
           "path": "/rfc013",
-          "src": "/Core-Developers/rfc013.html"
+          "src": "/For-Developers/rfc013.html"
         },
         {
           "name": "WalletSSIs (RFC-014)",
           "path": "/rfc014",
-          "src": "/Core-Developers/rfc014.html"
+          "src": "/For-Developers/rfc014.html"
         },
         {
           "name": "HashLinkSSIs (RFC-015)",
           "path": "/rfc015",
-          "src": "/Core-Developers/rfc015.html"
+          "src": "/For-Developers/rfc015.html"
         },
         {
           "name": "SymetricalEncyptionSSIs (RFC-016)",
           "path": "/rfc016",
-          "src": "/Core-Developers/rfc016.html"
+          "src": "/For-Developers/rfc016.html"
         },
         {
           "name": "SSapp implementation (RFC-034)",
           "path": "/rfc034",
-          "src": "/Core-Developers/rfc034.html"
+          "src": "/For-Developers/rfc034.html"
         },
         {
           "name": "Auth (RFC-040)",
           "path": "/rfc040",
-          "src": "/Core-Developers/rfc040.html"
+          "src": "/For-Developers/rfc040.html"
         },
         {
           "name": "Crypto (RFC-066)",
           "path": "/rfc066",
-          "src": "/Core-Developers/rfc066.html"
+          "src": "/For-Developers/rfc066.html"
         },
         {
           "name": "Database (DB) (RFC-061)",
           "path": "/rfc061",
-          "src": "/Core-Developers/rfc061.html"
+          "src": "/For-Developers/rfc061.html"
         },
         {
           "name": "DSU Object (RFC-063)",
           "path": "/rfc063",
-          "src": "/Core-Developers/rfc063.html"
+          "src": "/For-Developers/rfc063.html"
         },
         {
           "name": "Error (RFC-064)",
           "path": "/rfc064",
-          "src": "/Core-Developers/rfc064.html"
+          "src": "/For-Developers/rfc064.html"
         },
         {
           "name": "HTTP (RFC-071)",
           "path": "/rfc071",
-          "src": "/Core-Developers/rfc071.html"
+          "src": "/For-Developers/rfc071.html"
         },
         {
           "name": "KeySSI (RFC-068)",
           "path": "/rfc068",
-          "src": "/Core-Developers/rfc068.html"
+          "src": "/For-Developers/rfc068.html"
         },
         {
           "name": "Resolver (RFC-065)",
           "path": "/rfc065",
-          "src": "/Core-Developers/rfc065.html"
+          "src": "/For-Developers/rfc065.html"
         },
         {
           "name": "APIHub Configuration (RFC-0100)",
           "path": "/rfc0100",
-          "src": "/Core-Developers/rfc0100.html"
+          "src": "/For-Developers/rfc0100.html"
         },
         {
           "name": "APIHub SSO Implementaton (RFC-0101)",
           "path": "/rfc0101",
-          "src": "/Core-Developers/rfc0101.html"
+          "src": "/For-Developers/rfc0101.html"
         },
         {
           "name": "Smoke Tests Results",
@@ -437,9 +437,9 @@
           "src": "/Advanced/rfc057.html"
         },
         {
-          "name": "Verifiable Credentials - W3C (RFC-080)",
-          "path": "/rfc080",
-          "src": "/Advanced/rfc080.html"
+          "name": "Verifiable Credentials - W3C (RFC-081)",
+          "path": "/rfc081",
+          "src": "/Advanced/rfc081.html"
         },
         {
           "name": "W3C DIDs (RFC-082)",
@@ -460,11 +460,6 @@
           "name": "DB Object (RFC-062)",
           "path": "/rfc062",
           "src": "/Advanced/rfc062.html"
-        },
-        {
-          "name": "DSU Object(RFC-063)",
-          "path": "/rfc063",
-          "src": "/Advanced/rfc063.html"
         },
         {
           "name": "Tutorials",
