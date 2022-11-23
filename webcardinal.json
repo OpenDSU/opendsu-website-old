@@ -402,6 +402,11 @@
           "src": "/Advanced/rfc078.html"
         },
         {
+          "name": "System (RFC-079)",
+          "path": "/rfc079",
+          "src": "/Advanced/rfc079.html"
+        },
+        {
           "name": "Message Queue (RFC-073)",
           "path": "/rfc073",
           "src": "/Advanced/rfc073.html"
