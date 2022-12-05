@@ -515,7 +515,7 @@
         },
         {
           "name": "BDNS (RFC-122)",
-          "path": "/rfc003",
+          "path": "/rfc122",
           "src": "/APIHub-APIs/rfc122.html"
         },
         {
