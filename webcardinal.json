@@ -589,7 +589,7 @@
           "src": "/APIHub-APIs/rfc136.html"
         },
         {
-          "name": "APIhub Throttling and Readiness (RFC-137)",
+          "name": "Throttling and Readiness (RFC-137)",
           "path": "/rfc137",
           "src": "/APIHub-APIs/rfc137.html"
         }
