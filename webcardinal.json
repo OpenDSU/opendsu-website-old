@@ -500,6 +500,102 @@
       ]
     },
     {
+      "name": "OpenDSU APIHub APIs",
+      "path": "/APIHub-APIs",
+      "children": [
+        {
+          "name": "Installation Info (RFC-120)",
+          "path": "/rfc120",
+          "src": "/APIHub-APIs/rfc120.html"
+        },
+        {
+          "name": "Anchoring (RFC-121)",
+          "path": "/rfc121",
+          "src": "/APIHub-APIs/rfc121.html"
+        },
+        {
+          "name": "BDNS (RFC-122)",
+          "path": "/rfc003",
+          "src": "/APIHub-APIs/rfc122.html"
+        },
+        {
+          "name": "Bricking (RFC-123)",
+          "path": "/rfc123",
+          "src": "/APIHub-APIs/rfc123.html"
+        },
+        {
+          "name": "Cloud Wallet (RFC-124)",
+          "path": "/rfc124",
+          "src": "/APIHub-APIs/rfc124.html"
+        },
+        {
+          "name": "Stream Wallet (RFC-125)",
+          "path": "/rfc125",
+          "src": "/APIHub-APIs/rfc125.html"
+        },
+        {
+          "name": "DSU Wizard (RFC-126)",
+          "path": "/rfc126",
+          "src": "/APIHub-APIs/rfc126.html"
+        },
+        {
+          "name": "Static Server (RFC-127)",
+          "path": "/rfc127",
+          "src": "/APIHub-APIs/rfc127.html"
+        },
+        {
+          "name": " Logging (RFC-128)",
+          "path": "/rfc128",
+          "src": "/APIHub-APIs/rfc128.html"
+        },
+        {
+          "name": "Notifications (RFC-129)",
+          "path": "/rfc129",
+          "src": "/APIHub-APIs/rfc129.html"
+        },
+        {
+          "name": "MQ Hub (RFC-130)",
+          "path": "/rfc130",
+          "src": "/APIHub-APIs/rfc130.html"
+        },
+        {
+          "name": "Ethereum Adapter APIs (RFC-131)",
+          "path": "/rfc131",
+          "src": "/APIHub-APIs/rfc131.html"
+        },
+        {
+          "name": "Smart Contracts APIs (RFC-132)",
+          "path": "/rfc132",
+          "src": "/APIHub-APIs/rfc132.html"
+        },
+        {
+          "name": "SaaS Admin (RFC-133)",
+          "path": "/rfc133",
+          "src": "/APIHub-APIs/rfc133.html"
+        },
+        {
+          "name": "SSO Secrets (RFC-134)",
+          "path": "/rfc134",
+          "src": "/APIHub-APIs/rfc134.html"
+        },
+        {
+          "name": "Request Forwarder (RFC-135)",
+          "path": "/rfc135",
+          "src": "/APIHub-APIs/rfc135.html"
+        },
+        {
+          "name": "Main DSU APIs (RFC-136)",
+          "path": "/rfc136",
+          "src": "/APIHub-APIs/rfc136.html"
+        },
+        {
+          "name": "APIhub Throttling and Readiness (RFC-137)",
+          "path": "/rfc137",
+          "src": "/APIHub-APIs/rfc137.html"
+        }
+      ]
+    },
+    {
       "name": "Community",
       "path": "/contribution",
       "class": "important",
