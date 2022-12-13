@@ -92,37 +92,37 @@
           "src": "/For-Developers/rfc060.html"
         },
         {
-          "name": "SeedSSIs (RFC-010)",
+          "name": "SeedSSI (RFC-010)",
           "path": "/rfc010",
           "src": "/For-Developers/rfc010.html"
         },
         {
-          "name": "ConstSSIs (RFC-011)",
+          "name": "ConstSSI (RFC-011)",
           "path": "/rfc011",
           "src": "/For-Developers/rfc011.html"
         },
         {
-          "name": "ArraySSIS (RFC-012)",
+          "name": "ArraySSI (RFC-012)",
           "path": "/rfc012",
           "src": "/For-Developers/rfc012.html"
         },
         {
-          "name": "PasswordSSIs (RFC-013)",
+          "name": "PasswordSSI (RFC-013)",
           "path": "/rfc013",
           "src": "/For-Developers/rfc013.html"
         },
         {
-          "name": "WalletSSIs (RFC-014)",
+          "name": "WalletSSI (RFC-014)",
           "path": "/rfc014",
           "src": "/For-Developers/rfc014.html"
         },
         {
-          "name": "HashLinkSSIs (RFC-015)",
+          "name": "HashLinkSSI (RFC-015)",
           "path": "/rfc015",
           "src": "/For-Developers/rfc015.html"
         },
         {
-          "name": "SymetricalEncyptionSSIs (RFC-016)",
+          "name": "SymetricalEncyptionSSI (RFC-016)",
           "path": "/rfc016",
           "src": "/For-Developers/rfc016.html"
         },
@@ -132,7 +132,7 @@
           "src": "/For-Developers/rfc034.html"
         },
         {
-          "name": "Auth (RFC-040)",
+          "name": "OAuth (RFC-040)",
           "path": "/rfc040",
           "src": "/For-Developers/rfc040.html"
         },
@@ -152,7 +152,7 @@
           "src": "/For-Developers/rfc063.html"
         },
         {
-          "name": "Error (RFC-064)",
+          "name": "APIHub (RFC-064)",
           "path": "/rfc064",
           "src": "/For-Developers/rfc064.html"
         },
