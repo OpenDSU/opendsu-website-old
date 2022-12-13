@@ -596,6 +596,47 @@
       ]
     },
     {
+      "name": "OpenDSU Recommendation",
+      "path": "/Recommendation",
+      "children": [
+        {
+          "name": "Helm Charts and scripts (RFC-140)",
+          "path": "/rfc140",
+          "src": "/Recommendation/rfc140.html"
+        },
+        {
+          "name": "New network installation (RFC-141)",
+          "path": "/rfc141",
+          "src": "/Recommendation/rfc141.html"
+        },
+        {
+          "name": "Join network (RFC-142)",
+          "path": "/rfc142",
+          "src": "/Recommendation/rfc142.html"
+        },
+        {
+          "name": "Partners info management (RFC-143)",
+          "path": "/rfc143",
+          "src": "/Recommendation/rfc143.html"
+        },
+        {
+          "name": "Quorum Smart Contract deployment(RFC-144)",
+          "path": "/rfc144",
+          "src": "/Recommendation/rfc144.html"
+        },
+        {
+          "name": "Ethereum Adapter Installation (RFC-145)",
+          "path": "/rfc145",
+          "src": "/Recommendation/rfc145.html"
+        },
+        {
+          "name": "APIHub instalation (RFC-146)",
+          "path": "/rfc145",
+          "src": "/Recommendation/rfc145.html"
+        }
+      ]
+    },
+    {
       "name": "Community",
       "path": "/contribution",
       "class": "important",
