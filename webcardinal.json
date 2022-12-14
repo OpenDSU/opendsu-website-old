@@ -620,7 +620,7 @@
           "src": "/Recommendation/rfc143.html"
         },
         {
-          "name": "Quorum Smart Contract deployment(RFC-144)",
+          "name": "Quorum Smart Contract deployment (RFC-144)",
           "path": "/rfc144",
           "src": "/Recommendation/rfc144.html"
         },
@@ -631,8 +631,8 @@
         },
         {
           "name": "APIHub instalation (RFC-146)",
-          "path": "/rfc145",
-          "src": "/Recommendation/rfc145.html"
+          "path": "/rfc146",
+          "src": "/Recommendation/rfc146.html"
         }
       ]
     },
