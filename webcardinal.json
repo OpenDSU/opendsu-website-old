@@ -127,6 +127,16 @@
           "src": "/For-Developers/rfc016.html"
         },
         {
+          "name": "ConstValue (RFC-018)",
+          "path": "/rfc018",
+          "src": "/For-Developers/rfc018.html"
+        },
+        {
+          "name": "VersionLessDSUs (RFC-019)",
+          "path": "/rfc019",
+          "src": "/For-Developers/rfc019.html"
+        },
+        {
           "name": "SSapp implementation (RFC-034)",
           "path": "/rfc034",
           "src": "/For-Developers/rfc034.html"
