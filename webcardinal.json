@@ -209,7 +209,7 @@
           "src": "/Contributors/rfc014.html"
         },
         {
-          "name": "HashLinkSSI (RFC-015)",
+          "name": "HashLinkSSI, SignedHashLinkSSI (RFC-015)",
           "path": "/rfc015",
           "src": "/Contributors/rfc015.html"
         },
