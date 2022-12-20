@@ -626,7 +626,7 @@
       "path": "/QuickStart",
       "children": [
         {
-          "name": "IT Managers and Solution Architects (RFC-111)",
+          "name": "IT Managers/Solution Architects (RFC-111)",
           "path": "/rfc111",
           "src": "/QuickStart/rfc111.html"
         },
