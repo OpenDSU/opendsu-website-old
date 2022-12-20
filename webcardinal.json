@@ -26,7 +26,7 @@
           "src": "/Concepts/rfc002.html"
         },
         {
-          "name": "Bricks Storages (RFC-003)",
+          "name": "Brick Storages (RFC-003)",
           "path": "/rfc003",
           "src": "/Concepts/rfc003.html"
         },
@@ -83,118 +83,220 @@
       ]
     },
     {
-      "name": "OpenDSU for Developers",
-      "path": "/For-Developers",
+      "name": "OpenDSU for Beginners",
+      "path": "/For-Beginners",
       "children": [
         {
           "name": "APIs Overview (RFC-060)",
           "path": "/rfc060",
-          "src": "/For-Developers/rfc060.html"
-        },
-        {
-          "name": "SeedSSI (RFC-010)",
-          "path": "/rfc010",
-          "src": "/For-Developers/rfc010.html"
-        },
-        {
-          "name": "ConstSSI (RFC-011)",
-          "path": "/rfc011",
-          "src": "/For-Developers/rfc011.html"
-        },
-        {
-          "name": "ArraySSI (RFC-012)",
-          "path": "/rfc012",
-          "src": "/For-Developers/rfc012.html"
-        },
-        {
-          "name": "PasswordSSI (RFC-013)",
-          "path": "/rfc013",
-          "src": "/For-Developers/rfc013.html"
-        },
-        {
-          "name": "WalletSSI (RFC-014)",
-          "path": "/rfc014",
-          "src": "/For-Developers/rfc014.html"
-        },
-        {
-          "name": "HashLinkSSI (RFC-015)",
-          "path": "/rfc015",
-          "src": "/For-Developers/rfc015.html"
-        },
-        {
-          "name": "SymetricalEncyptionSSI (RFC-016)",
-          "path": "/rfc016",
-          "src": "/For-Developers/rfc016.html"
-        },
-        {
-          "name": "ConstValue (RFC-018)",
-          "path": "/rfc018",
-          "src": "/For-Developers/rfc018.html"
-        },
-        {
-          "name": "VersionLessDSUs (RFC-019)",
-          "path": "/rfc019",
-          "src": "/For-Developers/rfc019.html"
+          "src": "/For-Beginners/rfc060.html"
         },
         {
           "name": "SSapp implementation (RFC-034)",
           "path": "/rfc034",
-          "src": "/For-Developers/rfc034.html"
-        },
-        {
-          "name": "OAuth (RFC-040)",
-          "path": "/rfc040",
-          "src": "/For-Developers/rfc040.html"
-        },
-        {
-          "name": "Crypto (RFC-066)",
-          "path": "/rfc066",
-          "src": "/For-Developers/rfc066.html"
-        },
-        {
-          "name": "Database (DB) (RFC-061)",
-          "path": "/rfc061",
-          "src": "/For-Developers/rfc061.html"
+          "src": "/For-Beginners/rfc034.html"
         },
         {
           "name": "DSU Object (RFC-063)",
           "path": "/rfc063",
-          "src": "/For-Developers/rfc063.html"
+          "src": "/For-Beginners/rfc063.html"
         },
         {
           "name": "APIHub (RFC-064)",
           "path": "/rfc064",
-          "src": "/For-Developers/rfc064.html"
+          "src": "/For-Beginners/rfc064.html"
+        },
+        {
+          "name": "APIHub Configuration (RFC-100)",
+          "path": "/rfc100",
+          "src": "/For-Beginners/rfc100.html"
+        },
+        {
+          "name": "Security Context (RFC-075)",
+          "path": "/rfc075",
+          "src": "/For-Beginners/rfc075.html"
+        },
+        {
+          "name": "Enclaves (RFC-097)",
+          "path": "/rfc097",
+          "src": "/For-Beginners/rfc097.html"
+        }
+      ]
+    },
+    {
+      "name": "OpenDSU Advanced",
+      "path": "/Advanced",
+      "children": [
+        {
+          "name": "SeedSSI (RFC-010)",
+          "path": "/rfc010",
+          "src": "/Advanced/rfc010.html"
+        },
+        {
+          "name": "ConstSSI (RFC-011)",
+          "path": "/rfc011",
+          "src": "/Advanced/rfc011.html"
+        },
+        {
+          "name": "ArraySSI (RFC-012)",
+          "path": "/rfc012",
+          "src": "/Advanced/rfc012.html"
+        },
+        {
+          "name": "Crypto (RFC-066)",
+          "path": "/rfc066",
+          "src": "/Advanced/rfc066.html"
         },
         {
           "name": "HTTP (RFC-071)",
           "path": "/rfc071",
-          "src": "/For-Developers/rfc071.html"
+          "src": "/Advanced/rfc071.html"
         },
         {
           "name": "KeySSI (RFC-068)",
           "path": "/rfc068",
-          "src": "/For-Developers/rfc068.html"
+          "src": "/Advanced/rfc068.html"
         },
         {
           "name": "Resolver (RFC-065)",
           "path": "/rfc065",
-          "src": "/For-Developers/rfc065.html"
+          "src": "/Advanced/rfc065.html"
         },
         {
-          "name": "APIHub Configuration (RFC-0100)",
-          "path": "/rfc0100",
-          "src": "/For-Developers/rfc0100.html"
+          "name": "W3C DIDs (RFC-082)",
+          "path": "/rfc082",
+          "src": "/Advanced/rfc082.html"
         },
         {
-          "name": "APIHub SSO Implementaton (RFC-0101)",
-          "path": "/rfc0101",
-          "src": "/For-Developers/rfc0101.html"
+          "name": "Verifiable Credentials - W3C (RFC-081)",
+          "path": "/rfc081",
+          "src": "/Advanced/rfc081.html"
         },
+        {
+          "name": "VersionLessDSUs (RFC-019)",
+          "path": "/rfc019",
+          "src": "/Advanced/rfc019.html"
+        }
+      ]
+    },
+    {
+      "name": "OpenDSU Contributors",
+      "path": "/Contributors",
+      "children": [
         {
           "name": "Smoke Tests Results",
           "loader": "iframe",
           "src": "https://raw.githubusercontent.com/opendsu/opendsu-sdk/test_reports/testReport.html"
+        },
+        {
+          "name": "APIHub SSO Implementaton (RFC-101)",
+          "path": "/rfc101",
+          "src": "/Contributors/rfc101.html"
+        },
+        {
+          "name": "Database (DB) (RFC-061)",
+          "path": "/rfc061",
+          "src": "/Contributors/rfc061.html"
+        },
+        {
+          "name": "PasswordSSI (RFC-013)",
+          "path": "/rfc013",
+          "src": "/Contributors/rfc013.html"
+        },
+        {
+          "name": "WalletSSI (RFC-014)",
+          "path": "/rfc014",
+          "src": "/Contributors/rfc014.html"
+        },
+        {
+          "name": "HashLinkSSI (RFC-015)",
+          "path": "/rfc015",
+          "src": "/Contributors/rfc015.html"
+        },
+        {
+          "name": "SymetricalEncyptionSSI (RFC-016)",
+          "path": "/rfc016",
+          "src": "/Contributors/rfc016.html"
+        },
+        {
+          "name": "ConstValue (RFC-018)",
+          "path": "/rfc018",
+          "src": "/Contributors/rfc018.html"
+        },
+        {
+          "name": "OAuth (RFC-040)",
+          "path": "/rfc040",
+          "src": "/Contributors/rfc040.html"
+        },
+        {
+          "name": "Anchoring (RFC-069)",
+          "path": "/rfc069",
+          "src": "/Contributors/rfc069.html"
+        },
+        {
+          "name": "BDNS (RFC-067)",
+          "path": "/rfc067",
+          "src": "/Contributors/rfc067.html"
+        },
+        {
+          "name": "Bricking (RFC-070)",
+          "path": "/rfc070",
+          "src": "/Contributors/rfc070.html"
+        },
+        {
+          "name": "Cache (RFC-077)",
+          "path": "/rfc077",
+          "src": "/Contributors/rfc077.html"
+        },
+        {
+          "name": "Config (RFC-078)",
+          "path": "/rfc078",
+          "src": "/Contributors/rfc078.html"
+        },
+        {
+          "name": "System (RFC-079)",
+          "path": "/rfc079",
+          "src": "/Contributors/rfc079.html"
+        },
+        {
+          "name": "Message Queue (RFC-073)",
+          "path": "/rfc073",
+          "src": "/Contributors/rfc073.html"
+        },
+        {
+          "name": "Notifications (RFC-072)",
+          "path": "/rfc072",
+          "src": "/Contributors/rfc072.html"
+        },
+        {
+          "name": "Mapping Engine (RFC-076)",
+          "path": "/rfc076",
+          "src": "/Contributors/rfc076.html"
+        },
+        {
+          "name": "Ledger (RFC-080)",
+          "path": "/rfc080",
+          "src": "/Contributors/rfc080.html"
+        },
+        {
+          "name": "CredentialsDSU (RFC-057)",
+          "path": "/rfc057",
+          "src": "/Contributors/rfc057.html"
+        },
+        {
+          "name": "Self Validating Data (RFC-036)",
+          "path": "/rfc036",
+          "src": "/Contributors/rfc036.html"
+        },
+        {
+          "name": "Optimisation microledgers (RFC-037)",
+          "path": "/rfc037",
+          "src": "/Contributors/rfc037.html"
+        },
+        {
+          "name": "DB Object (RFC-062)",
+          "path": "/rfc062",
+          "src": "/Contributors/rfc062.html"
         }
       ]
     },
@@ -383,133 +485,6 @@
       ]
     },
     {
-      "name": "OpenDSU Advanced",
-      "path": "/Advanced",
-      "children": [
-        {
-          "name": "Anchoring (RFC-069)",
-          "path": "/rfc069",
-          "src": "/Advanced/rfc069.html"
-        },
-        {
-          "name": "BDNS (RFC-067)",
-          "path": "/rfc067",
-          "src": "/Advanced/rfc067.html"
-        },
-        {
-          "name": "Bricking (RFC-070)",
-          "path": "/rfc070",
-          "src": "/Advanced/rfc070.html"
-        },
-        {
-          "name": "Cache (RFC-077)",
-          "path": "/rfc077",
-          "src": "/Advanced/rfc077.html"
-        },
-        {
-          "name": "Config (RFC-078)",
-          "path": "/rfc078",
-          "src": "/Advanced/rfc078.html"
-        },
-        {
-          "name": "System (RFC-079)",
-          "path": "/rfc079",
-          "src": "/Advanced/rfc079.html"
-        },
-        {
-          "name": "Message Queue (RFC-073)",
-          "path": "/rfc073",
-          "src": "/Advanced/rfc073.html"
-        },
-        {
-          "name": "Notifications (RFC-072)",
-          "path": "/rfc072",
-          "src": "/Advanced/rfc072.html"
-        },
-        {
-          "name": "Security Context (RFC-075)",
-          "path": "/rfc075",
-          "src": "/Advanced/rfc075.html"
-        },
-        {
-          "name": "Enclaves (RFC-097)",
-          "path": "/rfc097",
-          "src": "/Advanced/rfc097.html"
-        },
-        {
-          "name": "Mapping Engine (RFC-076)",
-          "path": "/rfc076",
-          "src": "/Advanced/rfc076.html"
-        },
-        {
-          "name": "Ledger (RFC-080)",
-          "path": "/rfc080",
-          "src": "/Advanced/rfc080.html"
-        },
-        {
-          "name": "Verifiable Credentials (RFC-057)",
-          "path": "/rfc057",
-          "src": "/Advanced/rfc057.html"
-        },
-        {
-          "name": "Verifiable Credentials - W3C (RFC-081)",
-          "path": "/rfc081",
-          "src": "/Advanced/rfc081.html"
-        },
-        {
-          "name": "W3C DIDs (RFC-082)",
-          "path": "/rfc082",
-          "src": "/Advanced/rfc082.html"
-        },
-        {
-          "name": "Self Validating Data (RFC-036)",
-          "path": "/rfc036",
-          "src": "/Advanced/rfc036.html"
-        },
-        {
-          "name": "Optimisation microledgers (RFC-037)",
-          "path": "/rfc037",
-          "src": "/Advanced/rfc037.html"
-        },
-        {
-          "name": "DB Object (RFC-062)",
-          "path": "/rfc062",
-          "src": "/Advanced/rfc062.html"
-        },
-        {
-          "name": "Tutorials",
-          "path": "/Advanced",
-          "children": [
-            {
-              "name": "IT Managers and Solution Architects (RFC-0111)",
-              "path": "/rfc0111",
-              "src": "/Advanced/rfc0111.html"
-            },
-            {
-              "name": "WebCardinal Begginers Tutorial (RFC-0113)",
-              "path": "/rfc0113",
-              "src": "/Advanced/rfc0113.html"
-            },
-            {
-              "name": "Developers Tutorial (RFC-0114)",
-              "path": "/rfc0114",
-              "src": "/Advanced/rfc0114.html"
-            },
-            {
-              "name": "Advanced Tutorial (RFC-0115)",
-              "path": "/rfc0115",
-              "src": "/Advanced/rfc0115.html"
-            },
-            {
-              "name": "DevOPS Tutorial (RFC-0116)",
-              "path": "/rfc0116",
-              "src": "/Advanced/rfc0116.html"
-            } 
-          ]
-        }
-      ]
-    },
-    {
       "name": "OpenDSU APIHub APIs",
       "path": "/APIHub-APIs",
       "children": [
@@ -606,43 +581,74 @@
       ]
     },
     {
-      "name": "OpenDSU Recommendation",
-      "path": "/Recommendation",
+      "name": "OpenDSU for DevOPS",
+      "path": "/DevOPS",
       "children": [
         {
           "name": "Helm Charts and scripts (RFC-140)",
           "path": "/rfc140",
-          "src": "/Recommendation/rfc140.html"
+          "src": "/DevOPS/rfc140.html"
         },
         {
           "name": "New network installation (RFC-141)",
           "path": "/rfc141",
-          "src": "/Recommendation/rfc141.html"
+          "src": "/DevOPS/rfc141.html"
         },
         {
           "name": "Join network (RFC-142)",
           "path": "/rfc142",
-          "src": "/Recommendation/rfc142.html"
+          "src": "/DevOPS/rfc142.html"
         },
         {
           "name": "Partners info management (RFC-143)",
           "path": "/rfc143",
-          "src": "/Recommendation/rfc143.html"
+          "src": "/DevOPS/rfc143.html"
         },
         {
           "name": "Quorum Smart Contract deployment (RFC-144)",
           "path": "/rfc144",
-          "src": "/Recommendation/rfc144.html"
+          "src": "/DevOPS/rfc144.html"
         },
         {
           "name": "Ethereum Adapter Installation (RFC-145)",
           "path": "/rfc145",
-          "src": "/Recommendation/rfc145.html"
+          "src": "/DevOPS/rfc145.html"
         },
         {
           "name": "APIHub instalation (RFC-146)",
           "path": "/rfc146",
-          "src": "/Recommendation/rfc146.html"
+          "src": "/DevOPS/rfc146.html"
+        }
+      ]
+    },
+    {
+      "name": "OpenDSU Quick Start",
+      "path": "/QuickStart",
+      "children": [
+        {
+          "name": "IT Managers and Solution Architects (RFC-111)",
+          "path": "/rfc111",
+          "src": "/QuickStart/rfc111.html"
+        },
+        {
+          "name": "WebCardinal Beginners Tutorial (RFC-113)",
+          "path": "/rfc113",
+          "src": "/QuickStart/rfc113.html"
+        },
+        {
+          "name": "Developers Tutorial (RFC-114)",
+          "path": "/rfc114",
+          "src": "/QuickStart/rfc114.html"
+        },
+        {
+          "name": "Advanced Tutorial (RFC-115)",
+          "path": "/rfc115",
+          "src": "/QuickStart/rfc115.html"
+        },
+        {
+          "name": "DevOPS Tutorial (RFC-116)",
+          "path": "/rfc116",
+          "src": "/QuickStart/rfc116.html"
         }
       ]
     },
