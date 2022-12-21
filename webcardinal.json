@@ -71,12 +71,12 @@
           "src": "/Concepts/rfc028.html"
         },
         {
-          "name": "Clouds and Edge Wallets (RFC-032)",
+          "name": "Cloud and Edge Wallets (RFC-032)",
           "path": "/rfc032",
           "src": "/Concepts/rfc032.html"
         },
         {
-          "name": "Clouds Wallets and KMSes (RFC-033)",
+          "name": "Cloud Wallets and KMSes (RFC-033)",
           "path": "/rfc033",
           "src": "/Concepts/rfc033.html"
         }
