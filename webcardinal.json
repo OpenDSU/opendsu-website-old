@@ -649,6 +649,11 @@
           "name": "DevOPS Tutorial (RFC-116)",
           "path": "/rfc116",
           "src": "/QuickStart/rfc116.html"
+        },
+        {
+          "name": "Creative Mobile Native Application (RFC-117)",
+          "path": "/rfc117",
+          "src": "/QuickStart/rfc117.html"
         }
       ]
     },
