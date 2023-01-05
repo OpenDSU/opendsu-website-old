@@ -369,6 +369,10 @@
                   "tag": "webc-container"
                 },
                 {
+                  "name": "webc-datatable",
+                  "tag": "webc-datatable"
+                },
+                {
                   "name": "webc-docs",
                   "tag": "webc-docs"
                 },
@@ -456,9 +460,6 @@
               "name": "Octopus (RFC-095)",
               "path": "/rfc095",
               "src": "/Advanced/rfc095.html"
-            },
-            {
-              "name": "bar"
             },
             {
               "name": "CSBWizard",
