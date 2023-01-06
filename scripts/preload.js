@@ -17,10 +17,5 @@ addHook("beforePageLoads", "webcardinal-skins", () => {
   WebCardinal.state.translations = true;
 });
 
-addHook("beforePageLoads", "webcardinal-cheatsheet", () => {
-  console.log("Hello Cheatsheet!");
-});
-
-define("webc-xyz-cheatsheet", {shadow: true});
 define("webc-xyz-preferences");
 define("webc-xyz-slider");

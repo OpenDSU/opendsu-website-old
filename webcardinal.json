@@ -442,7 +442,8 @@
           "src": "./how-to",
           "children": [
             {
-              "name": "A site with WebCardinal"
+              "name": "A site with WebCardinal",
+              "tag": "webcardinal-site"
             },
             {
               "name": "A SSApp"

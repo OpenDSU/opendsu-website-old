@@ -61,7 +61,7 @@ class WebcModalExamplesController extends WebcController {
         this.showErrorModalAndRedirect(
             'Wait 3 seconds',
             'Redirect...',
-            { tag: 'webcardinal-cheatsheet' },
+            { tag: 'webcardinal-site' },
             3000
         );
     }
