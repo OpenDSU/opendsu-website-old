@@ -176,6 +176,11 @@
           "name": "VersionLessDSUs (RFC-019)",
           "path": "/rfc019",
           "src": "/Advanced/rfc019.html"
+        },
+        {
+          "name": "Fixed URLs in APIHub (RFC-102)",
+          "path": "/rfc102",
+          "src": "/Advanced/rfc019.html"
         }
       ]
     },
