@@ -374,6 +374,10 @@
                   "tag": "webc-container"
                 },
                 {
+                  "name": "webc-datatable",
+                  "tag": "webc-datatable"
+                },
+                {
                   "name": "webc-docs",
                   "tag": "webc-docs"
                 },
@@ -443,7 +447,8 @@
           "src": "./how-to",
           "children": [
             {
-              "name": "A site with WebCardinal"
+              "name": "A site with WebCardinal",
+              "tag": "webcardinal-site"
             },
             {
               "name": "A SSApp"
@@ -461,9 +466,6 @@
               "name": "Octopus (RFC-095)",
               "path": "/rfc095",
               "src": "/Advanced/rfc095.html"
-            },
-            {
-              "name": "bar"
             },
             {
               "name": "CSBWizard",
