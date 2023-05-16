@@ -56,11 +56,6 @@
           "src": "/Concepts/rfc008.html"
         },
         {
-          "name": "Cryptography (RFC-017)",
-          "path": "/rfc017",
-          "src": "/Concepts/rfc017.html"
-        },
-        {
           "name": "BDNS (RFC-022)",
           "path": "/rfc022",
           "src": "/Concepts/rfc022.html"
@@ -74,11 +69,6 @@
           "name": "Cloud and Edge Wallets (RFC-032)",
           "path": "/rfc032",
           "src": "/Concepts/rfc032.html"
-        },
-        {
-          "name": "Cloud Wallets and KMSes (RFC-033)",
-          "path": "/rfc033",
-          "src": "/Concepts/rfc033.html"
         }
       ]
     },
@@ -297,11 +287,6 @@
           "name": "Self Validating Data (RFC-036)",
           "path": "/rfc036",
           "src": "/Contributors/rfc036.html"
-        },
-        {
-          "name": "Optimisation microledgers (RFC-037)",
-          "path": "/rfc037",
-          "src": "/Contributors/rfc037.html"
         },
         {
           "name": "DB Object (RFC-062)",
