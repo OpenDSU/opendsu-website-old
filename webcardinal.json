@@ -31,11 +31,6 @@
           "src": "/Concepts/rfc003.html"
         },
         {
-          "name": "Brick Map Data Structures (RFC-004)",
-          "path": "/rfc004",
-          "src": "/Concepts/rfc004.html"
-        },
-        {
           "name": "Anchoring (RFC-005)",
           "path": "/rfc005",
           "src": "/Concepts/rfc005.html"
