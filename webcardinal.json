@@ -128,6 +128,26 @@
           "src": "/Advanced/rfc012.html"
         },
         {
+          "name": "LightDB (RFC-023)",
+          "path": "/rfc023",
+          "src": "/Advanced/rfc023.html"
+        },
+        {
+          "name": "Rolling Updates (RFC-024)",
+          "path": "/rfc024",
+          "src": "/Advanced/rfc024.html"
+        },
+        {
+          "name": "DSU Caching Behaviour (RFC-025)",
+          "path": "/rfc025",
+          "src": "/Advanced/rfc025.html"
+        },
+        {
+          "name": "APIHub Microservices & Scalability (RFC-026)",
+          "path": "/rfc026",
+          "src": "/Advanced/rfc026.html"
+        },
+        {
           "name": "Crypto (RFC-066)",
           "path": "/rfc066",
           "src": "/Advanced/rfc066.html"
