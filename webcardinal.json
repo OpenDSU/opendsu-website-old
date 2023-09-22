@@ -72,14 +72,14 @@
       "path": "/For-Beginners",
       "children": [
         {
-          "name": "APIs Overview (RFC-060)",
-          "path": "/rfc060",
-          "src": "/For-Beginners/rfc060.html"
-        },
-        {
           "name": "SSapp implementation (RFC-034)",
           "path": "/rfc034",
           "src": "/For-Beginners/rfc034.html"
+        },
+        {
+          "name": "APIs Overview (RFC-060)",
+          "path": "/rfc060",
+          "src": "/For-Beginners/rfc060.html"
         },
         {
           "name": "DSU Object (RFC-063)",
@@ -92,11 +92,6 @@
           "src": "/For-Beginners/rfc064.html"
         },
         {
-          "name": "APIHub Configuration (RFC-100)",
-          "path": "/rfc100",
-          "src": "/For-Beginners/rfc100.html"
-        },
-        {
           "name": "Security Context (RFC-075)",
           "path": "/rfc075",
           "src": "/For-Beginners/rfc075.html"
@@ -105,6 +100,11 @@
           "name": "Enclaves (RFC-097)",
           "path": "/rfc097",
           "src": "/For-Beginners/rfc097.html"
+        },
+        {
+          "name": "APIHub Configuration (RFC-100)",
+          "path": "/rfc100",
+          "src": "/For-Beginners/rfc100.html"
         }
       ]
     },
@@ -128,6 +128,11 @@
           "src": "/Advanced/rfc012.html"
         },
         {
+          "name": "VersionLessDSUs (RFC-019)",
+          "path": "/rfc019",
+          "src": "/Advanced/rfc019.html"
+        },
+        {
           "name": "LightDB (RFC-023)",
           "path": "/rfc023",
           "src": "/Advanced/rfc023.html"
@@ -148,14 +153,14 @@
           "src": "/Advanced/rfc026.html"
         },
         {
+          "name": "Resolver (RFC-065)",
+          "path": "/rfc065",
+          "src": "/Advanced/rfc065.html"
+        },
+        {
           "name": "Crypto (RFC-066)",
           "path": "/rfc066",
           "src": "/Advanced/rfc066.html"
-        },
-        {
-          "name": "HTTP (RFC-071)",
-          "path": "/rfc071",
-          "src": "/Advanced/rfc071.html"
         },
         {
           "name": "KeySSI (RFC-068)",
@@ -163,14 +168,9 @@
           "src": "/Advanced/rfc068.html"
         },
         {
-          "name": "Resolver (RFC-065)",
-          "path": "/rfc065",
-          "src": "/Advanced/rfc065.html"
-        },
-        {
-          "name": "W3C DIDs (RFC-082)",
-          "path": "/rfc082",
-          "src": "/Advanced/rfc082.html"
+          "name": "HTTP (RFC-071)",
+          "path": "/rfc071",
+          "src": "/Advanced/rfc071.html"
         },
         {
           "name": "Verifiable Credentials - W3C (RFC-081)",
@@ -178,9 +178,9 @@
           "src": "/Advanced/rfc081.html"
         },
         {
-          "name": "VersionLessDSUs (RFC-019)",
-          "path": "/rfc019",
-          "src": "/Advanced/rfc019.html"
+          "name": "W3C DIDs (RFC-082)",
+          "path": "/rfc082",
+          "src": "/Advanced/rfc082.html"
         },
         {
           "name": "Fixed URLs in APIHub (RFC-102)",
@@ -202,16 +202,6 @@
           "name": "Smoke Tests Results",
           "loader": "iframe",
           "src": "https://raw.githubusercontent.com/opendsu/opendsu-sdk/test_reports/testReport.html"
-        },
-        {
-          "name": "APIHub SSO Implementaton (RFC-101)",
-          "path": "/rfc101",
-          "src": "/Contributors/rfc101.html"
-        },
-        {
-          "name": "Database (DB) (RFC-061)",
-          "path": "/rfc061",
-          "src": "/Contributors/rfc061.html"
         },
         {
           "name": "PasswordSSI (RFC-013)",
@@ -239,14 +229,29 @@
           "src": "/Contributors/rfc018.html"
         },
         {
+          "name": "Self Validating Data (RFC-036)",
+          "path": "/rfc036",
+          "src": "/Contributors/rfc036.html"
+        },
+        {
           "name": "OAuth (RFC-040)",
           "path": "/rfc040",
           "src": "/Contributors/rfc040.html"
         },
         {
-          "name": "Anchoring (RFC-069)",
-          "path": "/rfc069",
-          "src": "/Contributors/rfc069.html"
+          "name": "CredentialsDSU (RFC-057)",
+          "path": "/rfc057",
+          "src": "/Contributors/rfc057.html"
+        },
+        {
+          "name": "Database (DB) (RFC-061)",
+          "path": "/rfc061",
+          "src": "/Contributors/rfc061.html"
+        },
+        {
+          "name": "DB Object (RFC-062)",
+          "path": "/rfc062",
+          "src": "/Contributors/rfc062.html"
         },
         {
           "name": "BDNS (RFC-067)",
@@ -254,9 +259,29 @@
           "src": "/Contributors/rfc067.html"
         },
         {
+          "name": "Anchoring (RFC-069)",
+          "path": "/rfc069",
+          "src": "/Contributors/rfc069.html"
+        },
+        {
           "name": "Bricking (RFC-070)",
           "path": "/rfc070",
           "src": "/Contributors/rfc070.html"
+        },
+        {
+          "name": "Notifications (RFC-072)",
+          "path": "/rfc072",
+          "src": "/Contributors/rfc072.html"
+        },
+        {
+          "name": "Message Queue (RFC-073)",
+          "path": "/rfc073",
+          "src": "/Contributors/rfc073.html"
+        },
+        {
+          "name": "Mapping Engine (RFC-076)",
+          "path": "/rfc076",
+          "src": "/Contributors/rfc076.html"
         },
         {
           "name": "Cache (RFC-077)",
@@ -274,39 +299,14 @@
           "src": "/Contributors/rfc079.html"
         },
         {
-          "name": "Message Queue (RFC-073)",
-          "path": "/rfc073",
-          "src": "/Contributors/rfc073.html"
-        },
-        {
-          "name": "Notifications (RFC-072)",
-          "path": "/rfc072",
-          "src": "/Contributors/rfc072.html"
-        },
-        {
-          "name": "Mapping Engine (RFC-076)",
-          "path": "/rfc076",
-          "src": "/Contributors/rfc076.html"
-        },
-        {
           "name": "Ledger (RFC-080)",
           "path": "/rfc080",
           "src": "/Contributors/rfc080.html"
         },
         {
-          "name": "CredentialsDSU (RFC-057)",
-          "path": "/rfc057",
-          "src": "/Contributors/rfc057.html"
-        },
-        {
-          "name": "Self Validating Data (RFC-036)",
-          "path": "/rfc036",
-          "src": "/Contributors/rfc036.html"
-        },
-        {
-          "name": "DB Object (RFC-062)",
-          "path": "/rfc062",
-          "src": "/Contributors/rfc062.html"
+          "name": "APIHub SSO Implementaton (RFC-101)",
+          "path": "/rfc101",
+          "src": "/Contributors/rfc101.html"
         }
       ]
     },
